@@ -3,14 +3,14 @@ import UserContext from "./user-context";
 
 const UserProvider = (props) => {
   const [user, setUser] = useState(null);
-  const [firstTimeLogin, setFirstTimeLogin] = useState(false);
+  const [userInfo, setUserInfo] = useState(null);
 
 
   const userContext = {
     user, 
     setUser,
-    firstTimeLogin,
-    setFirstTimeLogin
+    userInfo,
+    setUserInfo
   };
 
   return (

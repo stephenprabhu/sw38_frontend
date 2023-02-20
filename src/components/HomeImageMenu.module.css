@@ -16,10 +16,19 @@
 .homeImageMenuIcon  img {
     width: 35px;
     height: 35px;
+    
 }
 
 .homeImageMenuIcon  span {
     color: white;
     font-weight: 500;
     font-size: 12px;
+}
+
+
+.homeImageMenuIcon  img.goldIcon {
+}
+
+.homeImageMenuIcon  span.gold {
+    color: #cb9b51;
 }

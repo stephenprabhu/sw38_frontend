@@ -10,32 +10,32 @@ const HomeImageMenu = () => {
   return (
     <div className={styles.homeImageMenuIcon}>
         <div>
-            <a href="https://www.vn138e.com/live">
+            <a href="https://www.vn138e.com/live" target="_blank">
                 <img src={LiveCasinoImage} /><br />
                 <span>Sòng bài</span>
             </a>
         </div>
         <div>
-            <a href='https://www.vn138e.com/sports'>
+            <a href='https://www.vn138e.com/sports' target="_blank">
                 <img src={SportsImage} /><br />
                 <span>Thể Thao</span>
             </a>
         </div>
         <div>
-            <a href='https://www.ssvv388.com/'>
+            <a href='https://www.ssvv388.com/' target="_blank">
                 <img className={styles.goldIcon} src={CockFightImage} /><br />
-                <span>Đá gà</span>
+                <span className={styles.gold}>Đá gà</span>
             </a>
         </div>
         <div>
-            <a href='https://www.vn138e.com/esports'>
+            <a href='https://www.vn138e.com/esports' target="_blank">
                 <img src={EsportsImage} /><br />
                 <span>Chơi Game</span>
             </a>
 
         </div>
         <div>
-            <a href='https://www.vn138e.com/elott'>
+            <a href='https://www.vn138e.com/elott' target="_blank">
                 <img src={LotteryImage} /><br />
                 <span>Xổ Số</span>
             </a>

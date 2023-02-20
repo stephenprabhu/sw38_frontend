@@ -98,4 +98,5 @@ const CopyItemComponent = ({ item }) => {
     )
 }
 
+
 export default DepositStep2

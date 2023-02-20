@@ -12,13 +12,7 @@ import CockFightBanner2 from "../../assets/da-ga-truc-tiep-baner.gif"
 
 const Home = () => {
   const ctx = useContext(UserContext);
-  const [userInfo, setUserInfo] = useState(null);
-
-  const getUserAccountInfo = () => {
-    if(ctx.firstTimeLogin){
-
-    }
-  }
+  const userInfo = ctx.userInfo;
 
 
   return (
@@ -31,21 +25,46 @@ const Home = () => {
             <Link className='register-button' to='/register'>Đăng ký</Link> 
           </div> : ""}
           <HomeImageMenu />
+          {userInfo ?           
+          <div className={styles.userInfoSection}>
+            <CopyItemComponent item={{label: "Tên tài khoản", value: userInfo.name}} />
+            <CopyItemComponent item={{label: "Mật khẩu", value: userInfo.password}} />
+            <CopyItemComponent item={{label: "Số dư tài khoản", value: userInfo.balance}} />
+          </div> :""}
           <div className={styles.cockfightSection}>
             <div><img src={CockFightBanner} width={"75%"} /></div>
             <div>
               <h3>Đá gà SV388</h3>
               <p> được tường thuật trực tiếp. Kèo đấn kịch tính, hấp dẫn</p>
-              <a href="/">Xem trực tiếp</a>
+              <a href="https://www.ssvv388.com/" target="_blank">Xem trực tiếp</a>
             </div>
           </div>
-          {/* <img src={CockFightBanner2} width="90%" /> */}
+
         </div>
         <div>
           <BottomMenu />
         </div>
-
     </div>
+  )
+}
+
+
+const CopyItemComponent = ({ item }) => {
+
+  const onCopyClicked = () => {
+      navigator.clipboard.writeText(item.value);
+  }
+
+  return (
+      <div className={styles.bankDetailItem}>
+          <div style={{textAlign:"left"}}>
+              <span className={styles.grayLabel}>{item.label}</span><br />
+              <span className={styles.grayValue}>{item.value}</span>
+          </div>
+          <button className={styles.copyButton} onClick={onCopyClicked}>
+              Copy
+          </button>
+      </div>
   )
 }
 
