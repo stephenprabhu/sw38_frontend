@@ -3,6 +3,9 @@
     justify-content: space-around;
     text-align: center;
     padding: 10px;
+    background-image: linear-gradient(180deg,#304063,#202c46);
+    box-shadow: inset 0 0 0.12rem 0 hsl(41deg 37% 80% / 36%);
+    border: 1px solid #424a62;
    
 }
 
