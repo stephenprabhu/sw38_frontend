@@ -1,0 +1,15 @@
+.mainSiteHeader {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding: 0 0.28rem;
+    background-color: #19253f;
+    align-items: center;
+}
+
+
+.logOutButton {
+    color: white;
+    padding-right: 10px;
+    cursor: pointer;
+}

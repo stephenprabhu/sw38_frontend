@@ -1,0 +1,108 @@
+.layout {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}
+
+.section {
+    width: 80%;
+    margin: auto;
+}
+
+.bankCard {
+    background-image: -webkit-linear-gradient(-3deg,#c47ff4,#eb498e);
+    border-radius: 10px;
+    padding: 10px;
+    width: 90%;
+    margin: auto;
+}
+
+.bankCard span {
+    color: white;
+    font-size: 12px;
+}
+
+.inputItem {
+    border: 0.02rem solid #e4e4e4!important;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    padding-left: 3px;
+    background-color: white;
+    margin-top: 15px;
+  
+}
+
+.inputItem span {
+    font-size: 0.8rem;
+    color: rgb(159, 156, 156)
+}
+
+
+.inputItem .whiteInput {
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    font-size: 1em;
+    font-family: 'Be Vietnam Pro', sans-serif;
+
+}
+
+.inputItem .whiteInput:focus, 
+.inputItem .whiteInput:hover, 
+.inputItem .whiteInput:active,
+.inputItem .whiteInput:focus-visible
+{
+    outline: none;
+    border: none;
+}
+
+.submit {
+    box-shadow: 0 0.1rem 0.2rem 0 rgb(255 0 16 / 40%);
+    color: #fffefe!important;
+    border-radius: 0.4em;
+    transition: all .3s linear;
+    border: none;
+    background-image: -webkit-linear-gradient(-90deg,#ff3a3e,#ff1e30)!important;
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 1.2em;
+}
+
+
+.divider {
+    height: 0.32rem;
+    border-bottom: 1px solid #dedede;
+    line-height: 0;
+    font-size: 0;
+    position: relative;
+    
+}
+
+.addButton {
+    padding: 0.4rem;
+    background-color: #fe0000;
+    border: 0.05rem solid #fff;
+    border-radius: 50%;
+    position: absolute;
+    right: 0.45rem;
+    bottom: -1.2rem;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.banksSection {
+    margin-bottom: 20px;
+}
+
+.formSecton {
+    margin-top: 30px;
+}
+
+.balanceSection {
+    font-size: 0.8rem;
+    color: rgb(118, 117, 117);
+}

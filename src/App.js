@@ -1,25 +1,73 @@
 import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
+import Home from './pages/Home/Home';
+import Login from './pages/login/Login';
+import Register from './pages/register/Register';
+
+import {
+  BrowserRouter as Router,
+  Routes ,
+  Route,
+} from "react-router-dom";
+import Deposit from './pages/Deposit/Deposit';
+import AddAccount from './pages/User/AddAccount';
+import Withdraw from './pages/withdraw/Withdraw';
+import { useContext, useEffect } from 'react';
+import UserContext from './helpers/Context/user-context';
+import Profile from './pages/User/Profile';
+import { APIRegisterUser } from './helpers/APIs/UserAPIs';
+import { Navigate } from 'react-router-dom';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const ctx = useContext(UserContext);
+  
+  useEffect(()=> {
+    if(localStorage.getItem('auth_token')){
+      ctx.setUser(localStorage.getItem('auth_token'));
+    }
+  },[]);
+
+  const AuthRoute = ({ children }) => {
+    if (!ctx.user) {
+      return <Navigate to="/login" replace />;
+    }
+    return children;
+  }
+
+  const GuestRoute = ({ children }) => {
+    if (ctx.user) {
+      return <Navigate to="/member" replace />;
+    }
+    return children;
+  }
+
+
+
+
+
+
+
+
+    return (
+
+      <Router>
+      <div className="App">
+        <Routes >
+          <Route path="/register" element={<GuestRoute><Register /></GuestRoute>} />
+          <Route path="/login" element={<GuestRoute><Login /></GuestRoute>} />
+          <Route path="/deposit" element={<AuthRoute ><Deposit /></AuthRoute>} />
+          <Route path="/withdraw" element={<AuthRoute ><Withdraw /></AuthRoute>} />
+          <Route path="/add-account" element={<AuthRoute ><AddAccount /></AuthRoute>} />
+          <Route path="/member" element={<AuthRoute><Profile /></AuthRoute>} />
+          <Route path="/" element={<Home />} />
+        </Routes >        
+      </div>
+      </Router>
+    );
 }
+
+
+
 
 export default App;
