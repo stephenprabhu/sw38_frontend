@@ -36,7 +36,7 @@
 
 
 .inputItem {
-    border: 0.02rem solid #e4e4e4!important;
+    border: 0.02rem solid #e4e4e4 !important;
     border-radius: 3px;
     display: flex;
     align-items: center;
@@ -50,11 +50,10 @@
     padding: 10px;
 }
 
-.inputItem .whiteInput:focus, 
-.inputItem .whiteInput:hover, 
+.inputItem .whiteInput:focus,
+.inputItem .whiteInput:hover,
 .inputItem .whiteInput:active,
-.inputItem .whiteInput:focus-visible
-{
+.inputItem .whiteInput:focus-visible {
     outline: none;
     border: none;
 }
@@ -72,8 +71,8 @@
     padding: 10px;
     font-size: 0.8rem;
     white-space: nowrap;
-    width: calc(20% - 0.1rem)!important;
-    font-weight: 700!important;
+    width: calc(20% - 0.1rem) !important;
+    font-weight: 700 !important;
     text-align: center;
     border: 1px solid #ccc;
     border-radius: 0.3rem;
@@ -92,14 +91,14 @@
     border: none;
     padding: 15px;
     font-size: 1.2em;
-    background-color:#ec2529;
+    background-color: #ec2529;
     color: white;
     font-weight: 500;
 }
 
 
-.submitButton.disabled{
-    background-color:gray;
+.submitButton.disabled {
+    background-color: gray;
     color: white;
     cursor: not-allowed;
 }
@@ -148,27 +147,24 @@
     color: white;
     background-color: #428dfc;
     font-size: 1rem;
-
-
 }
 
 .depositButton.final {
     border: 1px solid white;
     color: white;
-    background-color: transparent;
+    background-color: gray;
     font-size: 1rem;
-
 }
 
 .singleBankItem {
-   border: 0.2px solid rgb(181, 181, 181);
-   border-radius: 5px;
-   padding: 0 10px;
-   margin-left: 10px;
-   cursor: pointer;
+    border: 0.2px solid rgb(181, 181, 181);
+    border-radius: 5px;
+    padding: 0 10px;
+    margin-left: 10px;
+    cursor: pointer;
 }
 
-.singleBankItem.active{
+.singleBankItem.active {
     border: 0.2px solid rgb(229, 35, 35);
 }
 
@@ -180,4 +176,3 @@
     display: flex;
     margin-bottom: 20px;
 }
-

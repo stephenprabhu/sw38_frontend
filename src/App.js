@@ -7,7 +7,7 @@ import Register from './pages/register/Register';
 
 import {
   BrowserRouter as Router,
-  Routes ,
+  Routes,
   Route,
 } from "react-router-dom";
 import Deposit from './pages/Deposit/Deposit';
@@ -16,17 +16,16 @@ import Withdraw from './pages/withdraw/Withdraw';
 import { useContext, useEffect } from 'react';
 import UserContext from './helpers/Context/user-context';
 import Profile from './pages/User/Profile';
-import { APIRegisterUser } from './helpers/APIs/UserAPIs';
 import { Navigate } from 'react-router-dom';
 
 function App() {
   const ctx = useContext(UserContext);
-  
-  useEffect(()=> {
-    if(localStorage.getItem('auth_token')){
+
+  useEffect(() => {
+    if (localStorage.getItem('auth_token')) {
       ctx.setUser(localStorage.getItem('auth_token'));
     }
-  },[]);
+  }, []);
 
   const AuthRoute = ({ children }) => {
     if (!ctx.user) {
@@ -42,29 +41,22 @@ function App() {
     return children;
   }
 
+  return (
 
-
-
-
-
-
-
-    return (
-
-      <Router>
+    <Router>
       <div className="App">
         <Routes >
           <Route path="/register" element={<GuestRoute><Register /></GuestRoute>} />
           <Route path="/login" element={<GuestRoute><Login /></GuestRoute>} />
           <Route path="/deposit" element={<AuthRoute ><Deposit /></AuthRoute>} />
           <Route path="/withdraw" element={<AuthRoute ><Withdraw /></AuthRoute>} />
-          <Route path="/add-account" element={<AuthRoute ><AddAccount /></AuthRoute>} />
           <Route path="/member" element={<AuthRoute><Profile /></AuthRoute>} />
+          <Route path="/add-account" element={<AuthRoute ><AddAccount /></AuthRoute>} />
           <Route path="/" element={<Home />} />
-        </Routes >        
+        </Routes >
       </div>
-      </Router>
-    );
+    </Router>
+  );
 }
 
 
