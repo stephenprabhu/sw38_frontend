@@ -10,11 +10,15 @@
 }
 
 .bankCard {
-    background-image: -webkit-linear-gradient(-3deg,#c47ff4,#eb498e);
+    background-image: -webkit-linear-gradient(-3deg, #c47ff4, #eb498e);
     border-radius: 10px;
     padding: 10px;
     width: 90%;
     margin: auto;
+    text-align: left;
+    /* display: flex;
+    gap: 5px;
+    flex-direction: column; */
 }
 
 .bankCard span {
@@ -23,14 +27,14 @@
 }
 
 .inputItem {
-    border: 0.02rem solid #e4e4e4!important;
+    border: 0.02rem solid #e4e4e4 !important;
     border-radius: 3px;
     display: flex;
     align-items: center;
     padding-left: 3px;
     background-color: white;
     margin-top: 15px;
-  
+
 }
 
 .inputItem span {
@@ -48,22 +52,21 @@
 
 }
 
-.inputItem .whiteInput:focus, 
-.inputItem .whiteInput:hover, 
+.inputItem .whiteInput:focus,
+.inputItem .whiteInput:hover,
 .inputItem .whiteInput:active,
-.inputItem .whiteInput:focus-visible
-{
+.inputItem .whiteInput:focus-visible {
     outline: none;
     border: none;
 }
 
 .submit {
     box-shadow: 0 0.1rem 0.2rem 0 rgb(255 0 16 / 40%);
-    color: #fffefe!important;
+    color: #fffefe !important;
     border-radius: 0.4em;
     transition: all .3s linear;
     border: none;
-    background-image: -webkit-linear-gradient(-90deg,#ff3a3e,#ff1e30)!important;
+    background-image: -webkit-linear-gradient(-90deg, #ff3a3e, #ff1e30) !important;
     width: 100%;
     padding: 10px;
     margin-top: 15px;
@@ -78,7 +81,7 @@
     line-height: 0;
     font-size: 0;
     position: relative;
-    
+
 }
 
 .addButton {
