@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 import profilePage from '../../assets/0.png'
 import InnerHeader from '../../components/InnerHeader'
 import styles from './Profile.module.css';
-import { Link } from 'react-router-dom';
 
 const Profile = () => {
   const [user, setUser] = useState()
@@ -37,6 +37,9 @@ const Profile = () => {
           <Link to="/deposit" className={styles.button}>Nạp Tiền</Link>
           <Link to="/withdraw" className={styles.button}>Rút Tiền</Link>
         </div>
+        <Link to={'/transections'}>
+          <button className={styles.button}>Transections</button>
+        </Link>
       </div>
     </div>
   )

@@ -26,25 +26,23 @@ const Home = () => {
           <HomeImageMenu />
           {userInfo ?           
           <div className={styles.userInfoSection}>
-            <CopyItemComponent item={{label: "Tên tài khoản", value: userInfo.name}} />
-            <CopyItemComponent item={{label: "Mật khẩu", value: userInfo.password}} />
-            <CopyItemComponent item={{label: "Số dư tài khoản", value: userInfo.balance}} />
-          </div> :""}
-          <div className={styles.cockfightSection}>
-            <div><img src={CockFightBanner} width={"75%"} /></div>
-            <div>
-              <h3>Đá gà SV388</h3>
-              <p> được tường thuật trực tiếp. Kèo đấn kịch tính, hấp dẫn</p>
-              <a href="https://www.ssvv388.com/" target="_blank">Xem trực tiếp</a>
-            </div>
+            <CopyItemComponent item={{ label: "Tên tài khoản", value: userInfo.name }} />
+            <CopyItemComponent item={{ label: "Mật khẩu", value: userInfo.password }} />
+            <CopyItemComponent item={{ label: "Số dư tài khoản", value: userInfo.balance }} />
+          </div> : ""}
+        <div className={styles.cockfightSection}>
+          <div><img src={CockFightBanner} width={"75%"} /></div>
+          <div>
+            <h3>Đá gà SV388</h3>
+            <p> được tường thuật trực tiếp. Kèo đấn kịch tính, hấp dẫn</p>
+            <a href="https://www.ssvv388.com/" target="_blank">Xem trực tiếp</a>
           </div>
-
-          <h2 style={{color:"white", fontSize:"0.8em", marginTop:"10px"}}>TRANG ĐÁ GÀ UY TÍN NHẤT VIỆT NAM</h2>
-          <img src={CockFightBanner2} width="100%" />
+          
         </div>
-        <div>
-          <BottomMenu />
-        </div>
+        <h2 style={{color:"white", fontSize:"0.8em", marginTop:"10px"}}>TRANG ĐÁ GÀ UY TÍN NHẤT VIỆT NAM</h2>
+        <img src={CockFightBanner2} width="100%" />
+      </div>
+      <BottomMenu />
     </div>
   )
 }
@@ -53,19 +51,19 @@ const Home = () => {
 const CopyItemComponent = ({ item }) => {
 
   const onCopyClicked = () => {
-      navigator.clipboard.writeText(item.value);
+    navigator.clipboard.writeText(item.value);
   }
 
   return (
-      <div className={styles.bankDetailItem}>
-          <div style={{textAlign:"left"}}>
-              <span className={styles.grayLabel}>{item.label}</span><br />
-              <span className={styles.grayValue}>{item.value}</span>
-          </div>
-          <button className={styles.copyButton} onClick={onCopyClicked}>
-              Copy
-          </button>
+    <div className={styles.bankDetailItem}>
+      <div style={{ textAlign: "left" }}>
+        <span className={styles.grayLabel}>{item.label}</span><br />
+        <span className={styles.grayValue}>{item.value}</span>
       </div>
+      <button className={styles.copyButton} onClick={onCopyClicked}>
+        Copy
+      </button>
+    </div>
   )
 }
 
