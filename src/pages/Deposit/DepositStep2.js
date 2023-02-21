@@ -4,11 +4,14 @@ import { useState } from "react";
 import { CiCreditCard1 } from "react-icons/ci";
 import { APIMakeDepositRequest } from "../../helpers/APIs/TransactionAPI";
 import { useNavigate } from "react-router-dom";
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
   const [invoiceFile, setInvoiceFile] = useState("null");
   const [accountNo, setAccountNo] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const items = [
     { label: "Nạp tiền tài khoản", value: "username" },
@@ -24,6 +27,7 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
 
   //submit func
   const onDepositSubmitClicked = async (e) => {
+    setLoading(true);
     e.preventDefault()
     if (invoiceFile && accountNo && amount && selectedBank) {
       const x = await APIMakeDepositRequest(amount, accountNo, selectedBank.id, invoiceFile);
@@ -35,6 +39,7 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
     } else {
       console.log('Api Fail')
     }
+    setLoading(false)
   }
 
   return (
@@ -58,10 +63,11 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
               />
             </div>
           </div>
+          {loading ? <CircularProgress /> : ""}
         </div>
         <div className={`${styles.submitButton}`}>
           <button className={`${styles.depositButton}  ${styles.cancel}`} onClick={onPrevStepClicked}>Trở Về</button>
-          <button className={`${styles.depositButton} ${styles.final}`} type="submit">Hoàn Tất</button>
+          <button className={`${styles.depositButton} ${styles.final}`} disabled={loading} type="submit">{loading ? "Đang tải" : "Hoàn Tất" }</button>
           {errorMessage && <p>{errorMessage}</p>}
         </div>
       </form>

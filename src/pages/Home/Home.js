@@ -7,8 +7,7 @@ import { useContext, useState } from "react";
 import UserContext from "../../helpers/Context/user-context";
 import CockFightBanner from "../../assets/sub-animal-sv.png"
 import styles from './Home.module.css'
-import CockFightBanner2 from "../../assets/da-ga-truc-tiep-baner.gif"
-
+import CockFightBanner2 from "../../assets/cock-banner-2.jpeg"
 
 const Home = () => {
   const ctx = useContext(UserContext);
@@ -18,7 +17,7 @@ const Home = () => {
   return (
     <div style={{display:"flex", flexDirection:"column", justifyContent:"space-between", height:"100%"}}>
         <Header />
-        <div style={{flex: 1}}>
+        <div style={{flex: 1, overflowY:"auto"}}>
           <img src={BannerImage} width="100%" />
           {!ctx.user ? <div className='register-login-section'>
             <Link className='login-button' to='/login'>Đăng Nhập</Link>
@@ -40,6 +39,8 @@ const Home = () => {
             </div>
           </div>
 
+          <h2 style={{color:"white", fontSize:"0.8em", marginTop:"10px"}}>TRANG ĐÁ GÀ UY TÍN NHẤT VIỆT NAM</h2>
+          <img src={CockFightBanner2} width="100%" />
         </div>
         <div>
           <BottomMenu />

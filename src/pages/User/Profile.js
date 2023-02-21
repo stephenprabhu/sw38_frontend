@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import profilePage from '../../assets/0.png'
 import InnerHeader from '../../components/InnerHeader'
 import styles from './Profile.module.css';
+import { Link } from 'react-router-dom';
 
 const Profile = () => {
   const [user, setUser] = useState()
@@ -33,8 +34,8 @@ const Profile = () => {
           </div>
         </div>
         <div>
-          <button className={styles.button}>Nạp Tiền</button>
-          <button className={styles.button}>Rút Tiền</button>
+          <Link to="/deposit" className={styles.button}>Nạp Tiền</Link>
+          <Link to="/withdraw" className={styles.button}>Rút Tiền</Link>
         </div>
       </div>
     </div>

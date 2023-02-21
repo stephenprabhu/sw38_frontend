@@ -7,13 +7,17 @@ import InnerHeader from '../../components/InnerHeader'
 import { WithdrawAPI } from '../../helpers/APIs/WithdrawAPI'
 import UserContext from '../../helpers/Context/user-context'
 import styles from './Withdraw.module.css'
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 const Withdraw = () => {
   const [banks, setBanks] = useState()
   const [userBalance, setUserBalance] = useState()
   const [bankId, setBankId] = useState()
-  const [transactionAmount, setTransactionAmount] = useState('')
-  const [error, setError] = useState('')
+  const [transactionAmount, setTransactionAmount] = useState('');
+  const [bankAccountNumber, setBankAccountNumber] = useState(null)
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const ctx = useContext(UserContext);
   const token = localStorage.getItem('auth_token')
@@ -29,7 +33,8 @@ const Withdraw = () => {
       });
       setBanks(res.data)
       // default cheched
-      setBankId(res.data[0] && res.data[0].id)
+      setBankId(res.data[0] ? res.data[0].id : null);
+      setBankAccountNumber(res.data[0] ? res.data[0].account_number : null );
     }
 
     // user balance API
@@ -49,7 +54,8 @@ const Withdraw = () => {
 
   // submitwithdraw
   const submitwithdraw = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
+    setLoading(true)
     if (userBalance < 100) {
       setError('Số dư không đủ')
     } else if (transactionAmount > 100000) {
@@ -59,11 +65,12 @@ const Withdraw = () => {
     } else if (!bankId) {
       setError('Vui lòng thêm ngân hàng')
     } else if (bankId && transactionAmount) {
-      const x = await WithdrawAPI(bankId, transactionAmount);
+      const x = await WithdrawAPI(bankId, transactionAmount, bankAccountNumber);
       if (x.status) {
         navigate('/')
       }
     }
+    setLoading(false);
   }
 
   return (
@@ -106,7 +113,8 @@ const Withdraw = () => {
             <input className={styles.whiteInput} style={{ border: "none" }} placeholder="100 - 100,000" value={transactionAmount} onChange={(e) => setTransactionAmount(e.target.value)} required />
           </div>
           {error && <Typography mt={2} color='red'>{error}</Typography>}
-          <button className={styles.submit} type='submit'>Xác nhận</button>
+          {loading ?  <CircularProgress style={{marginTop:"20px"}} /> : ""}
+          <button className={styles.submit} disabled={loading} type='submit'>{loading ? "Đang tải..." : "Xác nhận" }</button>
         </div>
       </div>
     </form>
