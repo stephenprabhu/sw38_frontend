@@ -6,7 +6,7 @@ import { useState } from 'react';
 import Drawer from '@mui/material/Drawer';
 import HomeDrawerContent from './HomeDrawerContent';
 import { Link } from 'react-router-dom';
-import {RxExit} from "react-icons/rx";
+import { RxExit } from "react-icons/rx";
 import UserContext from '../helpers/Context/user-context';
 
 
@@ -23,8 +23,8 @@ const Header = () => {
     return (
         <header >
             <div className={styles.mainSiteHeader}>
-                <div class="side-menu" style={{cursor:"pointer"}} onClick={()=> setDrawerOpened(true)}>
-                    <HiMenuAlt2 style={{color:"white"}} size={40} />    
+                <div className="side-menu" style={{ cursor: "pointer" }} onClick={() => setDrawerOpened(true)}>
+                    <HiMenuAlt2 style={{ color: "white" }} size={40} />
                 </div>
                 <div>
                     <Link to="/">
@@ -32,15 +32,15 @@ const Header = () => {
                     </Link>
                 </div>
                 <div>
-                    {ctx.user ? <RxExit onClick={onLogOutClicked} className={styles.logOutButton} width={35} style={{}} /> :""}
+                    {ctx.user ? <RxExit onClick={onLogOutClicked} className={styles.logOutButton} width={35} style={{}} /> : ""}
                 </div>
             </div>
-                <Drawer
-                    open={drawerOpened}
-                    onClose={()=> setDrawerOpened(false)}
-                >
-                    <HomeDrawerContent onClose={()=> setDrawerOpened(false)} />
-                </Drawer>
+            <Drawer
+                open={drawerOpened}
+                onClose={() => setDrawerOpened(false)}
+            >
+                <HomeDrawerContent onClose={() => setDrawerOpened(false)} />
+            </Drawer>
         </header>
     )
 }

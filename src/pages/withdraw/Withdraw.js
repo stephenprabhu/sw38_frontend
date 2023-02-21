@@ -30,7 +30,7 @@ const Withdraw = () => {
       });
       setBanks(res.data)
       // default cheched
-      setBankId(res.data[0].id && res.data[0].id)
+      setBankId(res.data[0] && res.data[0].id)
     }
 
     // user balance API
@@ -57,7 +57,7 @@ const Withdraw = () => {
     if (userBalance > 100000) {
       setInsuficentBlnc('')
     } if (userBalance < 100) {
-      setInsuficentBlnc('Insuficent balance.,....!!')
+      setInsuficentBlnc('Insuficent balance...!!')
     } else {
       setInsuficentBlnc('')
       if (bankId && transactionAmount) {
@@ -80,23 +80,15 @@ const Withdraw = () => {
     <form className={styles.layout} onSubmit={submitwithdraw}>
       <InnerHeader title="Rút Tiền" />
       {ctx.user.name}
-      <div>
-        <h4>Thẻ ngân hàng của tôi</h4>
-      </div>
-      <div className={styles.section}>
 
+      <h4>Thẻ ngân hàng của tôi</h4>
+      <div className={styles.section}>
         {banks && banks.length &&
           <div className={styles.banksSection}>
             {banks && banks.map((bank) => {
               return (
                 <label key={bank.id} style={{ display: 'flex', gap: '10px', marginBottom: '5px' }}>
-                  <input
-                    type="radio"
-                    value={bank.id}
-                    checked={bankId === bank.id}
-                    onChange={() => setBankId(bank.id)}
-                    name={bankId}
-                  />
+                  <input type="radio" value={bank.id} checked={bankId === bank.id} onChange={() => setBankId(bank.id)} name={bankId} />
                   <div className={styles.bankCard} >
                     <span>{bank.User_name}</span>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '5px' }}>
