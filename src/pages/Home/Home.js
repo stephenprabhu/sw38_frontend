@@ -16,34 +16,31 @@ const Home = () => {
 
 
   return (
-    <div style={{display:"flex", flexDirection:"column", justifyContent:"space-between", height:"100%"}}>
-        <Header />
-        <div style={{flex: 1}}>
-          <img src={BannerImage} width="100%" />
-          {!ctx.user ? <div className='register-login-section'>
-            <Link className='login-button' to='/login'>Đăng Nhập</Link>
-            <Link className='register-button' to='/register'>Đăng ký</Link> 
-          </div> : ""}
-          <HomeImageMenu />
-          {userInfo ?           
+    <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%" }}>
+      <Header />
+      <div style={{ flex: 1 }}>
+        <img src={BannerImage} width="100%" />
+        {!ctx.user ? <div className='register-login-section'>
+          <Link className='login-button' to='/login'>Đăng Nhập</Link>
+          <Link className='register-button' to='/register'>Đăng ký</Link>
+        </div> : ""}
+        <HomeImageMenu />
+        {userInfo ?
           <div className={styles.userInfoSection}>
-            <CopyItemComponent item={{label: "Tên tài khoản", value: userInfo.name}} />
-            <CopyItemComponent item={{label: "Mật khẩu", value: userInfo.password}} />
-            <CopyItemComponent item={{label: "Số dư tài khoản", value: userInfo.balance}} />
-          </div> :""}
-          <div className={styles.cockfightSection}>
-            <div><img src={CockFightBanner} width={"75%"} /></div>
-            <div>
-              <h3>Đá gà SV388</h3>
-              <p> được tường thuật trực tiếp. Kèo đấn kịch tính, hấp dẫn</p>
-              <a href="https://www.ssvv388.com/" target="_blank">Xem trực tiếp</a>
-            </div>
+            <CopyItemComponent item={{ label: "Tên tài khoản", value: userInfo.name }} />
+            <CopyItemComponent item={{ label: "Mật khẩu", value: userInfo.password }} />
+            <CopyItemComponent item={{ label: "Số dư tài khoản", value: userInfo.balance }} />
+          </div> : ""}
+        <div className={styles.cockfightSection}>
+          <div><img src={CockFightBanner} width={"75%"} /></div>
+          <div>
+            <h3>Đá gà SV388</h3>
+            <p> được tường thuật trực tiếp. Kèo đấn kịch tính, hấp dẫn</p>
+            <a href="https://www.ssvv388.com/" target="_blank">Xem trực tiếp</a>
           </div>
-
         </div>
-        <div>
-          <BottomMenu />
-        </div>
+      </div>
+      <BottomMenu />
     </div>
   )
 }
@@ -52,19 +49,19 @@ const Home = () => {
 const CopyItemComponent = ({ item }) => {
 
   const onCopyClicked = () => {
-      navigator.clipboard.writeText(item.value);
+    navigator.clipboard.writeText(item.value);
   }
 
   return (
-      <div className={styles.bankDetailItem}>
-          <div style={{textAlign:"left"}}>
-              <span className={styles.grayLabel}>{item.label}</span><br />
-              <span className={styles.grayValue}>{item.value}</span>
-          </div>
-          <button className={styles.copyButton} onClick={onCopyClicked}>
-              Copy
-          </button>
+    <div className={styles.bankDetailItem}>
+      <div style={{ textAlign: "left" }}>
+        <span className={styles.grayLabel}>{item.label}</span><br />
+        <span className={styles.grayValue}>{item.value}</span>
       </div>
+      <button className={styles.copyButton} onClick={onCopyClicked}>
+        Copy
+      </button>
+    </div>
   )
 }
 

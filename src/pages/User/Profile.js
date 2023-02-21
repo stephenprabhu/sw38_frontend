@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 import profilePage from '../../assets/0.png'
 import InnerHeader from '../../components/InnerHeader'
 import styles from './Profile.module.css';
@@ -36,6 +37,9 @@ const Profile = () => {
           <button className={styles.button}>Nạp Tiền</button>
           <button className={styles.button}>Rút Tiền</button>
         </div>
+        <Link to={'/transections'}>
+          <button className={styles.button}>Transections</button>
+        </Link>
       </div>
     </div>
   )
