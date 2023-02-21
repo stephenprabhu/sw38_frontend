@@ -38,7 +38,7 @@ const Profile = () => {
           <Link to="/withdraw" className={styles.button}>Rút Tiền</Link>
         </div>
         <Link to={'/transections'}>
-          <button className={styles.button}>Transections</button>
+          <button className={styles.button}>giao dịch</button>
         </Link>
       </div>
     </div>

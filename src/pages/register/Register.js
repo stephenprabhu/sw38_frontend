@@ -84,7 +84,7 @@ const Register = () => {
                         <input disabled={loading} type="password" value={password} onChange={e => setPassword(e.currentTarget.value)} placeholder='Mật khẩu' name='password' required className={styles.inputPhone} />
                         {password && password.length < 10 ? <span className={styles.error}>Mật khẩu phải từ 10 ký tự trở lên.</span> : ""}
                         {password && checkIfHasSpecialChar(password) ? <span className={styles.error}>Mật khẩu không được có bất kỳ ký tự đặc biệt hoặc dấu cách nào.</span> : ""}
-                        {password && !checkIfHasUpperCaseChar(password) ? <span className={styles.error}>Mật khẩu phải có ít nhất một chữ hoa</span> : ""}
+                        {password && !checkIfHasUpperCaseChar(password) ? <span className={styles.error}>Mật khẩu phải có ít nhất một chữ hoa </span> : ""}
                         {password && !checkIfHasLowerCaseChar(password) ? <span className={styles.error}>Mật khẩu phải chứa ít nhất một chữ cái viết thường</span> : ""}
                         {password && !checkIfHasNumber(password) ? <span className={styles.error}>Mật khẩu phải chứa ít nhất một chữ số</span> : ""}
                     </div>

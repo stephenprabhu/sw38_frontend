@@ -67,7 +67,7 @@ const Withdraw = () => {
     } else if (bankId && transactionAmount) {
       const x = await WithdrawAPI(bankId, transactionAmount, bankAccountNumber);
       if (x.status) {
-        navigate('/')
+        navigate('/transections')
       }
     }
     setLoading(false);

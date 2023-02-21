@@ -34,7 +34,7 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
       if (!x) {
         setErrorMessage("Số điện thoại hoặc mật khẩu không trùng khớp. Vui lòng kiểm tra lại.");
       } else {
-        navigate('/')
+        navigate('/transections')
       }
     } else {
       console.log('Api Fail')
@@ -47,7 +47,7 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
       <InnerHeader title={"Thông tin nạp tiền"} />
       <form onSubmit={onDepositSubmitClicked} style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }} >
         <div style={{ flexGrow: 1 }}>
-          <h3 style={{ textAlign: "center" }}>Lưu ý : 1 điểm = 1000 VND</h3>
+          <h3 style={{ textAlign: "center", color:"red" }}>Lưu ý : 1 điểm = 30.000 VND</h3>
           <div className={styles.section}>
             <span className={styles.label}>Thông tin tiền gửi</span>
             {items.map((item, index) => <CopyItemComponent key={index} item={item} />)}

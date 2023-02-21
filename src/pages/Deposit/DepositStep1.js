@@ -54,7 +54,7 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
           )) : ""}
         </div>
         <div >
-          <span className={styles.label}>* Số Điểm Nạp</span>
+          <span className={styles.label}>* Số tiền nạp</span>
           <div className={styles.inputItem}>
             <i className={styles.adjornment}>₫</i>
             <input value={amount} onChange={e => setAmount(parseInt(e.currentTarget.value))} type="number" className={styles.whiteInput} style={{ border: "none" }} />
