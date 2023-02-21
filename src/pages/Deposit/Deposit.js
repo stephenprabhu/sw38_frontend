@@ -9,8 +9,6 @@ const Deposit = () => {
   const [step2, setStep2] = useState(false);
   const [selectedBank, setSelectedBank] = useState(null);
 
-
-
   return (
     <div className={styles.deposit}>
       {step2 ?

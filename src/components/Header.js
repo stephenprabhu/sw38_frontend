@@ -32,7 +32,7 @@ const Header = () => {
                     </Link>
                 </div>
                 <div>
-                    {ctx.user ? <RxExit onClick={onLogOutClicked} className={styles.logOutButton} width={35} style={{}} /> : ""}
+                    {ctx.user ? <RxExit onClick={onLogOutClicked} className={styles.logOutButton} width={35} /> : ""}
                 </div>
             </div>
             <Drawer

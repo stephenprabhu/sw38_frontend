@@ -72,6 +72,7 @@
     margin-top: 15px;
     font-family: 'Be Vietnam Pro', sans-serif;
     font-size: 1.2em;
+    cursor: pointer;
 }
 
 
@@ -98,7 +99,7 @@
 }
 
 .banksSection {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .formSecton {

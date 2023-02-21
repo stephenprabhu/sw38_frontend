@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Box, Modal, Typography } from '@mui/material'
-import { FaInfoCircle } from 'react-icons/fa';
 import axios from 'axios'
 import { BsPlus } from 'react-icons/bs'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import InnerHeader from '../../components/InnerHeader'
 import { WithdrawAPI } from '../../helpers/APIs/WithdrawAPI'
 import UserContext from '../../helpers/Context/user-context'
@@ -14,7 +13,7 @@ const Withdraw = () => {
   const [userBalance, setUserBalance] = useState()
   const [bankId, setBankId] = useState()
   const [transactionAmount, setTransactionAmount] = useState('')
-  const [insuficentBlnc, setInsuficentBlnc] = useState('')
+  const [error, setError] = useState('')
 
   const ctx = useContext(UserContext);
   const token = localStorage.getItem('auth_token')
@@ -46,41 +45,31 @@ const Withdraw = () => {
     userBalance()
   }, [])
 
-  // setTransactionAmountFunc
-  const setTransactionAmountFunc = (e) => {
-    setTransactionAmount(e.target.value)
-    setInsuficentBlnc('')
-  }
+  const navigate = useNavigate()
+
   // submitwithdraw
   const submitwithdraw = async (e) => {
     e.preventDefault()
-    if (userBalance > 100000) {
-      setInsuficentBlnc('')
-    } if (userBalance < 100) {
-      setInsuficentBlnc('Insuficent balance...!!')
-    } else {
-      setInsuficentBlnc('')
-      if (bankId && transactionAmount) {
-        const x = await WithdrawAPI(bankId, transactionAmount);
-        console.log('Api Response: ', x)
-        // if (!x) {
-        //   console.log('error')
-        //   // setErrorMessage("Số điện thoại hoặc mật khẩu không trùng khớp. Vui lòng kiểm tra lại.");
-        // } else {
-        //   console.log(x);
-        // }
-      } else {
-        console.log('Api Fail')
+    if (userBalance < 100) {
+      setError('Số dư không đủ')
+    } else if (transactionAmount > 100000) {
+      setError('Vui lòng chọn dưới 100000')
+    } else if (transactionAmount < 100) {
+      setError('Vui lòng chọn trên 100')
+    } else if (!bankId) {
+      setError('Vui lòng thêm ngân hàng')
+    } else if (bankId && transactionAmount) {
+      const x = await WithdrawAPI(bankId, transactionAmount);
+      if (x.status) {
+        navigate('/')
       }
     }
-
   }
 
   return (
     <form className={styles.layout} onSubmit={submitwithdraw}>
       <InnerHeader title="Rút Tiền" />
       {ctx.user.name}
-
       <h4>Thẻ ngân hàng của tôi</h4>
       <div className={styles.section}>
         {banks && banks.length &&
@@ -103,11 +92,9 @@ const Withdraw = () => {
         }
 
         <div className={styles.divider}>
-          <div className={styles.addButton}>
-            <Link to='/add-account'>
-              <BsPlus size={25} />
-            </Link>
-          </div>
+          <Link to='/add-account'>
+            <BsPlus size={25} className={styles.addButton} />
+          </Link>
         </div>
 
         <div className={styles.formSecton}>
@@ -116,9 +103,9 @@ const Withdraw = () => {
           </div>
           <div className={styles.inputItem}>
             <span>Số tiền</span>
-            <input className={styles.whiteInput} style={{ border: "none" }} placeholder="100 - 100,000" value={transactionAmount} onChange={(e) => setTransactionAmountFunc(e)} required />
+            <input className={styles.whiteInput} style={{ border: "none" }} placeholder="100 - 100,000" value={transactionAmount} onChange={(e) => setTransactionAmount(e.target.value)} required />
           </div>
-          <Typography mt={2} color='red'>{insuficentBlnc}</Typography>
+          {error && <Typography mt={2} color='red'>{error}</Typography>}
           <button className={styles.submit} type='submit'>Xác nhận</button>
         </div>
       </div>

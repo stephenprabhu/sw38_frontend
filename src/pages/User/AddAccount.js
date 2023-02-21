@@ -7,10 +7,9 @@ import { AddAccountAPI } from '../../helpers/APIs/AddAccountAPI';
 import { useNavigate } from 'react-router-dom';
 
 const AddAccount = () => {
-  const [bankName, setBankName] = useState('')
+  const [bankName, setBankName] = useState(vietnamBankArray[0]);
   const [accNumber, setAccNumber] = useState('')
   const [userName, setUserName] = useState('')
-  const [errorMessage, setErrorMessage] = useState('')
 
   const navigate = useNavigate()
 

@@ -1,0 +1,63 @@
+.cockfightSection {
+    display: flex;
+    justify-content: space-between;
+    max-width: 90%;
+    margin: auto;
+    color: white;
+    margin-top: 10px;
+
+}
+
+.cockfightSection a {
+    background: linear-gradient(90deg, rgb(0, 54, 140) 0%, rgb(67, 100, 247) 100%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 0.7em;
+}
+
+.userInfoSection {
+    color: white;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid white;
+    width: 70%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.copyButton {
+    color: #428dfc;
+    background: #f0f2fe;
+    border-radius: 0.3rem;
+    padding: 10px 20px;
+    border: none;
+    line-height: 1.2;
+    width: auto;
+    min-width: 1.4rem;
+    cursor: pointer;
+}
+
+.copyButton:active {
+    padding: 8px 16px;
+}
+
+.bankDetailItem {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.grayLabel {
+    font-weight: 500;
+    color: rgb(210, 210, 210);
+    font-size: 1rem;
+}
+
+
+.grayValue {
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    font-size: 0.9rem;
+}
