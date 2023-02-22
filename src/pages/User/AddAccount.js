@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import InnerHeader from '../../components/InnerHeader'
 import vietnamBankArray from '../../data/vn-banks'
 import styles from "./AddAccount.module.css"
 import { CiCreditCard1 } from "react-icons/ci";
 import { AddAccountAPI } from '../../helpers/APIs/AddAccountAPI';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const AddAccount = () => {
   const [bankName, setBankName] = useState(vietnamBankArray[0]);
@@ -12,6 +12,12 @@ const AddAccount = () => {
   const [userName, setUserName] = useState('')
 
   const navigate = useNavigate()
+  const param = useParams();
+  console.log(param.id)
+
+  useEffect(() => {
+
+  }, [])
 
   // submit func
   const addAccount = async (e) => {

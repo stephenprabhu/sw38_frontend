@@ -7,9 +7,26 @@
 }
 
 .section {
+  flex-grow: 1;
   width: 80%;
   margin: auto;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: auto;
+}
+
+.section2 {
+  /* flex-grow: 1; */
+  width: 80%;
+  margin: auto;
+  text-align: left;
+  /* display: flex; */
+  /* flex-direction: column;
+  justify-content: center; */
+  /* overflow-y: hidden; */
+
 }
 
 
@@ -61,24 +78,19 @@
 
 .depositButtonSection {
   margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .depositButton {
-  display: inline-block;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  line-height: .7rem;
+  line-height: .5rem;
   padding: 10px;
-  font-size: 0.8rem;
-  white-space: nowrap;
-  width: calc(20% - 0.1rem) !important;
   font-weight: 700 !important;
-  text-align: center;
   border: 1px solid #ccc;
   border-radius: 0.3rem;
   background-color: #efefef;
   color: #919191;
-  margin-bottom: 0.5rem;
 }
 
 .depositButton.active {
@@ -89,11 +101,15 @@
 .submitButton {
   width: 100%;
   border: none;
-  padding: 15px;
+  padding: 15px 0px;
   font-size: 1.2em;
   background-color: #ec2529;
   color: white;
   font-weight: 500;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 

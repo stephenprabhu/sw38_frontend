@@ -21,35 +21,33 @@ const Transection = () => {
   }, [])
 
   return (
-    <div style={{ display: 'flex', height: '100vh', flexDirection: 'column' }}>
+    <div style={{ display: 'flex', height: '100vh', flexDirection: 'column', gap: 15 }}>
       <Header />
-      <div style={{ flexGrow: 1 }}>
-        <div style={{ display: 'flex', flexDirection: 'column', margin: '20px', gap: 20 }}>
-          <h3 style={{ margin: '0px', color: 'white' }}>giao dịch</h3>
-          {transections ?
-            <table border={0} style={{ borderColor: 'white', color: 'white' }}>
-              <tr>
-                <th style={{ paddingBottom: '10px' }}>Số Điểm Nạp</th>
-                <th style={{ paddingBottom: '10px' }}>Ngày</th>
-                <th style={{ paddingBottom: '10px' }}>Trạng thái</th>
-              </tr>
-              {transections && transections.map((transection) => {
-                return (
-                  <tr key={transection.id}>
-                    <td>{transection.transaction_purpose == 'deposit' ? '+' : '-'}{transection.transaction_amount}</td>
-                    <td>{new Date(transection.created_at).toLocaleDateString("vi-VN")}</td>
-                    <td><Chip label={transection.is_approved === 0 ? 'Pending' : transection.is_approved === 1 ? ' Approved' : 'Cancel'}
-                      sx={{ backgroundColor: transection.is_approved === 0 ? '#53a9a3' : transection.is_approved === 1 ? 'green' : '#ad2626', color: 'white' }} /></td>
-                  </tr>
-                )
-              })}
-
-            </table>
-            :
-            <h3 style={{ margin: '0px', color: 'white' }}>Không có giao dịch</h3>
-          }
-        </div>
+      <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', overflow: 'auto', gap: 15 }}>
+        <h3 style={{ margin: '0px', color: 'white' }}>giao dịch</h3>
+        {transections ?
+          <table border={0} style={{ color: 'white' }} width="100%">
+            <tr>
+              <th style={{ paddingBottom: '10px' }}>Số Điểm Nạp</th>
+              <th style={{ paddingBottom: '10px' }}>Ngày</th>
+              <th style={{ paddingBottom: '10px' }}>Trạng thái</th>
+            </tr>
+            {transections && transections.map((transection) => {
+              return (
+                <tr key={transection.id}>
+                  <td>{transection.transaction_purpose == 'deposit' ? '+' : '-'}{transection.transaction_amount}</td>
+                  <td>{new Date(transection.created_at).toLocaleDateString("vi-VN")}</td>
+                  <td><Chip label={transection.is_approved === 0 ? 'Pending' : transection.is_approved === 1 ? ' Approved' : 'Cancel'}
+                    sx={{ backgroundColor: transection.is_approved === 0 ? '#53a9a3' : transection.is_approved === 1 ? 'green' : '#ad2626', color: 'white' }} /></td>
+                </tr>
+              )
+            })}
+          </table>
+          :
+          <h3 style={{ margin: '0px', color: 'white' }}>Không có giao dịch</h3>
+        }
       </div>
+
       <BottomMenu />
     </div>
   )

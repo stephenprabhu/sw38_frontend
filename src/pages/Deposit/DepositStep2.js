@@ -1,10 +1,11 @@
 import InnerHeader from "../../components/InnerHeader"
 import styles from './Deposit.module.css'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CiCreditCard1 } from "react-icons/ci";
 import { APIMakeDepositRequest } from "../../helpers/APIs/TransactionAPI";
 import { useNavigate } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
+import axios from "axios";
 
 
 const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
@@ -12,14 +13,27 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
   const [accountNo, setAccountNo] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [userName, setUserName] = useState()
+
+  useEffect(() => {
+    const userData = async () => {
+      const userAPI = await axios.get('https://bo.ssv388.info/api/user', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('auth_token')}`
+        }
+      })
+      setUserName(userAPI.data.phone)
+    }
+    userData()
+  }, [])
 
   const items = [
-    { label: "Nạp tiền tài khoản", value: "username" },
+    { label: "Nạp tiền tài khoản", value: userName && userName },
     { label: "Nạp tiền ngân hàng", value: selectedBank.bank_name },
     { label: "Tên tài khoản nhận", value: selectedBank.bank_account_name },
     { label: "Số tài khoản", value: selectedBank.bank_account_number },
-    { label: "Số Điểm Nạp", value: amount },
-    { label: "Ghi chú", value: "" },
+    { label: "Số tiền nạp", value: amount },
+    { label: "Số Điểm Nạp", value: amount * 30000 }
   ];
 
   // navigating redirect
@@ -28,8 +42,12 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
   //submit func
   const onDepositSubmitClicked = async (e) => {
     setLoading(true);
-    e.preventDefault()
-    if (invoiceFile && accountNo && amount && selectedBank) {
+    e.preventDefault();
+    if (!invoiceFile) {
+      setErrorMessage('')
+    } else if (!accountNo) {
+      setErrorMessage('')
+    } else if (invoiceFile && accountNo && amount && selectedBank) {
       const x = await APIMakeDepositRequest(amount, accountNo, selectedBank.id, invoiceFile);
       if (!x) {
         setErrorMessage("Số điện thoại hoặc mật khẩu không trùng khớp. Vui lòng kiểm tra lại.");
@@ -45,13 +63,13 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
       <InnerHeader title={"Thông tin nạp tiền"} />
-      <form onSubmit={onDepositSubmitClicked} style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }} >
+      <form onSubmit={onDepositSubmitClicked} style={{ flexGrow: 1, overflow: 'auto', display: 'flex', flexDirection: 'column' }} >
         <div style={{ flexGrow: 1 }}>
-          <h3 style={{ textAlign: "center", color:"red" }}>Lưu ý : 1 điểm = 30.000 VND</h3>
-          <div className={styles.section}>
+          <h3 style={{ textAlign: "center", color: "red" }}>Lưu ý : 1 điểm = 30.000 VND</h3>
+          <div className={styles.section2}>
             <span className={styles.label}>Thông tin tiền gửi</span>
             {items.map((item, index) => <CopyItemComponent key={index} item={item} />)}
-            <div style={{ padding: "10px 10px 10px 0px" }}>
+            <div style={{ padding: "10px 10px 20px 0px" }}>
               <span className={styles.grayLabel}>Hình ảnh</span><br />
               <input required type="file" label="File" accept="image/*" onChange={e => setInvoiceFile(e.currentTarget.files[0])} />
             </div>
@@ -67,7 +85,7 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
         </div>
         <div className={`${styles.submitButton}`}>
           <button className={`${styles.depositButton}  ${styles.cancel}`} onClick={onPrevStepClicked}>Trở Về</button>
-          <button className={`${styles.depositButton} ${styles.final}`} disabled={loading} type="submit">{loading ? "Đang tải" : "Hoàn Tất" }</button>
+          <button className={`${styles.depositButton} ${styles.final}`} disabled={loading} type="submit">{loading ? "Đang tải" : "Hoàn Tất"}</button>
           {errorMessage && <p>{errorMessage}</p>}
         </div>
       </form>
