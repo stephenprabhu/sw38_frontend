@@ -5,9 +5,8 @@ const UserProvider = (props) => {
   const [user, setUser] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
 
-
   const userContext = {
-    user, 
+    user,
     setUser,
     userInfo,
     setUserInfo

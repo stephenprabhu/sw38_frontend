@@ -25,6 +25,10 @@ const Login = () => {
       } else {
         localStorage.setItem('auth_token', x);
         ctx.setUser(x);
+        ctx.setUserInfo({
+          name: phone,
+          password: password,
+        });
         navigate("/");
       }
     }

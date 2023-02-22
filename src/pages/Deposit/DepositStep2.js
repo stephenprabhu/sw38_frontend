@@ -33,7 +33,7 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
     { label: "Tên tài khoản nhận", value: selectedBank.bank_account_name },
     { label: "Số tài khoản", value: selectedBank.bank_account_number },
     { label: "Số tiền nạp", value: amount },
-    { label: "Số Điểm Nạp", value: amount * 30000 }
+    { label: "Số Điểm Nạp", value: parseInt(amount) * 30000 }
   ];
 
   // navigating redirect
@@ -81,7 +81,7 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
               />
             </div>
           </div>
-          {loading ? <CircularProgress /> : ""}
+          {loading ? <CircularProgress style={{ marginTop: '5px' }} /> : ""}
         </div>
         <div className={`${styles.submitButton}`}>
           <button className={`${styles.depositButton}  ${styles.cancel}`} onClick={onPrevStepClicked}>Trở Về</button>
