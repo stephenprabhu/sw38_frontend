@@ -13,18 +13,24 @@ const Home = () => {
   const ctx = useContext(UserContext);
   const userInfo = ctx.userInfo;
 
+  console.log(userInfo)
+  const str = 'được tường thuật trực tiếp. Kèo đấu kịch tính, hấp dẫn'
+  const str2 = str.charAt(0).toUpperCase() + str.slice(1)
 
   return (
-    <div style={{display:"flex", flexDirection:"column", justifyContent:"space-between", height:"100%"}}>
-        <Header />
-        <div style={{flex: 1, overflowY:"auto"}}>
-          <img src={BannerImage} width="100%" />
-          {!ctx.user ? <div className='register-login-section'>
-            <Link className='login-button' to='/login'>Đăng Nhập</Link>
-            <Link className='register-button' to='/register'>Đăng ký</Link> 
-          </div> : ""}
-          <HomeImageMenu />
-          {userInfo ?           
+    <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%" }}>
+      <Header />
+      <div style={{ flex: 1, overflowY: "auto" }}>
+        <img src={BannerImage} width="100%" />
+        <marquee direction="left" style={{ color: '#fce08d', fontSize: '12px', padding: '5px 0px' }}>
+          ĐÁ GÀ SV388 NƠI CÁC CHIẾN KÊ HUYỀN THOẠI THỂ HIỆN CHỈ CÓ TẠI SVW38.COM
+        </marquee>
+        {!ctx.user ? <div className='register-login-section'>
+          <Link className='login-button' to='/login'>Đăng Nhập</Link>
+          <Link className='register-button' to='/register'>Đăng ký</Link>
+        </div> : ""}
+        <HomeImageMenu />
+        {userInfo ?
           <div className={styles.userInfoSection}>
             <CopyItemComponent item={{ label: "Tên tài khoản", value: userInfo.name }} />
             <CopyItemComponent item={{ label: "Mật khẩu", value: userInfo.password }} />
@@ -34,12 +40,12 @@ const Home = () => {
           <div><img src={CockFightBanner} width={"75%"} /></div>
           <div>
             <h3>Đá gà SV388</h3>
-            <p> được tường thuật trực tiếp. Kèo đấn kịch tính, hấp dẫn</p>
+            <p>{str2}</p>
             <a href="https://www.ssvv388.com/" target="_blank">Xem trực tiếp</a>
           </div>
-          
+
         </div>
-        <h2 style={{color:"white", fontSize:"0.8em", marginTop:"10px"}}>TRANG ĐÁ GÀ UY TÍN NHẤT VIỆT NAM</h2>
+        <h2 style={{ color: "white", fontSize: "0.8em", marginTop: "10px" }}>TRANG ĐÁ GÀ UY TÍN NHẤT VIỆT NAM</h2>
         <img src={CockFightBanner2} width="100%" />
       </div>
       <BottomMenu />

@@ -11,12 +11,12 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
   const ctx = useContext(UserContext);
 
   const amountsArray = [
-    { value: 100, label: "100" },
-    { value: 500, label: "500" },
-    { value: 1000, label: "1,000" },
-    { value: 10000, label: "10,000" },
-    { value: 50000, label: "50,000" },
-    { value: 100000, label: "100,000" },
+    { value: "100,000" },
+    { value: "500,000" },
+    { value: "1,000,000" },
+    { value: "10,000,000" },
+    { value: "50,000,000" },
+    { value: "100,000,000" },
   ];
 
   useEffect(() => {
@@ -57,7 +57,7 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
           <span className={styles.label}>* Số tiền nạp</span>
           <div className={styles.inputItem}>
             <i className={styles.adjornment}>₫</i>
-            <input value={amount} onChange={e => setAmount(parseInt(e.currentTarget.value))} type="number" className={styles.whiteInput} style={{ border: "none" }} />
+            <input value={amount} onChange={e => setAmount(parseInt(e.currentTarget.value))} type="text" className={styles.whiteInput} style={{ border: "none" }} />
           </div>
           <div className={styles.depositButtonSection}>
             {amountsArray.map((amountObj, index) => (
@@ -66,12 +66,17 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
                 onClick={() => setAmount(amountObj.value)}
                 className={`${styles.depositButton} ${amount === amountObj.value ? styles.active : ""}`}
               >
-                {amountObj.label}
+                {amountObj.value}
               </button>
             ))}
           </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 7, marginTop: '10px' }}>
+            <span className={styles.label} style={{ padding: '0px' }}>Nạp Min: 100, 000 VND</span>
+            <span className={styles.label} style={{ padding: '0px' }}>Nạp Max: 100,000,000 VND</span>
+            <span className={styles.label} style={{ padding: '0px' }}>30,000 VND = 1 điểm</span>
+          </div>
         </div>
-      </div>
+      </div >
       <div>
         <button
           className={`${styles.submitButton} ${!amount ? styles.disabled : ""}`}
@@ -81,7 +86,7 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
           Tiếp theo
         </button>
       </div>
-    </div>
+    </div >
   )
 }
 

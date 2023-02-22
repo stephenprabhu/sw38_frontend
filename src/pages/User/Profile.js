@@ -27,10 +27,6 @@ const Profile = () => {
           <img src={profilePage} className={styles.profileImage} />
           <div className={styles.profileText}>
             <span>{user && user.phone}</span>
-            <div>
-              <span style={{ paddingRight: '3px' }}>₫</span>
-              <span>{user && user.balance}</span>
-            </div>
           </div>
         </div>
         <div>

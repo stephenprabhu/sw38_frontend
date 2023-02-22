@@ -72,7 +72,7 @@ const Withdraw = () => {
   const submitwithdraw = async (e) => {
     e.preventDefault();
     setLoading(true)
-    if (userBalance < 100) {
+    if (userBalance < 100 || userBalance < transactionAmount) {
       setError('Số dư không đủ')
     } else if (transactionAmount > 100000) {
       setError('Vui lòng chọn dưới 100000')
@@ -90,8 +90,15 @@ const Withdraw = () => {
   }
 
   // delete user Bank
-  const deleteBank = (editId) => {
-    console.log(editId)
+  const deleteBank = async (deleteId) => {
+    const deleteBankAPI = await axios.delete('https://bo.ssv388.info/api/bank/delete_user_bank/' + deleteId, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('auth_token')}`
+      }
+    })
+    if (deleteBankAPI.data == 1) {
+      setBanks(banks.filter((bnk) => bnk.id !== deleteId))
+    }
   }
 
   return (
@@ -111,15 +118,15 @@ const Withdraw = () => {
                       <span>{bank.User_name}</span>
                       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '5px' }}>
                         <span>{bank.bank_name}</span>
-                        <span>{bank.account_number}</span>
+                        <span style={{ paddingLeft: '10px' }}>{bank.account_number}</span>
                       </div>
                     </div>
                   </label>
-                  <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 10 }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 4 }}>
                     <Link to={`/add-account/${bank.id}`}>
                       <CiEdit size={22} color='green' />
                     </Link>
-                    <CiTrash size={22} color='red' onClick={() => deleteBank(bank.id)} />
+                    <CiTrash size={22} color='red' onClick={() => deleteBank(bank.id)} style={{ cursor: 'pointer' }} />
                   </div>
                 </div>
               )
@@ -145,21 +152,6 @@ const Withdraw = () => {
           {loading ? <CircularProgress style={{ marginTop: "20px" }} /> : ""}
           <button className={styles.submit} disabled={loading} type='submit'>{loading ? "Đang tải..." : "Xác nhận"}</button>
         </div>
-        <Modal
-          open={open}
-          onClose={() => setOpen(false)}
-        // aria-labelledby="modal-modal-title"
-        // aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-              Text in a modal
-            </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </Typography>
-          </Box>
-        </Modal>
       </div>
     </form >
   )

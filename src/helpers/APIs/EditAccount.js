@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const AddAccountAPI = async (bank_name, account_number, User_name) => {
+export const EditAccount = async (bank_name, account_number, User_name, id) => {
 
   var formData = new FormData();
   formData.append("bank_name", bank_name);
@@ -9,14 +9,13 @@ export const AddAccountAPI = async (bank_name, account_number, User_name) => {
 
   const token = localStorage.getItem('auth_token')
   try {
-    const res = await axios.post("https://bo.ssv388.info/api/bank/add_user_bank", formData, {
+    const res = await axios.post("https://bo.ssv388.info/api/bank/edit_user_bank/" + id, formData, {
       headers: {
-        'Content-Type': 'multipart/form-data',
         Authorization: `Bearer ${token}`
       }
     });
-    if (res.data.user_id) {
-      return res.data.user_id;
+    if (res.data) {
+      return res.data
     }
   } catch (e) {
     console.log(e);
