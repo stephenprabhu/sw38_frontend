@@ -14,12 +14,11 @@
     color: #010e33;
     margin-bottom: 0.5rem;
     text-decoration: none;
-  }
+}
 
 
 .menuSection {
     color: white;
-
 }
 
 .menuSection span {
@@ -34,4 +33,31 @@
 .menuSection span a {
     color: white;
     text-decoration: none;
+}
+
+.gpsButtonWrapper {
+    text-align: center;
+    padding: 15px 0px;
+}
+
+.gpsButtonWrapper .gpsButton {
+    font: bold 20px/1.25 "Raleway", Helvetica, Arial, sans-serif;
+    padding: 10px 25px;
+    border-radius: 100px;
+    animation: glow-effect 1.5s linear infinite alternate;
+    color: white;
+    background: linear-gradient(55deg, #b69653 15%, #fce08d 37%, #b69653 40%) center right / 300% 100% no-repeat;
+    transition: all .75s ease-in-out;
+    animation: blink 1s linear infinite;
+    text-decoration: none;
+}
+
+@keyframes blink {
+    50% {
+        background-position: center left;
+    }
+
+    100% {
+        background-position: center center;
+    }
 }

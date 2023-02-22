@@ -11,38 +11,37 @@ import UserContext from '../helpers/Context/user-context';
 
 
 const Header = () => {
-    const [drawerOpened, setDrawerOpened] = useState(false);
-    const ctx = useContext(UserContext);
+  const [drawerOpened, setDrawerOpened] = useState(false);
+  const ctx = useContext(UserContext);
 
+  const onLogOutClicked = () => {
+    ctx.setUser(null);
+    localStorage.removeItem("auth_token");
+  }
 
-    const onLogOutClicked = () => {
-        ctx.setUser(null);
-        localStorage.removeItem("auth_token");
-    }
-
-    return (
-        <header >
-            <div className={styles.mainSiteHeader}>
-                <div className="side-menu" style={{ cursor: "pointer" }} onClick={() => setDrawerOpened(true)}>
-                    <HiMenuAlt2 style={{ color: "white" }} size={40} />
-                </div>
-                <div>
-                    <Link to="/">
-                        <img width={120} src={SVLogo} alt="site-logo" />
-                    </Link>
-                </div>
-                <div>
-                    {ctx.user ? <RxExit onClick={onLogOutClicked} className={styles.logOutButton} width={35} /> : ""}
-                </div>
-            </div>
-            <Drawer
-                open={drawerOpened}
-                onClose={() => setDrawerOpened(false)}
-            >
-                <HomeDrawerContent onClose={() => setDrawerOpened(false)} />
-            </Drawer>
-        </header>
-    )
+  return (
+    <header >
+      <div className={styles.mainSiteHeader}>
+        <div className="side-menu" style={{ cursor: "pointer" }} onClick={() => setDrawerOpened(true)}>
+          <HiMenuAlt2 style={{ color: "white" }} size={40} />
+        </div>
+        <div>
+          <Link to="/">
+            <img width={120} src={SVLogo} alt="site-logo" />
+          </Link>
+        </div>
+        <div>
+          {ctx.user ? <RxExit onClick={onLogOutClicked} className={styles.logOutButton} width={35} /> : ""}
+        </div>
+      </div>
+      <Drawer
+        open={drawerOpened}
+        onClose={() => setDrawerOpened(false)}
+      >
+        <HomeDrawerContent onClose={() => setDrawerOpened(false)} />
+      </Drawer>
+    </header>
+  )
 }
 
 export default Header
