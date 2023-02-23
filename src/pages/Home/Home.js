@@ -21,7 +21,6 @@ const Home = () => {
           Authorization: `Bearer ${localStorage.getItem('auth_token')}`
         }
       });
-      console.log(res)
       ctx.setUserInfo({
         name: res.data.phone,
         password: res.data.password,
@@ -30,7 +29,7 @@ const Home = () => {
     if (!userInfo) {
       userData()
     }
-  }, [])
+  }, []);
 
   const str = 'được tường thuật trực tiếp. Kèo đấu kịch tính, hấp dẫn'
   const str2 = str.charAt(0).toUpperCase() + str.slice(1)
