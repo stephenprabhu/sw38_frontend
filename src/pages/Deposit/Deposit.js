@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styles from './Deposit.module.css'
 import DepositStep1 from './DepositStep1';
 import DepositStep2 from './DepositStep2';
 
-
 const Deposit = () => {
-  const [amount, setAmount] = useState();
+  const [amount, setAmount] = useState('');
   const [step2, setStep2] = useState(false);
   const [selectedBank, setSelectedBank] = useState(null);
 

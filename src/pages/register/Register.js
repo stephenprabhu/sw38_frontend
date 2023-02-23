@@ -26,39 +26,39 @@ const Register = () => {
   const registerUser = async (e) => {
     e.preventDefault();
     setLoading(true);
-    timerInterval = setInterval(()=> setTimerTime(pt => {
-      return pt-1;
+    timerInterval = setInterval(() => setTimerTime(pt => {
+      return pt - 1;
     }), 1000);
-    // if (!captcha || captcha.trim().toLowerCase() !== "svw38") {
-    //   setErrorMessage("Mã xác nhận không hợp lệ");
-    //   return;
-    // }
-    // if (phone && phone.length === 10 && password && password.length >= 10 && checkIfHasLowerCaseChar(password) && checkIfHasNumber(password) && !checkIfHasSpecialChar(password) && password === passwordAgain) {
-    //   const x = await APIRegisterUser(phone, password);
-    //   if (!x) {
-    //     setErrorMessage("Số điện thoại này đã được đăng ký vui lòng liên hệ CSKH để được hỗ trợ.");
-    //   } else {
-    //     localStorage.setItem('auth_token', x);
-    //     ctx.setUser(x);
-    //     ctx.setUserInfo({
-    //       name: phone,
-    //       password: password,
-    //       balance: "0.0"
-    //     });
-    //     navigate("/");
-    //   }
-    // }
-    // setLoading(false);
+    if (!captcha || captcha.trim().toLowerCase() !== "svw38") {
+      setErrorMessage("Mã xác nhận không hợp lệ");
+      return;
+    }
+    if (phone && phone.length === 10 && password && password.length >= 10 && checkIfHasLowerCaseChar(password) && checkIfHasNumber(password) && !checkIfHasSpecialChar(password) && password === passwordAgain) {
+      const x = await APIRegisterUser(phone, password);
+      if (!x) {
+        setErrorMessage("Số điện thoại này đã được đăng ký vui lòng liên hệ CSKH để được hỗ trợ.");
+      } else {
+        localStorage.setItem('auth_token', x);
+        ctx.setUser(x);
+        ctx.setUserInfo({
+          name: phone,
+          password: password,
+          balance: "0.0"
+        });
+        navigate("/");
+      }
+    }
+    setLoading(false);
   }
 
 
-  useEffect(()=> {
+  useEffect(() => {
 
-    if(timerInterval && timerTime<=0){
+    if (timerInterval && timerTime <= 0) {
       clearInterval(timerInterval);
     }
 
-  },[timerTime]);
+  }, [timerTime]);
 
   const checkPhoneStart = (value) => {
     const x = value.charAt(0)
@@ -84,12 +84,6 @@ const Register = () => {
     return /\d/.test(value);
   }
 
-  // { password && password.length < 10 ? <span className={styles.error}>Mật khẩu phải từ 10 ký tự trở lên.</span> : "" }
-  // { password && checkIfHasSpecialChar(password) ? <span className={styles.error}>Mật khẩu không được có bất kỳ ký tự đặc biệt hoặc dấu cách nào.</span> : "" }
-  // { password && !checkIfHasUpperCaseChar(password) ? <span className={styles.error}>Mật khẩu phải có ít nhất một chữ hoa </span> : "" }
-  // { password && !checkIfHasLowerCaseChar(password) ? <span className={styles.error}>Mật khẩu phải chứa ít nhất một chữ cái viết thường</span> : "" }
-  // { password && !checkIfHasNumber(password) ? <span className={styles.error}>Mật khẩu phải chứa ít nhất một chữ số</span> : "" }
-
   return (
     <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%" }}>
       <Header />
@@ -108,28 +102,28 @@ const Register = () => {
             <p style={{ color: 'white', textAlign: 'left', fontSize: '12px' }} >Ví Dụ : Dagasv3888 ( Chữ "D" viết in hoa )</p>
             <input disabled={loading} type="text" value={password} onChange={e => setPassword(e.currentTarget.value)} placeholder='Mật khẩu' name='password' required className={styles.inputPhone} />
 
-          {password ? <div style={{marginTop:"7px"}}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-              <span style={{ marginBottom: '0px' }}>{password.length >= 10 ? <FcOk /> : <FcCancel />}</span>
-              <span className={password.length >= 10 ? styles.success : styles.error}>Mật khẩu phải từ 10 ký tự trở lên.</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-              <span style={{ marginBottom: '0px' }}>{!checkIfHasSpecialChar(password) ? <FcOk /> : <FcCancel />}</span>
-              <span className={!checkIfHasSpecialChar(password) ? styles.success : styles.error}>Mật khẩu không được có bất kỳ ký tự đặc biệt hoặc dấu cách nào.</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-              <span style={{ marginBottom: '0px' }}>{checkIfHasUpperCaseChar(password) ? <FcOk /> : <FcCancel />}</span>
-              <span className={checkIfHasUpperCaseChar(password) ? styles.success : styles.error}>Mật khẩu phải có ít nhất một chữ hoa </span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-              <span style={{ marginBottom: '0px' }}>{checkIfHasLowerCaseChar(password) ? <FcOk /> : <FcCancel />}</span>
-              <span className={checkIfHasLowerCaseChar(password) ? styles.success : styles.error}>Mật khẩu phải chứa ít nhất một chữ cái viết thường</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-              <span style={{ marginBottom: '0px' }}>{checkIfHasNumber(password) ? <FcOk /> : <FcCancel />}</span>
-              <span className={checkIfHasNumber(password) ? styles.success: styles.error}>Mật khẩu phải chứa ít nhất một chữ số</span>
-            </div>
-          </div> : ""}
+            {password ? <div style={{ marginTop: "7px" }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+                <span style={{ marginBottom: '0px' }}>{password.length >= 10 ? <FcOk /> : <FcCancel />}</span>
+                <span className={password.length >= 10 ? styles.success : styles.error}>Mật khẩu phải từ 10 ký tự trở lên.</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+                <span style={{ marginBottom: '0px' }}>{!checkIfHasSpecialChar(password) ? <FcOk /> : <FcCancel />}</span>
+                <span className={!checkIfHasSpecialChar(password) ? styles.success : styles.error}>Mật khẩu không được có bất kỳ ký tự đặc biệt hoặc dấu cách nào.</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+                <span style={{ marginBottom: '0px' }}>{checkIfHasUpperCaseChar(password) ? <FcOk /> : <FcCancel />}</span>
+                <span className={checkIfHasUpperCaseChar(password) ? styles.success : styles.error}>Mật khẩu phải có ít nhất một chữ hoa </span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+                <span style={{ marginBottom: '0px' }}>{checkIfHasLowerCaseChar(password) ? <FcOk /> : <FcCancel />}</span>
+                <span className={checkIfHasLowerCaseChar(password) ? styles.success : styles.error}>Mật khẩu phải chứa ít nhất một chữ cái viết thường</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+                <span style={{ marginBottom: '0px' }}>{checkIfHasNumber(password) ? <FcOk /> : <FcCancel />}</span>
+                <span className={checkIfHasNumber(password) ? styles.success : styles.error}>Mật khẩu phải chứa ít nhất một chữ số</span>
+              </div>
+            </div> : ""}
 
           </div>
           <div className={styles.formInput}>
@@ -153,20 +147,20 @@ const Register = () => {
             </div>
           </div>
           {loading ?
-              <div>
-               {timerTime >=0 ?  <div className={styles.loadingSection}>
-                <h3 style={{color:"white"}}>{timerTime}</h3>
+            <div>
+              {timerTime >= 0 ? <div className={styles.loadingSection}>
+                <h3 style={{ color: "white" }}>{timerTime}</h3>
                 <div>
                   <div className={styles.loadingHeading} style={{ marginLeft: "20px", color: "white" }}>Đang tạo tài khoản của bạn. Vui lòng chờ.</div>
                   <span>Quá trình này sẽ mất tối đa 30 giây</span>
                 </div>
-                </div> : <div className={styles.loadingSection}>
-                  Quá trình tạo tài khoản đang mất nhiều thời gian hơn dự kiến. Vui lòng đợi thêm một phút hoặc liên hệ hỗ trợ
-                </div>}
-              </div>
-        
-        
-        : ""}
+              </div> : <div className={styles.loadingSection}>
+                Quá trình tạo tài khoản đang mất nhiều thời gian hơn dự kiến. Vui lòng đợi thêm một phút hoặc liên hệ hỗ trợ
+              </div>}
+            </div>
+
+
+            : ""}
           <button className={`${styles.registerButton} ${loading ? styles.loading : ""}`} type="submit">{loading ? "Đang tải" : "Đăng ký"}</button>
         </form>
 

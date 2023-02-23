@@ -21,6 +21,18 @@
     cursor: pointer;
 }
 
+.cancel {
+    color: white;
+    border-radius: 0.4em;
+    border: none;
+    background-color: gray;
+    padding: 10px;
+    margin-top: 15px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
 
 .layout {
     width: 80%;

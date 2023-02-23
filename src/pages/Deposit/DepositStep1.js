@@ -11,12 +11,12 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
   const ctx = useContext(UserContext);
 
   const amountsArray = [
-    { value: "100,000" },
-    { value: "500,000" },
-    { value: "1,000,000" },
-    { value: "10,000,000" },
-    { value: "50,000,000" },
-    { value: "100,000,000" },
+    { value: "150,000" },
+    { value: "300,000" },
+    { value: "900,000" },
+    { value: "1,200,000" },
+    { value: "1,500,000" },
+    { value: "900,000,000" }
   ];
 
   useEffect(() => {
@@ -34,6 +34,10 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
         setSelectedBank(x[0]);
       }
     }
+  }
+  // formate
+  const formate = (x) => {
+    return (x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
   }
 
   return (
@@ -57,7 +61,7 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
           <span className={styles.label}>* Số tiền nạp</span>
           <div className={styles.inputItem}>
             <i className={styles.adjornment}>₫</i>
-            <input value={amount} onChange={e => setAmount(parseInt(e.currentTarget.value))} type="text" className={styles.whiteInput} style={{ border: "none" }} />
+            <input value={amount} onChange={e => { setAmount(e.currentTarget.value) }} type="text" className={styles.whiteInput} style={{ border: "none" }} />
           </div>
           <div className={styles.depositButtonSection}>
             {amountsArray.map((amountObj, index) => (
@@ -71,10 +75,12 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
             ))}
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 7, marginTop: '10px' }}>
-            <span className={styles.label} style={{ padding: '0px' }}>Nạp Min: 100, 000 VND</span>
-            <span className={styles.label} style={{ padding: '0px' }}>Nạp Max: 100,000,000 VND</span>
+            <span className={styles.label} style={{ padding: '0px' }}>Nạp Min: 150, 000 VND</span>
+            <span className={styles.label} style={{ padding: '0px' }}>Nạp Max: 900,000,000 VND</span>
             <span className={styles.label} style={{ padding: '0px' }}>30,000 VND = 1 điểm</span>
           </div>
+
+          {amount && <p>Bạn sẽ nhận được <strong>{formate(Math.floor((amount.replace(/,/g, '') / 30000) >= 1 ? amount.replace(/,/g, '') / 30000 : 0))}</strong> điểm</p>}
         </div>
       </div >
       <div>
@@ -89,5 +95,6 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
     </div >
   )
 }
+
 
 export default DepositStep1
