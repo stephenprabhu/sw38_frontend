@@ -108,6 +108,7 @@
   font-weight: 500;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 10px;
   margin-top: 10px;
 }
@@ -159,7 +160,8 @@
   border: 1px solid white;
   color: white;
   background-color: #428dfc;
-  font-size: 1rem;
+  font-size: '0.2rem';
+  padding: 10px 10px;
 }
 
 .depositButton.final {
@@ -167,6 +169,7 @@
   color: white;
   background-color: gray;
   font-size: 1rem;
+  padding: 15px;
 }
 
 .singleBankItem {

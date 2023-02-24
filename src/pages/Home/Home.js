@@ -62,7 +62,6 @@ const Home = () => {
           </div>
         </div>
         <h2 style={{ color: "white", fontSize: "0.8em", margin: "15px 0px" }}>TRANG ĐÁ GÀ UY TÍN NHẤT VIỆT NAM</h2>
-        <a href='https://www.vn138e.com/esports' target="_blank"><img src={CockFightBanner2} width="100%" /></a>
       </div>
       <BottomMenu />
     </div>

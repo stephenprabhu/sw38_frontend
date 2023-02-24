@@ -6,20 +6,31 @@ import { APIMakeDepositRequest } from "../../helpers/APIs/TransactionAPI";
 import { useNavigate } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
 import axios from "axios";
+import { Box, Modal } from "@mui/material";
+import { AiOutlineClose } from "react-icons/ai";
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: '95vw',
+  height: '95vh',
+  p: 4,
+  borderRadius: 2,
+  border: '0px solid white',
+  color: 'white'
+};
 
 const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
   const [invoiceFile, setInvoiceFile] = useState();
+  const [showInvoiceFile, setShowInvoiceFile] = useState()
+  const [imgModal, setImgModal] = useState(false)
   const [accountNo, setAccountNo] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [userName, setUserName] = useState()
-  //   <div className={styles.bankDetailItem}>
-  // //   <div>
-  // //     <span className={styles.grayLabel}>Nội dung chuyển khoản</span><br />
-  // //     <span className={styles.grayValue}>userName && userName</span>
-  // //   </div>
-  // //   <button type="button" className={styles.copyButton} onClick={() => navigator.clipboard.writeText(formate(Math.floor((amount.replace(/,/g, '') / 30000))))}>Copy</button>
-  // // </div>
+
   useEffect(() => {
     const userData = async () => {
       const userAPI = await axios.get('https://bo.ssv388.info/api/user', {
@@ -33,7 +44,6 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
   }, [])
 
   const items = [
-    { label: "Nạp tiền tài khoản", value: userName && userName },
     { label: "Nạp tiền ngân hàng", value: selectedBank.bank_name },
     { label: "Tên tài khoản nhận", value: selectedBank.bank_account_name },
     { label: "Số tài khoản", value: selectedBank.bank_account_number }
@@ -58,10 +68,6 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
       setErrorMessage('Vui lòng chọn dưới 100,000,000')
     } else if (!invoiceFile) {
       setErrorMessage('Nhấn vào đây để tải lên hình ảnh hóa đơn')
-    } else if (!accountNo) {
-      setErrorMessage('Vui lòng nhập số tài khoản người chuyển')
-    } else if (accountNo.length < 6) {
-      setErrorMessage('Số tài khoản không đúng')
     } else if (invoiceFile && accountNo && newAmount && selectedBank) {
       const x = await APIMakeDepositRequest(newAmount, accountNo, selectedBank.id, invoiceFile);
       if (!x) {
@@ -75,6 +81,14 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
     setLoading(false)
   }
 
+  // img file
+  const onImageChange = (event) => {
+    if (event.target.files && event.target.files[0]) {
+      setInvoiceFile(event.currentTarget.files[0])
+      setShowInvoiceFile(URL.createObjectURL(event.target.files[0]));
+    }
+  }
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
       <InnerHeader title={"Thông tin nạp tiền"} />
@@ -83,7 +97,7 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
           <h3 style={{ textAlign: "center", color: "red" }}>Lưu ý : 1 điểm = 30.000 VND</h3>
           <div className={styles.section2}>
             <span className={styles.label}>Thông tin tiền gửi</span>
-            {items.slice(0, 4).map((item, index) => <CopyItemComponent key={index} item={item} />)}
+            {items.slice(0, 3).map((item, index) => <CopyItemComponent key={index} item={item} />)}
             <div className={styles.bankDetailItem}>
               <div>
                 <span className={styles.grayLabel}>Số tiền nạp</span><br />
@@ -91,26 +105,20 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
               </div>
               <button type="button" className={styles.copyButton} onClick={() => navigator.clipboard.writeText(formate(amount))}>Copy</button>
             </div>
+
             <div className={styles.bankDetailItem}>
               <div>
-                <span className={styles.grayLabel}>Số Điểm</span><br />
-                <span className={styles.grayValue}>{formate(Math.floor((amount.replace(/,/g, '') / 30000) >= 1 ? amount.replace(/,/g, '') / 30000 : 0))}</span>
+                <span className={styles.grayLabel}>Nội dung chuyển khoản</span><br />
+                <span className={styles.grayValue}>{userName && userName}</span>
               </div>
-              <button type="button" className={styles.copyButton} onClick={() => navigator.clipboard.writeText(formate(Math.floor((amount.replace(/,/g, '') / 30000))))}>Copy</button>
+              <button type="button" className={styles.copyButton} onClick={() => navigator.clipboard.writeText(userName)}>Copy</button>
             </div>
-
 
             <div style={{ padding: "10px 10px 20px 0px" }}>
-              <span className={styles.grayLabel}>Hình ảnh</span><br />
-              <input type="file" label="File" accept="image/*" onChange={e => setInvoiceFile(e.currentTarget.files[0])} />
+              <span className={styles.grayLabel}>Hình ảnh hóa đơn</span><br />
+              <input type="file" label="File" accept="image/*" onChange={onImageChange} style={{ marginTop: '5px' }} />
             </div>
-            <span className={styles.grayLabel}>Tài khoản người chuyển</span>
-            <div className={styles.inputItem} style={{ marginTop: "10px" }}>
-              <CiCreditCard1 size={25} style={{ color: "gray" }} />
-              <input value={accountNo} type='number' className={styles.whiteInput} style={{ border: "none" }} placeholder="＊ Vui lòng nhập số tài khoản"
-                onChange={(e) => e.currentTarget.value.length < 18 && setAccountNo(e.currentTarget.value)}
-              />
-            </div>
+            {showInvoiceFile && <img src={showInvoiceFile} alt='invice' width={200} height={200} style={{ borderRadius: '10px' }} onClick={() => setImgModal(true)} />}
             {errorMessage && <p style={{ color: 'red', textAlign: 'center' }}>{errorMessage}</p>}
           </div>
           {loading ? <CircularProgress style={{ marginTop: '5px' }} /> : ""}
@@ -120,6 +128,15 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
           <button className={`${styles.depositButton} ${styles.final}`} disabled={loading} type="submit">{loading ? "Đang tải" : "Hoàn Tất"}</button>
         </div>
       </form>
+      <Modal open={imgModal} onClose={() => setImgModal(false)}>
+        <Box sx={style}>
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: 'rgb(182, 150, 83)' }}>
+            <h3>Hình ảnh</h3>
+            <AiOutlineClose size={30} color='rgb(182, 150, 83)' onClick={() => setImgModal(false)} />
+          </Box>
+          <img src={showInvoiceFile} alt='invice' width='100%' style={{ maxHeight: '90%' }} onClick={''} />
+        </Box>
+      </Modal>
     </div>
   )
 }
