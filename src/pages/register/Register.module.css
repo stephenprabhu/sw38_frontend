@@ -131,13 +131,57 @@ input[type=number] {
 
 
 .loadingSection {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
     padding: 10px;
     border: 1px solid white;
     margin: 10px;
     border-radius: 10px;
+}
+
+.inputPasswordArea {
+    display: flex;
+    border: 1px solid #424a62;
+    background-color: #304063;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.inputPassword {
+    font-size: 1rem;
+    color: #fff;
+    border-radius: 0.03rem;
+    padding: 10px;
+    border: none;
+    background-color: #304063;
+    overflow: hidden;
+    max-width: 95%;
+}
+
+
+.inputPassword:active,
+.inputPassword:focus-visible{
+    border: none;
+    outline: none;
+}
+
+
+.passwordEye {
+    cursor: pointer;
+}
+
+.loadingSection {
+    background-color: #304063;
+    position: absolute;
+    top: 50%;
+    left: 38%;
+    width: 400px;
+}
+
+.loadingSection h3 span{
+    font-size: 1.5rem;
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 50%;
 }
 
 
@@ -149,3 +193,30 @@ input[type=number] {
     font-size: 0.8rem;
     color: rgb(202, 202, 202)
 }
+
+.loadingSection .failedError {
+    font-size: 1.1em;
+    display: block;
+}
+
+
+
+
+.errorModal {
+    color: white;
+    background-color: #304063;
+
+}
+
+
+@media only screen and (max-width: 900px) {
+    .loadingSection {
+        background-color: #304063;
+        position: absolute;
+        top: 40%;
+        left: 5%;
+        width: 80%;
+    }
+}
+
+
