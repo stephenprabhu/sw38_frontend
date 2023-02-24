@@ -49,6 +49,7 @@ const Register = () => {
 			const x = await APIRegisterUser(phone, password);
 			if (!x) {
 				setErrorMessage("Số điện thoại này đã được đăng ký vui lòng liên hệ CSKH để được hỗ trợ.");
+        setShowRegisterModal(false);
 			} else {
 				localStorage.setItem("auth_token", x);
 				ctx.setUser(x);
@@ -96,7 +97,6 @@ const Register = () => {
 	const checkIfHasNumber = (value) => {
 		return /\d/.test(value);
 	};
-
 
   return (
     <div

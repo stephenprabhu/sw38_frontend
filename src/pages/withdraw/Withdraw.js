@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Box, Modal, Typography } from '@mui/material'
+import { Typography, IconButton } from '@mui/material'
 import axios from 'axios'
 import { BsPlus } from 'react-icons/bs'
 import { Link, useNavigate, } from 'react-router-dom'
@@ -10,20 +10,6 @@ import styles from './Withdraw.module.css'
 import CircularProgress from '@mui/material/CircularProgress';
 import { CiEdit, CiTrash } from 'react-icons/ci'
 
-// modal styling
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
-
-
 const Withdraw = () => {
   const [banks, setBanks] = useState()
   const [userBalance, setUserBalance] = useState()
@@ -32,11 +18,9 @@ const Withdraw = () => {
   const [bankAccountNumber, setBankAccountNumber] = useState(null)
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [open, setOpen] = React.useState(false);
 
   const ctx = useContext(UserContext);
   const token = localStorage.getItem('auth_token')
-  // const history = useHistory();
 
   // bank list , user balance 
   useEffect(() => {
@@ -82,6 +66,7 @@ const Withdraw = () => {
       setError('Vui lòng thêm ngân hàng')
     } else if (bankId && transactionAmount) {
       const x = await WithdrawAPI(bankId, transactionAmount, bankAccountNumber);
+      console.log(x)
       if (x.status) {
         navigate('/transections')
       }
@@ -111,8 +96,8 @@ const Withdraw = () => {
           <div className={styles.banksSection}>
             {banks && banks.map((bank) => {
               return (
-                <div style={{ display: 'flex', gap: 10 }} key={bank.id}>
-                  <label style={{ display: 'flex', gap: '10px', marginBottom: '5px', flexGrow: 1 }}>
+                <div style={{ display: 'flex', gap: 10, marginRight: '7px' }} key={bank.id}>
+                  <div style={{ display: 'flex', gap: '10px', marginBottom: '5px', flexGrow: 1 }}>
                     <input type="radio" value={bank.id} checked={bankId === bank.id} onChange={() => setBankId(bank.id)} name={bankId} />
                     <div className={styles.bankCard} >
                       <span>{bank.User_name}</span>
@@ -121,12 +106,16 @@ const Withdraw = () => {
                         <span style={{ paddingLeft: '10px' }}>{bank.account_number}</span>
                       </div>
                     </div>
-                  </label>
-                  <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 4 }}>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 2 }}>
                     <Link to={`/add-account/${bank.id}`}>
-                      <CiEdit size={22} color='green' />
+                      <IconButton size='small'>
+                        <CiEdit size={20} color='green' />
+                      </IconButton>
                     </Link>
-                    <CiTrash size={22} color='red' onClick={() => deleteBank(bank.id)} style={{ cursor: 'pointer' }} />
+                    <IconButton size='small'>
+                      <CiTrash size={20} color='red' onClick={() => deleteBank(bank.id)} style={{ cursor: 'pointer' }} />
+                    </IconButton>
                   </div>
                 </div>
               )

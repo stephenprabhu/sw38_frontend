@@ -16,6 +16,10 @@ const Header = () => {
 
   const onLogOutClicked = () => {
     ctx.setUser(null);
+    ctx.setUserInfo({
+      name: '',
+      password: '',
+    });
     localStorage.removeItem("auth_token");
   }
 

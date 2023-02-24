@@ -73,6 +73,7 @@ const AddAccount = () => {
           <input className={styles.whiteInput} style={{ border: "none" }} placeholder="＊ Vui lòng nhập số tài khoản" required value={accNumber} onChange={(e) => setAccNumber(e.target.value)} />
         </div>
         <button className={styles.submit} type='submit'>Xác nhận</button>
+        <button className={styles.cancel} onClick={() => navigate('/withdraw')}>Hủy</button >
       </div>
     </form>
   )
