@@ -9,6 +9,10 @@ import CockFightBanner from "../../assets/sub-animal-sv.png"
 import styles from './Home.module.css'
 import CockFightBanner2 from "../../assets/cock-banner-2.jpeg"
 import axios from "axios";
+import CoolAnimatedButton from "../../components/CoolAnimatedButton";
+import { MdOutlineContentCopy } from "react-icons/md";
+import CustomerSupportAnimatedItem from "../../components/CustomerSupportAnimatedItem";
+
 
 const Home = () => {
   const ctx = useContext(UserContext);
@@ -50,18 +54,24 @@ const Home = () => {
         <HomeImageMenu />
         {user && userInfo &&
           <div className={styles.userInfoSection}>
-            <CopyItemComponent item={{ label: "Tên tài khoản", value: userInfo.name }} />
-            <CopyItemComponent item={{ label: "Mật khẩu", value: userInfo.password }} />
+            <CopyItemComponent item={{ label: "Số điện thoại đăng nhập", value: userInfo.name }} />
+            <CopyItemComponent item={{ label: "Mật khẩu mặc định", value: userInfo.password }} />
+            <div style={{ color: "white", fontSize: "12px", maxWidth: "80%", margin: "auto" }}>
+              <i>* Nếu bạn đã thay đổi</i>  &nbsp; mật khẩu vui lòng liên hệ chăm sóc khách hàng. <br />
+              Bấm vào đây để chuyện với chúng tôi  <CustomerSupportAnimatedItem />
+            </div>
           </div>}
+
         <div className={styles.cockfightSection}>
           <div><a href='https://www.vn138e.com/esports' target="_blank"><img src={CockFightBanner} width={"75%"} /></a></div>
           <div style={{ padding: '0px 10px' }}>
             <h3 style={{ margin: '0px' }}>Đá gà SV388</h3>
             <p>Đá gà Thomo trực tuyến độc quyền tại SVW38.COM</p>
-            <a href="https://www.ssvv388.com/" target="_blank" className={styles.myLink}>ĐẶT CƯỢC NGAY</a>
+            {/* <a href="https://www.ssvv388.com/" target="_blank" className={styles.myLink}>ĐẶT CƯỢC NGAY</a> */}
+            <CoolAnimatedButton text="ĐẶT CƯỢC NGAY" />
           </div>
         </div>
-        <h2 style={{ color: "white", fontSize: "0.8em", margin: "15px 0px" }}>TRANG ĐÁ GÀ UY TÍN NHẤT VIỆT NAM</h2>
+        <div style={{ color: "white", fontSize: "0.9em", margin: "15px 0px", paddingTop: "10px" }}>TRANG ĐÁ GÀ <strong>UY TÍN NHẤT</strong> </div>
       </div>
       <BottomMenu />
     </div>
@@ -79,7 +89,7 @@ const CopyItemComponent = ({ item }) => {
         <span className={styles.grayValue}>{item.value}</span>
       </div>
       <span className={styles.copyButton} onClick={onCopyClicked}>
-        Copy
+        Copy <MdOutlineContentCopy style={{ marginLeft: "7px" }} />
       </span>
     </div>
   )

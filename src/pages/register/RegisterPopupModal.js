@@ -2,11 +2,9 @@ import React from 'react'
 import Modal from '@mui/material/Modal';
 import { useState } from 'react';
 import styles from "../register/Register.module.css";
+import CustomerSupportAnimatedItem from '../../components/CustomerSupportAnimatedItem';
 
 const RegisterPopupModal = ({show, hideModal, timerTime}) => {
-
-    console.log(timerTime)
-
 
 
   return (
@@ -38,7 +36,7 @@ const RegisterPopupModal = ({show, hideModal, timerTime}) => {
                 <div className={styles.loadingSection}>
                   <span className={styles.failedError}>Quá trình tạo tài khoản đang mất nhiều thời gian hơn dự kiến.</span>
                   <span className={styles.failedError}>Vui lòng đợi thêm một phút hoặc liên hệ CSKH</span>
-                  <a href="https://direct.lc.chat/14707113/" target="_blank" className={styles.myLink}>Hỗ Trợ 24/7</a>
+                  <CustomerSupportAnimatedItem />
                 </div>
               )}
         </div>
