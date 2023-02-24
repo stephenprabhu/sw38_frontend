@@ -11,6 +11,8 @@ import { FcOk, FcCancel } from "react-icons/fc";
 import {FiEyeOff, FiEye} from "react-icons/fi";
 import RegisterPopupModal from "./RegisterPopupModal";
 import PopupErrorModal from "../../components/PopupErrorModal";
+import { BsCheckLg } from "react-icons/bs";
+import { BsX } from 'react-icons/bs';
 
 let timerInterval = null;
 
@@ -26,6 +28,7 @@ const Register = () => {
 	const [passwordHidden, setPasswordHidden] = useState(false);
 	const [showRegisterModal, setShowRegisterModal] = useState(false);
 	const [timerTime, setTimerTime] = useState(60);
+  const [phoneValid, setPhoneValid] = useState(0);
 
 
 	const registerUser = async (e) => {
@@ -116,8 +119,9 @@ const Register = () => {
           ) : (
             ""
           )}
-          <div className={styles.formInput}>
+          <div className={`${styles.formInput}`}>
             <span>Số điện thoại</span>
+            <div style={{display:"flex", alignItems:"center"}} className={phoneValid === 1 ? styles.successPhoneNumber : styles.errorPhoneNumber}>
             <input
               disabled={loading}
               type="number"
@@ -126,37 +130,33 @@ const Register = () => {
               placeholder="Số điện thoại"
               name="username"
               required
-              className={styles.inputPhone}
+              className={`${styles.inputPhone}`}
             />
-            {phone && !checkPhoneStart(phone) ? (
-              <span className={styles.error}>Sai quy cách SĐT</span>
-            ) : (
-              ""
-            )}
-            {phone && phone.length !== 10 ? (
-              <span className={styles.error}>Vui lòng nhập 10 ký tự</span>
-            ) : (
-              ""
-            )}
-          </div>
+            <div style={{width:"30px", padding:"5px"}}>
+              {phoneValid === 1 ? <BsCheckLg color="green"  size={20} /> :  <BsX size={30} /> }
+              </div>
+              </div>
+              {phone && !checkPhoneStart(phone) ? <span className={styles.error}>Sai quy cách SĐT</span> : ""}
+              {/* {phone && phone.length !== 10 ? <span className={styles.error}>Vui lòng nhập 10 ký tự</span> : " "} */}
+            </div>
           <div className={styles.formInput}>
             <span>Mật khẩu</span>
-            <p style={{ color: "white", textAlign: "left", fontSize: "12px" }}>
-				Ví dụ : Daga123123 (chữ  "D" viết in hoa)
+            <p style={{ color: "white", textAlign: "left", fontSize: "12px", fontStyle:"italic" }}>
+				      Ví dụ : Daga123123 (chữ  <span style={{color:"#8ee18e", display:"inline", fontWeight:"900"}}>"D"</span> viết in hoa)
             </p>
-			<div className={styles.inputPasswordArea}>
-				<input
-					disabled={loading}
-					type={passwordHidden ? "password" : "text" }
-					value={password}
-					onChange={(e) => setPassword(e.currentTarget.value)}
-					placeholder="Mật khẩu"
-					name="password"
-					required
-					className={styles.inputPassword}
-				/>
-				{passwordHidden ? <FiEye onClick={()=> setPasswordHidden(false)} size={25} className={styles.passwordEye} /> : <FiEyeOff  onClick={()=> setPasswordHidden(true)} size={25} className={styles.passwordEye} /> }
-			</div>
+          <div className={styles.inputPasswordArea}>
+            <input
+              disabled={loading}
+              type={passwordHidden ? "password" : "text" }
+              value={password}
+              onChange={(e) => setPassword(e.currentTarget.value)}
+              placeholder="Mật khẩu"
+              name="password"
+              required
+              className={styles.inputPassword}
+            />
+            {passwordHidden ? <FiEye onClick={()=> setPasswordHidden(false)} size={25} className={styles.passwordEye} /> : <FiEyeOff  onClick={()=> setPasswordHidden(true)} size={25} className={styles.passwordEye} /> }
+          </div>
            
 
             {password ? (
@@ -199,7 +199,7 @@ const Register = () => {
                       checkIfHasNumber(password) ? styles.success : styles.error
                     }
                   >
-						Mật khẩu phải có số (0~ 9)
+						      Mật khẩu phải có số (0~ 9)
                   </span>
                 </div>
 				<div style={{ display: "flex", alignItems: "center", gap: 5 }}>

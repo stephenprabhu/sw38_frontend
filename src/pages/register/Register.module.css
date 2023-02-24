@@ -89,7 +89,7 @@
 
 
 .success {
-    color: rgb(49, 156, 81);
+    color: #8ee18e;
     font-size: 0.8rem;
     margin-top:5px;
 }
@@ -197,6 +197,19 @@ input[type=number] {
 .loadingSection .failedError {
     font-size: 1.1em;
     display: block;
+}
+
+
+.errorPhoneNumber {
+    border: 1px solid red;
+    outline-color: red;
+    background-color: #304063;
+}
+
+.successPhoneNumber {
+    border: 1px solid rgb(25, 155, 86);
+    outline-color: red;
+    background-color: #304063;
 }
 
 
