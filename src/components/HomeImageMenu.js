@@ -23,7 +23,7 @@ const style = {
   boxShadow: 24,
   p: 4,
   borderRadius: 2,
-  border: '0px solid white',
+  border: '1px solid white',
   color: 'white'
 };
 
@@ -67,7 +67,7 @@ const HomeImageMenu = () => {
       {/*All games modal*/}
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h5">Tất cả trò chơi</Typography>
+          <Typography id="modal-modal-title" variant="h5" color='rgb(252, 224, 141)'>Tất cả trò chơi</Typography>
           <List>
             {modalItems.map((game) => {
               return (
