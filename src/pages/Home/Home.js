@@ -53,8 +53,6 @@ const Home = () => {
         </div> : ""}
         <HomeImageMenu />
 
-        <Link to="/promotions">Promotions</Link>
-
         {user && userInfo &&
           <div className={styles.userInfoSection}>
             <CopyItemComponent item={{ label: "Số điện thoại đăng nhập", value: userInfo.name }} />
