@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "../register/Register.module.css";
 import { Link } from "react-router-dom";
-import Captcha from "../../assets/svcaptcha.png";
 import Header from "../../components/Header";
 import { APIRegisterUser } from "../../helpers/APIs/UserAPIs";
 import UserContext from "../../helpers/Context/user-context";
@@ -13,6 +12,7 @@ import RegisterPopupModal from "./RegisterPopupModal";
 import PopupErrorModal from "../../components/PopupErrorModal";
 import { BsCheckLg } from "react-icons/bs";
 import { BsX } from 'react-icons/bs';
+import CaptchaInput from "../../components/CaptchaInput";
 
 let timerInterval = null;
 
@@ -21,6 +21,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [passwordAgain, setPasswordAgain] = useState("");
   const [captcha, setCaptcha] = useState("");
+  const [randomCaptcha, setRandomCaptcha] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const ctx = useContext(UserContext);
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const Register = () => {
 
   const registerUser = async (e) => {
     e.preventDefault();
-    if (!captcha || captcha.trim().toLowerCase() !== "svw38") {
+    if (!captcha || captcha.trim().toLowerCase() !== randomCaptcha.value) {
       setErrorMessage("Mã xác nhận không hợp lệ");
       return;
     }
@@ -242,13 +243,9 @@ const Register = () => {
 
             </div>
 
-            {passwordAgain && passwordAgain !== password ? (
-              <span className={styles.error}>Mật khẩu không phù hợp.</span>
-            ) : (
-              ""
-            )}
+            {passwordAgain && passwordAgain !== password ? <span className={styles.error}>Mật khẩu không phù hợp.</span> : ""}
           </div>
-          <div className={styles.formInput}>
+          {/* <div className={styles.formInput}>
             <span>Mã xác nhận</span>
             <div style={{ display: "flex" }}>
               <input
@@ -263,7 +260,8 @@ const Register = () => {
               />
               <img src={Captcha} width="100px" />
             </div>
-          </div>
+          </div> */}
+          <CaptchaInput captcha={randomCaptcha} setCaptcha={setRandomCaptcha} setUserCaptchaInput={setCaptcha} userCaptchaInput={captcha} />
           <button
             className={`${styles.registerButton} ${loading ? styles.loading : ""
               }`}
@@ -274,7 +272,7 @@ const Register = () => {
         </form>
 
         <div className={styles.loginSection}>
-          Quý khách đã có tài khoản?
+          Bạn đã có tài khoản ? 
           <Link to="/login" className={styles.loginLink}>
             Đăng Nhập
           </Link>

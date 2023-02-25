@@ -30,9 +30,7 @@ const style = {
 };
 
 const HomeImageMenu = () => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [showRoundMenu, setShowRoundMenu] = useState(false);
 
   const modalItems = [
     { href: "https://www.vn138e.com/sports", src: SportsImage, text: 'Thể Thao' },
@@ -45,8 +43,7 @@ const HomeImageMenu = () => {
 
   return (
     <div className={styles.homeImageMenuIcon}>
-
-      <div onClick={handleOpen}>
+      <div onClick={()=> setShowRoundMenu(p=> !p)} style={{cursor:"pointer"}}>
         <IoGameControllerOutline color='rgb(200, 205, 214)' size={34} /><br />
         <span>TRÒ CHƠI +</span>
       </div>
@@ -60,8 +57,31 @@ const HomeImageMenu = () => {
         <span>ĐẠI LÝ</span>
       </div>
 
+
+      {showRoundMenu ? <>
+        <div className={`${styles.goldBubble} ${styles.sports}`} onClick={()=> window.open("https://www.vn138e.com/sports")}>
+            <img src={SportsImage} width={20} />
+            Thể Thao
+        </div>
+        <div className={`${styles.goldBubble} ${styles.casino}`} onClick={()=> window.open("https://www.vn138e.com/live")}>
+          <img src={LiveCasinoImage} width={20} />
+            Live<br />Casino
+        </div>
+        <div className={`${styles.goldBubble} ${styles.esports}`} onClick={()=> window.open("https://www.vn138e.com/esports")}>
+          <img src={EsportsImage} width={20} />
+          E Sports
+        </div>
+        <div className={`${styles.goldBubble} ${styles.lottery}`} onClick={()=> window.open("https://www.vn138e.com/elott")}>
+          <img src={LotteryImage} width={20} />
+          Xổ số
+        </div>
+      </> :""}
+
+
+
+
       {/*All games modal*/}
-      <Modal open={open} onClose={handleClose}>
+      {/* <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h5" color='rgb(252, 224, 141)'>Tất cả trò chơi</Typography>
           <List>
@@ -80,7 +100,7 @@ const HomeImageMenu = () => {
             })}
           </List>
         </Box>
-      </Modal>
+      </Modal> */}
     </div>
   )
 }

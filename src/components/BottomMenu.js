@@ -9,13 +9,13 @@ import { Link } from 'react-router-dom';
 const BottomMenu = () => {
   return (
     <div className={styles.bottomMenuLayout}>
-        <Link to="/deposit">
+        <Link to="/deposit" style={{textDecoration:"none"}}>
             <div className={styles.menuItem}>
                 <AiOutlineMoneyCollect size={30} />
                 <span>Nạp Tiền</span>
             </div>
         </Link>
-        <Link to="/withdraw">
+        <Link to="/withdraw" style={{textDecoration:"none"}}>
             <div className={styles.menuItem}>
                 <FaMoneyBillWaveAlt size={30} />
                 <span>Rút Tiền</span>
@@ -28,13 +28,13 @@ const BottomMenu = () => {
             <span>Trang Chủ</span>
         </div>
         </Link> */}
-        <a href="https://direct.lc.chat/14707113/" target="_blank" rel="noreffer">
+        <a href="https://direct.lc.chat/14707113/" target="_blank" rel="noreffer" style={{textDecoration:"none"}}>
             <div className={styles.menuItem}>
                 <RiCustomerService2Line size={30} />
                 <span>Hỗ Trợ 24/7</span>
             </div>
         </a>
-        <Link to="/member">
+        <Link to="/member" style={{textDecoration:"none"}}>
             <div className={styles.menuItem}>
                 <CgProfile size={30} />
                 <span>Tài Khoản</span>

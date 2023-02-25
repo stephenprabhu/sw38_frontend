@@ -54,6 +54,14 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
     return (x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
   }
 
+
+  const onContinueClicked = () => {
+    if(!amount || amount < 150000 || amount > 90000000 || !selectedBank){
+      return;
+    }
+    onNextStepClicked();
+  }
+
   return (
     <div className={styles.deposit1Wrapper}>
       <InnerHeader title={"Nạp Tiền"} />
@@ -110,10 +118,9 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
         { }
         <button
           className={`${styles.submitButton} ${!amount || amount < 150000 || amount > 90000000 ? styles.disabled : ""}`}
-          onClick={onNextStepClicked}
+          onClick={onContinueClicked}
           // onClick={() => console.log(amount)}
-          disabled={!amount && amount < 150000 && amount > 90000000 && !selectedBank}
-        >
+          >
           Tiếp theo
         </button>
       </div>

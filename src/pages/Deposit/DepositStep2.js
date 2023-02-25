@@ -59,22 +59,19 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
   //submit func
   const onDepositSubmitClicked = async (e) => {
     e.preventDefault();
-    // setLoading(true);
+    setLoading(true);
     let newAmount = amount.replace(/,/g, '')
-    // console.log(newAmount)
-    // console.log(selectedBank.id)
-    // console.log(invoiceFile)
   if (!invoiceFile) {
       setErrorModal(true)
       setErrorMessage('Nhấn vào đây để tải lên hình ảnh hóa đơn')
     } else if (invoiceFile && newAmount && selectedBank) {
-      // const x = await APIMakeDepositRequest(newAmount, selectedBank.id, invoiceFile);
-      // if (!x) {
-      //   setErrorModal(true)
-      //   setErrorMessage("Số điện thoại hoặc mật khẩu không trùng khớp. Vui lòng kiểm tra lại.");
-      // } else {
-      //   navigate('/transections')
-      // }
+      const x = await APIMakeDepositRequest(newAmount, selectedBank.id, invoiceFile);
+      if (!x) {
+        setErrorModal(true)
+        setErrorMessage("Số điện thoại hoặc mật khẩu không trùng khớp. Vui lòng kiểm tra lại.");
+      } else {
+        navigate('/transections')
+      }
     } else {
       console.log('Api Fail')
     }

@@ -19,6 +19,8 @@ import Profile from './pages/User/Profile';
 import { Navigate } from 'react-router-dom';
 import Transection from './pages/Transection/Transection';
 import Promotions from './pages/Promotions/Promotions';
+import NotFound from './pages/notFound/NotFound';
+import AgencyRegister from './pages/agencyRegister/AgencyRegister';
 
 function App() {
   const ctx = useContext(UserContext);
@@ -49,6 +51,7 @@ function App() {
       <div className="App">
         <Routes >
           <Route path="/register" element={<GuestRoute><Register /></GuestRoute>} />
+          <Route path="/agent/register" element={<AgencyRegister />} />
           <Route path="/login" element={<GuestRoute><Login /></GuestRoute>} />
           <Route path="/deposit" element={<AuthRoute><Deposit /></AuthRoute>} />
           <Route path="/withdraw" element={<AuthRoute ><Withdraw /></AuthRoute>} />
@@ -58,6 +61,8 @@ function App() {
           <Route path="/transections" element={<AuthRoute ><Transection /></AuthRoute>} />
           <Route path="/promotions" element={<AuthRoute ><Promotions /></AuthRoute>} />
           <Route path="/" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
+
         </Routes >
       </div>
     </Router>

@@ -20,13 +20,15 @@
 }
 
 .login-button {
-  background: linear-gradient(180deg,#fce08d,#b69653);
-  color: #010e33;
+  background-image: linear-gradient(180deg,#f1474c,#c71e23);
+  color: #fff;
+
 } 
 
 .register-button {
-  color: #fff;
-  background-image: linear-gradient(180deg,#f1474c,#c71e23);
+  background: linear-gradient(180deg,#fce08d,#b69653);
+  color: #010e33;
+
 }
 
 
