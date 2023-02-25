@@ -9,47 +9,25 @@
   align-items: center;
 }
 
-.homeImageMenuIcon div {
-  width: calc(95%/3);
-}
-
-.homeImageMenuIcon div:nth-child(1),
-.homeImageMenuIcon div:nth-child(3) {
+.homeImageMenuIcon div:nth-child(1) {
   border: 2px solid #b69653;
   border-radius: 10px;
-}
-
-.homeImageMenuIcon span {
+  padding: 12px 7px;
   color: white;
   font-weight: 500;
   font-size: 12px;
 }
 
-.daga {
-  -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
-  clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
-  padding: 8px 20px;
-  background: linear-gradient(55deg, #b69653 15%, #fce08d 37%, #b69653 40%) center right / 300% 100% no-repeat;
-  animation: blink 2s linear infinite;
-}
-
-.daga img {
-  width: 30px;
-}
-
-.dagaModalBtn {
-  background: linear-gradient(55deg, #b69653 15%, #fce08d 37%, #b69653 40%) center right / 300% 100% no-repeat;
-  animation: blink 2s linear infinite;
-  width: 100%;
+.homeImageMenuIcon div:nth-child(3) {
+  border: 2px solid #b69653;
   border-radius: 10px;
+  padding: 5px;
+  color: white;
+  font-weight: 500;
+  font-size: 12px;
 }
 
-@keyframes blink {
-  50% {
-    background-position: center left;
-  }
-
-  100% {
-    background-position: center center;
-  }
+.homeImageMenuIcon div:nth-child(2) {
+  flex-grow: 1;
+  margin: 0px 8px;
 }

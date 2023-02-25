@@ -1,7 +1,6 @@
 import InnerHeader from "../../components/InnerHeader"
 import styles from './Deposit.module.css'
 import { useEffect, useState } from "react";
-import { CiCreditCard1 } from "react-icons/ci";
 import { APIMakeDepositRequest } from "../../helpers/APIs/TransactionAPI";
 import { useNavigate } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
@@ -61,24 +60,24 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
     e.preventDefault();
     // setLoading(true);
     let newAmount = amount.replace(/,/g, '')
-    // console.log(newAmount)
-    // console.log(selectedBank.id)
-    // console.log(invoiceFile)
-  if (!invoiceFile) {
-      setErrorModal(true)
-      setErrorMessage('Nhấn vào đây để tải lên hình ảnh hóa đơn')
-    } else if (invoiceFile && newAmount && selectedBank) {
-      // const x = await APIMakeDepositRequest(newAmount, selectedBank.id, invoiceFile);
-      // if (!x) {
-      //   setErrorModal(true)
-      //   setErrorMessage("Số điện thoại hoặc mật khẩu không trùng khớp. Vui lòng kiểm tra lại.");
-      // } else {
-      //   navigate('/transections')
-      // }
-    } else {
-      console.log('Api Fail')
-    }
-    setLoading(false)
+    console.log(newAmount)
+    console.log(selectedBank.id)
+    console.log(invoiceFile)
+    // if (!invoiceFile) {
+    //   setErrorModal(true)
+    //   setErrorMessage('Nhấn vào đây để tải lên hình ảnh hóa đơn')
+    // } else if (invoiceFile && newAmount && selectedBank) {
+    //   const x = await APIMakeDepositRequest(newAmount, selectedBank.id, invoiceFile);
+    //   if (!x) {
+    //     setErrorModal(true)
+    //     setErrorMessage("Số điện thoại hoặc mật khẩu không trùng khớp. Vui lòng kiểm tra lại.");
+    //   } else {
+    //     navigate('/transections')
+    //   }
+    // } else {
+    //   console.log('Api Fail')
+    // }
+    // setLoading(false)
   }
 
   // img file

@@ -12,27 +12,6 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
   const [errorMessage, setErrorMessage] = useState(null);
   const ctx = useContext(UserContext);
 
-  // const amountsArray = [
-  //   { value: "150,000", label: "150K" },
-  //   { value: "300,000", label: "300K" },
-  //   { value: "900,000", label: "900K" },
-  //   { value: "3,000,000", label: "3M" },
-  //   { value: "9,000,000", label: "9M" },
-  //   { value: "18,000,000", label: "18M" },
-  //   { value: "30,000,000", label: "30M" }
-  // ];
-
-  // {amountsArray.map((amountObj, index) => (
-  //   <button
-  //     key={index}
-  //     onClick={() => setAmount(amountObj.value)}
-  //     className={styles.depositButton}
-  //   // className={`${styles.depositButton} ${amount === amountObj.value ? styles.active : ""}`}
-  //   >
-  //     {amountObj.label}
-  //   </button>
-  // ))}
-
   useEffect(() => {
     getCompanyBanks();
   }, [])
@@ -107,11 +86,9 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
         </div>}
       </div >
       <div>
-        { }
         <button
           className={`${styles.submitButton} ${!amount || amount < 150000 || amount > 90000000 ? styles.disabled : ""}`}
           onClick={onNextStepClicked}
-          // onClick={() => console.log(amount)}
           disabled={!amount && amount < 150000 && amount > 90000000 && !selectedBank}
         >
           Tiếp theo

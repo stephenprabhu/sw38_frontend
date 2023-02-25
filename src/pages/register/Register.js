@@ -13,6 +13,7 @@ import RegisterPopupModal from "./RegisterPopupModal";
 import PopupErrorModal from "../../components/PopupErrorModal";
 import { BsCheckLg } from "react-icons/bs";
 import { BsX } from 'react-icons/bs';
+import axios from "axios";
 
 let timerInterval = null;
 
@@ -29,6 +30,17 @@ const Register = () => {
   const [showRegisterModal, setShowRegisterModal] = useState(false);
   const [timerTime, setTimerTime] = useState(60);
   const [phoneValid, setPhoneValid] = useState(0);
+
+  // check phone is exist or not 
+  const checkPhone = async () => {
+    const res = await axios.get('https://bo.ssv388.info/api/check_phone/' + phone)
+    if (res.data.status) {
+      setPhoneValid(2)
+      setErrorMessage('Số điện thoại này đã được đăng ký vui lòng liên hệ CSKH để được hỗ trợ.')
+    } else {
+      setPhoneValid(1)
+    }
+  }
 
   const registerUser = async (e) => {
     e.preventDefault();
@@ -98,14 +110,7 @@ const Register = () => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        height: "100%",
-      }}
-    >
+    <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%" }}>
       <Header />
       <div style={{ flex: 1, overflow: "auto", paddingBottom: "30px" }}>
         <form className={styles.registerForm} onSubmit={registerUser}>
@@ -117,8 +122,9 @@ const Register = () => {
           )}
           <div className={`${styles.formInput}`}>
             <span>Số điện thoại</span>
-            <div style={{ display: "flex", alignItems: "center" }} className={phoneValid === 1 ? styles.successPhoneNumber : styles.errorPhoneNumber}>
+            <div className={`${styles.inputPasswordArea} ${phoneValid === 1 && phone.length === 10 ? styles.successPhoneNumber : phone.length == 0 ? '' : phoneValid === 2 || phone.length < 10 ? styles.errorPhoneNumber : ''}`}>
               <input
+                onBlur={checkPhone}
                 disabled={loading}
                 type="number"
                 value={phone}
@@ -128,12 +134,9 @@ const Register = () => {
                 required
                 className={`${styles.inputPhone}`}
               />
-              <div style={{ width: "30px", padding: "5px" }}>
-                {phoneValid === 1 ? <BsCheckLg color="green" size={20} /> : <BsX size={30} />}
-              </div>
+              {phoneValid === 1 && phone.length === 10 ? <BsCheckLg color="green" size={20} /> : phone.length == 0 ? '' : phoneValid === 2 || phone.length < 10 ? <BsX size={30} onClick={() => setPhone('')} /> : ''}
             </div>
             {phone && !checkPhoneStart(phone) ? <span className={styles.error}>Sai quy cách SĐT</span> : ""}
-            {/* {phone && phone.length !== 10 ? <span className={styles.error}>Vui lòng nhập 10 ký tự</span> : " "} */}
           </div>
           <div className={styles.formInput}>
             <span>Mật khẩu</span>
@@ -279,11 +282,11 @@ const Register = () => {
             Đăng Nhập
           </Link>
         </div>
-      </div>
+      </div >
       <BottomMenu />
       <RegisterPopupModal show={showRegisterModal} hideModal={() => setShowRegisterModal(false)} timerTime={timerTime} />
       <PopupErrorModal message={errorMessage} show={errorMessage} hideModal={() => setErrorMessage(null)} />
-    </div>
+    </div >
   );
 };
 
