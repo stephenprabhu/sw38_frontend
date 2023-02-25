@@ -29,7 +29,7 @@
 
 
 .goldBubble {
-  background: linear-gradient(153deg,#b69653 14%,#fce08d 66%,#b69653 87%);
+  background: linear-gradient(153deg, #b69653 14%, #fce08d 66%, #b69653 87%);
   box-shadow: inset 0 3px 6px 0 #ffeec7;
   width: 60px !important;
   height: 60px !important;
@@ -42,36 +42,39 @@
   font-size: 10px;
   position: absolute;
   transition: all .2s ease-in;
-  color: black;
   font-weight: bold;
 }
 
-.goldBubble.sports{
+.goldBubble.sports {
   top: 24%;
   left: 6%;
 }
 
-.goldBubble.casino{
-  top: 28%;
-  left: 23%;
+.goldBubble.casino {
+  top: 27%;
+  left: 18%;
 }
 
 .goldBubble.esports {
-  top: 38%;
-  left: 23%;
+  top: 34%;
+  left: 18%;
 }
 
 .goldBubble.lottery {
-  top: 42%;
+  top: 37%;
   left: 6%;
 }
 
+.goldBubble:hover {
+  color: #b69653;
+}
 
 .goldBubble:hover,
 .goldBubble:active {
-    box-shadow: 0 0 10px 0 #9ba5c9;
-    background-image: linear-gradient(180deg,#fff,#f8fcfd 58%,#cdd2d8 83%,#d5d9dc);
-    border: 2px solid transparent;
+  box-shadow: 0 0 10px 0 #9ba5c9;
+  background-image: linear-gradient(180deg, #fff, #f8fcfd 58%, #cdd2d8 83%, #d5d9dc);
+  /* background-image: linear-gradient(180deg, #6d1e0b 58%, #202c46); */
+  /* border: 2px solid transparent; */
 }
 
 @keyframes blink {
