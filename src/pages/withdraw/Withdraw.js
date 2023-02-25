@@ -89,7 +89,7 @@ const Withdraw = () => {
   return (
     <form className={styles.layout} onSubmit={submitwithdraw}>
       <InnerHeader title="Rút Tiền" />
-      {ctx.user.name}
+      {ctx.user ? ctx.user.name : ""}
       <h4>Thẻ ngân hàng của tôi</h4>
       <div className={styles.section}>
         {banks && banks.length &&

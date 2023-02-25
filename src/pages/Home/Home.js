@@ -41,7 +41,7 @@ const Home = () => {
     <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%" }}>
       <Header />
       <div style={{ flex: 1, overflowY: "auto" }}>
-        <a href='https://www.vn138e.com/esports' target="_blank">
+        <a href='https://www.ssvv388.com/' target="_blank">
           <img src={BannerImage} width="100%" />
         </a>
         <marquee direction="left" style={{ color: '#fce08d', fontSize: '12px', padding: '5px 0px', margin: '0px 7px', fontStyle: 'italic' }}>
@@ -63,12 +63,12 @@ const Home = () => {
           </div>}
 
         <div className={styles.cockfightSection}>
-          <div><a href='https://www.vn138e.com/esports' target="_blank"><img src={CockFightBanner} width={"75%"} /></a></div>
+          <div><a href='https://www.ssvv388.com/' target="_blank"><img src={CockFightBanner} width={"75%"} /></a></div>
           <div style={{ padding: '0px 10px' }}>
             <h3 style={{ margin: '0px' }}>Đá gà SV388</h3>
             <p>Đá gà Thomo trực tuyến độc quyền tại SVW38.COM</p>
             {/* <a href="https://www.ssvv388.com/" target="_blank" className={styles.myLink}>ĐẶT CƯỢC NGAY</a> */}
-            <CoolAnimatedButton text="ĐẶT CƯỢC NGAY" />
+            <CoolAnimatedButton text="ĐẶT CƯỢC NGAY" link="https://www.ssvv388.com/" />
           </div>
         </div>
         <div style={{ color: "white", fontSize: "0.9em", margin: "15px 0px", paddingTop: "10px" }}>TRANG ĐÁ GÀ <strong>UY TÍN NHẤT</strong> </div>
