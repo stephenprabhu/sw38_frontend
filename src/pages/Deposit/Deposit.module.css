@@ -82,39 +82,35 @@
   flex-direction: column;
 }
 
-/* .imgModalwrapper{
-  display: 'flex' alignItems: 'center', justifyContent: 'space-between', color: 'rgb(182, 150, 83)'
-} */
-
-
 .depositButtonSection {
   margin-top: 10px;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
 }
 
 .depositButton {
-  line-height: .5rem;
-  padding: 10px;
-  font-weight: 700 !important;
-  border: 1px solid #ccc;
-  border-radius: 0.3rem;
+  /* line-height: .5rem; */
+  padding: 5px 15px;
+  /* font-weight: 500 !important; */
+  border: 0px;
+  border-radius: 50px;
   background-color: #efefef;
   color: #919191;
 }
 
-.depositButton.active {
+/* .depositButton.active {
   background-color: orange;
   color: white
-}
+} */
 
 .submitButton {
   width: 100%;
   border: none;
   padding: 15px 0px;
   font-size: 1.2em;
-  background-color: #ec2529;
+  background-color: #19b119;
   color: white;
   font-weight: 500;
   display: flex;
@@ -173,6 +169,7 @@
   background-color: #428dfc;
   font-size: '0.2rem';
   padding: 10px 10px;
+  border-radius: 5px;
 }
 
 .depositButton.final {
@@ -181,6 +178,7 @@
   background-color: gray;
   font-size: 1rem;
   padding: 15px;
+  border-radius: 5px;
 }
 
 .singleBankItem {

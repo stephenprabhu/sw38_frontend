@@ -56,9 +56,9 @@ const Home = () => {
           <div className={styles.userInfoSection}>
             <CopyItemComponent item={{ label: "Số điện thoại đăng nhập", value: userInfo.name }} />
             <CopyItemComponent item={{ label: "Mật khẩu mặc định", value: userInfo.password }} />
-            <div style={{ color: "white", fontSize: "12px", maxWidth: "80%", margin: "auto" }}>
+            <div style={{ color: "white", fontSize: "12px", maxWidth: "80%", margin: "auto", paddingTop: '5px' }}>
               <i>* Nếu bạn đã thay đổi</i>  &nbsp; mật khẩu vui lòng liên hệ chăm sóc khách hàng. <br />
-              Bấm vào đây để chuyện với chúng tôi  <CustomerSupportAnimatedItem />
+              Bấm vào đây để được <CustomerSupportAnimatedItem />
             </div>
           </div>}
 

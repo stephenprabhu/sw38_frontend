@@ -12,15 +12,26 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
   const [errorMessage, setErrorMessage] = useState(null);
   const ctx = useContext(UserContext);
 
-  const amountsArray = [
-    { value: "150,000", label: "150K" },
-    { value: "300,000", label: "300K" },
-    { value: "900,000", label: "900K" },
-    { value: "3,000,000", label: "3M" },
-    { value: "9,000,000", label: "9M" },
-    { value: "18,000,000", label: "18M" },
-    { value: "30,000,000", label: "30M" }
-  ];
+  // const amountsArray = [
+  //   { value: "150,000", label: "150K" },
+  //   { value: "300,000", label: "300K" },
+  //   { value: "900,000", label: "900K" },
+  //   { value: "3,000,000", label: "3M" },
+  //   { value: "9,000,000", label: "9M" },
+  //   { value: "18,000,000", label: "18M" },
+  //   { value: "30,000,000", label: "30M" }
+  // ];
+
+  // {amountsArray.map((amountObj, index) => (
+  //   <button
+  //     key={index}
+  //     onClick={() => setAmount(amountObj.value)}
+  //     className={styles.depositButton}
+  //   // className={`${styles.depositButton} ${amount === amountObj.value ? styles.active : ""}`}
+  //   >
+  //     {amountObj.label}
+  //   </button>
+  // ))}
 
   useEffect(() => {
     getCompanyBanks();
@@ -42,7 +53,7 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
   const formate = (x) => {
     return (x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
   }
-  // >= 0 ? amount.replace(/,/g, '') / 30000 : 0))
+
   return (
     <div className={styles.deposit1Wrapper}>
       <InnerHeader title={"Nạp Tiền"} />
@@ -61,29 +72,32 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
           )) : ""}
         </div>
         <div >
-          <span className={styles.label}>* Số tiền cần nạp ? (Tỷ lệ đổi: 30,000 VNĐ = 1 điểm)</span>
+          <span className={styles.label}>* Số tiền cần nạp ? (Tỷ lệ đổi: <span style={{ color: 'red', fontSize: '18px' }}>30,000 VNĐ = 1 điểm</span>)</span>
           <div className={styles.inputItem}>
             <i className={styles.adjornment}>₫</i>
             <input value={amount} onChange={e => { setAmount(e.currentTarget.value) }} type="text" className={styles.whiteInput} style={{ border: "none" }} />
-            {amount && <IconButton size='small' sx={{ marginRight: '2px' }} onClick={() => setAmount('')}>{<AiOutlineCloseCircle color='red' />}</IconButton>}
+            {amount && <IconButton size='small' sx={{ marginRight: '2px' }} onClick={() => setAmount('')}>{<AiOutlineCloseCircle />}</IconButton>}
           </div>
-          <div className={styles.depositButtonSection}>
-            {amountsArray.map((amountObj, index) => (
-              <button
-                key={index}
-                onClick={() => setAmount(amountObj.value)}
-                className={`${styles.depositButton} ${amount === amountObj.value ? styles.active : ""}`}
-              >
-                {amountObj.label}
-              </button>
-            ))}
-          </div>
+          {/*amount error*/}
+          {amount && amount < 150000 ? <p style={{ color: 'red', textAlign: 'center', fontSize: '0.85rem', margin: '10px' }}>Số tiền gửi tối thiểu từ 150,000 VNĐ trở lên</p> : ''}
+          {amount && amount > 90000000 ? <p style={{ color: 'red', textAlign: 'center', fontSize: '0.85rem', margin: '10px' }}>Số tiền gửi vượt quá giới hạn 90 triệu VNĐ</p> : ''}
+          {/*Points Buttons*/}
+          {amount && <div className={styles.depositButtonSection}>
+            <button onClick={() => setAmount((amount + '00000').substring(0, 6))} className={styles.depositButton}>
+              {formate((amount + '00000').substring(0, 6))}
+            </button>
+            <button onClick={() => setAmount((amount + '000000').substring(0, 7))} className={styles.depositButton}>
+              {formate((amount + '000000').substring(0, 7))}
+            </button>
+            <button onClick={() => setAmount((amount + '0000000').substring(0, 8))} className={styles.depositButton}>
+              {formate((amount + '0000000').substring(0, 8))}
+            </button>
+          </div>}
           <div className={styles.maxMinWrapper}>
             <span className={`${styles.label} ${styles.maxMin}`}>Nạp Min: 150, 000 VND</span>
             <span className={`${styles.label} ${styles.maxMin}`}>Nạp Max: 90,000,000 VND</span>
-            <span className={styles.label} style={{ padding: '0px', color: 'red' }}>30,000 VND = 1 điểm</span>
           </div>
-          {amount && <p style={{ fontSize: '0.85rem' }}>Bạn sẽ nhận được <strong style={{ color: 'red' }}>{formate(((amount.replace(/,/g, '')) / 30000).toFixed(2))} điểm</strong></p>}
+          {amount && <p style={{ fontSize: '0.85rem' }}>Bạn sẽ nhận được <strong style={{ color: 'red' }}>{((amount.replace(/,/g, '')) / 30000).toFixed(2)} điểm</strong></p>}
         </div>
         {amount && <div className={styles.pointsCircleWraper}>
           <div className={styles.pointCircle}>
@@ -93,10 +107,12 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
         </div>}
       </div >
       <div>
+        { }
         <button
-          className={`${styles.submitButton} ${!amount ? styles.disabled : ""}`}
+          className={`${styles.submitButton} ${!amount || amount < 150000 || amount > 90000000 ? styles.disabled : ""}`}
           onClick={onNextStepClicked}
-          disabled={!amount || !selectedBank}
+          // onClick={() => console.log(amount)}
+          disabled={!amount && amount < 150000 && amount > 90000000 && !selectedBank}
         >
           Tiếp theo
         </button>

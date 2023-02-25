@@ -15,7 +15,9 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  zIndex: 50
+  display: 'flex',
+  flexDirection: 'column',
+
 };
 
 const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
@@ -137,7 +139,7 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
             <h3>Hình ảnh</h3>
             <AiOutlineClose size={30} color='white' onClick={() => setImgModal(false)} />
           </Box>
-          <img src={showInvoiceFile} alt='invice' width='100%' style={{ maxHeight: '90%' }} onClick={''} />
+          <img src={showInvoiceFile} alt='invice' width='100%' style={{ maxHeight: '90%', flexGrow: 1 }} onClick={''} />
         </Box>
       </Modal>
       <PopupErrorModal message={errorMessage} show={errorModal} hideModal={() => setErrorModal(false)} />

@@ -91,7 +91,7 @@
 .success {
     color: #8ee18e;
     font-size: 0.8rem;
-    margin-top:5px;
+    margin-top: 5px;
 }
 
 
@@ -159,7 +159,7 @@ input[type=number] {
 
 
 .inputPassword:active,
-.inputPassword:focus-visible{
+.inputPassword:focus-visible {
     border: none;
     outline: none;
 }
@@ -177,11 +177,12 @@ input[type=number] {
     width: 400px;
 }
 
-.loadingSection h3 span{
+.loadingSection h3 span {
     font-size: 1.5rem;
-    border: 1px solid white;
+    color: #e94c00;
+    /* border: 1px solid white;
     padding: 10px;
-    border-radius: 50%;
+    border-radius: 50%; */
 }
 
 
@@ -231,5 +232,3 @@ input[type=number] {
         width: 80%;
     }
 }
-
-
