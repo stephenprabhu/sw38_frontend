@@ -30,14 +30,14 @@ function App() {
   }, []);
 
   const AuthRoute = ({ children }) => {
-    if (!ctx.user) {
+    if (!localStorage.getItem('auth_token')) {
       return <Navigate to="/login" replace />;
     }
     return children;
   }
 
   const GuestRoute = ({ children }) => {
-    if (ctx.user) {
+    if (localStorage.getItem('auth_token')) {
       return <Navigate to="/member" replace />;
     }
     return children;
@@ -50,7 +50,7 @@ function App() {
         <Routes >
           <Route path="/register" element={<GuestRoute><Register /></GuestRoute>} />
           <Route path="/login" element={<GuestRoute><Login /></GuestRoute>} />
-          <Route path="/deposit" element={<AuthRoute ><Deposit /></AuthRoute>} />
+          <Route path="/deposit" element={<AuthRoute><Deposit /></AuthRoute>} />
           <Route path="/withdraw" element={<AuthRoute ><Withdraw /></AuthRoute>} />
           <Route path="/member" element={<AuthRoute><Profile /></AuthRoute>} />
           <Route path="/add-account" element={<AuthRoute ><AddAccount /></AuthRoute>} />

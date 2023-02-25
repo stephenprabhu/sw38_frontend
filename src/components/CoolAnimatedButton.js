@@ -1,10 +1,10 @@
 import React from 'react'
 import styles from './CoolAnimatedButton.module.css'
 
-const CoolAnimatedButton = ({text}) => {
+const CoolAnimatedButton = ({text, link}) => {
   return (
    <div className={styles.wrap}>
-         <button href={"/"} className={styles.animbutton}>{text}</button>
+         <button onClick={()=> window.open(link)} className={styles.animbutton}>{text}</button>
    </div>
   )
 }

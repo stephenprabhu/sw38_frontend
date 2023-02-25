@@ -22,12 +22,12 @@ const BottomMenu = () => {
             </div>
         </Link>
         
-        <Link to="/">
+        {/* <Link to="/">
         <div className={styles.menuItem}>
             <AiOutlineHome size={30} />
             <span>Trang Chủ</span>
         </div>
-        </Link>
+        </Link> */}
         <a href="https://direct.lc.chat/14707113/" target="_blank" rel="noreffer">
             <div className={styles.menuItem}>
                 <RiCustomerService2Line size={30} />
