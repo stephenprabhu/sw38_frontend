@@ -59,7 +59,7 @@ function App() {
           <Route path="/add-account" element={<AuthRoute ><AddAccount /></AuthRoute>} />
           <Route path="/add-account/:id" element={<AuthRoute ><AddAccount /></AuthRoute>} />
           <Route path="/transections" element={<AuthRoute ><Transection /></AuthRoute>} />
-          <Route path="/promotions" element={<AuthRoute ><Promotions /></AuthRoute>} />
+          <Route path="/promotions" element={<Promotions />} />
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
 

@@ -1,33 +1,13 @@
-import React, { useState } from 'react'
-import LiveCasinoImage from '../assets/menu-live.png';
 import DagaGif from '../assets/daga.gif';
-import CockFightImage from '../assets/menu-cockfight.png';
-import EsportsImage from '../assets/menu-esports.png'
-import SportsImage from '../assets/menu-sports.png';
-import LotteryImage from '../assets/menu-lottery.png';
-import styles from './HomeImageMenu.module.css'
-import Modal from '@mui/material/Modal';
-import { Box, List, ListItem, ListItemButton, ListItemText, Typography } from '@mui/material';
-import { IoMdFootball } from "react-icons/io";
+import styles from './HomeImageMenu.module.css';
 import { IoGameControllerOutline } from "react-icons/io5";
 import { GoGift } from "react-icons/go";
-import { HiOutlineUserGroup } from "react-icons/hi";
-import { Link, useNavigate } from 'react-router-dom';
-
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 300,
-  backgroundImage: 'linear-gradient(180deg,#304063,#202c46)',
-  boxShadow: 24,
-  p: 4,
-  borderRadius: 2,
-  border: '1px solid white',
-  color: 'white'
-};
+import { useNavigate } from 'react-router-dom';
+import SportsImage from '../assets/menu-sports.png';
+import LiveCasinoImage from '../assets/menu-live.png';
+import EsportsImage from '../assets/menu-esports.png'
+import LotteryImage from '../assets/menu-lottery.png'
+import { useState } from 'react';
 
 const HomeImageMenu = () => {
   const [showRoundMenu, setShowRoundMenu] = useState(false);
@@ -48,13 +28,16 @@ const HomeImageMenu = () => {
         <span>TRÒ CHƠI +</span>
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <a href='https://www.ssvv388.com/' style={{ width: '100%' }}> <img src={DagaGif} style={{ display: 'flex', width: '100%', justifyContent: 'center', height: '60px' }} /> </a>
+      <div>
+        <a href='https://www.ssvv388.com/'>
+          <img src={DagaGif} style={{ width: '100%', height: '70px' }} />
+        </a>
       </div>
 
       <div onClick={() => navigate('/promotions')}>
-        <HiOutlineUserGroup color='rgb(200, 205, 214)' size={34} /><br />
-        <span>ĐẠI LÝ</span>
+        <GoGift color='rgb(200, 205, 214)' size={24} /><br />
+        <span>KHUYẾN MÃI <br /> / ĐẠI LÝ
+        </span>
       </div>
 
 

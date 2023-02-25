@@ -1,7 +1,6 @@
 import InnerHeader from "../../components/InnerHeader"
 import styles from './Deposit.module.css'
 import { useEffect, useState } from "react";
-import { CiCreditCard1 } from "react-icons/ci";
 import { APIMakeDepositRequest } from "../../helpers/APIs/TransactionAPI";
 import { useNavigate } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';

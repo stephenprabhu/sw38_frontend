@@ -54,7 +54,6 @@ const Home = () => {
           <Link className='register-button' to='/register'>Đăng ký</Link>
         </div> : ""}
 
-
         {user && userInfo &&
           <div className={styles.userInfoSection}>
             <CopyItemComponent item={{ label: "Số điện thoại đăng nhập", value: userInfo.name }} />
@@ -74,7 +73,7 @@ const Home = () => {
             <CoolAnimatedButton text="ĐẶT CƯỢC NGAY" link="https://www.ssvv388.com/" />
           </div>
         </div>
-        <div style={{ color: "white", fontSize: "0.9em", margin: "15px 0px", paddingTop: "10px" }}>TRANG ĐÁ GÀ <strong>UY TÍN NHẤT</strong> </div>
+        <div style={{ color: "rgb(219 152 15)", fontSize: "2em", margin: "5px 0px", paddingTop: "10px", fontFamily: 'Great Vibes', fontWeight: 'bold' }}>Đá gà cựa sắt số 1</div>
       </div>
       <BottomMenu />
     </div>

@@ -30,7 +30,15 @@
 }
 
 .formInput input {
+    border: 0px;
     width: 100%;
+}
+
+.formInput input:focus,
+.formInput input:active,
+.formInput input:focus-within {
+    border: 0px;
+    outline: none;
 }
 
 .formInput span {
