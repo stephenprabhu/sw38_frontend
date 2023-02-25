@@ -2,7 +2,7 @@ import React from 'react'
 
 const AgencyRegister = () => {
   return (
-    <div>AgencyRegister</div>
+    <div>Đăng ký ĐẠI LÝ</div>
   )
 }
 
