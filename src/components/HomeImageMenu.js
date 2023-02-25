@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import LiveCasinoImage from '../assets/menu-live.png';
+import DagaGif from '../assets/daga.gif';
 import CockFightImage from '../assets/menu-cockfight.png';
 import EsportsImage from '../assets/menu-esports.png'
 import SportsImage from '../assets/menu-sports.png';
@@ -11,6 +12,7 @@ import { IoMdFootball } from "react-icons/io";
 import { IoGameControllerOutline } from "react-icons/io5";
 import { GoGift } from "react-icons/go";
 import { HiOutlineUserGroup } from "react-icons/hi";
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const style = {
@@ -33,37 +35,31 @@ const HomeImageMenu = () => {
   const handleClose = () => setOpen(false);
 
   const modalItems = [
-    { href: "https://www.ssvv388.com/", src: CockFightImage, text: 'CHƠI ĐÁ GÀ' },
     { href: "https://www.vn138e.com/sports", src: SportsImage, text: 'Thể Thao' },
     { href: "https://www.vn138e.com/live", src: LiveCasinoImage, text: 'Live Casino' },
     { href: "https://www.vn138e.com/esports", src: EsportsImage, text: 'E Sports' },
     { href: "https://www.vn138e.com/elott", src: LotteryImage, text: 'Xổ số' },
   ];
 
-  // FiGift {mai}
-  // GrGroup {daily}
+  const navigate = useNavigate()
+
   return (
     <div className={styles.homeImageMenuIcon}>
-      <a href='https://www.vn138e.com/sports' target="_blank">
-        <IoMdFootball color='rgb(200, 205, 214)' size={34} /><br />
-        <span>THỂ THAO</span>
-      </a>
+
       <div onClick={handleOpen}>
         <IoGameControllerOutline color='rgb(200, 205, 214)' size={34} /><br />
         <span>TRÒ CHƠI +</span>
       </div>
-      <a href='https://www.ssvv388.com/' target="_blank" className={styles.daga}>
-        <img src={CockFightImage} /><br />
-        <span>CHƠI ĐÁ GÀ</span>
-      </a>
-      <a href='' target="_blank">
-        <GoGift color='rgb(200, 205, 214)' size={34} /><br />
-        <span>KHUYẾN MÃI</span>
-      </a>
-      <a href='' target="_blank">
+
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <a href='https://www.ssvv388.com/' style={{ width: '100%' }}> <img src={DagaGif} style={{ display: 'flex', width: '100%', justifyContent: 'center', height: '60px' }} /> </a>
+      </div>
+
+      <div onClick={() => navigate('/promotions')}>
         <HiOutlineUserGroup color='rgb(200, 205, 214)' size={34} /><br />
         <span>ĐẠI LÝ</span>
-      </a>
+      </div>
+
       {/*All games modal*/}
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>

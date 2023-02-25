@@ -9,14 +9,14 @@
   align-items: center;
 }
 
-.homeImageMenuIcon a {
-  text-decoration: none;
+.homeImageMenuIcon div {
+  width: calc(95%/3);
 }
 
-.homeImageMenuIcon img {
-  width: 35px;
-  height: 35px;
-
+.homeImageMenuIcon div:nth-child(1),
+.homeImageMenuIcon div:nth-child(3) {
+  border: 2px solid #b69653;
+  border-radius: 10px;
 }
 
 .homeImageMenuIcon span {

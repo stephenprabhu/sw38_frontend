@@ -18,6 +18,7 @@ import UserContext from './helpers/Context/user-context';
 import Profile from './pages/User/Profile';
 import { Navigate } from 'react-router-dom';
 import Transection from './pages/Transection/Transection';
+import Promotions from './pages/Promotions/Promotions';
 
 function App() {
   const ctx = useContext(UserContext);
@@ -55,6 +56,7 @@ function App() {
           <Route path="/add-account" element={<AuthRoute ><AddAccount /></AuthRoute>} />
           <Route path="/add-account/:id" element={<AuthRoute ><AddAccount /></AuthRoute>} />
           <Route path="/transections" element={<AuthRoute ><Transection /></AuthRoute>} />
+          <Route path="/promotions" element={<AuthRoute ><Promotions /></AuthRoute>} />
           <Route path="/" element={<Home />} />
         </Routes >
       </div>

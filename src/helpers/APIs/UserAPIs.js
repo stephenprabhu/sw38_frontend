@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const APIRegisterUser = async (phone, password) => {
-    try{
+    try {
         const res = await axios.post("https://bo.ssv388.info/api/register_user", {
             phone, password
         });
@@ -9,7 +9,7 @@ export const APIRegisterUser = async (phone, password) => {
         if (res.data && res.data.status && res.data.token) {
             return res.data.token;
         }
-    }catch(e){
+    } catch (e) {
         console.log(e);
     }
     return null;
@@ -17,14 +17,14 @@ export const APIRegisterUser = async (phone, password) => {
 
 
 export const APILoginUser = async (phone, password) => {
-    try{
+    try {
         const res = await axios.post("https://bo.ssv388.info/api/login_user", {
             phone, password
         });
         if (res.data && res.data.status && res.data.token) {
             return res.data.token;
         }
-    }catch(e){
+    } catch (e) {
         console.log(e);
     }
     return null;
@@ -44,4 +44,3 @@ export const APILoginUser = async (phone, password) => {
 //     }
 //     return null;
 // }
-  
