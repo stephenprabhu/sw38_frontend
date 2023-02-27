@@ -18,9 +18,26 @@ const AddAccount = () => {
   const param = useParams();
 
   useEffect(() => {
-    if (param.id) {
-      bankEditAPI(param.id)
-    }
+    // if (param.id) {
+    //   bankEditAPI(param.id)
+    // }
+    // const userBankNameAPI = async (id) => {
+    //   const res = await axios.get('https://bo.ssv388.info/api/bank/user_bank/', {
+    //     headers: {
+    //       Authorization: `Bearer ${localStorage.getItem('auth_token')}`
+    //     }
+    //   });
+    //   console.log(res)
+    //   // setEditBank(res.data)
+    //   // setUserName(res.data.User_name)
+    //   // setAccNumber(res.data.account_number)
+    //   // setBankName(vietnamBankArray.filter((accName) => accName === res.data.bank_name))
+    // }
+    // userBankNameAPI()
+
+    // setUserName('mybankname')
+    // userName ? '' : 
+
   }, [])
 
   // edit bank API
