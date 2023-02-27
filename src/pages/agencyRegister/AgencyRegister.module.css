@@ -7,6 +7,7 @@
     background-color: #304063;
     color:white;
     margin-bottom: 10px;
+    width: 100%;
 }
 
 .registerForm {
@@ -19,7 +20,11 @@
 }
 
 .title {
-    color: white
+    color: white;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
 }
 
 .label {
@@ -192,7 +197,7 @@ input[type=number] {
     padding: 10px;
     font-size: 1em;
     background-color: #304063;
-
+    color: white;
     font-family: 'Be Vietnam Pro', sans-serif;
 }
 

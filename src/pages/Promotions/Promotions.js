@@ -28,7 +28,7 @@ const Promotions = () => {
           <span>Agency</span>
           <div className={styles.headerButtons}>
             <button>Đăng Nhập</button>
-            <button>Đăng ký</button>
+           <Link to="/agent/promotions"> <button>Đăng ký</button></Link>
           </div>
         </div>
         {/*cardSection*/}

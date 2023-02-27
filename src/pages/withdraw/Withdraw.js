@@ -44,7 +44,7 @@ const Withdraw = () => {
           Authorization: `Bearer ${token}`
         }
       });
-      setUserBalance(res.data.balance)
+      setUserBalance(res.data.balance);
     }
     bankListAPI()
     userBalance()
@@ -130,9 +130,9 @@ const Withdraw = () => {
         </div>
 
         <div className={styles.formSecton}>
-          <div className={styles.balanceSection}>
+          {/* <div className={styles.balanceSection}>
             <p> Ví chính: ₫ {userBalance}</p>
-          </div>
+          </div> */}
           <div className={styles.inputItem}>
             <span>Số tiền</span>
             <input className={styles.whiteInput} style={{ border: "none" }} placeholder="100 - 100,000" value={transactionAmount} onChange={(e) => setTransactionAmount(e.target.value)} required />

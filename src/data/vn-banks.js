@@ -17,7 +17,7 @@ const vietnamBankArray = [
     "HDBANK",
     "NAMABANK",
     "PVCOMBANK",
-   "SAIGONBANK",
+    "SAIGONBANK",
     "VIETIN BANK",
 ];
 

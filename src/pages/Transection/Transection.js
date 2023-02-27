@@ -24,7 +24,7 @@ const Transection = () => {
     <div style={{ display: 'flex', height: '100vh', flexDirection: 'column', gap: 15 }}>
       <Header />
       <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', overflow: 'auto', gap: 15 }}>
-        <h3 style={{ margin: '0px', color: 'white' }}>giao dịch</h3>
+        <h3 style={{ margin: '0px', color: 'white' }}>Giao Dịch</h3>
         {transections ?
           <table border={0} style={{ color: 'white' }} width="100%">
             <tr>
@@ -37,7 +37,7 @@ const Transection = () => {
                 <tr key={transection.id}>
                   <td>{transection.transaction_purpose == 'deposit' ? '+' : '-'}{transection.transaction_amount}</td>
                   <td>{new Date(transection.created_at).toLocaleDateString("vi-VN")}</td>
-                  <td><Chip label={transection.is_approved === 0 ? 'Pending' : transection.is_approved === 1 ? ' Approved' : 'Cancel'}
+                  <td><Chip label={transection.is_approved === 0 ? 'Đang xử lý' : transection.is_approved === 1 ? 'Đã phê duyệt' : 'Từ chối'}
                     sx={{ backgroundColor: transection.is_approved === 0 ? '#53a9a3' : transection.is_approved === 1 ? 'green' : '#ad2626', color: 'white' }} /></td>
                 </tr>
               )

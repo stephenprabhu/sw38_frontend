@@ -51,12 +51,12 @@ const Register = () => {
     }
 
     if (
-      password && password.length >= 10 &&
-      checkIfHasLowerCaseChar(password) &&
-      checkIfHasNumber(password) &&
+      password && password.length >= 10 
+      && checkIfHasUpperCaseChar(password) 
+      && checkIfHasLowerCaseChar(password) 
+      && checkIfHasNumber(password) &&
       !checkIfHasSpecialChar(password) &&
-      password === passwordAgain && captcha &&
-      captcha.toLowerCase() === "svw38"
+      password === passwordAgain 
     ) {
       setLoading(true);
       setShowRegisterModal(true);

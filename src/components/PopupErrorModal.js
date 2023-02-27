@@ -2,9 +2,10 @@ import React from 'react'
 import { FcCancel } from "react-icons/fc";
 import Modal from '@mui/material/Modal';
 import styles from "./PopupErrorModal.module.css";
+import { SlInfo } from "react-icons/sl";
 
 
-const PopupErrorModal = ({ message, show, hideModal }) => {
+const PopupErrorModal = ({ message, show, hideModal, error = true }) => {
   return (
     <Modal
       open={show}
@@ -13,7 +14,7 @@ const PopupErrorModal = ({ message, show, hideModal }) => {
       aria-describedby="modal-modal-description"
     >
       <div className={styles.loadingSection}>
-        <FcCancel size={40} />
+        {error ? <FcCancel size={40} /> : <SlInfo size={40} style={{color:"green"}} />}
         <div style={{ color: "white" }}>{message}</div>
       </div>
     </Modal>

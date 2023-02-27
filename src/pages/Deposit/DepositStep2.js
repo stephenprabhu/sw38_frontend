@@ -65,6 +65,7 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
       setErrorMessage('Nhấn vào đây để tải lên hình ảnh hóa đơn')
     } else if (invoiceFile && newAmount && selectedBank) {
       const x = await APIMakeDepositRequest(newAmount, selectedBank.id, invoiceFile);
+      console.log(x);
       if (!x) {
         setErrorModal(true)
         setErrorMessage("Số điện thoại hoặc mật khẩu không trùng khớp. Vui lòng kiểm tra lại.");
