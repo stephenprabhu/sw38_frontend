@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 // import styles from "../register/Register.module.css";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header";
-import { APICheckIfPhoneExists, APIRegisterAgent, APIRegisterUser } from "../../helpers/APIs/UserAPIs";
+import { APICheckIfPhoneExists, APIRegisterAgent } from "../../helpers/APIs/UserAPIs";
 import UserContext from "../../helpers/Context/user-context";
 import { useNavigate } from "react-router-dom";
 import BottomMenu from "../../components/BottomMenu";
@@ -261,7 +261,7 @@ const AgencyRegister = () => {
                 {vietnamBankArray.map((val, index) => <option key={index}>{val}</option>)}
             </select>
             </div>
-            <span className={styles.label} style>Tên tài khoản</span>
+            <span className={styles.label}>Tên tài khoản</span>
             <p style={{ color: "white", textAlign: "left", fontSize: "12px", fontStyle: "italic" }}>
               Tên tài khoản viết IN HOA, không dấu
             </p>

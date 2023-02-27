@@ -38,6 +38,11 @@
 }
 
 
+.MuiButtonBase-root.MuiTab-root {
+  color: white;
+}
+
+
 
 .App-link {
   color: #61dafb;
