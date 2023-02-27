@@ -39,7 +39,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%", position:"relative" }}>
+    <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%", position: "relative" }}>
       <Header />
       <div style={{ flex: 1, overflowY: "auto" }}>
         <a href='https://www.ssvv388.com/' target="_blank">
@@ -48,12 +48,13 @@ const Home = () => {
         <marquee direction="left" style={{ color: '#fce08d', fontSize: '12px', padding: '5px 0px', margin: '0px 7px', fontStyle: 'italic' }}>
           ĐÁ GÀ SV388 NƠI CÁC CHIẾN KÊ HUYỀN THOẠI THỂ HIỆN CHỈ CÓ TẠI SVW38.COM
         </marquee>
-        <HomeImageMenu />
+
         {!ctx.user ? <div className='register-login-section'>
           <Link className='login-button' to='/login'>Đăng Nhập</Link>
           <Link className='register-button' to='/register'>Đăng ký</Link>
         </div> : ""}
 
+        <HomeImageMenu />
         {user && userInfo &&
           <div className={styles.userInfoSection}>
             <CopyItemComponent item={{ label: "Số điện thoại đăng nhập", value: userInfo.name }} />
@@ -90,9 +91,9 @@ const CopyItemComponent = ({ item, showHideOption = false }) => {
     <div className={styles.bankDetailItem}>
       <div style={{ textAlign: "left" }}>
         <span className={styles.grayLabel}>{item.label}</span><br />
-        {!showHideOption ? <span className={styles.grayValue}>{item.value}</span> :""}
-        {showHideOption ? <span className={styles.grayValue}>{ showPassword ? item.value : item.value.replace(/./g, "*")}</span> :""}
-        {showHideOption ? <span style={{paddingLeft:"10px"}}>{ showPassword ? <FiEyeOff onClick={()=> setShowPassword(false)} /> : <FiEye onClick={()=> setShowPassword(true)} />}</span> : ""}
+        {!showHideOption ? <span className={styles.grayValue}>{item.value}</span> : ""}
+        {showHideOption ? <span className={styles.grayValue}>{showPassword ? item.value : item.value.replace(/./g, "*")}</span> : ""}
+        {showHideOption ? <span style={{ paddingLeft: "10px" }}>{showPassword ? <FiEyeOff onClick={() => setShowPassword(false)} /> : <FiEye onClick={() => setShowPassword(true)} />}</span> : ""}
       </div>
       <span className={styles.copyButton} onClick={onCopyClicked}>
         Copy <MdOutlineContentCopy style={{ marginLeft: "7px" }} />

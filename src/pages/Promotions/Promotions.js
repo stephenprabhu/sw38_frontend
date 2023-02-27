@@ -3,9 +3,14 @@ import BottomMenu from '../../components/BottomMenu';
 import Header from '../../components/Header';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import PopupErrorModal from '../../components/PopupErrorModal';
+import CustomerSupportAnimatedItem from '../../components/CustomerSupportAnimatedItem';
 
 const Promotions = () => {
   const [promotionsList, setPromotionsList] = useState()
+  const [loginModal, setLoginModal] = useState(false)
+
   useEffect(() => {
     const promotionsList = async () => {
       const res = await axios.get('https://bo.ssv388.info/api/get_all_promotions', {
@@ -25,10 +30,10 @@ const Promotions = () => {
       <div className={styles.promotionContent}>
         {/*Header Section*/}
         <div className={styles.promotionHeader}>
-          <span>Agency</span>
+          <span>ĐẠI LÝ</span>
           <div className={styles.headerButtons}>
-            <button>Đăng Nhập</button>
-           <Link to="/agent/promotions"> <button>Đăng ký</button></Link>
+            <button onClick={() => setLoginModal(true)}>Đăng Nhập</button>
+            <Link to='/agent/register'><button>Đăng ký</button></Link>
           </div>
         </div>
         {/*cardSection*/}
@@ -47,8 +52,20 @@ const Promotions = () => {
           ))}
         </div>
       </div>
+      <PopupErrorModal show={loginModal} hideModal={() => setLoginModal(false)} message={<LoginMsg />} />
       <BottomMenu />
     </div>
   )
 }
 export default Promotions
+
+const LoginMsg = () => {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+      <span>
+        Vui lòng liên hệ CSKH để được
+      </span>
+      <CustomerSupportAnimatedItem />
+    </div>
+  )
+}
