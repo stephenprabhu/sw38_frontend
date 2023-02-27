@@ -38,12 +38,12 @@
   padding: 10px 20px;
   border-radius: 20px;
   font-weight: 600;
+  cursor: pointer;
 }
 
-/* .promotionHeader span:nth-child(3) {
-  font-size: 14px;
-  padding-bottom: 10px;
-} */
+.headerButtons button:hover {
+  background: linear-gradient(90deg, #E94C00 0%, #FFC9A0 100%);
+}
 
 .cardSectionWrapper {
   flex-grow: 1;
@@ -70,11 +70,11 @@
   align-items: flex-start;
 }
 
-.cardTitle {
+.cardContent .cardTitle {
   font-size: 20px;
 }
 
-.dates {
+.cardContent .dates {
   padding-top: 5px;
   display: flex;
   justify-content: center;

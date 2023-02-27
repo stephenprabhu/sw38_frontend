@@ -60,13 +60,14 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
     e.preventDefault();
     setLoading(true);
     let newAmount = amount.replace(/,/g, '')
-  if (!invoiceFile) {
+    if (!invoiceFile) {
       setErrorModal(true)
       setErrorMessage('Nhấn vào đây để tải lên hình ảnh hóa đơn')
     } else if (invoiceFile && newAmount && selectedBank) {
       const x = await APIMakeDepositRequest(newAmount, selectedBank.id, invoiceFile);
       if (!x) {
         setErrorModal(true)
+        // fix the error of API
         setErrorMessage("Số điện thoại hoặc mật khẩu không trùng khớp. Vui lòng kiểm tra lại.");
       } else {
         navigate('/transections')
@@ -138,11 +139,9 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
 }
 
 const CopyItemComponent = ({ item }) => {
-
   const onCopyClicked = () => {
     navigator.clipboard.writeText(item.value);
   }
-
   return (
     <div className={styles.bankDetailItem}>
       <div>
