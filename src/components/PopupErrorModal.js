@@ -14,7 +14,7 @@ const PopupErrorModal = ({ message, show, hideModal, error = true }) => {
       aria-describedby="modal-modal-description"
     >
       <div className={styles.loadingSection}>
-        {error ? <FcCancel size={40} /> : <SlInfo size={40} style={{color:"green"}} />}
+        {error ? <FcCancel size={40} style={{ paddingBottom: '10px' }} /> : <SlInfo size={38} style={{ color: "green", paddingBottom: '10px' }} />}
         <div style={{ color: "white" }}>{message}</div>
       </div>
     </Modal>

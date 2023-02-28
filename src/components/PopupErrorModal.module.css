@@ -1,37 +1,35 @@
 .loadingSection {
-    background-color: #304063;
-    position: absolute;
-    top: 50%;
-    left: 38%;
-    width: 400px;
-    text-align: center;
-    padding: 15px;
-    border: 1px solid white;
-    margin: 10px;
-    border-radius: 10px;
-}
-
-
-
-@media only screen and (max-width: 900px) {
-    .loadingSection {
-        background-color: #304063;
-        position: absolute;
-        top: 40%;
-        left: 5%;
-        width: 80%;
-    }
+  background-color: #304063;
+  position: absolute;
+  top: 50%;
+  left: 38%;
+  width: 400px;
+  text-align: center;
+  padding: 15px;
+  border: 1px solid white;
+  margin: 10px;
+  border-radius: 10px;
 }
 
 a.myLink {
-    background: linear-gradient(55deg, #E94C00 15%, #FFC9A0 37%, #E94C00 40%) center right / 300% 100% no-repeat;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-size: 0.7em;
-    margin-top: 20px;
-    display: block;
-    font-weight: 600;
-    font-size: 1em;
+  background: linear-gradient(55deg, #E94C00 15%, #FFC9A0 37%, #E94C00 40%) center right / 300% 100% no-repeat;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 0.7em;
+  margin-top: 20px;
+  display: block;
+  font-weight: 600;
+  font-size: 1em;
+}
+
+@media only screen and (max-width: 900px) {
+  .loadingSection {
+    background-color: #304063;
+    position: absolute;
+    top: 40%;
+    left: 5%;
+    width: 80%;
+  }
 }

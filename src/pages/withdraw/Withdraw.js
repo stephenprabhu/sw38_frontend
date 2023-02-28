@@ -8,7 +8,7 @@ import { WithdrawAPI } from '../../helpers/APIs/WithdrawAPI'
 import UserContext from '../../helpers/Context/user-context'
 import styles from './Withdraw.module.css'
 import CircularProgress from '@mui/material/CircularProgress';
-import { CiEdit, CiTrash } from 'react-icons/ci'
+// import { CiEdit, CiTrash } from 'react-icons/ci'
 
 const Withdraw = () => {
   const [banks, setBanks] = useState()
@@ -75,16 +75,16 @@ const Withdraw = () => {
   }
 
   // delete user Bank
-  const deleteBank = async (deleteId) => {
-    const deleteBankAPI = await axios.delete('https://bo.ssv388.info/api/bank/delete_user_bank/' + deleteId, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('auth_token')}`
-      }
-    })
-    if (deleteBankAPI.data == 1) {
-      setBanks(banks.filter((bnk) => bnk.id !== deleteId))
-    }
-  }
+  // const deleteBank = async (deleteId) => {
+  //   const deleteBankAPI = await axios.delete('https://bo.ssv388.info/api/bank/delete_user_bank/' + deleteId, {
+  //     headers: {
+  //       Authorization: `Bearer ${localStorage.getItem('auth_token')}`
+  //     }
+  //   })
+  //   if (deleteBankAPI.data == 1) {
+  //     setBanks(banks.filter((bnk) => bnk.id !== deleteId))
+  //   }
+  // }
 
   return (
     <form className={styles.layout} onSubmit={submitwithdraw}>
@@ -107,7 +107,7 @@ const Withdraw = () => {
                       </div>
                     </div>
                   </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 2 }}>
+                  {/*<div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 2 }}>
                     <Link to={`/add-account/${bank.id}`}>
                       <IconButton size='small'>
                         <CiEdit size={20} color='green' />
@@ -116,7 +116,7 @@ const Withdraw = () => {
                     <IconButton size='small'>
                       <CiTrash size={20} color='red' onClick={() => deleteBank(bank.id)} style={{ cursor: 'pointer' }} />
                     </IconButton>
-                  </div>
+              </div>*/}
                 </div>
               )
             })}

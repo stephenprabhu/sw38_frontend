@@ -52,7 +52,7 @@ const Promotions = () => {
           ))}
         </div>
       </div>
-      <PopupErrorModal show={loginModal} hideModal={() => setLoginModal(false)} message={<LoginMsg />} />
+      <PopupErrorModal show={loginModal} hideModal={() => setLoginModal(false)} message={<LoginMsg />} error={false} />
       <BottomMenu />
     </div>
   )

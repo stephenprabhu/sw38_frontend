@@ -65,10 +65,12 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
       setErrorMessage('Nhấn vào đây để tải lên hình ảnh hóa đơn')
     } else if (invoiceFile && newAmount && selectedBank) {
       const x = await APIMakeDepositRequest(newAmount, selectedBank.id, invoiceFile);
-      console.log(x);
-      if (!x) {
+      if (x === 'ERR_FILE_FORMAT_INVALID') {
         setErrorModal(true)
-        // fix the error of API
+        setErrorMessage("Định dạng ảnh không phù hợp. Vui lòng liên CSKH để được hỗ trợ");
+      } else if (!x) {
+        setErrorModal(true)
+        // fix the server error API
         setErrorMessage("Số điện thoại hoặc mật khẩu không trùng khớp. Vui lòng kiểm tra lại.");
       } else {
         navigate('/transections')
