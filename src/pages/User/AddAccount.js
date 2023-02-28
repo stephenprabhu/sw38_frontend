@@ -4,15 +4,17 @@ import vietnamBankArray from '../../data/vn-banks'
 import styles from "./AddAccount.module.css"
 import { CiCreditCard1 } from "react-icons/ci";
 import { AddAccountAPI } from '../../helpers/APIs/AddAccountAPI';
-import { EditAccount } from '../../helpers/APIs/EditAccount';
+// import { EditAccount } from '../../helpers/APIs/EditAccount';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
+import { bankListAPI } from '../../helpers/APIs/WithdrawAPI';
 
 const AddAccount = () => {
   const [bankName, setBankName] = useState(vietnamBankArray[0]);
   const [accNumber, setAccNumber] = useState('')
   const [userName, setUserName] = useState('')
-  const [editBank, setEditBank] = useState()
+  const [bankExist, setBankExist] = useState(false)
+  // const [editBank, setEditBank] = useState()
 
   const navigate = useNavigate()
   const param = useParams();
@@ -21,57 +23,48 @@ const AddAccount = () => {
     // if (param.id) {
     //   bankEditAPI(param.id)
     // }
-    // const userBankNameAPI = async (id) => {
-    //   const res = await axios.get('https://bo.ssv388.info/api/bank/user_bank/', {
-    //     headers: {
-    //       Authorization: `Bearer ${localStorage.getItem('auth_token')}`
-    //     }
-    //   });
-    //   console.log(res)
-    //   // setEditBank(res.data)
-    //   // setUserName(res.data.User_name)
-    //   // setAccNumber(res.data.account_number)
-    //   // setBankName(vietnamBankArray.filter((accName) => accName === res.data.bank_name))
-    // }
-    // userBankNameAPI()
-
-    // setUserName('mybankname')
-    // userName ? '' : 
-
+    const bankList = async () => {
+      const allBanks = await bankListAPI()
+      if (allBanks && allBanks.length) {
+        setUserName(allBanks[0].User_name)
+        setBankExist(true)
+      }
+    }
+    bankList()
   }, [])
 
   // edit bank API
-  const bankEditAPI = async (id) => {
-    const res = await axios.get('https://bo.ssv388.info/api/bank/user_bank/' + id, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('auth_token')}`
-      }
-    });
-    setEditBank(res.data)
-    setUserName(res.data.User_name)
-    setAccNumber(res.data.account_number)
-    setBankName(vietnamBankArray.filter((accName) => accName === res.data.bank_name))
-  }
+  // const bankEditAPI = async (id) => {
+  //   const res = await axios.get('https://bo.ssv388.info/api/bank/user_bank/' + id, {
+  //     headers: {
+  //       Authorization: `Bearer ${localStorage.getItem('auth_token')}`
+  //     }
+  //   });
+  //   setEditBank(res.data)
+  //   setUserName(res.data.User_name)
+  //   setAccNumber(res.data.account_number)
+  //   setBankName(vietnamBankArray.filter((accName) => accName === res.data.bank_name))
+  // }
 
   // submit func
   const addAccount = async (e) => {
     e.preventDefault()
     if (bankName && accNumber && userName) {
-      if (editBank) {
-        const x = await EditAccount(bankName, accNumber, userName, param.id);
-        console.log('API response:', x)
-        if (x.status) {
-          navigate('/withdraw')
-        }
+      // if (editBank) {
+      //   const x = await EditAccount(bankName, accNumber, userName, param.id);
+      //   console.log('API response:', x)
+      //   if (x.status) {
+      //     navigate('/withdraw')
+      //   }
+      // } else {
+      // add new Bank
+      const x = await AddAccountAPI(bankName, accNumber, userName);
+      if (x) {
+        navigate('/withdraw')
       } else {
-        // add new Bank
-        const x = await AddAccountAPI(bankName, accNumber, userName);
-        if (x) {
-          navigate('/withdraw')
-        } else {
-          console.log('API error')
-        }
+        console.log('API error')
       }
+
     }
   }
 
@@ -80,7 +73,7 @@ const AddAccount = () => {
       <InnerHeader title="Thêm tài khoản ngân hàng" />
       <div className={styles.layout}>
         <div className={styles.inputItem}>
-          <input className={styles.whiteInput} style={{ border: "none" }} placeholder="＊ Tên tài khoản" required value={userName} onChange={(e) => setUserName(e.target.value)} />
+          <input className={styles.whiteInput} style={{ border: "none" }} readOnly={bankExist} placeholder="＊ Tên tài khoản" required value={userName} onChange={(e) => setUserName(e.currentTarget.value)} />
         </div>
         <select className={styles.select} required value={bankName} onChange={(e) => setBankName(e.target.value)}>
           {vietnamBankArray.map((val, index) => <option key={index}>{val}</option>)}

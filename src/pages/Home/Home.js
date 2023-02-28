@@ -7,12 +7,12 @@ import { useContext, useEffect, useState } from "react";
 import UserContext from "../../helpers/Context/user-context";
 import CockFightBanner from "../../assets/sub-animal-sv.png"
 import styles from './Home.module.css'
-import CockFightBanner2 from "../../assets/cock-banner-2.jpeg"
-import axios from "axios";
+// import CockFightBanner2 from "../../assets/cock-banner-2.jpeg"
 import CoolAnimatedButton from "../../components/CoolAnimatedButton";
 import { MdOutlineContentCopy } from "react-icons/md";
 import CustomerSupportAnimatedItem from "../../components/CustomerSupportAnimatedItem";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import { APIUser } from "../../helpers/APIs/UserAPIs";
 
 
 const Home = () => {
@@ -23,17 +23,13 @@ const Home = () => {
   // Refresh page user credentials API call
   useEffect(() => {
     const userData = async () => {
-      const res = await axios.get("https://bo.ssv388.info/api/user", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('auth_token')}`
-        }
-      });
+      const userApiData = await APIUser()
       ctx.setUserInfo({
-        name: res.data.phone,
-        password: res.data.password,
+        name: userApiData && userApiData.phone,
+        password: userApiData && userApiData.password,
       });
     }
-    if (!userInfo) {
+    if (!userInfo && localStorage.getItem('auth_token')) {
       userData()
     }
   }, []);

@@ -31,7 +31,7 @@ export const APILoginUser = async (phone, password) => {
 }
 
 
-export const APICheckIfPhoneExists = async(phone)=> {
+export const APICheckIfPhoneExists = async (phone) => {
     try {
         const res = await axios.post('https://bo.ssv388.info/api/check_phone/' + phone);
         if (res.data && res.data.status) {
@@ -44,17 +44,31 @@ export const APICheckIfPhoneExists = async(phone)=> {
 }
 
 
-export const APIRegisterAgent = async(phone, password, bank_name, account_name, account_number) => {
+export const APIRegisterAgent = async (phone, password, bank_name, account_name, account_number) => {
     try {
-        const res = await axios.post("https://bo.ssv388.info/api/register_agent",{
+        const res = await axios.post("https://bo.ssv388.info/api/register_agent", {
             phone, password, bank_name, account_name, account_number
         });
         if (res.data && res.data.status) {
             return res.data.status;
         }
-    }catch(e){
+    } catch (e) {
         console.log(e);
-        
+
+    }
+    return null;
+}
+
+export const APIUser = async () => {
+    try {
+        const res = await axios.get("https://bo.ssv388.info/api/user", {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('auth_token')}`
+            }
+        });
+        return res.data
+    } catch (e) {
+        console.log(e);
     }
     return null;
 }

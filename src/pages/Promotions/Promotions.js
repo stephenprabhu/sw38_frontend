@@ -2,10 +2,10 @@ import styles from './Promotions.module.css';
 import BottomMenu from '../../components/BottomMenu';
 import Header from '../../components/Header';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import PopupErrorModal from '../../components/PopupErrorModal';
 import CustomerSupportAnimatedItem from '../../components/CustomerSupportAnimatedItem';
+import { promotionsAPI } from '../../helpers/APIs/PromotionsAPI';
 
 const Promotions = () => {
   const [promotionsList, setPromotionsList] = useState()
@@ -13,9 +13,7 @@ const Promotions = () => {
 
   useEffect(() => {
     const promotionsList = async () => {
-      const res = await axios.get('https://bo.ssv388.info/api/get_all_promotions', {
-        headers: { Authorization: `Bearer ${localStorage.getItem('auth_token')}` }
-      })
+      const res = await promotionsAPI()
       if (res.data.status) {
         setPromotionsList(res.data.response)
       }

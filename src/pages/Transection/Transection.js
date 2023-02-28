@@ -1,23 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../../components/Header'
 import BottomMenu from "../../components/BottomMenu";
-import axios from 'axios';
 import { Chip } from '@mui/material';
+import { allTransationsAPI } from '../../helpers/APIs/TransactionAPI';
 
 const Transection = () => {
   const [transections, setTransections] = useState()
 
   useEffect(() => {
     // All transections API
-    const transectiosAPI = async () => {
-      const res = await axios.get("https://bo.ssv388.info/api/account/user_transaction", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('auth_token')}`
-        }
-      });
-      setTransections(res.data.response && res.data.response)
+    const allTransations = async () => {
+      const res = await allTransationsAPI()
+      setTransections(res.response && res.response)
     }
-    transectiosAPI()
+    allTransations()
   }, [])
 
   return (
@@ -27,19 +23,23 @@ const Transection = () => {
         <h3 style={{ margin: '0px', color: 'white' }}>Giao Dịch</h3>
         {transections ?
           <table border={0} style={{ color: 'white' }} width="100%">
-            <tr>
-              <th style={{ paddingBottom: '10px' }}>Số Điểm Nạp</th>
-              <th style={{ paddingBottom: '10px' }}>Ngày</th>
-              <th style={{ paddingBottom: '10px' }}>Trạng thái</th>
-            </tr>
+            <thead>
+              <tr>
+                <th style={{ paddingBottom: '10px' }}>Số Điểm Nạp</th>
+                <th style={{ paddingBottom: '10px' }}>Ngày</th>
+                <th style={{ paddingBottom: '10px' }}>Trạng thái</th>
+              </tr>
+            </thead>
             {transections && transections.map((transection) => {
               return (
-                <tr key={transection.id}>
-                  <td>{transection.transaction_purpose == 'deposit' ? '+' : '-'}{transection.transaction_amount}</td>
-                  <td>{new Date(transection.created_at).toLocaleDateString("vi-VN")}</td>
-                  <td><Chip label={transection.is_approved === 0 ? 'Đang xử lý' : transection.is_approved === 1 ? 'Đã phê duyệt' : 'Từ chối'}
-                    sx={{ backgroundColor: transection.is_approved === 0 ? '#53a9a3' : transection.is_approved === 1 ? 'green' : '#ad2626', color: 'white' }} /></td>
-                </tr>
+                <tbody key={transection.id}>
+                  <tr>
+                    <td>{transection.transaction_purpose == 'deposit' ? '+' : '-'}{transection.transaction_amount}</td>
+                    <td>{new Date(transection.created_at).toLocaleDateString("vi-VN")}</td>
+                    <td><Chip label={transection.is_approved === 0 ? 'Đang xử lý' : transection.is_approved === 1 ? 'Đã phê duyệt' : 'Từ chối'}
+                      sx={{ backgroundColor: transection.is_approved === 0 ? '#53a9a3' : transection.is_approved === 1 ? 'green' : '#ad2626', color: 'white' }} /></td>
+                  </tr>
+                </tbody>
               )
             })}
           </table>

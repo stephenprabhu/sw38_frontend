@@ -4,7 +4,6 @@ import Modal from '@mui/material/Modal';
 import styles from "./PopupErrorModal.module.css";
 import { SlInfo } from "react-icons/sl";
 
-
 const PopupErrorModal = ({ message, show, hideModal, error = true }) => {
   return (
     <Modal

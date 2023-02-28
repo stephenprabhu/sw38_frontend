@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { APIMakeDepositRequest } from "../../helpers/APIs/TransactionAPI";
 import { useNavigate } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
-import axios from "axios";
 import { Box, Modal } from "@mui/material";
 import { AiOutlineClose } from "react-icons/ai";
 import PopupErrorModal from "../../components/PopupErrorModal";
+import { APIUser } from "../../helpers/APIs/UserAPIs";
 
 const style = {
   position: 'absolute',
@@ -29,14 +29,11 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
   const [loading, setLoading] = useState(false);
   const [userName, setUserName] = useState()
 
+  // user API
   useEffect(() => {
     const userData = async () => {
-      const userAPI = await axios.get('https://bo.ssv388.info/api/user', {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('auth_token')}`
-        }
-      })
-      setUserName(userAPI.data.phone)
+      const userAPI = await APIUser()
+      setUserName(userAPI.phone)
     }
     userData()
   }, [])

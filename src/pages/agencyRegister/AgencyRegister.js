@@ -122,7 +122,7 @@ const AgencyRegister = () => {
       <Header />
       <div style={{ flex: 1, overflow: "auto", paddingBottom: "30px" }}>
         <form className={styles.registerForm} onSubmit={registerUser}>
-          <h1 className={styles.title} onClick={() => navigate("/")}><IoArrowBack /> <span style={{ paddingLeft: "10px" }}>Đăng ký Đại lý</span></h1>
+          <h1 className={styles.title} onClick={() => navigate("/promotions")}><IoArrowBack /> <span style={{ paddingLeft: "10px" }}>Đăng ký Đại lý</span></h1>
           {errorMessage ? <span className={styles.error}>{errorMessage}</span> : ""}
           <div className={`${styles.formInput}`}>
             <span>Số điện thoại</span>

@@ -1,18 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Typography, IconButton } from '@mui/material'
-import axios from 'axios'
 import { BsPlus } from 'react-icons/bs'
 import { Link, useNavigate, } from 'react-router-dom'
 import InnerHeader from '../../components/InnerHeader'
-import { WithdrawAPI } from '../../helpers/APIs/WithdrawAPI'
+import { bankListAPI, WithdrawAPI } from '../../helpers/APIs/WithdrawAPI'
 import UserContext from '../../helpers/Context/user-context'
 import styles from './Withdraw.module.css'
 import CircularProgress from '@mui/material/CircularProgress';
 // import { CiEdit, CiTrash } from 'react-icons/ci'
+// import axios from 'axios'
 
 const Withdraw = () => {
   const [banks, setBanks] = useState()
-  const [userBalance, setUserBalance] = useState()
   const [bankId, setBankId] = useState()
   const [transactionAmount, setTransactionAmount] = useState('');
   const [bankAccountNumber, setBankAccountNumber] = useState(null)
@@ -20,55 +19,36 @@ const Withdraw = () => {
   const [loading, setLoading] = useState(false);
 
   const ctx = useContext(UserContext);
-  const token = localStorage.getItem('auth_token')
 
-  // bank list , user balance 
+  // user bank list
   useEffect(() => {
     // bank list API
-    const bankListAPI = async () => {
-      const res = await axios.get("https://bo.ssv388.info/api/bank/user_all", {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-      setBanks(res.data)
-      // default cheched
-      setBankId(res.data[0] ? res.data[0].id : null);
-      setBankAccountNumber(res.data[0] ? res.data[0].account_number : null);
+    const bankList = async () => {
+      const allBanks = await bankListAPI()
+      setBanks(allBanks)
+      setBankId(allBanks[0] ? allBanks[0].id : null);
+      setBankAccountNumber(allBanks[0] ? allBanks[0].account_number : null);
     }
-
-    // user balance API
-    const userBalance = async () => {
-      const res = await axios.get("https://bo.ssv388.info/api/user", {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-      setUserBalance(res.data.balance);
-    }
-    bankListAPI()
-    userBalance()
+    bankList()
   }, [])
 
   const navigate = useNavigate()
-
   // submitwithdraw
   const submitwithdraw = async (e) => {
     e.preventDefault();
     setLoading(true)
-    if (userBalance < 100 || userBalance < transactionAmount) {
-      setError('Số dư không đủ')
-    } else if (transactionAmount > 100000) {
-      setError('Vui lòng chọn dưới 100000')
+    if (transactionAmount > 100000) {
+      setError('Vui lòng chọn dưới 100,000')
     } else if (transactionAmount < 100) {
       setError('Vui lòng chọn trên 100')
     } else if (!bankId) {
       setError('Vui lòng thêm ngân hàng')
     } else if (bankId && transactionAmount) {
       const x = await WithdrawAPI(bankId, transactionAmount, bankAccountNumber);
-      console.log(x)
       if (x.status) {
         navigate('/transections')
+      } else if (x.message === 'not enough money') {
+        setError('Số dư không đủ')
       }
     }
     setLoading(false);
@@ -92,7 +72,7 @@ const Withdraw = () => {
       {ctx.user ? ctx.user.name : ""}
       <h4>Thẻ ngân hàng của tôi</h4>
       <div className={styles.section}>
-        {banks && banks.length &&
+        {banks && banks.length ? (
           <div className={styles.banksSection}>
             {banks && banks.map((bank) => {
               return (
@@ -120,7 +100,7 @@ const Withdraw = () => {
                 </div>
               )
             })}
-          </div>
+          </div>) : ''
         }
 
         <div className={styles.divider}>
@@ -135,7 +115,7 @@ const Withdraw = () => {
           </div> */}
           <div className={styles.inputItem}>
             <span>Số tiền</span>
-            <input className={styles.whiteInput} style={{ border: "none" }} placeholder="100 - 100,000" value={transactionAmount} onChange={(e) => setTransactionAmount(e.target.value)} required />
+            <input className={styles.whiteInput} style={{ border: "none" }} placeholder="100 - 100,000" value={transactionAmount} onChange={(e) => { setTransactionAmount(e.target.value); setError('') }} required />
           </div>
           {error && <Typography mt={2} color='red'>{error}</Typography>}
           {loading ? <CircularProgress style={{ marginTop: "20px" }} /> : ""}

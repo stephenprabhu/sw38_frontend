@@ -17,9 +17,8 @@ const HomeDrawerContent = ({ onClose }) => {
       </div>
       <div className={styles.menuSection}>
         <div className={styles.gpsButtonWrapper}>
-          <a className={styles.gpsButton} href='https://www.vn138e.com/sports'>Đá gà</a>
+          <a className={styles.gpsButton} target="_blank" href='https://www.vn138e.com/sports'>Đá gà</a>
         </div>
-        <span><Link to="/">Trang Chủ</Link></span>
         <span><a href="https://www.vn138e.com/live" target="_blank">Sòng bài</a></span>
         <span><a href='https://www.vn138e.com/sports' target="_blank">Thể Thao</a></span>
         <span><a href='https://www.vn138e.com/esports' target="_blank">Chơi Game</a></span>

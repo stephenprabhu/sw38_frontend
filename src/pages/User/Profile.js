@@ -1,20 +1,17 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import profilePage from '../../assets/0.png'
 import InnerHeader from '../../components/InnerHeader'
+import { APIUser } from '../../helpers/APIs/UserAPIs';
 import styles from './Profile.module.css';
 
 const Profile = () => {
   const [user, setUser] = useState()
+
   useEffect(() => {
     const userData = async () => {
-      const userAPI = await axios.get('https://bo.ssv388.info/api/user', {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('auth_token')}`
-        }
-      })
-      setUser(userAPI.data)
+      const userAPI = await APIUser()
+      setUser(userAPI)
     }
     userData()
   }, [])

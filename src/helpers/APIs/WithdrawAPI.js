@@ -23,3 +23,17 @@ export const WithdrawAPI = async (bank_id, transaction_amount, bank_account_numb
   return null;
 
 }
+
+export const bankListAPI = async () => {
+  try {
+    const res = await axios.get("https://bo.ssv388.info/api/bank/user_all", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('auth_token')}`
+      }
+    });
+    return res.data
+  } catch (e) {
+    console.log(e);
+  }
+  return null;
+}
