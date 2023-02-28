@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 // import styles from "../register/Register.module.css";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header";
-import { APICheckIfPhoneExists, APIRegisterAgent, APIRegisterUser } from "../../helpers/APIs/UserAPIs";
+import { APICheckIfPhoneExists, APIRegisterAgent } from "../../helpers/APIs/UserAPIs";
 import UserContext from "../../helpers/Context/user-context";
 import { useNavigate } from "react-router-dom";
 import BottomMenu from "../../components/BottomMenu";
