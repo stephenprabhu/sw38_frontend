@@ -34,6 +34,10 @@ const Register = () => {
 
   // check phone is exist or not 
   const checkPhone = async () => {
+    if(phone.length !== 10){
+      setPhoneValid(false);
+      
+    }
     const res = await axios.get('https://bo.ssv388.info/api/check_phone/' + phone)
     if (res.data.status) {
       setPhoneValid(2)
@@ -51,6 +55,7 @@ const Register = () => {
     }
 
     if (
+      phone && phone.length ===10 &&
       password && password.length >= 10 
       && checkIfHasUpperCaseChar(password) 
       && checkIfHasLowerCaseChar(password) 
@@ -138,6 +143,8 @@ const Register = () => {
               {phoneValid === 1 && phone.length === 10 ? <BsCheckLg color="green" size={20} /> : phone.length == 0 ? '' : phoneValid === 2 || phone.length < 10 ? <BsX size={30} onClick={() => setPhone('')} /> : ''}
             </div>
             {phone && !checkPhoneStart(phone) ? <span className={styles.error}>Sai quy cách SĐT</span> : ""}
+            {phone && phone.length !== 10 ? <span className={styles.error}>Vui lòng nhập 10 ký tự</span> : ""}
+
           </div>
           <div className={styles.formInput}>
             <span>Mật khẩu</span>

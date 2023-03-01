@@ -16,6 +16,7 @@
     width: 90%;
     margin: auto;
     text-align: left;
+    cursor: pointer;
     /* display: flex;
     gap: 5px;
     flex-direction: column; */

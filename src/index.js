@@ -5,15 +5,20 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import UserContext from './helpers/Context/user-context';
 import UserProvider from './helpers/Context/UserProvider';
+import {
+  BrowserRouter as Router,
+} from "react-router-dom";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <UserProvider>
-      <App />
-    </UserProvider>
-  </React.StrictMode>
-);
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(
+    <React.StrictMode>
+      <UserProvider>
+        <Router>
+          <App />
+        </Router>
+      </UserProvider>
+    </React.StrictMode>
+  );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

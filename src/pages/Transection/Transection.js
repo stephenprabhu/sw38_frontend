@@ -7,12 +7,18 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import { APIGetAllTransactions } from '../../helpers/APIs/TransactionAPI';
 import CircularProgress from '@mui/material/CircularProgress';
+import { addCommasToNumber } from '../../helpers/NumberHelper';
+import { useLocation } from 'react-router-dom';
+import styles from './Transection.module.css';
 
 const Transection = () => {
+  const { search } = useLocation();
+
   const [transections, setTransections] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedTransactions, setSelectedTransactions] = useState(false);
-  const [activeTab, setActiveTab] = useState("1");
+  const [activeTab, setActiveTab] = useState(search ? "2" : "1");
+
 
   useEffect(() => {
     transactionsAPI();
@@ -24,7 +30,7 @@ const Transection = () => {
     const res = await APIGetAllTransactions(localStorage.getItem('auth_token'));
     if (res) {
       setTransections(res);
-      setSelectedTransactions(res.filter(t => t.transaction_purpose === "deposit"))
+      setSelectedTransactions(res.filter(t => t.transaction_purpose ===  (search ? "withdraw" : "deposit")))
     }
     else {
       setTransections([]);
@@ -41,12 +47,13 @@ const Transection = () => {
     }
   }
 
+
   return (
     <div style={{ display: 'flex', height: '100vh', flexDirection: 'column', gap: 15 }}>
       <Header />
       <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', overflow: 'auto', gap: 15 }}>
         <h3 style={{ margin: '0px', color: 'white' }}>Giao Dịch</h3>
-        <Tabs value={activeTab} onChange={handleChange} aria-label="lab API tabs example">
+        <Tabs value={activeTab} onChange={handleChange} aria-label="lab API tabs example" className={styles.transTabs}>
           <Tab label="Nạp Tiền" value="1" />
           <Tab label="Rút Tiền" value="2" />
         </Tabs>
@@ -55,7 +62,7 @@ const Transection = () => {
             <table border={0} style={{ color: 'white' }} width="100%">
               <thead>
                 <tr>
-                  <th style={{ paddingBottom: '10px' }}>Số Điểm Nạp</th>
+                  <th style={{ paddingBottom: '10px' }}>{activeTab === "1" ? "Số Tiền Nạp" : "Số Tiền Rút" }</th>
                   <th style={{ paddingBottom: '10px' }}>Ngày</th>
                   <th style={{ paddingBottom: '10px' }}>Trạng thái</th>
                 </tr>
@@ -64,7 +71,7 @@ const Transection = () => {
                 return (
                   <tbody>
                     <tr key={transection.id}>
-                      <td>{transection.transaction_purpose == 'deposit' ? '+' : '-'}{transection.transaction_amount}</td>
+                      <td>{transection.transaction_purpose == 'deposit' ? '+' : '-'}{addCommasToNumber(transection.transaction_amount)}</td>
                       <td >{new Date(transection.created_at).toLocaleString("vi-VN")}</td>
                       <td><Chip label={transection.is_approved === 0 ? 'Đang xử lý' : transection.is_approved === 1 ? 'Đã phê duyệt' : 'Từ chối'}
                         sx={{ backgroundColor: transection.is_approved === 0 ? '#53a9a3' : transection.is_approved === 1 ? 'green' : '#ad2626', color: 'white' }} /></td>

@@ -5,41 +5,43 @@ import { APIGetCompanyBanks } from '../../helpers/APIs/BankAPIs';
 import UserContext from '../../helpers/Context/user-context';
 import { IconButton } from '@mui/material';
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import { addCommasToInput, addCommasToNumber } from '../../helpers/NumberHelper';
 
 const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setSelectedBank }) => {
 
-  const [companyBanks, setCompanyBanks] = useState([]);
-  const [errorMessage, setErrorMessage] = useState(null);
-  const ctx = useContext(UserContext);
+    const [companyBanks, setCompanyBanks] = useState([]);
+    const [errorMessage, setErrorMessage] = useState(null);
+    const ctx = useContext(UserContext);
+    const [stringAmount, setStringAmount] = useState(null);
+    useEffect(() => {
+      getCompanyBanks();
+    }, []); 
 
-  useEffect(() => {
-    getCompanyBanks();
-  }, [])
-
-  //  get company all bank list 
-  const getCompanyBanks = async () => {
-    const x = await APIGetCompanyBanks(ctx.user);
-    if (!x) {
-      setErrorMessage("Số điện thoại hoặc mật khẩu không trùng khớp. Vui lòng kiểm tra lại.");
-    } else {
-      if (x && x.length) {
-        setCompanyBanks(x);
-        setSelectedBank(x[0]);
+    //  get company all bank list 
+    const getCompanyBanks = async () => {
+      const x = await APIGetCompanyBanks(ctx.user);
+      if (!x) {
+        setErrorMessage("Số điện thoại hoặc mật khẩu không trùng khớp. Vui lòng kiểm tra lại.");
+      } else {
+        if (x && x.length) {
+          setCompanyBanks(x);
+          setSelectedBank(x[0]);
+        }
       }
     }
-  }
-  // formate
-  const formate = (x) => {
-    return (x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+
+  const onDepositAmountChange = val => {
+    setAmount(val.replace(/,/g, ''));
+    setStringAmount(addCommasToInput(val));
   }
 
 
-  const onContinueClicked = () => {
-    if(!amount || amount < 150000 || amount > 90000000 || !selectedBank){
-      return;
+    const onContinueClicked = () => {
+      if(!amount || amount < 150000 || amount > 90000000 || !selectedBank){
+        return;
+      }
+      onNextStepClicked();
     }
-    onNextStepClicked();
-  }
 
   return (
     <div className={styles.deposit1Wrapper}>
@@ -62,22 +64,22 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
           <span className={styles.label}>* Số tiền cần nạp ? (Tỷ lệ đổi: <span style={{ color: 'red', fontSize: '18px' }}>30,000 VNĐ = 1 điểm</span>)</span>
           <div className={styles.inputItem}>
             <i className={styles.adjornment}>₫</i>
-            <input value={amount} onChange={e => { setAmount(e.currentTarget.value) }} type="text" className={styles.whiteInput} style={{ border: "none" }} />
-            {amount && <IconButton size='small' sx={{ marginRight: '2px' }} onClick={() => setAmount('')}>{<AiOutlineCloseCircle />}</IconButton>}
+            <input value={stringAmount} onChange={e => { onDepositAmountChange(e.currentTarget.value) }} type="text" className={styles.whiteInput} style={{ border: "none" }} />
+            {amount && <IconButton size='small' sx={{ marginRight: '2px' }} onClick={() => {setAmount(""); setStringAmount("")}}>{<AiOutlineCloseCircle />}</IconButton>}
           </div>
           {/*amount error*/}
           {amount && amount < 150000 ? <p style={{ color: 'red', textAlign: 'center', fontSize: '0.85rem', margin: '10px' }}>Số tiền gửi tối thiểu từ 150,000 VNĐ trở lên</p> : ''}
           {amount && amount > 90000000 ? <p style={{ color: 'red', textAlign: 'center', fontSize: '0.85rem', margin: '10px' }}>Số tiền gửi vượt quá giới hạn 90 triệu VNĐ</p> : ''}
           {/*Points Buttons*/}
           {amount && <div className={styles.depositButtonSection}>
-            <button onClick={() => setAmount((amount + '00000').substring(0, 6))} className={styles.depositButton}>
-              {formate((amount + '00000').substring(0, 6))}
+            <button onClick={() => onDepositAmountChange((amount + '00000').substring(0, 6))} className={styles.depositButton}>
+              {addCommasToInput((amount + '00000').substring(0, 6))}
             </button>
-            <button onClick={() => setAmount((amount + '000000').substring(0, 7))} className={styles.depositButton}>
-              {formate((amount + '000000').substring(0, 7))}
+            <button onClick={() => onDepositAmountChange((amount + '000000').substring(0, 7))} className={styles.depositButton}>
+              {addCommasToInput((amount + '000000').substring(0, 7))}
             </button>
-            <button onClick={() => setAmount((amount + '0000000').substring(0, 8))} className={styles.depositButton}>
-              {formate((amount + '0000000').substring(0, 8))}
+            <button onClick={() => onDepositAmountChange((amount + '0000000').substring(0, 8))} className={styles.depositButton}>
+              {addCommasToInput((amount + '0000000').substring(0, 8))}
             </button>
           </div>}
           <div className={styles.maxMinWrapper}>
@@ -88,7 +90,7 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
         </div>
         {amount && <div className={styles.pointsCircleWraper}>
           <div className={styles.pointCircle}>
-            {formate(((amount.replace(/,/g, '')) / 30000).toFixed(2))} <br />
+            {addCommasToNumber(((amount.replace(/,/g, '')) / 30000).toFixed(2))} <br />
             <span style={{ paddingTop: '5px' }}>điểm</span>
           </div>
         </div>}

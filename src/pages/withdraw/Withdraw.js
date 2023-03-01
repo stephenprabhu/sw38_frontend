@@ -7,6 +7,7 @@ import { bankListAPI, WithdrawAPI } from '../../helpers/APIs/WithdrawAPI'
 import UserContext from '../../helpers/Context/user-context'
 import styles from './Withdraw.module.css'
 import CircularProgress from '@mui/material/CircularProgress';
+import { addCommasToInput } from '../../helpers/NumberHelper'
 // import { CiEdit, CiTrash } from 'react-icons/ci'
 // import axios from 'axios'
 
@@ -36,17 +37,18 @@ const Withdraw = () => {
   // submitwithdraw
   const submitwithdraw = async (e) => {
     e.preventDefault();
-    setLoading(true)
-    if (transactionAmount > 100000) {
-      setError('Vui lòng chọn dưới 100,000')
-    } else if (transactionAmount < 100) {
-      setError('Vui lòng chọn trên 100')
+    setLoading(true);
+    const intTransactionAmount =  transactionAmount.replace(/,/g, '');
+    if (intTransactionAmount > 100000000) {
+      setError('Vui lòng chọn dưới 100,000,000')
+    } else if (intTransactionAmount < 150000) {
+      setError('Vui lòng chọn trên 150000')
     } else if (!bankId) {
       setError('Vui lòng thêm ngân hàng')
-    } else if (bankId && transactionAmount) {
-      const x = await WithdrawAPI(bankId, transactionAmount, bankAccountNumber);
+    } else if (bankId && intTransactionAmount) {
+      const x = await WithdrawAPI(bankId, intTransactionAmount, bankAccountNumber);
       if (x.status) {
-        navigate('/transections')
+        navigate('/transections?tab=withdraw')
       } else if (x.message === 'not enough money') {
         setError('Số dư không đủ')
       }
@@ -54,17 +56,9 @@ const Withdraw = () => {
     setLoading(false);
   }
 
-  // delete user Bank
-  // const deleteBank = async (deleteId) => {
-  //   const deleteBankAPI = await axios.delete('https://bo.ssv388.info/api/bank/delete_user_bank/' + deleteId, {
-  //     headers: {
-  //       Authorization: `Bearer ${localStorage.getItem('auth_token')}`
-  //     }
-  //   })
-  //   if (deleteBankAPI.data == 1) {
-  //     setBanks(banks.filter((bnk) => bnk.id !== deleteId))
-  //   }
-  // }
+  const onWithdrawAmountChange = val => {
+    setTransactionAmount(addCommasToInput(val));
+  }
 
   return (
     <form className={styles.layout} onSubmit={submitwithdraw}>
@@ -76,9 +70,9 @@ const Withdraw = () => {
           <div className={styles.banksSection}>
             {banks && banks.map((bank) => {
               return (
-                <div style={{ display: 'flex', gap: 10, marginRight: '7px' }} key={bank.id}>
+                <div style={{ display: 'flex', gap: 10, marginRight: '7px' }} key={bank.id} onClick={()=> setBankId(bank.id)}>
                   <div style={{ display: 'flex', gap: '10px', marginBottom: '5px', flexGrow: 1 }}>
-                    <input type="radio" value={bank.id} checked={bankId === bank.id} onChange={() => setBankId(bank.id)} name={bankId} />
+                    <input type="radio" value={bank.id} checked={bankId === bank.id} name={bankId} />
                     <div className={styles.bankCard} >
                       <span>{bank.User_name}</span>
                       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '5px' }}>
@@ -87,16 +81,6 @@ const Withdraw = () => {
                       </div>
                     </div>
                   </div>
-                  {/*<div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 2 }}>
-                    <Link to={`/add-account/${bank.id}`}>
-                      <IconButton size='small'>
-                        <CiEdit size={20} color='green' />
-                      </IconButton>
-                    </Link>
-                    <IconButton size='small'>
-                      <CiTrash size={20} color='red' onClick={() => deleteBank(bank.id)} style={{ cursor: 'pointer' }} />
-                    </IconButton>
-              </div>*/}
                 </div>
               )
             })}
@@ -115,7 +99,13 @@ const Withdraw = () => {
           </div> */}
           <div className={styles.inputItem}>
             <span>Số tiền</span>
-            <input className={styles.whiteInput} style={{ border: "none" }} placeholder="100 - 100,000" value={transactionAmount} onChange={(e) => { setTransactionAmount(e.target.value); setError('') }} required />
+            <input 
+              className={styles.whiteInput} 
+              style={{ border: "none" }} 
+              placeholder="100K - 100M" 
+              value={transactionAmount} 
+              onChange={(e) => { onWithdrawAmountChange(e.target.value); setError('') }} 
+              required />
           </div>
           {error && <Typography mt={2} color='red'>{error}</Typography>}
           {loading ? <CircularProgress style={{ marginTop: "20px" }} /> : ""}
