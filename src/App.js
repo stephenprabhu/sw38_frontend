@@ -62,7 +62,6 @@ function App() {
           <Route path="/promotions" element={<Promotions />} />
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
-
         </Routes >
       </div>
     </Router>

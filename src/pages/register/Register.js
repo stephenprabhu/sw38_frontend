@@ -51,12 +51,12 @@ const Register = () => {
     }
 
     if (
-      password && password.length >= 10 
-      && checkIfHasUpperCaseChar(password) 
-      && checkIfHasLowerCaseChar(password) 
+      password && password.length >= 10
+      && checkIfHasUpperCaseChar(password)
+      && checkIfHasLowerCaseChar(password)
       && checkIfHasNumber(password) &&
       !checkIfHasSpecialChar(password) &&
-      password === passwordAgain 
+      password === passwordAgain
     ) {
       setLoading(true);
       setShowRegisterModal(true);
@@ -275,7 +275,7 @@ const Register = () => {
         </form>
 
         <div className={styles.loginSection}>
-          Bạn đã có tài khoản ? 
+          Bạn đã có tài khoản ?
           <Link to="/login" className={styles.loginLink}>
             Đăng Nhập
           </Link>
