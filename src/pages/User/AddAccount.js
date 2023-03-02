@@ -49,7 +49,7 @@ const AddAccount = () => {
   // submit func
   const addAccount = async (e) => {
     e.preventDefault()
-    if (bankName && accNumber && userName) {
+    if (bankName && accNumber && userName && checkIfOnlyCapital(userName)) {
       // if (editBank) {
       //   const x = await EditAccount(bankName, accNumber, userName, param.id);
       //   console.log('API response:', x)
@@ -64,16 +64,32 @@ const AddAccount = () => {
       } else {
         console.log('API error')
       }
-
     }
   }
+
+  const checkIfOnlyCapital = (value) => {
+    return /^[A-Z]*$/.test(value.replace(/\s+/g, ''));
+  }
+
+
+  
 
   return (
     <form onSubmit={addAccount}>
       <InnerHeader title="Thêm tài khoản ngân hàng" />
       <div className={styles.layout}>
-        <div className={styles.inputItem}>
-          <input className={styles.whiteInput} style={{ border: "none" }} readOnly={bankExist} placeholder="＊ Tên tài khoản" required value={userName} onChange={(e) => setUserName(e.currentTarget.value)} />
+        <span className={`${styles.helptext} ${checkIfOnlyCapital(userName) ? "": styles.danger}`}>Tên tài khoản viết IN HOA, không dấu, không có số.</span>
+        <div className={styles.inputItem} style={{marginTop:"5px"}}>
+          <input 
+            className={styles.whiteInput} 
+            style={{ border: "none" }}
+
+            readOnly={bankExist} 
+            placeholder="＊ Tên tài khoản" 
+            required 
+            value={userName} 
+            onChange={(e) => setUserName(e.currentTarget.value)} 
+          />
         </div>
         <select className={styles.select} required value={bankName} onChange={(e) => setBankName(e.target.value)}>
           {vietnamBankArray.map((val, index) => <option key={index}>{val}</option>)}

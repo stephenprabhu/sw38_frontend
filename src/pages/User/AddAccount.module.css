@@ -64,6 +64,19 @@
 }
 
 
+.helptext {
+    font-size: 0.8rem;
+    color: white;
+    text-align: left;
+    display: block;
+    margin-top: 5px;
+}
+
+.helptext.danger {
+    color:red;
+}
+
+
 .inputItem .whiteInput {
     width: 100%;
     height: 100%;

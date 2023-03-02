@@ -6,7 +6,6 @@ import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 
 import {
-  BrowserRouter as Router,
   Routes,
   Route,
 } from "react-router-dom";
@@ -47,7 +46,6 @@ function App() {
 
   return (
 
-    <Router>
       <div className="App">
         <Routes >
           <Route path="/register" element={<GuestRoute><Register /></GuestRoute>} />
@@ -64,7 +62,6 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes >
       </div>
-    </Router>
   );
 }
 

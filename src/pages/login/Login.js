@@ -17,20 +17,22 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
 
   const onSubmitHandler = async (e) => {
-    if (phone && phone.length === 10 && password) {
-      e.preventDefault();
-      const x = await APILoginUser(phone, password);
-      if (!x) {
-        setErrorMessage("Số điện thoại hoặc mật khẩu không trùng khớp. Vui lòng kiểm tra lại.");
-      } else {
-        localStorage.setItem('auth_token', x);
-        ctx.setUser(x);
-        ctx.setUserInfo({
-          name: phone,
-          password: password,
-        });
-        navigate("/");
-      }
+    e.preventDefault();
+    if (!phone || phone.length !== 10) {
+      setErrorMessage("phone must be 10 digits");
+      return;
+    }
+    const x = await APILoginUser(phone, password);
+    if (!x) {
+      setErrorMessage("Số điện thoại hoặc mật khẩu không trùng khớp. Vui lòng kiểm tra lại.");
+    } else {
+      localStorage.setItem('auth_token', x);
+      ctx.setUser(x);
+      ctx.setUserInfo({
+        name: phone,
+        password: password,
+      });
+      navigate("/");
     }
   }
 
@@ -55,7 +57,6 @@ const Login = () => {
 
         <div className={styles.loginSection}>
           Bạn chưa có tài khoản ? <Link to="/register" className={styles.loginLink}>Đăng ký</Link>
-
         </div>
       </div>
       <div>

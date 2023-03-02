@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import BannerImage from "../../assets/home_banner.png"
+import BannerImage from "../../assets/daga_sv388.jpg"
 import HomeImageMenu from '../../components/HomeImageMenu';
 import Header from "../../components/Header";
 import BottomMenu from "../../components/BottomMenu";
