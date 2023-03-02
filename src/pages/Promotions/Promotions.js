@@ -36,6 +36,7 @@ const Promotions = () => {
         </div>
         {/*cardSection*/}
         <div className={styles.cardSectionWrapper}>
+        <h3>KHUYẾN MÃI</h3>
           {promotionsList && promotionsList.map((promo) =>
           (<div className={styles.card} key={promo.id} onClick={() => window.open(promo.link)}>
             <img height="100px" width='100%' src={promo.image} alt={''} />
