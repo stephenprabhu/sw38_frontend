@@ -57,10 +57,7 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
     e.preventDefault();
     setLoading(true);
     let newAmount = amount.replace(/,/g, '')
-    if (!invoiceFile) {
-      setErrorModal(true)
-      setErrorMessage('Nhấn vào đây để tải lên hình ảnh hóa đơn')
-    } else if (invoiceFile && newAmount && selectedBank) {
+    if (newAmount && selectedBank) {
       const x = await APIMakeDepositRequest(newAmount, selectedBank.id, invoiceFile);
       if (x === 'ERR_FILE_FORMAT_INVALID') {
         setErrorModal(true)

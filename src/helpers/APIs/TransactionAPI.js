@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const APIMakeDepositRequest = async (amount, selected_bank_id, file) => {
   var formData = new FormData();
-  formData.append("deposit_receipt", file);
+  formData.append("deposit_receipt", file ? file : '');
   formData.append("transaction_amount", amount);
   formData.append("bank_id", selected_bank_id);
 

@@ -38,7 +38,7 @@ const Withdraw = () => {
   const submitwithdraw = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const intTransactionAmount =  transactionAmount.replace(/,/g, '');
+    const intTransactionAmount = transactionAmount.replace(/,/g, '');
     if (intTransactionAmount > 100000000) {
       setError('Vui lòng chọn dưới 100,000,000')
     } else if (intTransactionAmount < 150000) {
@@ -70,9 +70,9 @@ const Withdraw = () => {
           <div className={styles.banksSection}>
             {banks && banks.map((bank) => {
               return (
-                <div style={{ display: 'flex', gap: 10, marginRight: '7px' }} key={bank.id} onClick={()=> setBankId(bank.id)}>
+                <div style={{ display: 'flex', gap: 10, marginRight: '7px' }} key={bank.id} onClick={() => setBankId(bank.id)}>
                   <div style={{ display: 'flex', gap: '10px', marginBottom: '5px', flexGrow: 1 }}>
-                    <input type="radio" value={bank.id} checked={bankId === bank.id} name={bankId} />
+                    <input type="radio" value={bank.id} checked={bankId === bank.id} name={bankId} onChange={() => setBankId(bank.id)} />
                     <div className={styles.bankCard} >
                       <span>{bank.User_name}</span>
                       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '5px' }}>
@@ -99,12 +99,12 @@ const Withdraw = () => {
           </div> */}
           <div className={styles.inputItem}>
             <span>Số tiền</span>
-            <input 
-              className={styles.whiteInput} 
-              style={{ border: "none" }} 
-              placeholder="100K - 100M" 
-              value={transactionAmount} 
-              onChange={(e) => { onWithdrawAmountChange(e.target.value); setError('') }} 
+            <input
+              className={styles.whiteInput}
+              style={{ border: "none" }}
+              placeholder="100K - 100M"
+              value={transactionAmount}
+              onChange={(e) => { onWithdrawAmountChange(e.target.value); setError('') }}
               required />
           </div>
           {error && <Typography mt={2} color='red'>{error}</Typography>}

@@ -30,7 +30,7 @@ const Transection = () => {
     const res = await APIGetAllTransactions(localStorage.getItem('auth_token'));
     if (res) {
       setTransections(res);
-      setSelectedTransactions(res.filter(t => t.transaction_purpose ===  (search ? "withdraw" : "deposit")))
+      setSelectedTransactions(res.filter(t => t.transaction_purpose === (search ? "withdraw" : "deposit")))
     }
     else {
       setTransections([]);
@@ -62,15 +62,15 @@ const Transection = () => {
             <table border={0} style={{ color: 'white' }} width="100%">
               <thead>
                 <tr>
-                  <th style={{ paddingBottom: '10px' }}>{activeTab === "1" ? "Số Tiền Nạp" : "Số Tiền Rút" }</th>
+                  <th style={{ paddingBottom: '10px' }}>{activeTab === "1" ? "Số Tiền Nạp" : "Số Tiền Rút"}</th>
                   <th style={{ paddingBottom: '10px' }}>Ngày</th>
                   <th style={{ paddingBottom: '10px' }}>Trạng thái</th>
                 </tr>
               </thead>
               {selectedTransactions && selectedTransactions.map((transection) => {
                 return (
-                  <tbody>
-                    <tr key={transection.id}>
+                  <tbody key={transection.id}>
+                    <tr>
                       <td>{transection.transaction_purpose == 'deposit' ? '+' : '-'}{addCommasToNumber(transection.transaction_amount)}</td>
                       <td >{new Date(transection.created_at).toLocaleString("vi-VN")}</td>
                       <td><Chip label={transection.is_approved === 0 ? 'Đang xử lý' : transection.is_approved === 1 ? 'Đã phê duyệt' : 'Từ chối'}

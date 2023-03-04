@@ -9,16 +9,17 @@ import { addCommasToInput, addCommasToNumber } from '../../helpers/NumberHelper'
 
 const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setSelectedBank }) => {
 
-    const [companyBanks, setCompanyBanks] = useState([]);
-    const [errorMessage, setErrorMessage] = useState(null);
-    const ctx = useContext(UserContext);
-    const [stringAmount, setStringAmount] = useState(null);
-    useEffect(() => {
-      getCompanyBanks();
-    }, []); 
+  const [companyBanks, setCompanyBanks] = useState([]);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const ctx = useContext(UserContext);
+  const [stringAmount, setStringAmount] = useState('');
+  useEffect(() => {
+    getCompanyBanks();
+  }, []);
 
-    //  get company all bank list 
-    const getCompanyBanks = async () => {
+  //  get company all bank list 
+  const getCompanyBanks = async () => {
+    if (ctx.user) {
       const x = await APIGetCompanyBanks(ctx.user);
       if (!x) {
         setErrorMessage("Số điện thoại hoặc mật khẩu không trùng khớp. Vui lòng kiểm tra lại.");
@@ -29,6 +30,7 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
         }
       }
     }
+  }
 
   const onDepositAmountChange = val => {
     setAmount(val.replace(/,/g, ''));
@@ -36,12 +38,12 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
   }
 
 
-    const onContinueClicked = () => {
-      if(!amount || amount < 150000 || amount > 90000000 || !selectedBank){
-        return;
-      }
-      onNextStepClicked();
+  const onContinueClicked = () => {
+    if (!amount || amount < 150000 || amount > 90000000 || !selectedBank) {
+      return;
     }
+    onNextStepClicked();
+  }
 
   return (
     <div className={styles.deposit1Wrapper}>
@@ -65,7 +67,7 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
           <div className={styles.inputItem}>
             <i className={styles.adjornment}>₫</i>
             <input value={stringAmount} onChange={e => { onDepositAmountChange(e.currentTarget.value) }} type="text" className={styles.whiteInput} style={{ border: "none" }} />
-            {amount && <IconButton size='small' sx={{ marginRight: '2px' }} onClick={() => {setAmount(""); setStringAmount("")}}>{<AiOutlineCloseCircle />}</IconButton>}
+            {amount && <IconButton size='small' sx={{ marginRight: '2px' }} onClick={() => { setAmount(""); setStringAmount("") }}>{<AiOutlineCloseCircle />}</IconButton>}
           </div>
           {/*amount error*/}
           {amount && amount < 150000 ? <p style={{ color: 'red', textAlign: 'center', fontSize: '0.85rem', margin: '10px' }}>Số tiền gửi tối thiểu từ 150,000 VNĐ trở lên</p> : ''}
@@ -99,8 +101,8 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
         <button
           className={`${styles.submitButton} ${!amount || amount < 150000 || amount > 90000000 ? styles.disabled : ""}`}
           onClick={onContinueClicked}
-          // onClick={() => console.log(amount)}
-          >
+        // onClick={() => console.log(amount)}
+        >
           Tiếp theo
         </button>
       </div>
