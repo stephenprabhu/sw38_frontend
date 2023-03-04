@@ -46,22 +46,22 @@ function App() {
 
   return (
 
-      <div className="App">
-        <Routes >
-          <Route path="/register" element={<GuestRoute><Register /></GuestRoute>} />
-          <Route path="/agent/register" element={<AgencyRegister />} />
-          <Route path="/login" element={<GuestRoute><Login /></GuestRoute>} />
-          <Route path="/deposit" element={<AuthRoute><Deposit /></AuthRoute>} />
-          <Route path="/withdraw" element={<AuthRoute ><Withdraw /></AuthRoute>} />
-          <Route path="/member" element={<AuthRoute><Profile /></AuthRoute>} />
-          <Route path="/add-account" element={<AuthRoute ><AddAccount /></AuthRoute>} />
-          <Route path="/add-account/:id" element={<AuthRoute ><AddAccount /></AuthRoute>} />
-          <Route path="/transections" element={<AuthRoute ><Transection /></AuthRoute>} />
-          <Route path="/promotions" element={<Promotions />} />
-          <Route path="/" element={<Home />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes >
-      </div>
+    <div className="App">
+      <Routes >
+        <Route path="/register" element={<GuestRoute><Register /></GuestRoute>} />
+        <Route path="/agent/register" element={<AgencyRegister />} />
+        <Route path="/login" element={<GuestRoute><Login /></GuestRoute>} />
+        <Route path="/deposit" element={<AuthRoute><Deposit /></AuthRoute>} />
+        <Route path="/withdraw" element={<AuthRoute ><Withdraw /></AuthRoute>} />
+        <Route path="/member" element={<AuthRoute><Profile /></AuthRoute>} />
+        <Route path="/add-account" element={<AuthRoute ><AddAccount /></AuthRoute>} />
+        <Route path="/add-account/:id" element={<AuthRoute ><AddAccount /></AuthRoute>} />
+        <Route path="/transections" element={<AuthRoute ><Transection /></AuthRoute>} />
+        <Route path="/promotions" element={<Promotions />} />
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes >
+    </div>
   );
 }
 
