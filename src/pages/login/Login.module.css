@@ -1,36 +1,67 @@
-.registerForm {
+.loginOverlay {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.loginContentWrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 0;
+    overflow: auto;
+}
+
+.titleWrapper {
+    color: #F7DB89;
+    display: flex;
     justify-content: center;
-    width: 70%;
-    margin: auto;
-    max-width: 70%;
+    align-items: center;
+    gap: 10px;
+    padding: 30px 0px;
 }
 
-.title {
-    color: white
+.titleWrapper h3 {
+    margin: 0;
 }
 
-.inputPhone {
-    font-size: 1rem;
-    color: #fff;
-    border-radius: 0.03rem;
-    padding: 10px ;
-    border: 1px solid #424a62;
-    background-color: #304063;
-    overflow: hidden;
-    max-width: 95%;
+.formOverlay {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 35px;
+    justify-content: center;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    background: #263351 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 10px #19253F;
+    border-radius: 13px;
+    padding: 25px 20px;
+}
+
+.error {
+    color: rgb(236, 72, 72);
+    font-size: 0.8rem;
+    margin-top: 10px;
 }
 
 .formInput {
     text-align: left;
     color: white;
     padding: 10px 0;
-    max-width: 100%;
 }
 
 .formInput input {
-    width: 100%;
+    width: 95%;
+    padding-left: 0px;
+}
+
+.formInput input:focus {
+    outline: none;
 }
 
 .formInput span {
@@ -38,53 +69,53 @@
     margin-bottom: 10px;
 }
 
-
-.inputPhone::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #566080;
-    opacity: 1; /* Firefox */
-}
-  
-.inputPhone:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: #566080;
-  }
-  
-.inputPhone::-ms-input-placeholder { /* Microsoft Edge */
-    color: #566080;
-}
-
-
-.registerButton {
-    margin-top: 0.4rem;
+.inputPhone {
+    font-size: 1rem;
+    color: #F7DB89;
     border-radius: 0.03rem;
+    padding: 10px;
     border: none;
-    background-image: linear-gradient(180deg,#fff,#f8fcfd 58%,#cdd2d8 83%,#d5d9dc);
+    border-bottom: 1px solid #F7DB89;
+    background-color: transparent;
+    overflow: hidden;
+}
+
+.passwordEye {
+    position: absolute;
+    right: 0;
+    bottom: 8px;
+    color: #F7DB89;
+}
+
+.inputPhone::placeholder {
+    color: #F7DB89;
+    opacity: 30%;
+}
+
+.loginButton {
+    margin-top: 0.4rem;
     font-size: 1rem;
     font-weight: 700;
-    padding: 15px 10px;
-    text-align: center;
+    padding: 10px 0px;
     color: #202c46;
-    border-radius: 0.03rem;
-
+    background: transparent linear-gradient(180deg, #F6D984 0%, #DFB847 100%) 0% 0% no-repeat padding-box;
+    box-shadow: inset 0px 4px 12px #141E331A;
+    border: 3px solid #19253F;
+    border-radius: 35px;
+    cursor: pointer;
 }
 
 .loading {
-    background-image: linear-gradient(180deg,#9a9a9a,#a2a2a2 58%,#909090 83%,#d5d9dc);
-
+    background-image: linear-gradient(180deg, #9a9a9a, #a2a2a2 58%, #909090 83%, #d5d9dc);
 }
 
 .loginSection {
-    color: white;
-    margin-top: 15px;
+    color: #F7DB89;
+    margin-top: 17px;
 }
 
 .loginLink {
     margin-left: 0.4rem;
     color: #ffd08a;
     text-decoration: underline;
-}
-
-.error {
-    color: rgb(236, 72, 72);
-    font-size: 0.8rem;
-    margin-top: 10px;
 }

@@ -1,25 +1,51 @@
+.registerOverlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.registerWrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.titleWrapper {
+    color: #F7DB89;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 0px;
+}
+
+.titleWrapper h3 {
+    margin: 0;
+}
+
+.formOverlay {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 35px;
+    flex-basis: 0;
+    overflow: auto;
+}
+
 .registerForm {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    width: 70%;
-    margin: auto;
-    max-width: 70%;
+    background: #263351 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 10px #19253F;
+    border-radius: 13px;
+    padding: 25px 20px;
 }
 
-.title {
-    color: white
-}
-
-.inputPhone {
-    font-size: 1rem;
-    color: #fff;
-    border-radius: 0.03rem;
-    padding: 10px;
-    border: 1px solid #424a62;
-    background-color: #304063;
-    overflow: hidden;
-    max-width: 95%;
+.error {
+    color: rgb(236, 72, 72);
+    font-size: 0.8rem;
+    margin-top: 5px;
 }
 
 .formInput {
@@ -32,12 +58,13 @@
 .formInput input {
     border: 0px;
     width: 100%;
+    padding-left: 0px;
 }
 
 .formInput input:focus,
 .formInput input:active,
 .formInput input:focus-within {
-    border: 0px;
+    border: none;
     outline: none;
 }
 
@@ -46,55 +73,60 @@
     margin-bottom: 10px;
 }
 
+.inputPasswordArea {
+    display: flex;
+    border-bottom: 1px solid #F7DB89;
+    background-color: transparent;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.successPhoneNumber {
+    border: 1px solid rgb(25, 155, 86);
+    outline-color: red;
+    background-color: #304063;
+}
+
+.errorPhoneNumber {
+    border: 1px solid red;
+    outline-color: red;
+    background-color: #304063;
+}
+
+.inputPhone {
+    font-size: 1rem;
+    color: #F7DB89;
+    border-radius: 0.03rem;
+    padding: 10px;
+    background-color: transparent;
+}
 
 .inputPhone::placeholder {
-    /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #566080;
-    opacity: 1;
-    /* Firefox */
+    color: #F7DB89;
+    opacity: 0.3;
 }
 
-.inputPhone:-ms-input-placeholder {
-    /* Internet Explorer 10-11 */
-    color: #566080;
-}
-
-.inputPhone::-ms-input-placeholder {
-    /* Microsoft Edge */
-    color: #566080;
-}
-
-
-.registerButton {
-    margin-top: 0.4rem;
-    border-radius: 0.03rem;
-    border: none;
-    background-image: linear-gradient(180deg, #fff, #f8fcfd 58%, #cdd2d8 83%, #d5d9dc);
+.inputPassword {
     font-size: 1rem;
-    font-weight: 700;
-    padding: 15px 10px;
-    text-align: center;
-    color: #202c46;
+    color: #F7DB89;
     border-radius: 0.03rem;
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+    overflow: hidden;
+    max-width: 95%;
 }
 
-.iconsStyle {
-    display: 'flex';
-    align-items: 'center';
-    gap: 5;
+.inputPassword:active,
+.inputPassword:focus-visible {
+    border: none;
+    outline: none;
 }
 
-.loading {
-    background-image: linear-gradient(180deg, #9a9a9a, #a2a2a2 58%, #909090 83%, #d5d9dc);
-
+.passwordEye {
+    cursor: pointer;
+    color: #F7DB89;
 }
-
-.error {
-    color: rgb(236, 72, 72);
-    font-size: 0.8rem;
-    margin-top: 5px;
-}
-
 
 .success {
     color: #8ee18e;
@@ -102,14 +134,22 @@
     margin-top: 5px;
 }
 
+.registerButton {
+    margin-top: 0.4rem;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 10px 0px;
+    color: #202c46;
+    background: transparent linear-gradient(180deg, #F6D984 0%, #DFB847 100%) 0% 0% no-repeat padding-box;
+    box-shadow: inset 0px 4px 12px #141E331A;
+    border: 3px solid #19253F;
+    border-radius: 35px;
+    cursor: pointer;
+}
 
+.loading {
+    background-image: linear-gradient(180deg, #9a9a9a, #a2a2a2 58%, #909090 83%, #d5d9dc);
 
-.captchaImage {
-    position: absolute;
-    right: 0.1rem;
-    top: 0.11rem;
-    display: block;
-    height: 0.6rem;
 }
 
 .loginSection {
@@ -123,76 +163,71 @@
     text-decoration: underline;
 }
 
+@media only screen and (max-width: 360px) {
+    .formOverlay {
+        padding: 0px 10px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .iconsStyle {
+    display: 'flex';
+    align-items: 'center';
+    gap: 5;
+} */
+
+/* .captchaImage {
+    position: absolute;
+    right: 0.1rem;
+    top: 0.11rem;
+    display: block;
+    height: 0.6rem;
+} */
 
 /* Chrome, Safari, Edge, Opera */
-.inputPhone::-webkit-outer-spin-button,
+/* .inputPhone::-webkit-outer-spin-button,
 .inputPhone::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-}
+} */
 
 /* Firefox */
-input[type=number] {
+/* input[type=number] {
     -moz-appearance: textfield;
-}
+} */
 
-
-
-.loadingSection {
+/* .loadingSection {
     text-align: center;
     padding: 10px;
     border: 1px solid white;
     margin: 10px;
     border-radius: 10px;
-}
+} */
 
-.inputPasswordArea {
-    display: flex;
-    border: 1px solid #424a62;
-    background-color: #304063;
-    align-items: center;
-    padding-right: 10px;
-}
-
-.inputPassword {
-    font-size: 1rem;
-    color: #fff;
-    border-radius: 0.03rem;
-    padding: 10px;
-    border: none;
-    background-color: #304063;
-    overflow: hidden;
-    max-width: 95%;
-}
-
-
-.inputPassword:active,
-.inputPassword:focus-visible {
-    border: none;
-    outline: none;
-}
-
-
-.passwordEye {
-    cursor: pointer;
-}
-
+/* 
 .loadingSection {
     background-color: #304063;
     position: absolute;
     top: 50%;
     left: 38%;
     width: 400px;
-}
+} */
 
-.loadingSection h3 span {
+/* .loadingSection h3 span {
     font-size: 1.5rem;
     color: #e94c00;
-    /* border: 1px solid white;
-    padding: 10px;
-    border-radius: 50%; */
 }
-
 
 .loadingSection .loadingHeading {
     font-size: 0.9rem;
@@ -206,32 +241,16 @@ input[type=number] {
 .loadingSection .failedError {
     font-size: 1.1em;
     display: block;
-}
+} */
 
-
-.errorPhoneNumber {
-    border: 1px solid red;
-    outline-color: red;
-    background-color: #304063;
-}
-
-.successPhoneNumber {
-    border: 1px solid rgb(25, 155, 86);
-    outline-color: red;
-    background-color: #304063;
-}
-
-
-
-
-.errorModal {
+/* .errorModal {
     color: white;
     background-color: #304063;
 
-}
+} */
 
 
-@media only screen and (max-width: 900px) {
+/* @media only screen and (max-width: 900px) {
     .loadingSection {
         background-color: #304063;
         position: absolute;
@@ -239,4 +258,4 @@ input[type=number] {
         left: 5%;
         width: 80%;
     }
-}
+} */

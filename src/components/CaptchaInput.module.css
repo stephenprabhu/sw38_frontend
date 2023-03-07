@@ -1,26 +1,29 @@
 .formInput {
-    text-align: left;
-    color: white;
-    padding: 10px 0;
-    max-width: 100%;
+  text-align: left;
+  color: white;
+  padding: 10px 0;
+  max-width: 100%;
 }
 
 .formInput input {
-    width: 100%;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #F7DB89;
+}
+
+.formInput input:focus {
+  outline: none;
 }
 
 .formInput span {
-    display: block;
-    margin-bottom: 10px;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .inputPhone {
-    font-size: 1rem;
-    color: #fff;
-    border-radius: 0.03rem;
-    padding: 10px;
-    border: 1px solid #424a62;
-    background-color: #304063;
-    overflow: hidden;
-    max-width: 95%;
+  font-size: 1rem;
+  color: #F7DB89;
+  background-color: transparent;
+  overflow: hidden;
+  max-width: 95%;
 }

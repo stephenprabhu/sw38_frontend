@@ -1,48 +1,59 @@
-.select {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    font-family: 'Be Vietnam Pro', sans-serif;
-    margin-top: 5px;
-    background-color: #304063;
-    color: white;
-    margin-bottom: 10px;
-    width: 100%;
+.registerOverlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.registerWrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 0;
+    overflow: auto;
+}
+
+.titleWrapper {
+    color: #F7DB89;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 0px;
+}
+
+.titleWrapper h3 {
+    margin: 0;
+}
+
+.formOverlay {
+    width: 90%;
+    margin: 10px auto;
 }
 
 .registerForm {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 70%;
-    margin: auto;
-    max-width: 70%;
-}
-
-.title {
-    color: white;
     display: flex;
-    align-items: center;
-    width: 100%;
-    cursor: pointer;
+    flex-direction: column;
+    background: #263351 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 10px #19253F;
+    border-radius: 13px;
+    padding: 10px 20px;
+    padding-bottom: 30px;
 }
 
-.label {
-    color: white;
-    display: block;
-    text-align: left;
-    margin-bottom: 5px;
+.error {
+    color: rgb(236, 72, 72);
+    font-size: 0.8rem;
+    margin-top: 5px;
 }
 
-.inputPhone {
-    font-size: 1rem;
-    color: #fff;
-    border-radius: 0.03rem;
-    padding: 10px;
-    border: 1px solid #424a62;
-    background-color: #304063;
-    overflow: hidden;
-    max-width: 95%;
+.success {
+    color: #8ee18e;
+    font-size: 0.8rem;
+    margin-top: 5px;
 }
 
 .formInput {
@@ -61,63 +72,148 @@
     margin-bottom: 10px;
 }
 
+.inputPasswordArea {
+    display: flex;
+    background-color: transparent;
+    align-items: center;
+    border-bottom: 1px solid #F7DB89;
+}
+
+.successPhoneNumber {
+    border-bottom: 1px solid rgb(25, 155, 86);
+}
+
+.errorPhoneNumber {
+    border-bottom: 1px solid red;
+}
+
+.inputPhone {
+    font-size: 1rem;
+    color: #F7DB89;
+    border-radius: 0.03rem;
+    padding: 10px;
+    padding-left: 0px;
+    border: none;
+    background-color: transparent;
+    overflow: hidden;
+}
+
+
+.inputPhone.error {
+    border-bottom: 1px solid red;
+
+}
+
+.inputPhone:focus {
+    outline: none;
+}
 
 .inputPhone::placeholder {
-    /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #566080;
-    opacity: 1;
-    /* Firefox */
+    color: #F7DB89;
+    opacity: 0.3;
 }
 
-.inputPhone:-ms-input-placeholder {
-    /* Internet Explorer 10-11 */
-    color: #566080;
+.passwordEye {
+    cursor: pointer;
+    color: #F7DB89;
 }
 
-.inputPhone::-ms-input-placeholder {
-    /* Microsoft Edge */
-    color: #566080;
+.inputPassword {
+    font-size: 1rem;
+    color: #F7DB89;
+    border-radius: 0.03rem;
+    padding: 10px;
+    padding-left: 0px;
+    border: none;
+    background-color: transparent;
+    overflow: hidden;
+    max-width: 95%;
 }
 
+.inputPassword:active,
+.inputPassword:focus-visible {
+    border: none;
+    outline: none;
+}
+
+.label {
+    color: white;
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.select {
+    padding: 10px;
+    padding-left: 0px;
+    border: none;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    margin-top: 5px;
+    background-color: transparent;
+    color: #F7DB89;
+    margin-bottom: 10px;
+    width: 100%;
+    border-bottom: 1px solid #F7DB89;
+    outline: none;
+}
+
+.select option {
+    background-color: #19253F;
+}
+
+.inputItem {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    border-bottom: 1px solid #F7DB89;
+}
+
+.inputItem .whiteInput {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    padding-left: 0px;
+    font-size: 1em;
+    background-color: transparent;
+    color: #F7DB89;
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+.inputItem .whiteInput:nth-child(2) {
+    padding-left: 5px;
+}
+
+.inputItem .whiteInput:focus,
+.inputItem .whiteInput:hover,
+.inputItem .whiteInput:active,
+.inputItem .whiteInput:focus-visible {
+    outline: none;
+}
 
 .registerButton {
     margin-top: 0.4rem;
-    border-radius: 0.03rem;
-    border: none;
-    background-image: linear-gradient(180deg, #fff, #f8fcfd 58%, #cdd2d8 83%, #d5d9dc);
     font-size: 1rem;
     font-weight: 700;
-    padding: 15px 10px;
-    text-align: center;
+    padding: 10px 0px;
     color: #202c46;
-    border-radius: 0.03rem;
-}
-
-.iconsStyle {
-    display: 'flex';
-    align-items: 'center';
-    gap: 5;
+    background: transparent linear-gradient(180deg, #F6D984 0%, #DFB847 100%) 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 15px #F7DB894D;
+    border: 2px solid #19253F;
+    border-radius: 35px;
+    cursor: pointer;
 }
 
 .loading {
     background-image: linear-gradient(180deg, #9a9a9a, #a2a2a2 58%, #909090 83%, #d5d9dc);
-
 }
 
-.error {
-    color: rgb(236, 72, 72);
-    font-size: 0.8rem;
-    margin-top: 5px;
+/* .iconsStyle {
+    display: 'flex';
+    align-items: 'center';
+    gap: 5;
 }
-
-
-.success {
-    color: #8ee18e;
-    font-size: 0.8rem;
-    margin-top: 5px;
-}
-
-
 
 .captchaImage {
     position: absolute;
@@ -138,20 +234,15 @@
     text-decoration: underline;
 }
 
-
-/* Chrome, Safari, Edge, Opera */
 .inputPhone::-webkit-outer-spin-button,
 .inputPhone::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
-/* Firefox */
 input[type=number] {
     -moz-appearance: textfield;
 }
-
-
 
 .loadingSection {
     text-align: center;
@@ -159,66 +250,6 @@ input[type=number] {
     border: 1px solid white;
     margin: 10px;
     border-radius: 10px;
-}
-
-.inputPasswordArea {
-    display: flex;
-    border: 1px solid #424a62;
-    background-color: #304063;
-    align-items: center;
-    padding-right: 10px;
-}
-
-.inputPassword {
-    font-size: 1rem;
-    color: #fff;
-    border-radius: 0.03rem;
-    padding: 10px;
-    border: none;
-    background-color: #304063;
-    overflow: hidden;
-    max-width: 95%;
-}
-
-.inputItem {
-    border-radius: 3px;
-    display: flex;
-    align-items: center;
-    padding-left: 3px;
-    background-color: #304063;
-    margin-bottom: 15px;
-    margin-top: 5px;
-
-}
-
-.inputItem .whiteInput {
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    font-size: 1em;
-    background-color: #304063;
-    color: white;
-    font-family: 'Be Vietnam Pro', sans-serif;
-}
-
-.inputItem .whiteInput:focus,
-.inputItem .whiteInput:hover,
-.inputItem .whiteInput:active,
-.inputItem .whiteInput:focus-visible {
-    outline: none;
-    border: none;
-}
-
-
-.inputPassword:active,
-.inputPassword:focus-visible {
-    border: none;
-    outline: none;
-}
-
-
-.passwordEye {
-    cursor: pointer;
 }
 
 .loadingSection {
@@ -232,9 +263,6 @@ input[type=number] {
 .loadingSection h3 span {
     font-size: 1.5rem;
     color: #e94c00;
-    /* border: 1px solid white;
-    padding: 10px;
-    border-radius: 50%; */
 }
 
 
@@ -252,22 +280,6 @@ input[type=number] {
     display: block;
 }
 
-
-.errorPhoneNumber {
-    border: 1px solid red;
-    outline-color: red;
-    background-color: #304063;
-}
-
-.successPhoneNumber {
-    border: 1px solid rgb(25, 155, 86);
-    outline-color: red;
-    background-color: #304063;
-}
-
-
-
-
 .errorModal {
     color: white;
     background-color: #304063;
@@ -283,4 +295,4 @@ input[type=number] {
         left: 5%;
         width: 80%;
     }
-}
+} */

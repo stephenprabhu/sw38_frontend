@@ -1,11 +1,29 @@
+.cockfightSectionOverlay {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #F7DB89;
+  border-radius: 10px;
+  max-width: 90%;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.cockfightSectionOverlay span {
+  background: transparent linear-gradient(180deg, #F6DA87 0%, #E1BB4E 100%) 0% 0% no-repeat padding-box;
+  border-radius: 7px 7px 0px 0px;
+  color: #000000;
+  font-size: 20px;
+  padding: 6px 0px;
+  font-family: 'Great Vibes';
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
 .cockfightSection {
   display: flex;
   justify-content: space-between;
-  max-width: 90%;
-  margin: auto;
   color: white;
   margin-top: 10px;
-  border: 1px solid white;
   border-radius: 10px;
   min-height: 180px;
   align-items: center;
@@ -30,7 +48,6 @@
 
 .copyButton {
   color: #428dfc;
-  /* background: #f0f2fe; */
   border-radius: 0.3rem;
   padding: 5px 10px;
   border: none;

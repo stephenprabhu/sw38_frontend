@@ -1,14 +1,11 @@
-import React from 'react'
-import Hours24Suport from '../assets/24hours.png'
-
+import styles from './CustomerSupportAnimatedItem.module.css';
+import { FaHandPointRight } from "react-icons/fa";
+import { MdAddCall } from "react-icons/md";
 
 const CustomerSupportAnimatedItem = () => {
   return (
-    <div
-      style={{ display: "inline", alignItems: "center", color: "#f4d780", cursor: "pointer" }}
-      onClick={() => window.open('https://direct.lc.chat/14707113/')}
-    >
-      👉🏻 Hỗ trợ <img style={{ marginTop: "3px", marginLeft: "2px" }} src={Hours24Suport} />
+    <div className={styles.buttonWrapper} onClick={() => window.open('https://direct.lc.chat/14707113/')}>
+      <FaHandPointRight size={20} /> Hỗ trợ <MdAddCall size={20} />
     </div>
   )
 }

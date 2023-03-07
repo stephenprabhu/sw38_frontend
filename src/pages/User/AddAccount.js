@@ -71,24 +71,21 @@ const AddAccount = () => {
     return /^[A-Z]*$/.test(value.replace(/\s+/g, ''));
   }
 
-
-  
-
   return (
-    <form onSubmit={addAccount}>
+    <form onSubmit={addAccount} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       <InnerHeader title="Thêm tài khoản ngân hàng" />
       <div className={styles.layout}>
-        <span className={`${styles.helptext} ${checkIfOnlyCapital(userName) ? "": styles.danger}`}>Tên tài khoản viết IN HOA, không dấu, không có số.</span>
-        <div className={styles.inputItem} style={{marginTop:"5px"}}>
-          <input 
-            className={styles.whiteInput} 
+        <span className={`${styles.helptext} ${checkIfOnlyCapital(userName) ? "" : styles.danger}`}>Tên tài khoản viết IN HOA, không dấu, không có số.</span>
+        <div className={styles.inputItem} style={{ marginTop: "5px" }}>
+          <input
+            className={styles.whiteInput}
             style={{ border: "none" }}
 
-            readOnly={bankExist} 
-            placeholder="＊ Tên tài khoản" 
-            required 
-            value={userName} 
-            onChange={(e) => setUserName(e.currentTarget.value)} 
+            readOnly={bankExist}
+            placeholder="＊ Tên tài khoản"
+            required
+            value={userName}
+            onChange={(e) => setUserName(e.currentTarget.value)}
           />
         </div>
         <select className={styles.select} required value={bankName} onChange={(e) => setBankName(e.target.value)}>

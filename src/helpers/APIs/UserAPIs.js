@@ -67,7 +67,7 @@ export const APIUser = async () => {
     });
     return res.data
   } catch (e) {
-    console.log(e);
+    return e
   }
   return null;
 }

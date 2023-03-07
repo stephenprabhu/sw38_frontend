@@ -1,9 +1,7 @@
 .App {
   text-align: center;
-  background-image: linear-gradient(180deg, #304063, #202c46);
+  background-color: #19253F;
 }
-
-
 
 .register-login-section {
   width: 100%;

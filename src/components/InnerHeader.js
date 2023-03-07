@@ -3,21 +3,21 @@ import { BsChevronLeft } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 
 
-const InnerHeader = ({title}) => {
+const InnerHeader = ({ title }) => {
   return (
-    <div className={styles.header}>
+    <div className={styles.headerOverlay}>
+      <div className={styles.header}>
         <div>
-            <Link to="/" style={{textDecoration:"none", color: "white"}}>
-              <BsChevronLeft size={25} />
-            </Link>
-            
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <BsChevronLeft size={25} color='#F7DB89' />
+          </Link>
         </div>
         <div>
-            <span className={styles.headerTitle}>{title}</span>
+          <span className={styles.headerTitle}>{title}</span>
         </div>
         <div>
-
         </div>
+      </div>
     </div>
   )
 }

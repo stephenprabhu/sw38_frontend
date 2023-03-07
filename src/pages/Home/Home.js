@@ -1,33 +1,39 @@
-import { Link } from "react-router-dom";
-import BannerImage from "../../assets/daga_sv388.jpg"
+import { Link, useNavigate } from "react-router-dom";
+import BannerImage from "../../assets/Banner IMG.png"
 import HomeImageMenu from '../../components/HomeImageMenu';
 import Header from "../../components/Header";
 import BottomMenu from "../../components/BottomMenu";
 import { useContext, useEffect, useState } from "react";
 import UserContext from "../../helpers/Context/user-context";
-import CockFightBanner from "../../assets/sub-animal-sv.png"
-import styles from './Home.module.css'
-// import CockFightBanner2 from "../../assets/cock-banner-2.jpeg"
+import CockFightBanner from "../../assets/sub-animal-sv.png";
+import styles from './Home.module.css';
 import CoolAnimatedButton from "../../components/CoolAnimatedButton";
 import { MdOutlineContentCopy } from "react-icons/md";
 import CustomerSupportAnimatedItem from "../../components/CustomerSupportAnimatedItem";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { APIUser } from "../../helpers/APIs/UserAPIs";
-
+import Download from '../../components/Download';
 
 const Home = () => {
   const ctx = useContext(UserContext);
   const userInfo = ctx.userInfo;
   const user = ctx.user;
+  console.log(userInfo)
+  const [downloadButtons, setDownloadButtons] = useState(true)
 
   // Refresh page user credentials API call
   useEffect(() => {
     const userData = async () => {
       const userApiData = await APIUser()
-      ctx.setUserInfo({
-        name: userApiData && userApiData.phone,
-        password: userApiData && userApiData.password,
-      });
+      if (userApiData.response && userApiData.response.data.message === "Unauthenticated.") {
+        localStorage.removeItem('auth_token')
+        ctx.setUser('');
+      } else {
+        ctx.setUserInfo({
+          name: userApiData && userApiData.phone,
+          password: userApiData && userApiData.password,
+        });
+      }
     }
     if (!userInfo && localStorage.getItem('auth_token')) {
       userData()
@@ -36,6 +42,7 @@ const Home = () => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%", position: "relative" }}>
+      {downloadButtons && <Download setDownloadButtons={setDownloadButtons} />}
       <Header />
       <div style={{ flex: 1, overflowY: "auto" }}>
         <a href='https://www.ssvv388.com/' target="_blank">
@@ -61,13 +68,16 @@ const Home = () => {
             </div>
           </div>}
 
-        <div className={styles.cockfightSection}>
-          <div><a href='https://www.ssvv388.com/' target="_blank"><img src={CockFightBanner} width={"75%"} /></a></div>
-          <div style={{ padding: '0px 10px' }}>
-            <h3 style={{ margin: '0px' }}>Đá gà SV388</h3>
-            <p>Đá gà Thomo trực tuyến độc quyền tại SVW38.COM</p>
-            {/* <a href="https://www.ssvv388.com/" target="_blank" className={styles.myLink}>ĐẶT CƯỢC NGAY</a> */}
-            <CoolAnimatedButton text="ĐẶT CƯỢC NGAY" link="https://www.ssvv388.com/" />
+        <div className={styles.cockfightSectionOverlay}>
+          <span>Daga</span>
+          <div className={styles.cockfightSection}>
+            <div><a href='https://www.ssvv388.com/' target="_blank"><img src={CockFightBanner} width={"75%"} /></a></div>
+            <div style={{ padding: '0px 10px' }}>
+              <h3 style={{ margin: '0px' }}>Đá gà SV388</h3>
+              <p>Đá gà Thomo trực tuyến độc quyền tại SVW38.COM</p>
+              {/* <a href="https://www.ssvv388.com/" target="_blank" className={styles.myLink}>ĐẶT CƯỢC NGAY</a> */}
+              <CoolAnimatedButton text="ĐẶT CƯỢC NGAY" link="https://www.ssvv388.com/" />
+            </div>
           </div>
         </div>
         <div style={{ color: "rgb(219 152 15)", fontSize: "2em", margin: "5px 0px", paddingTop: "10px", fontFamily: 'Great Vibes', fontWeight: 'bold' }}>Đá gà cựa sắt số 1</div>
@@ -89,7 +99,7 @@ const CopyItemComponent = ({ item, showHideOption = false }) => {
         <span className={styles.grayLabel}>{item.label}</span><br />
         {!showHideOption ? <span className={styles.grayValue}>{item.value}</span> : ""}
         {showHideOption ? <span className={styles.grayValue}>{showPassword ? item.value : item.value.replace(/./g, "*")}</span> : ""}
-        {showHideOption ? <span style={{ paddingLeft: "10px" }}>{showPassword ? <FiEyeOff onClick={() => setShowPassword(false)} /> : <FiEye onClick={() => setShowPassword(true)} />}</span> : ""}
+        {showHideOption ? <span style={{ paddingLeft: "10px" }}>{showPassword ? <FiEye onClick={() => setShowPassword(false)} /> : <FiEyeOff onClick={() => setShowPassword(true)} />}</span> : ""}
       </div>
       <span className={styles.copyButton} onClick={onCopyClicked}>
         Copy <MdOutlineContentCopy style={{ marginLeft: "7px" }} />

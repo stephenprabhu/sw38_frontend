@@ -62,12 +62,12 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
             </div>
           )) : ""}
         </div>
-        <div >
+        <div>
           <span className={styles.label}>* Số tiền cần nạp ? (Tỷ lệ đổi: <span style={{ color: 'red', fontSize: '18px' }}>30,000 VNĐ = 1 điểm</span>)</span>
           <div className={styles.inputItem}>
             <i className={styles.adjornment}>₫</i>
             <input value={stringAmount} onChange={e => { onDepositAmountChange(e.currentTarget.value) }} type="text" className={styles.whiteInput} style={{ border: "none" }} />
-            {amount && <IconButton size='small' sx={{ marginRight: '2px' }} onClick={() => { setAmount(""); setStringAmount("") }}>{<AiOutlineCloseCircle />}</IconButton>}
+            {amount && <IconButton size='small' sx={{}} onClick={() => { setAmount(""); setStringAmount("") }}>{<AiOutlineCloseCircle style={{ color: '#F7DB89' }} />}</IconButton>}
           </div>
           {/*amount error*/}
           {amount && amount < 150000 ? <p style={{ color: 'red', textAlign: 'center', fontSize: '0.85rem', margin: '10px' }}>Số tiền gửi tối thiểu từ 150,000 VNĐ trở lên</p> : ''}
@@ -88,24 +88,23 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
             <span className={`${styles.label} ${styles.maxMin}`}>Nạp Min: 150, 000 VND</span>
             <span className={`${styles.label} ${styles.maxMin}`}>Nạp Max: 90,000,000 VND</span>
           </div>
-          {amount && <p style={{ fontSize: '0.85rem' }}>Bạn sẽ nhận được <strong style={{ color: 'red' }}>{((amount.replace(/,/g, '')) / 30000).toFixed(2)} điểm</strong></p>}
         </div>
-        {amount && <div className={styles.pointsCircleWraper}>
-          <div className={styles.pointCircle}>
-            {addCommasToNumber(((amount.replace(/,/g, '')) / 30000).toFixed(2))} <br />
-            <span style={{ paddingTop: '5px' }}>điểm</span>
-          </div>
-        </div>}
-      </div >
-      <div>
+        <div className={styles.circleTextOverlay}>
+          {amount && <p style={{ fontSize: '0.85rem', color: '#F7DB89', flexGrow: 1 }}>Bạn sẽ nhận được <strong style={{ color: 'red' }}>{((amount.replace(/,/g, '')) / 30000).toFixed(2)} điểm</strong></p>}
+          {amount && <div className={styles.pointsCircleWraper}>
+            <div className={styles.pointCircle}>
+              {addCommasToNumber(((amount.replace(/,/g, '')) / 30000).toFixed(2))} <br />
+              <span style={{ paddingTop: '5px' }}>điểm</span>
+            </div>
+          </div>}
+        </div>
         <button
           className={`${styles.submitButton} ${!amount || amount < 150000 || amount > 90000000 ? styles.disabled : ""}`}
           onClick={onContinueClicked}
-        // onClick={() => console.log(amount)}
         >
           Tiếp theo
         </button>
-      </div>
+      </div >
     </div >
   )
 }

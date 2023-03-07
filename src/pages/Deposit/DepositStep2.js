@@ -84,43 +84,39 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+    <div className={styles.formOverlay}>
       <InnerHeader title={"Thông tin nạp tiền"} />
-      <form onSubmit={onDepositSubmitClicked} className={styles.deposit2Form} >
-        <div style={{ flexGrow: 1 }}>
+      <div className={styles.formWrapper}>
+        <form onSubmit={onDepositSubmitClicked} className={styles.deposit2Form}>
           <h3 style={{ textAlign: "center", color: "red" }}>Lưu ý : 1 điểm = 30.000 VND</h3>
-          <div className={styles.section2}>
-            <span className={styles.label}>Thông tin tiền gửi</span>
-            {items.slice(0, 3).map((item, index) => <CopyItemComponent key={index} item={item} />)}
-            <div className={styles.bankDetailItem}>
-              <div>
-                <span className={styles.grayLabel}>Số tiền nạp</span><br />
-                <span className={styles.grayValue}>{formate(amount)}</span>
-              </div>
-              <button type="button" className={styles.copyButton} onClick={() => navigator.clipboard.writeText(formate(amount))}>Copy</button>
+          <span className={styles.label}>Thông tin tiền gửi</span>
+          {items.slice(0, 3).map((item, index) => <CopyItemComponent key={index} item={item} />)}
+          <div className={styles.bankDetailItem}>
+            <div>
+              <span className={styles.grayLabel}>Số tiền nạp</span><br />
+              <span className={styles.grayValue}>{formate(amount)}</span>
             </div>
-
-            <div className={styles.bankDetailItem}>
-              <div>
-                <span className={styles.grayLabel}>Nội dung chuyển khoản</span><br />
-                <span className={styles.grayValue}>{userName && userName}</span>
-              </div>
-              <button type="button" className={styles.copyButton} onClick={() => navigator.clipboard.writeText(userName)}>Copy</button>
-            </div>
-
-            <div style={{ padding: "10px 10px 20px 0px" }}>
-              <span className={styles.grayLabel}>Hình ảnh hóa đơn</span><br />
-              <input type="file" label="File" accept="image/*" onChange={onImageChange} style={{ marginTop: '5px' }} />
-            </div>
-            {showInvoiceFile && <img src={showInvoiceFile} alt='invice' width={200} height={200} style={{ borderRadius: '10px' }} onClick={() => setImgModal(true)} />}
+            <button type="button" className={styles.copyButton} onClick={() => navigator.clipboard.writeText(formate(amount))}>Copy</button>
           </div>
+          <div className={styles.bankDetailItem}>
+            <div>
+              <span className={styles.grayLabel}>Nội dung chuyển khoản</span><br />
+              <span className={styles.grayValue}>{userName && userName}</span>
+            </div>
+            <button type="button" className={styles.copyButton} onClick={() => navigator.clipboard.writeText(userName)}>Copy</button>
+          </div>
+          <div style={{ padding: "10px 10px 20px 0px" }}>
+            <span className={styles.grayLabel}>Hình ảnh hóa đơn</span><br />
+            <input type="file" label="File" accept="image/*" onChange={onImageChange} style={{ marginTop: '5px' }} />
+          </div>
+          {showInvoiceFile && <img src={showInvoiceFile} alt='invice' width={200} height={200} style={{ borderRadius: '10px' }} onClick={() => setImgModal(true)} />}
           {loading ? <CircularProgress style={{ marginTop: '5px' }} /> : ""}
-        </div>
-        <div className={`${styles.submitButton}`}>
-          <button className={`${styles.depositButton}  ${styles.cancel}`} onClick={onPrevStepClicked}>Trở Về</button>
-          <button className={`${styles.depositButton} ${styles.final}`} disabled={loading} type="submit">{loading ? "Đang tải" : "Hoàn Tất"}</button>
-        </div>
-      </form>
+          <div className={`${styles.submitButton}`}>
+            <button className={`${styles.depositButton}  ${styles.cancel}`} onClick={onPrevStepClicked}>Trở Về</button>
+            <button className={`${styles.depositButton} ${styles.final}`} disabled={loading} type="submit">{loading ? "Đang tải" : "Hoàn Tất"}</button>
+          </div>
+        </form>
+      </div>
       <Modal open={imgModal} onClose={() => setImgModal(false)}>
         <Box sx={style}>
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: 'white' }}>

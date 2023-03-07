@@ -1,14 +1,25 @@
-.loadingSection {
-  background-color: #304063;
+.modalOverlay {
+  height: 100%;
+  width: 100%;
   position: absolute;
-  top: 50%;
-  left: 38%;
-  width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loadingSection {
+  width: 300px;
   text-align: center;
-  padding: 15px;
-  border: 1px solid white;
+  padding: 30px 15px;
   margin: 10px;
-  border-radius: 10px;
+  background: #19253F 0% 0% no-repeat padding-box;
+  border: 1px solid #F7DB89;
+  border-radius: 13px;
+}
+
+.errorImg {
+  width: 60px;
+  margin-bottom: 15px;
 }
 
 a.myLink {
@@ -22,14 +33,4 @@ a.myLink {
   display: block;
   font-weight: 600;
   font-size: 1em;
-}
-
-@media only screen and (max-width: 900px) {
-  .loadingSection {
-    background-color: #304063;
-    position: absolute;
-    top: 40%;
-    left: 5%;
-    width: 80%;
-  }
 }

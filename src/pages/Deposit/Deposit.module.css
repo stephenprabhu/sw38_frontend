@@ -1,13 +1,19 @@
 .deposit {
-  background-color: white;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
+.deposit1Wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between
+}
+
 .section {
-  flex-grow: 1;
+  /* flex-grow: 1; */
   width: 80%;
   margin: auto;
   text-align: left;
@@ -15,56 +21,57 @@
   flex-direction: column;
   justify-content: center;
   overflow: auto;
+  padding: 20px 20px;
+  background: #263351 0% 0% no-repeat padding-box;
+  border-radius: 13px;
 }
-
-.section2 {
-  /* flex-grow: 1; */
-  width: 80%;
-  margin: auto;
-  text-align: left;
-  /* display: flex; */
-  /* flex-direction: column;
-  justify-content: center; */
-  /* overflow-y: hidden; */
-
-}
-
 
 .label {
-  color: black;
+  color: #F7DB89;
   font-weight: 600;
   font-size: 0.85rem;
-  padding-left: 10px;
   padding-bottom: 10px;
   display: block
 }
 
-
-.adjornment {
-  font-style: normal;
-  display: inline-block;
-  text-align: center;
-  font-weight: 700;
-  width: auto;
-  flex: 0 0 0.5rem;
-  padding: 0 0.2rem;
+.companyBankSection {
+  display: flex;
+  margin-bottom: 20px;
 }
 
+.singleBankItem {
+  border: 0.2px solid rgb(181, 181, 181);
+  border-radius: 5px;
+  padding: 5px 5px;
+  margin-left: 10px;
+  cursor: pointer;
+  display: flex;
+}
 
+.singleBankItem.active {
+  border: 0.2px solid green;
+}
+
+.singleBankItem img {
+  width: 90px;
+  border-radius: 5px;
+}
 
 .inputItem {
-  border: 0.02rem solid #e4e4e4 !important;
-  border-radius: 3px;
   display: flex;
   align-items: center;
   padding-left: 3px;
+  border-bottom: 1px solid #F7DB89;
 }
-
 
 .inputItem .whiteInput {
   width: 100%;
   height: 100%;
-  padding: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #F7DB89;
+  background-color: transparent;
+  padding-left: 10px;
 }
 
 .inputItem .whiteInput:focus,
@@ -75,11 +82,14 @@
   border: none;
 }
 
-.deposit2Form {
-  flex-grow: 1;
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
+.adjornment {
+  font-style: normal;
+  display: inline-block;
+  text-align: center;
+  font-weight: 700;
+  width: auto;
+  flex: 0 0 0.5rem;
+  color: #F7DB89;
 }
 
 .depositButtonSection {
@@ -91,41 +101,131 @@
 }
 
 .depositButton {
-  /* line-height: .5rem; */
-  padding: 5px 15px;
-  /* font-weight: 500 !important; */
+  padding: 5px 10px;
   border: 0px;
   border-radius: 50px;
-  background-color: #efefef;
-  color: #919191;
+  background-color: transparent;
+  cursor: pointer;
+  color: #F7DB89;
+  border: 1px solid #F7DB89;
 }
 
-/* .depositButton.active {
-  background-color: orange;
-  color: white
-} */
+.maxMinWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 10px
+}
+
+.maxMin {
+  padding: 0;
+  font-size: 12px;
+}
+
+.circleTextOverlay {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.pointsCircleWraper {
+  display: flex;
+  justify-content: center;
+}
+
+.pointCircle {
+  height: 90px;
+  width: 90px;
+  padding: 2px;
+  background: #D25050 0% 0% no-repeat padding-box;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 
 .submitButton {
-  width: 100%;
   border: none;
   padding: 15px 0px;
   font-size: 1.2em;
-  background-color: #19b119;
-  color: white;
-  font-weight: 500;
+  background-color: #F7DB89;
+  font-weight: 600;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin-top: 10px;
+  cursor: pointer;
+  margin-top: 30px;
+  border-radius: 35px;
+  border: 3px solid #19253F;
 }
-
 
 .submitButton.disabled {
   background-color: gray;
   color: white;
   cursor: not-allowed;
 }
+
+.formOverlay {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.formWrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+}
+
+.deposit2Form {
+  padding: 20px 20px;
+  background: #263351 0% 0% no-repeat padding-box;
+  border-radius: 13px;
+  flex-grow: 1;
+  overflow: auto;
+  /* width: 90%;
+  margin: auto; */
+  /* display: flex;
+  flex-direction: column; */
+}
+
+.section2 {
+  /* width: 90%;
+  margin: auto;
+  text-align: left; */
+  /* display: flex;
+  flex-direction: column; */
+  /* justify-content: center; */
+  /* overflow-y: hidden; */
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .depositButton.active {
+  background-color: orange;
+  color: white
+} */
+
+
 
 
 .copyButton {
@@ -179,63 +279,4 @@
   font-size: 1rem;
   padding: 15px;
   border-radius: 5px;
-}
-
-.singleBankItem {
-  border: 0.2px solid rgb(181, 181, 181);
-  border-radius: 5px;
-  padding: 0 10px;
-  margin-left: 10px;
-  cursor: pointer;
-}
-
-.singleBankItem.active {
-  border: 0.2px solid rgb(229, 35, 35);
-}
-
-.singleBankItem img {
-  width: 90px;
-}
-
-.companyBankSection {
-  display: flex;
-  margin-bottom: 20px;
-}
-
-.deposit1Wrapper {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  justify-content: space-between
-}
-
-.maxMinWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-top: 10px
-}
-
-.maxMin {
-  padding: 0;
-  color: gray;
-  font-size: 12px;
-}
-
-.pointsCircleWraper {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.pointCircle {
-  height: 100px;
-  width: 100px;
-  background-color: orange;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }

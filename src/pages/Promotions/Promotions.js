@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import PopupErrorModal from '../../components/PopupErrorModal';
 import CustomerSupportAnimatedItem from '../../components/CustomerSupportAnimatedItem';
 import { promotionsAPI } from '../../helpers/APIs/PromotionsAPI';
+import { FiLogOut } from "react-icons/fi";
+import { BiEdit } from "react-icons/bi";
 
 const Promotions = () => {
   const [promotionsList, setPromotionsList] = useState()
@@ -30,13 +32,13 @@ const Promotions = () => {
         <div className={styles.promotionHeader}>
           <span>ĐẠI LÝ</span>
           <div className={styles.headerButtons}>
-            <button onClick={() => setLoginModal(true)}>Đăng Nhập</button>
-            <Link to='/agent/register'><button>Đăng ký</button></Link>
+            <button onClick={() => setLoginModal(true)}><FiLogOut size={18} />Đăng Nhập</button>
+            <Link to='/agent/register' style={{ textDecoration: 'none' }}><button><BiEdit size={18} />Đăng ký</button></Link>
           </div>
         </div>
         {/*cardSection*/}
         <div className={styles.cardSectionWrapper}>
-        <h3>KHUYẾN MÃI</h3>
+          <h3>KHUYẾN MÃI</h3>
           {promotionsList && promotionsList.map((promo) =>
           (<div className={styles.card} key={promo.id} onClick={() => window.open(promo.link)}>
             <img height="100px" width='100%' src={promo.image} alt={''} />
