@@ -72,31 +72,34 @@ const AddAccount = () => {
   }
 
   return (
-    <form onSubmit={addAccount} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+    <form onSubmit={addAccount} className={styles.formOverlay}>
       <InnerHeader title="Thêm tài khoản ngân hàng" />
-      <div className={styles.layout}>
-        <span className={`${styles.helptext} ${checkIfOnlyCapital(userName) ? "" : styles.danger}`}>Tên tài khoản viết IN HOA, không dấu, không có số.</span>
-        <div className={styles.inputItem} style={{ marginTop: "5px" }}>
-          <input
-            className={styles.whiteInput}
-            style={{ border: "none" }}
-
-            readOnly={bankExist}
-            placeholder="＊ Tên tài khoản"
-            required
-            value={userName}
-            onChange={(e) => setUserName(e.currentTarget.value)}
-          />
+      <div className={styles.formWrapper}>
+        <div className={styles.layout}>
+          <span className={`${styles.helptext} ${checkIfOnlyCapital(userName) ? "" : styles.danger}`}>Tên tài khoản viết IN HOA, không dấu, không có số.</span>
+          <div className={styles.inputItem} style={{ marginTop: "5px" }}>
+            <input
+              className={styles.whiteInput}
+              style={{ border: "none" }}
+              readOnly={bankExist}
+              placeholder="＊ Tên tài khoản"
+              required
+              value={userName}
+              onChange={(e) => setUserName(e.currentTarget.value)}
+            />
+          </div>
+          <select className={styles.select} required value={bankName} onChange={(e) => setBankName(e.target.value)}>
+            {vietnamBankArray.map((val, index) => <option key={index}>{val}</option>)}
+          </select>
+          <div className={styles.inputItem}>
+            <CiCreditCard1 size={25} style={{ color: "#F7DB89", paddingLeft: '5px' }} />
+            <input className={styles.whiteInput} style={{ border: "none" }} placeholder="＊ Vui lòng nhập số tài khoản" required value={accNumber} onChange={(e) => setAccNumber(e.target.value)} />
+          </div>
         </div>
-        <select className={styles.select} required value={bankName} onChange={(e) => setBankName(e.target.value)}>
-          {vietnamBankArray.map((val, index) => <option key={index}>{val}</option>)}
-        </select>
-        <div className={styles.inputItem}>
-          <CiCreditCard1 size={25} style={{ color: "gray" }} />
-          <input className={styles.whiteInput} style={{ border: "none" }} placeholder="＊ Vui lòng nhập số tài khoản" required value={accNumber} onChange={(e) => setAccNumber(e.target.value)} />
+        <div className={styles.buttonsWrapper}>
+          <button className={styles.submit} type='submit'>Xác nhận</button>
+          <button className={styles.cancel} onClick={() => navigate('/withdraw')}>Hủy</button >
         </div>
-        <button className={styles.submit} type='submit'>Xác nhận</button>
-        <button className={styles.cancel} onClick={() => navigate('/withdraw')}>Hủy</button >
       </div>
     </form>
   )

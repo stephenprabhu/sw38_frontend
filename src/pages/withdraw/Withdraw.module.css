@@ -1,61 +1,80 @@
 .layout {
-    background-color: white;
-    width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
+    height: 100%;
+}
+
+.withdrawWrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .section {
-    width: 80%;
-    margin: auto;
     flex-grow: 1;
-    overflow: auto;
     flex-basis: 0;
+    overflow: auto;
+    padding-top: 15px;
+}
+
+.banksSection {
+    margin-bottom: 20px;
+    max-height: 300px;
+    overflow: auto;
 }
 
 .bankCard {
-    background-image: -webkit-linear-gradient(-3deg, #c47ff4, #eb498e);
-    border-radius: 10px;
     padding: 10px;
     width: 90%;
     margin: auto;
     text-align: left;
     cursor: pointer;
-    /* display: flex;
-    gap: 5px;
-    flex-direction: column; */
+    background: transparent linear-gradient(90deg, #576B9A 0%, #3A528B 100%) 0% 0% no-repeat padding-box;
+    border: 2px solid #F7DB89;
+    border-radius: 10px;
 }
 
 .bankCard span {
-    color: white;
+    color: #F7DB89;
     font-size: 12px;
 }
 
+input[type='radio'] {
+    accent-color: #F7DB89;
+}
+
 .inputItem {
-    border: 0.02rem solid #e4e4e4 !important;
+    border: 0.02rem solid #F7DB89;
     border-radius: 3px;
     display: flex;
     align-items: center;
     padding-left: 3px;
-    background-color: white;
     margin-top: 15px;
 
 }
 
-.inputItem span {
+.inputItem pre {
+    padding: 0 5px;
     font-size: 0.8rem;
-    color: rgb(159, 156, 156)
+    color: #F7DB89
 }
 
-
 .inputItem .whiteInput {
+    color: #F7DB89;
     width: 100%;
     height: 100%;
-    padding: 15px;
     font-size: 1em;
     font-family: 'Be Vietnam Pro', sans-serif;
+    background-color: transparent;
+    text-align: center;
+}
 
+.whiteInput::placeholder {
+    color: #F7DB89;
+    opacity: 0.3;
+    text-align: center;
 }
 
 .inputItem .whiteInput:focus,
@@ -67,24 +86,20 @@
 }
 
 .submit {
-    box-shadow: 0 0.1rem 0.2rem 0 rgb(255 0 16 / 40%);
-    color: #fffefe !important;
-    border-radius: 0.4em;
-    transition: all .3s linear;
-    border: none;
-    background-image: -webkit-linear-gradient(-90deg, #ff3a3e, #ff1e30) !important;
-    width: 100%;
-    padding: 10px;
-    margin-top: 15px;
+    padding: 7px 0px;
+    margin: 10px 0px;
     font-family: 'Be Vietnam Pro', sans-serif;
     font-size: 1.2em;
     cursor: pointer;
+    background: transparent linear-gradient(180deg, #F6D984 0%, #DFB847 100%) 0% 0% no-repeat padding-box;
+    border: 2px solid #19253F;
+    border-radius: 35px;
 }
 
 
 .divider {
     height: 0.32rem;
-    border-bottom: 1px solid #dedede;
+    border-bottom: 1px solid #F7DB89;
     line-height: 0;
     font-size: 0;
     position: relative;
@@ -93,22 +108,17 @@
 
 .addButton {
     padding: 0.4rem;
-    background-color: #fe0000;
-    border: 0.05rem solid #fff;
+    background-color: #F7DB89;
     border-radius: 50%;
     position: absolute;
     right: 0.45rem;
     bottom: -1.2rem;
-    color: white;
+    color: #19253F;
     font-weight: 600;
     cursor: pointer;
 }
 
-.banksSection {
-    margin-bottom: 30px;
-    overflow: auto;
-    max-height: 300px;
-}
+
 
 .formSecton {
     margin-top: 30px;

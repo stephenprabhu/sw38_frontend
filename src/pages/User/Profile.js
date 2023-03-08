@@ -7,9 +7,11 @@ import { APIUser } from '../../helpers/APIs/UserAPIs';
 import styles from './Profile.module.css';
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { MdOutlineContentCopy } from 'react-icons/md';
+import { bankListAPI } from '../../helpers/APIs/WithdrawAPI';
 
 const Profile = () => {
   const [user, setUser] = useState()
+  const [banks, setBanks] = useState()
 
   useEffect(() => {
     const userData = async () => {
@@ -17,29 +19,47 @@ const Profile = () => {
       setUser(userAPI)
     }
     userData()
+    const bankList = async () => {
+      const allBanks = await bankListAPI()
+      setBanks(allBanks.reverse().slice(0, 2))
+    }
+    bankList()
   }, [])
 
+  console.log(banks)
+
   return (
-    <div className={styles.layout}>
+    <div className={styles.profileOverlay}>
       <InnerHeader title="Thông tin" />
-      <div className={styles.section}>
+      <div className={styles.profileWrapper}>
         <div className={styles.profileSection}>
           <img src={profilePage} className={styles.profileImage} />
-          <div className={styles.profileText}>
-            <span>{user && user.phone}</span>
-          </div>
           <div className={styles.userInfoSection}>
-            <CopyItemComponent item={{ label: "Số điện thoại đăng nhập", value: 'hello' }} />
-            <CopyItemComponent item={{ label: "Mật khẩu mặc định", value: 'pass' }} showHideOption={true} />
+            {user && <CopyItemComponent item={{ label: "Số điện thoại đăng nhập", value: user.phone }} />}
+            {user && <CopyItemComponent item={{ label: "Mật khẩu mặc định", value: user.user_id }} />}
             <div style={{ color: "white", fontSize: "12px", maxWidth: "80%", margin: "auto", paddingTop: '5px', textAlign: 'center' }}>
-              <i>* Nếu bạn đã thay đổi</i>  &nbsp; mật khẩu vui lòng liên hệ chăm sóc khách hàng. <br />
+              <i>* Nếu bạn quên</i>  &nbsp; mật khẩu vui lòng liên hệ chăm sóc khách hàng. <br />
               Bấm vào đây để được <CustomerSupportAnimatedItem />
             </div>
           </div>
+          <Link to={'/transections'} style={{ marginTop: '20px' }}>
+            <button className={styles.button}>giao dịch</button>
+          </Link>
+          <div className={styles.bankListOverlay}>
+            {banks && banks.length ? banks.map((bank) => {
+              return (
+                <div className={styles.bankCard} >
+                  <span>{bank.User_name}</span>
+                  <div className={styles.bankWrapper}>
+                    <span>{bank.bank_name}</span>
+                    <span style={{ paddingLeft: '10px' }}>{bank.account_number}</span>
+                  </div>
+                </div>
+              )
+            }) : ''}
+          </div>
         </div>
-        <Link to={'/transections'}>
-          <button className={styles.button}>giao dịch</button>
-        </Link>
+
       </div>
     </div>
   )
@@ -47,8 +67,7 @@ const Profile = () => {
 
 export default Profile
 
-const CopyItemComponent = ({ item, showHideOption = false }) => {
-  const [showPassword, setShowPassword] = useState(false);
+const CopyItemComponent = ({ item }) => {
 
   const onCopyClicked = () => {
     navigator.clipboard.writeText(item.value);
@@ -57,13 +76,12 @@ const CopyItemComponent = ({ item, showHideOption = false }) => {
     <div className={styles.bankDetailItem}>
       <div style={{ textAlign: "left" }}>
         <span className={styles.grayLabel}>{item.label}</span><br />
-        {!showHideOption ? <span className={styles.grayValue}>{item.value}</span> : ""}
-        {showHideOption ? <span className={styles.grayValue}>{showPassword ? item.value : item.value.replace(/./g, "*")}</span> : ""}
-        {showHideOption ? <span style={{ paddingLeft: "10px" }}>{showPassword ? <FiEye onClick={() => setShowPassword(false)} color='#F7DB89' /> : <FiEyeOff onClick={() => setShowPassword(true)} color='#F7DB89' />}</span> : ""}
+        <span className={styles.grayValue}>{item.value}</span>
       </div>
-      <span className={styles.copyButton} onClick={onCopyClicked}>
-        Copy <MdOutlineContentCopy style={{ marginLeft: "7px" }} />
-      </span>
+      {item.label !== 'Số điện thoại đăng nhập' &&
+        <span className={styles.copyButton} onClick={onCopyClicked}>
+          Copy <MdOutlineContentCopy style={{ marginLeft: "7px" }} />
+        </span>}
     </div>
   )
 }

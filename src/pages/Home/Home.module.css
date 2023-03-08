@@ -59,18 +59,23 @@
   margin: auto;
 }
 
-.copyButton {
-  color: #F7DB89;
-  border-radius: 0.3rem;
-  padding: 5px 10px;
-  border: none;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+.userInfoSectionLink {
+  text-align: center;
+  color: white;
+  padding: 10px 0px;
 }
 
-.copyButton:active {
-  padding: 8px 16px;
+.userInfoSectionLink a {
+  color: #19253F;
+  font-weight: 600;
+  font-size: 12px;
+  text-decoration: none;
+  padding: 3px 10px;
+
+  background: transparent linear-gradient(180deg, #F6D984 0%, #DFB847 100%) 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 15px #f7db894d;
+  border: 3px solid #19253F;
+  border-radius: 35px;
 }
 
 .bankDetailItem {
@@ -86,9 +91,49 @@
   font-size: 0.7rem;
 }
 
-
 .grayValue {
   font-weight: 500;
   color: #F7DB89;
   font-size: 1rem;
+}
+
+.copyButton {
+  color: #F7DB89;
+  border-radius: 0.3rem;
+  padding: 5px 10px;
+  border: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.copyButton:active {
+  padding: 8px 16px;
+}
+
+.registerLoginSection {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+}
+
+.registerLoginSection a {
+  display: block;
+  width: 50%;
+  padding: 20px 15px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.loginButton {
+  background-image: linear-gradient(180deg, #f1474c, #c71e23);
+  color: #fff;
+  text-align: center;
+}
+
+.registerButton {
+  background: linear-gradient(180deg, #fce08d, #b69653);
+  color: #010e33;
+  text-align: center;
 }

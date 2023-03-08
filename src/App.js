@@ -1,14 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
-import Header from './components/Header';
 import Home from './pages/Home/Home';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
-
-import {
-  Routes,
-  Route,
-} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Deposit from './pages/Deposit/Deposit';
 import AddAccount from './pages/User/AddAccount';
 import Withdraw from './pages/withdraw/Withdraw';

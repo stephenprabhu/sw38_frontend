@@ -30,6 +30,7 @@ const Home = () => {
           password: userApiData && userApiData.password,
         });
       }
+      console.log(userApiData)
     }
     if (!userInfo && localStorage.getItem('auth_token')) {
       userData()
@@ -46,24 +47,21 @@ const Home = () => {
         <marquee direction="left" style={{ color: '#fce08d', fontSize: '12px', padding: '5px 0px', margin: '0px 7px', fontStyle: 'italic' }}>
           ĐÁ GÀ SV388 NƠI CÁC CHIẾN KÊ HUYỀN THOẠI THỂ HIỆN CHỈ CÓ TẠI SVW38.COM
         </marquee>
-
-        {!ctx.user ? <div className='register-login-section'>
-          <Link className='login-button' to='/login'>Đăng Nhập</Link>
-          <Link className='register-button' to='/register'>Đăng ký</Link>
+        {!ctx.user ? <div className={styles.registerLoginSection}>
+          <Link className={styles.loginButton} to='/login'>Đăng Nhập</Link>
+          <Link className={styles.registerButton} to='/register'>Đăng ký</Link>
         </div> : ""}
-
         <HomeImageMenu />
-
         {user && userInfo &&
           <div className={styles.userInfoSection}>
             <CopyItemComponent item={{ label: "Số điện thoại đăng nhập", value: userInfo.name }} />
-            <CopyItemComponent item={{ label: "Mật khẩu mặc định", value: userInfo.password }} showHideOption={true} />
+            <CopyItemComponent item={{ label: "Mật khẩu mặc định", value: userInfo.user_id }} />
+            <div className={styles.userInfoSectionLink}><a href="https://www.ssvv388.com/" target="_blank">ĐẶT CƯỢC NGAY</a></div>
             <div style={{ color: "white", fontSize: "12px", maxWidth: "80%", margin: "auto", paddingTop: '5px', textAlign: 'center' }}>
-              <i>* Nếu bạn đã thay đổi</i>  &nbsp; mật khẩu vui lòng liên hệ chăm sóc khách hàng. <br />
+              <i>* Nếu bạn quên</i>  &nbsp; mật khẩu vui lòng liên hệ chăm sóc khách hàng. <br />
               Bấm vào đây để được <CustomerSupportAnimatedItem />
             </div>
           </div>}
-
         <div className={styles.cockfightSectionOverlay}>
           <span>Daga</span>
           <div className={styles.cockfightSection}>
@@ -71,7 +69,6 @@ const Home = () => {
             <div style={{ padding: '0px 10px' }}>
               <h3 style={{ margin: '0px' }}>Đá gà SV388</h3>
               <p>Đá gà Thomo trực tuyến độc quyền tại SVW38.COM</p>
-              {/* <a href="https://www.ssvv388.com/" target="_blank" className={styles.myLink}>ĐẶT CƯỢC NGAY</a> */}
               <CoolAnimatedButton text="ĐẶT CƯỢC NGAY" link="https://www.ssvv388.com/" />
             </div>
           </div>
@@ -82,9 +79,7 @@ const Home = () => {
   )
 }
 
-const CopyItemComponent = ({ item, showHideOption = false }) => {
-  const [showPassword, setShowPassword] = useState(false);
-
+const CopyItemComponent = ({ item }) => {
   const onCopyClicked = () => {
     navigator.clipboard.writeText(item.value);
   }
@@ -92,13 +87,12 @@ const CopyItemComponent = ({ item, showHideOption = false }) => {
     <div className={styles.bankDetailItem}>
       <div style={{ textAlign: "left" }}>
         <span className={styles.grayLabel}>{item.label}</span><br />
-        {!showHideOption ? <span className={styles.grayValue}>{item.value}</span> : ""}
-        {showHideOption ? <span className={styles.grayValue}>{showPassword ? item.value : item.value.replace(/./g, "*")}</span> : ""}
-        {showHideOption ? <span style={{ paddingLeft: "10px" }}>{showPassword ? <FiEye onClick={() => setShowPassword(false)} color='#F7DB89' /> : <FiEyeOff onClick={() => setShowPassword(true)} color='#F7DB89' />}</span> : ""}
+        <span className={styles.grayValue}>{item.value}</span>
       </div>
-      <span className={styles.copyButton} onClick={onCopyClicked}>
-        Copy <MdOutlineContentCopy style={{ marginLeft: "7px" }} />
-      </span>
+      {item.label !== 'Số điện thoại đăng nhập' &&
+        <span className={styles.copyButton} onClick={onCopyClicked}>
+          Copy <MdOutlineContentCopy style={{ marginLeft: "7px" }} />
+        </span>}
     </div>
   )
 }

@@ -5,45 +5,14 @@
   height: 100vh;
 }
 
-.register-login-section {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-
-}
-
-.register-login-section a {
-  display: block;
-  width: 50%;
-  padding: 20px 15px;
-  text-decoration: none;
-  font-weight: 700;
-}
-
-.login-button {
-  background-image: linear-gradient(180deg, #f1474c, #c71e23);
-  color: #fff;
-
-}
-
-.register-button {
-  background: linear-gradient(180deg, #fce08d, #b69653);
-  color: #010e33;
-
-}
-
-
 .MuiPaper-root.MuiPaper-elevation.MuiDrawer-paper {
   width: 100%;
   background: linear-gradient(180deg, #202c46, #304063);
 }
 
-
 .MuiButtonBase-root.MuiTab-root {
   color: white;
 }
-
-
 
 .App-link {
   color: #61dafb;

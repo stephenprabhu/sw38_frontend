@@ -8,7 +8,7 @@ import { TfiHeadphoneAlt } from "react-icons/tfi";
 
 const BottomMenu = () => {
   return (
-    <din className={styles.BottomMenuOverlay}>
+    <div className={styles.BottomMenuOverlay}>
       <div className={styles.bottomMenuLayout}>
         <Link to="/deposit" style={{ textDecoration: "none" }}>
           <div className={styles.menuItem}>
@@ -42,7 +42,7 @@ const BottomMenu = () => {
           </div>
         </Link>
       </div>
-    </din>
+    </div>
   )
 }
 
