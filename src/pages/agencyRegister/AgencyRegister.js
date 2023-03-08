@@ -283,7 +283,6 @@ const AgencyRegister = () => {
         </div>
       </div>
       <PopupErrorModal message={"We have recieved your information. We will contact you within 48 hours."} show={showSuccessModal} hideModal={() => setShowSuccessModal(false)} error={false} />
-      <BottomMenu />
     </div>
   )
 }

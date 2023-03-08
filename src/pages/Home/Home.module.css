@@ -1,3 +1,15 @@
+.homeOverlay {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.homeWrapper {
+  flex-grow: 1;
+  overflow: auto;
+  flex-basis: 0;
+}
+
 .cockfightSectionOverlay {
   display: flex;
   flex-direction: column;
@@ -6,6 +18,7 @@
   max-width: 90%;
   margin: auto;
   margin-top: 10px;
+  text-align: center;
 }
 
 .cockfightSectionOverlay span {
@@ -47,7 +60,7 @@
 }
 
 .copyButton {
-  color: #428dfc;
+  color: #F7DB89;
   border-radius: 0.3rem;
   padding: 5px 10px;
   border: none;
@@ -69,13 +82,13 @@
 
 .grayLabel {
   font-weight: 500;
-  color: rgb(210, 210, 210);
+  color: #DEB849;
   font-size: 0.7rem;
 }
 
 
 .grayValue {
   font-weight: 500;
-  color: rgb(255, 255, 255);
+  color: #F7DB89;
   font-size: 1rem;
 }

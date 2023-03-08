@@ -1,6 +1,8 @@
 .App {
-  text-align: center;
   background-color: #19253F;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .register-login-section {

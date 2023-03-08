@@ -1,29 +1,18 @@
-.deposit {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 .deposit1Wrapper {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  justify-content: space-between
+  height: 100%;
 }
 
 .section {
-  /* flex-grow: 1; */
-  width: 80%;
-  margin: auto;
   text-align: left;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  overflow: auto;
-  padding: 20px 20px;
   background: #263351 0% 0% no-repeat padding-box;
   border-radius: 13px;
+  width: 90%;
+  margin: auto;
+  overflow: auto;
 }
 
 .label {
@@ -158,9 +147,16 @@
   align-items: center;
   gap: 10px;
   cursor: pointer;
-  margin-top: 30px;
+  margin-top: 20px;
   border-radius: 35px;
   border: 3px solid #19253F;
+  width: 100%;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 .submitButton.disabled {
@@ -169,101 +165,67 @@
   cursor: not-allowed;
 }
 
-.formOverlay {
+.deposit2Overlay {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-.formWrapper {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  width: 90%;
-  margin: auto;
-}
-
-.deposit2Form {
-  padding: 20px 20px;
+.depositForm {
   background: #263351 0% 0% no-repeat padding-box;
   border-radius: 13px;
-  flex-grow: 1;
-  overflow: auto;
-  /* width: 90%;
-  margin: auto; */
-  /* display: flex;
-  flex-direction: column; */
-}
-
-.section2 {
-  /* width: 90%;
+  width: 90%;
   margin: auto;
-  text-align: left; */
-  /* display: flex;
-  flex-direction: column; */
-  /* justify-content: center; */
-  /* overflow-y: hidden; */
-
+  overflow: auto;
+  text-align: left;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* .depositButton.active {
-  background-color: orange;
-  color: white
-} */
-
-
-
 
 .copyButton {
-  color: #428dfc;
-  background: #f0f2fe;
-  border-radius: 0.3rem;
-  padding: 10px 20px;
-  border: none;
-  line-height: 1.2;
-  width: auto;
-  min-width: 1.4rem;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 3px;
 }
 
 .copyButton:active {
-  padding: 8px 16px;
+  padding: 0px 10px;
 }
 
 .bankDetailItem {
   padding: 10px;
+  padding-left: 0px;
   display: flex;
+  gap: 20px;
   justify-content: space-between;
+}
+
+.bankDetailItem button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: #F7DB89;
 }
 
 .grayLabel {
   font-weight: 500;
-  color: rgb(138, 136, 136);
-  font-size: 1rem;
+  color: #DEB849;
+  font-size: 0.7rem;
 }
 
 
 .grayValue {
   font-weight: 500;
-  color: rgb(66, 66, 66);
+  color: #F7DB89;
   font-size: 0.9rem;
 }
 
-.depositButton.cancel {
+.invoiceImg {
+  margin-top: 8px;
+  color: #F7DB89;
+  font-size: 0.7rem;
+  border-radius: 5px;
+}
+
+/* .depositButton.cancel {
   border: 1px solid white;
   color: white;
   background-color: #428dfc;
@@ -279,4 +241,4 @@
   font-size: 1rem;
   padding: 15px;
   border-radius: 5px;
-}
+} */

@@ -9,7 +9,7 @@ const Deposit = () => {
   const [selectedBank, setSelectedBank] = useState(null);
 
   return (
-    <div className={styles.deposit}>
+    <div style={{ height: '100%' }}>
       {step2 ?
         <DepositStep2
           amount={amount}

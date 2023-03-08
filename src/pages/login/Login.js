@@ -5,7 +5,6 @@ import Header from '../../components/Header';
 import { APILoginUser } from '../../helpers/APIs/UserAPIs';
 import { useNavigate } from 'react-router-dom';
 import UserContext from '../../helpers/Context/user-context';
-import BottomMenu from '../../components/BottomMenu';
 import { FiLogOut, FiEyeOff, FiEye } from "react-icons/fi";
 
 const Login = () => {
@@ -68,7 +67,6 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <BottomMenu />
     </div>
   )
 }

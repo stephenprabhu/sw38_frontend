@@ -1,172 +1,169 @@
 .registerOverlay {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .registerWrapper {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .titleWrapper {
-    color: #F7DB89;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    padding: 15px 0px;
+  color: #F7DB89;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 0px;
 }
 
 .titleWrapper h3 {
-    margin: 0;
+  margin: 0;
 }
 
 .formOverlay {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 10px 35px;
-    flex-basis: 0;
-    overflow: auto;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 35px;
+  flex-basis: 0;
+  overflow: auto;
 }
 
 .registerForm {
-    display: flex;
-    flex-direction: column;
-    background: #263351 0% 0% no-repeat padding-box;
-    box-shadow: 0px 0px 10px #19253F;
-    border-radius: 13px;
-    padding: 25px 20px;
+  display: flex;
+  flex-direction: column;
+  background: #263351 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 10px #19253F;
+  border-radius: 13px;
+  padding: 25px 20px;
 }
 
 .error {
-    color: rgb(236, 72, 72);
-    font-size: 0.8rem;
-    margin-top: 5px;
+  color: rgb(236, 72, 72);
+  font-size: 0.8rem;
+  margin-top: 5px;
 }
 
 .formInput {
-    text-align: left;
-    color: white;
-    padding: 10px 0;
-    max-width: 100%;
+  text-align: left;
+  color: white;
+  padding: 10px 0;
+  max-width: 100%;
 }
 
 .formInput input {
-    border: 0px;
-    width: 100%;
-    padding-left: 0px;
+  border: 0px;
+  width: 100%;
+  padding-left: 0px;
 }
 
 .formInput input:focus,
 .formInput input:active,
 .formInput input:focus-within {
-    border: none;
-    outline: none;
+  border: none;
+  outline: none;
 }
 
 .formInput span {
-    display: block;
-    margin-bottom: 10px;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .inputPasswordArea {
-    display: flex;
-    border-bottom: 1px solid #F7DB89;
-    background-color: transparent;
-    align-items: center;
-    padding-right: 10px;
+  display: flex;
+  border-bottom: 1px solid #F7DB89;
+  background-color: transparent;
+  align-items: center;
+  padding-right: 10px;
 }
 
 .successPhoneNumber {
-    border: 1px solid rgb(25, 155, 86);
-    outline-color: red;
-    background-color: #304063;
+  border-bottom: 1px solid rgb(25, 155, 86);
 }
 
 .errorPhoneNumber {
-    border: 1px solid red;
-    outline-color: red;
-    background-color: #304063;
+  border-bottom: 1px solid red;
 }
 
 .inputPhone {
-    font-size: 1rem;
-    color: #F7DB89;
-    border-radius: 0.03rem;
-    padding: 10px;
-    background-color: transparent;
+  font-size: 1rem;
+  color: #F7DB89;
+  border-radius: 0.03rem;
+  padding: 10px;
+  background-color: transparent;
 }
 
 .inputPhone::placeholder {
-    color: #F7DB89;
-    opacity: 0.3;
+  color: #F7DB89;
+  opacity: 0.3;
 }
 
 .inputPassword {
-    font-size: 1rem;
-    color: #F7DB89;
-    border-radius: 0.03rem;
-    padding: 10px;
-    border: none;
-    background-color: transparent;
-    overflow: hidden;
-    max-width: 95%;
+  font-size: 1rem;
+  color: #F7DB89;
+  border-radius: 0.03rem;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  overflow: hidden;
+  max-width: 95%;
 }
 
 .inputPassword:active,
 .inputPassword:focus-visible {
-    border: none;
-    outline: none;
+  border: none;
+  outline: none;
 }
 
 .passwordEye {
-    cursor: pointer;
-    color: #F7DB89;
+  cursor: pointer;
+  color: #F7DB89;
 }
 
 .success {
-    color: #8ee18e;
-    font-size: 0.8rem;
-    margin-top: 5px;
+  color: #8ee18e;
+  font-size: 0.8rem;
+  margin-top: 5px;
 }
 
 .registerButton {
-    margin-top: 0.4rem;
-    font-size: 1rem;
-    font-weight: 700;
-    padding: 10px 0px;
-    color: #202c46;
-    background: transparent linear-gradient(180deg, #F6D984 0%, #DFB847 100%) 0% 0% no-repeat padding-box;
-    box-shadow: inset 0px 4px 12px #141E331A;
-    border: 3px solid #19253F;
-    border-radius: 35px;
-    cursor: pointer;
+  margin-top: 0.4rem;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 10px 0px;
+  color: #202c46;
+  background: transparent linear-gradient(180deg, #F6D984 0%, #DFB847 100%) 0% 0% no-repeat padding-box;
+  box-shadow: inset 0px 4px 12px #141E331A;
+  border: 3px solid #19253F;
+  border-radius: 35px;
+  cursor: pointer;
 }
 
 .loading {
-    background-image: linear-gradient(180deg, #9a9a9a, #a2a2a2 58%, #909090 83%, #d5d9dc);
+  background-image: linear-gradient(180deg, #9a9a9a, #a2a2a2 58%, #909090 83%, #d5d9dc);
 
 }
 
 .loginSection {
-    color: white;
-    margin-top: 15px;
+  color: #F7DB89;
+  margin-top: 15px;
+  text-align: center;
 }
 
 .loginLink {
-    margin-left: 0.4rem;
-    color: #ffd08a;
-    text-decoration: underline;
+  margin-left: 0.4rem;
+  color: #ffd08a;
+  text-decoration: underline;
 }
 
 @media only screen and (max-width: 360px) {
-    .formOverlay {
-        padding: 0px 10px;
-    }
+  .formOverlay {
+    padding: 0px 10px;
+  }
 }
 
 

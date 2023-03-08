@@ -49,37 +49,39 @@ const Transection = () => {
 
 
   return (
-    <div style={{ display: 'flex', height: '100vh', flexDirection: 'column', gap: 15 }}>
+    <div className={styles.transactionOverlay}>
       <Header />
-      <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', overflow: 'auto', gap: 15 }}>
+      <div className={styles.transactionWrapper}>
         <h3 style={{ margin: '0px', color: 'white' }}>Giao Dịch</h3>
-        <Tabs value={activeTab} onChange={handleChange} aria-label="lab API tabs example" className={styles.transTabs}>
+        <Tabs variant='fullWidth' value={activeTab} onChange={handleChange} sx={{ "& button.Mui-selected": { color: '#F7DB89' } }} TabIndicatorProps={{ style: { backgroundColor: "#F7DB89" } }}>
           <Tab label="Nạp Tiền" value="1" />
           <Tab label="Rút Tiền" value="2" />
         </Tabs>
         {loading ? <div style={{ textAlign: "center", marginTop: "15px" }}><CircularProgress style={{ color: "white" }} /></div> :
           selectedTransactions ?
-            <table border={0} style={{ color: 'white' }} width="100%">
-              <thead>
-                <tr>
-                  <th style={{ paddingBottom: '10px' }}>{activeTab === "1" ? "Số Tiền Nạp" : "Số Tiền Rút"}</th>
-                  <th style={{ paddingBottom: '10px' }}>Ngày</th>
-                  <th style={{ paddingBottom: '10px' }}>Trạng thái</th>
-                </tr>
-              </thead>
-              {selectedTransactions && selectedTransactions.map((transection) => {
-                return (
-                  <tbody key={transection.id}>
-                    <tr>
-                      <td>{transection.transaction_purpose == 'deposit' ? '+' : '-'}{addCommasToNumber(transection.transaction_amount)}</td>
-                      <td >{new Date(transection.created_at).toLocaleString("vi-VN")}</td>
-                      <td><Chip label={transection.is_approved === 0 ? 'Đang xử lý' : transection.is_approved === 1 ? 'Đã phê duyệt' : 'Từ chối'}
-                        sx={{ backgroundColor: transection.is_approved === 0 ? '#53a9a3' : transection.is_approved === 1 ? 'green' : '#ad2626', color: 'white' }} /></td>
-                    </tr>
-                  </tbody>
-                )
-              })}
-            </table>
+            <div className={styles.transactionTable}>
+              <table border={0} width="100%" style={{ color: 'white' }}>
+                <thead>
+                  <tr>
+                    <th style={{ paddingBottom: '10px' }}>{activeTab === "1" ? "Số Tiền Nạp" : "Số Tiền Rút"}</th>
+                    <th style={{ paddingBottom: '10px' }}>Ngày</th>
+                    <th style={{ paddingBottom: '10px' }}>Trạng thái</th>
+                  </tr>
+                </thead>
+                {selectedTransactions && selectedTransactions.map((transection) => {
+                  return (
+                    <tbody key={transection.id}>
+                      <tr>
+                        <td>{transection.transaction_purpose == 'deposit' ? '+' : '-'}{addCommasToNumber(transection.transaction_amount)}</td>
+                        <td >{new Date(transection.created_at).toLocaleString("vi-VN")}</td>
+                        <td><Chip label={transection.is_approved === 0 ? 'Đang xử lý' : transection.is_approved === 1 ? 'Đã phê duyệt' : 'Từ chối'}
+                          sx={{ backgroundColor: transection.is_approved === 0 ? '#53a9a3' : transection.is_approved === 1 ? 'green' : '#ad2626', color: 'white' }} /></td>
+                      </tr>
+                    </tbody>
+                  )
+                })}
+              </table>
+            </div>
             :
             <h3 style={{ margin: '0px', color: 'white' }}>Không có giao dịch</h3>}
       </div>

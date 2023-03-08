@@ -5,7 +5,6 @@ import Header from "../../components/Header";
 import { APIRegisterUser } from "../../helpers/APIs/UserAPIs";
 import UserContext from "../../helpers/Context/user-context";
 import { useNavigate } from "react-router-dom";
-import BottomMenu from "../../components/BottomMenu";
 import RegisterPopupModal from "./RegisterPopupModal";
 import PopupErrorModal from "../../components/PopupErrorModal";
 import CaptchaInput from "../../components/CaptchaInput";
@@ -132,7 +131,7 @@ const Register = () => {
             )}
             <div className={`${styles.formInput}`}>
               <span>Số điện thoại</span>
-              <div className={`${styles.inputPasswordArea} ${phoneValid === 1 && phone.length === 10 ? styles.successPhoneNumber : phone.length == 0 ? '' : phoneValid === 2 || phone.length < 10 ? styles.errorPhoneNumber : ''}`}>
+              <div className={`${styles.inputPasswordArea} ${phoneValid === 1 && phone.length === 10 ? styles.successPhoneNumber : phone.length == 0 ? '' : phoneValid === 2 || phone.length < 10 || phone.length > 10 ? styles.errorPhoneNumber : ''}`}>
                 <input
                   onBlur={checkPhone}
                   disabled={loading}
@@ -292,7 +291,6 @@ const Register = () => {
           </div>
         </div >
       </div>
-      <BottomMenu />
       <RegisterPopupModal show={showRegisterModal} hideModal={() => setShowRegisterModal(false)} timerTime={timerTime} />
       <PopupErrorModal message={errorMessage} show={errorMessage} hideModal={() => setErrorMessage(null)} />
     </div >

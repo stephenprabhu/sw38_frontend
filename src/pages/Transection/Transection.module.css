@@ -1,4 +1,24 @@
-.transTabs button.MuiButtonBase-root {
+.transactionOverlay {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.transactionWrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    gap: 15px;
+    padding: 30px 20px;
+}
+
+.transactionTable table {
+    /* background-color: aqua; */
+    padding: 15px;
+}
+
+/* .transTabs button.MuiButtonBase-root {
     display: inline-block;
     margin-left: 0.3rem;
     margin-right: 0.3rem;
@@ -14,4 +34,4 @@
     color: #010e33;
     margin-bottom: 0.5rem;
     text-decoration: none;
-}
+} */

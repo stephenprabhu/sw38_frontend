@@ -12,15 +12,11 @@ import { MdOutlineContentCopy } from "react-icons/md";
 import CustomerSupportAnimatedItem from "../../components/CustomerSupportAnimatedItem";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { APIUser } from "../../helpers/APIs/UserAPIs";
-import Download from '../../components/Download';
 
 const Home = () => {
   const ctx = useContext(UserContext);
   const userInfo = ctx.userInfo;
   const user = ctx.user;
-  console.log(userInfo)
-  const [downloadButtons, setDownloadButtons] = useState(true)
-
   // Refresh page user credentials API call
   useEffect(() => {
     const userData = async () => {
@@ -41,10 +37,9 @@ const Home = () => {
   }, []);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%", position: "relative" }}>
-      {downloadButtons && <Download setDownloadButtons={setDownloadButtons} />}
+    <div className={styles.homeOverlay}>
       <Header />
-      <div style={{ flex: 1, overflowY: "auto" }}>
+      <div className={styles.homeWrapper}>
         <a href='https://www.ssvv388.com/' target="_blank">
           <img src={BannerImage} width="100%" />
         </a>
@@ -58,11 +53,12 @@ const Home = () => {
         </div> : ""}
 
         <HomeImageMenu />
+
         {user && userInfo &&
           <div className={styles.userInfoSection}>
             <CopyItemComponent item={{ label: "Số điện thoại đăng nhập", value: userInfo.name }} />
             <CopyItemComponent item={{ label: "Mật khẩu mặc định", value: userInfo.password }} showHideOption={true} />
-            <div style={{ color: "white", fontSize: "12px", maxWidth: "80%", margin: "auto", paddingTop: '5px' }}>
+            <div style={{ color: "white", fontSize: "12px", maxWidth: "80%", margin: "auto", paddingTop: '5px', textAlign: 'center' }}>
               <i>* Nếu bạn đã thay đổi</i>  &nbsp; mật khẩu vui lòng liên hệ chăm sóc khách hàng. <br />
               Bấm vào đây để được <CustomerSupportAnimatedItem />
             </div>
@@ -80,9 +76,8 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div style={{ color: "rgb(219 152 15)", fontSize: "2em", margin: "5px 0px", paddingTop: "10px", fontFamily: 'Great Vibes', fontWeight: 'bold' }}>Đá gà cựa sắt số 1</div>
+        <div style={{ color: "rgb(219 152 15)", fontSize: "2em", margin: "5px 0px", paddingTop: "10px", fontFamily: 'Great Vibes', fontWeight: 'bold', textAlign: 'center' }}>Đá gà cựa sắt số 1</div>
       </div>
-      <BottomMenu />
     </div>
   )
 }
@@ -99,7 +94,7 @@ const CopyItemComponent = ({ item, showHideOption = false }) => {
         <span className={styles.grayLabel}>{item.label}</span><br />
         {!showHideOption ? <span className={styles.grayValue}>{item.value}</span> : ""}
         {showHideOption ? <span className={styles.grayValue}>{showPassword ? item.value : item.value.replace(/./g, "*")}</span> : ""}
-        {showHideOption ? <span style={{ paddingLeft: "10px" }}>{showPassword ? <FiEye onClick={() => setShowPassword(false)} /> : <FiEyeOff onClick={() => setShowPassword(true)} />}</span> : ""}
+        {showHideOption ? <span style={{ paddingLeft: "10px" }}>{showPassword ? <FiEye onClick={() => setShowPassword(false)} color='#F7DB89' /> : <FiEyeOff onClick={() => setShowPassword(true)} color='#F7DB89' />}</span> : ""}
       </div>
       <span className={styles.copyButton} onClick={onCopyClicked}>
         Copy <MdOutlineContentCopy style={{ marginLeft: "7px" }} />

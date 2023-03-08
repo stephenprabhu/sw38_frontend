@@ -8,15 +8,15 @@ import { Box, Modal } from "@mui/material";
 import { AiOutlineClose } from "react-icons/ai";
 import PopupErrorModal from "../../components/PopupErrorModal";
 import { APIUser } from "../../helpers/APIs/UserAPIs";
+import { MdContentCopy } from "react-icons/md";
 
-const style = {
+const invoiceModalStyle = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
   display: 'flex',
   flexDirection: 'column',
-
 };
 
 const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
@@ -84,11 +84,11 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
   }
 
   return (
-    <div className={styles.formOverlay}>
+    <div className={styles.deposit2Overlay}>
       <InnerHeader title={"Thông tin nạp tiền"} />
-      <div className={styles.formWrapper}>
-        <form onSubmit={onDepositSubmitClicked} className={styles.deposit2Form}>
-          <h3 style={{ textAlign: "center", color: "red" }}>Lưu ý : 1 điểm = 30.000 VND</h3>
+      <form onSubmit={onDepositSubmitClicked} className={styles.depositForm}>
+        <div style={{ padding: '20px' }}>
+          <h3 style={{ textAlign: "center", color: "red", marginTop: '0px' }}>Lưu ý : 1 điểm = 30.000 VND</h3>
           <span className={styles.label}>Thông tin tiền gửi</span>
           {items.slice(0, 3).map((item, index) => <CopyItemComponent key={index} item={item} />)}
           <div className={styles.bankDetailItem}>
@@ -96,29 +96,31 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
               <span className={styles.grayLabel}>Số tiền nạp</span><br />
               <span className={styles.grayValue}>{formate(amount)}</span>
             </div>
-            <button type="button" className={styles.copyButton} onClick={() => navigator.clipboard.writeText(formate(amount))}>Copy</button>
+            <button type="button" className={styles.copyButton} onClick={() => navigator.clipboard.writeText(formate(amount))}><div className={styles.copyButton}><MdContentCopy />Copy</div></button>
           </div>
           <div className={styles.bankDetailItem}>
             <div>
               <span className={styles.grayLabel}>Nội dung chuyển khoản</span><br />
               <span className={styles.grayValue}>{userName && userName}</span>
             </div>
-            <button type="button" className={styles.copyButton} onClick={() => navigator.clipboard.writeText(userName)}>Copy</button>
+            <button type="button" className={styles.copyButton} onClick={() => navigator.clipboard.writeText(userName)}><div className={styles.copyButton}><MdContentCopy />Copy</div></button>
           </div>
-          <div style={{ padding: "10px 10px 20px 0px" }}>
+          <div className={styles.invoiceImg}>
             <span className={styles.grayLabel}>Hình ảnh hóa đơn</span><br />
-            <input type="file" label="File" accept="image/*" onChange={onImageChange} style={{ marginTop: '5px' }} />
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingright: '5px', marginBottom: '10px' }}>
+              <input type="file" label="File" accept="image/*" onChange={onImageChange} className={styles.invoiceImg} title='' />
+              {invoiceFile && <span style={{ color: '#F93B3B', cursor: 'pointer', textDecoration: 'underline' }} onClick={() => { setInvoiceFile(''); setShowInvoiceFile('') }}>Remove</span>}
+            </div>
           </div>
           {showInvoiceFile && <img src={showInvoiceFile} alt='invice' width={200} height={200} style={{ borderRadius: '10px' }} onClick={() => setImgModal(true)} />}
-          {loading ? <CircularProgress style={{ marginTop: '5px' }} /> : ""}
-          <div className={`${styles.submitButton}`}>
-            <button className={`${styles.depositButton}  ${styles.cancel}`} onClick={onPrevStepClicked}>Trở Về</button>
-            <button className={`${styles.depositButton} ${styles.final}`} disabled={loading} type="submit">{loading ? "Đang tải" : "Hoàn Tất"}</button>
-          </div>
-        </form>
-      </div>
+          {loading ? <div className={styles.loader}> <CircularProgress /></div> : ""}
+          <button type="submit" className={styles.submitButton} >
+            {loading ? "Đang tải" : "Hoàn Tất"}
+          </button>
+        </div>
+      </form >
       <Modal open={imgModal} onClose={() => setImgModal(false)}>
-        <Box sx={style}>
+        <Box sx={invoiceModalStyle}>
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: 'white' }}>
             <h3>Hình ảnh</h3>
             <AiOutlineClose size={30} color='white' onClick={() => setImgModal(false)} />
@@ -127,9 +129,14 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank }) => {
         </Box>
       </Modal>
       <PopupErrorModal message={errorMessage} show={errorModal} hideModal={() => setErrorModal(false)} />
-    </div>
+    </div >
   )
 }
+
+{/*<div className={`${styles.submitButton}`}>
+  <button className={`${styles.depositButton}  ${styles.cancel}`} onClick={onPrevStepClicked}>Trở Về</button>
+  <button className={`${styles.depositButton} ${styles.final}`} disabled={loading} type="submit">{loading ? "Đang tải" : "Hoàn Tất"}</button>
+</div>*/}
 
 const CopyItemComponent = ({ item }) => {
   const onCopyClicked = () => {
@@ -141,7 +148,7 @@ const CopyItemComponent = ({ item }) => {
         <span className={styles.grayLabel}>{item.label}</span><br />
         <span className={styles.grayValue}>{item.value}</span>
       </div>
-      <button type="button" className={styles.copyButton} onClick={onCopyClicked}>Copy</button>
+      <button type="button" className={styles.copyButton} onClick={onCopyClicked}><div className={styles.copyButton}><MdContentCopy />Copy</div></button>
     </div>
   )
 }

@@ -112,10 +112,15 @@
 .loginSection {
     color: #F7DB89;
     margin-top: 17px;
+    text-align: center;
 }
 
 .loginLink {
     margin-left: 0.4rem;
     color: #ffd08a;
     text-decoration: underline;
+}
+
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
 }

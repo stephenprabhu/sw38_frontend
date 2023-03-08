@@ -27,6 +27,7 @@
 .promotionHeader span:nth-child(1) {
   font-size: 20px;
   font-weight: 600;
+  text-align: center;
 }
 
 .headerButtons {
@@ -54,6 +55,10 @@
   flex-grow: 1;
   flex-basis: 0px;
   overflow: auto;
+}
+
+.cardSectionWrapper h3 {
+  text-align: center;
 }
 
 .card {

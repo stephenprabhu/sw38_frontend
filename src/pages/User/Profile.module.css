@@ -1,8 +1,24 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.section {
+  width: 90%;
+  margin: auto;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex-grow: 1;
+  overflow: auto;
+}
+
 .profileImage {
   width: 100px;
   border-radius: 50%;
 }
-
 
 .profileSection {
   display: flex;
@@ -14,24 +30,9 @@
   margin-left: 20px;
 }
 
-.layout {
-  width: 100%;
-  height: 100%;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-}
 
-.section {
-  width: 70%;
-  margin: auto;
-  padding-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  flex-grow: 1;
-  overflow: auto;
-}
+
+
 
 
 .button {
