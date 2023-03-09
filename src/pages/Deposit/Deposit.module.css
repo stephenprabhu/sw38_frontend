@@ -29,16 +29,16 @@
 }
 
 .singleBankItem {
-  border: 0.2px solid rgb(181, 181, 181);
+  border: 0.2px solid #19253F;
   border-radius: 5px;
-  padding: 5px 5px;
+  padding: 5px;
   margin-left: 10px;
   cursor: pointer;
   display: flex;
 }
 
 .singleBankItem.active {
-  border: 0.2px solid green;
+  border: 0.2px solid #F7DB89;
 }
 
 .singleBankItem img {

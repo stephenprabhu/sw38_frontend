@@ -30,7 +30,6 @@ const Home = () => {
           password: userApiData && userApiData.password,
         });
       }
-      console.log(userApiData)
     }
     if (!userInfo && localStorage.getItem('auth_token')) {
       userData()

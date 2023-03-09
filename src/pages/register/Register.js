@@ -22,7 +22,7 @@ const Register = () => {
   const [passwordAgain, setPasswordAgain] = useState("");
   const [captcha, setCaptcha] = useState("");
   const [randomCaptcha, setRandomCaptcha] = useState(null);
-  const [errorMessage, setErrorMessage] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('');
   const ctx = useContext(UserContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -52,7 +52,6 @@ const Register = () => {
       setErrorMessage("Mã xác nhận không hợp lệ");
       return;
     }
-
     if (
       phone && phone.length === 10 &&
       password && password.length >= 10
@@ -72,11 +71,7 @@ const Register = () => {
       } else {
         localStorage.setItem("auth_token", x);
         ctx.setUser(x);
-        // ctx.setUserInfo({
-        //   name: phone,
-        //   password: password,
-        //   balance: "0.0",
-        // });
+        ctx.setUserInfo(null);
         navigate("/");
       }
     }
@@ -292,7 +287,7 @@ const Register = () => {
         </div >
       </div>
       <RegisterPopupModal show={showRegisterModal} hideModal={() => setShowRegisterModal(false)} timerTime={timerTime} />
-      <PopupErrorModal message={errorMessage} show={errorMessage} hideModal={() => setErrorMessage(null)} />
+      <PopupErrorModal message={errorMessage} show={errorMessage} hideModal={() => setErrorMessage('')} />
     </div >
   );
 };

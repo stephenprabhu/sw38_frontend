@@ -23,16 +23,15 @@ const Login = () => {
       setErrorMessage("phone must be 10 digits");
       return;
     }
+    setLoading(true)
     const x = await APILoginUser(phone, password);
     if (!x) {
       setErrorMessage("Số điện thoại hoặc mật khẩu không trùng khớp. Vui lòng kiểm tra lại.");
     } else {
       localStorage.setItem('auth_token', x);
       ctx.setUser(x);
-      // ctx.setUserInfo({
-      //   name: phone,
-      //   password: password,
-      // });
+      ctx.setUserInfo(null);
+      setLoading(false)
       navigate("/");
     }
   }
