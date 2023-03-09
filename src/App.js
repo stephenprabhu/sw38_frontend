@@ -1,18 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
-import Header from './components/Header';
 import Home from './pages/Home/Home';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
-
-import {
-  Routes,
-  Route,
-} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Deposit from './pages/Deposit/Deposit';
 import AddAccount from './pages/User/AddAccount';
 import Withdraw from './pages/withdraw/Withdraw';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import UserContext from './helpers/Context/user-context';
 import Profile from './pages/User/Profile';
 import { Navigate } from 'react-router-dom';
@@ -20,14 +14,18 @@ import Transection from './pages/Transection/Transection';
 import Promotions from './pages/Promotions/Promotions';
 import NotFound from './pages/notFound/NotFound';
 import AgencyRegister from './pages/agencyRegister/AgencyRegister';
+import Download from './components/Download';
+import BottomMenu from './components/BottomMenu';
 
 function App() {
   const ctx = useContext(UserContext);
+  const [downloadButtons, setDownloadButtons] = useState(true)
 
   useEffect(() => {
     if (localStorage.getItem('auth_token')) {
       ctx.setUser(localStorage.getItem('auth_token'));
     }
+    localStorage.setItem('downlod', true)
   }, []);
 
   const AuthRoute = ({ children }) => {
@@ -46,8 +44,12 @@ function App() {
 
   return (
 
-      <div className="App">
-        <Routes >
+    <div className="App">
+      <div>
+        {downloadButtons && <Download setDownloadButtons={setDownloadButtons} />}
+      </div>
+      <div style={{ flexGrow: 1, flexBasis: 0, overflow: 'hidden' }}>
+        <Routes>
           <Route path="/register" element={<GuestRoute><Register /></GuestRoute>} />
           <Route path="/agent/register" element={<AgencyRegister />} />
           <Route path="/login" element={<GuestRoute><Login /></GuestRoute>} />
@@ -62,10 +64,9 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes >
       </div>
+      <BottomMenu />
+    </div>
   );
 }
-
-
-
 
 export default App;

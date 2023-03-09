@@ -1,11 +1,42 @@
+.homeOverlay {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.homeWrapper {
+  flex-grow: 1;
+  overflow: auto;
+  flex-basis: 0;
+}
+
+.cockfightSectionOverlay {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #F7DB89;
+  border-radius: 10px;
+  max-width: 90%;
+  margin: auto;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.cockfightSectionOverlay span {
+  background: transparent linear-gradient(180deg, #F6DA87 0%, #E1BB4E 100%) 0% 0% no-repeat padding-box;
+  border-radius: 7px 7px 0px 0px;
+  color: #000000;
+  font-size: 20px;
+  padding: 6px 0px;
+  font-family: 'Great Vibes';
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
 .cockfightSection {
   display: flex;
   justify-content: space-between;
-  max-width: 90%;
-  margin: auto;
   color: white;
   margin-top: 10px;
-  border: 1px solid white;
   border-radius: 10px;
   min-height: 180px;
   align-items: center;
@@ -28,9 +59,46 @@
   margin: auto;
 }
 
+.userInfoSectionLink {
+  text-align: center;
+  color: white;
+  padding: 10px 0px;
+}
+
+.userInfoSectionLink a {
+  color: #19253F;
+  font-weight: 600;
+  font-size: 12px;
+  text-decoration: none;
+  padding: 3px 10px;
+
+  background: transparent linear-gradient(180deg, #F6D984 0%, #DFB847 100%) 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 15px #f7db894d;
+  border: 3px solid #19253F;
+  border-radius: 35px;
+}
+
+.bankDetailItem {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.grayLabel {
+  font-weight: 500;
+  color: #DEB849;
+  font-size: 0.7rem;
+}
+
+.grayValue {
+  font-weight: 500;
+  color: #F7DB89;
+  font-size: 1rem;
+}
+
 .copyButton {
-  color: #428dfc;
-  /* background: #f0f2fe; */
+  color: #F7DB89;
   border-radius: 0.3rem;
   padding: 5px 10px;
   border: none;
@@ -43,22 +111,29 @@
   padding: 8px 16px;
 }
 
-.bankDetailItem {
-  padding: 5px;
+.registerLoginSection {
+  width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+
 }
 
-.grayLabel {
-  font-weight: 500;
-  color: rgb(210, 210, 210);
-  font-size: 0.7rem;
+.registerLoginSection a {
+  display: block;
+  width: 50%;
+  padding: 20px 15px;
+  text-decoration: none;
+  font-weight: 700;
 }
 
+.loginButton {
+  background-image: linear-gradient(180deg, #f1474c, #c71e23);
+  color: #fff;
+  text-align: center;
+}
 
-.grayValue {
-  font-weight: 500;
-  color: rgb(255, 255, 255);
-  font-size: 1rem;
+.registerButton {
+  background: linear-gradient(180deg, #fce08d, #b69653);
+  color: #010e33;
+  text-align: center;
 }

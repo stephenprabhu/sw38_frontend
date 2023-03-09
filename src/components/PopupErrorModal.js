@@ -1,8 +1,8 @@
 import React from 'react'
-import { FcCancel } from "react-icons/fc";
 import Modal from '@mui/material/Modal';
 import styles from "./PopupErrorModal.module.css";
-import { SlInfo } from "react-icons/sl";
+import errorIcon from '../assets/Error.png';
+import successIcon from '../assets/Success.png';
 
 const PopupErrorModal = ({ message, show, hideModal, error = true }) => {
   return (
@@ -12,13 +12,14 @@ const PopupErrorModal = ({ message, show, hideModal, error = true }) => {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <div className={styles.loadingSection}>
-        {error ? <FcCancel size={40} style={{ paddingBottom: '10px' }} /> : <SlInfo size={38} style={{ color: "green", paddingBottom: '10px' }} />}
-        <div style={{ color: "white" }}>{message}</div>
+      <div className={styles.modalOverlay} onClick={hideModal}>
+        <div className={styles.loadingSection} onClick={(e) => e.stopPropagation()}>
+          {error ? <img src={errorIcon} className={styles.errorImg} /> : <img src={successIcon} className={styles.errorImg} />}
+          <div style={{ color: "white" }}>{message}</div>
+        </div>
       </div>
     </Modal>
   )
 }
-// <a className={styles.myLink} onClick={hideModal}>Close</a>
 
 export default PopupErrorModal

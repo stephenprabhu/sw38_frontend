@@ -25,17 +25,19 @@ const Header = () => {
 
   return (
     <header >
-      <div className={styles.mainSiteHeader}>
-        <div className="side-menu" style={{ cursor: "pointer" }} onClick={() => setDrawerOpened(true)}>
-          <HiMenuAlt2 style={{ color: "white" }} size={40} />
-        </div>
-        <div>
-          <Link to="/">
-            <img width={120} src={SVLogo} alt="site-logo" />
-          </Link>
-        </div>
-        <div>
-          {ctx.user ? <RxExit onClick={onLogOutClicked} className={styles.logOutButton} width={35} /> : ""}
+      <div className={styles.headerOverlay}>
+        <div className={styles.mainSiteHeader}>
+          <div className="side-menu" style={{ cursor: "pointer" }} onClick={() => setDrawerOpened(true)}>
+            <HiMenuAlt2 style={{ color: "#F7DB89" }} size={40} />
+          </div>
+          <div>
+            <Link to="/">
+              <img width={120} src={SVLogo} alt="site-logo" />
+            </Link>
+          </div>
+          <div>
+            {ctx.user ? <RxExit onClick={onLogOutClicked} className={styles.logOutButton} width={35} /> : ""}
+          </div>
         </div>
       </div>
       <Drawer
