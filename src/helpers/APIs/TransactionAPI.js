@@ -14,7 +14,7 @@ export const APIMakeDepositRequest = async (amount, selected_bank_id, file) => {
         Authorization: `Bearer ${token}`
       }
     });
-    if (res.data.user_id) {
+    if (res.data) {
       return res.data;
     }
   } catch (e) {
@@ -23,6 +23,24 @@ export const APIMakeDepositRequest = async (amount, selected_bank_id, file) => {
     }
   }
   return null;
+}
+
+
+export const APICheckTransaction = async (token, transactionId) => {
+  try {
+    const res = await axios.get("https://bo.ssv388.info/api/account/transaction_status/"+transactionId, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    if (res.data && res.data) {
+      if(res.data.account){
+        return true;
+      }
+      return false;
+    }
+  } catch (e) {
+    console.log(e);
+  }
+  return false;
 }
 
 

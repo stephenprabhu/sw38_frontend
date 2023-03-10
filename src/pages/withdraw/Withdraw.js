@@ -40,7 +40,7 @@ const Withdraw = () => {
     if (intTransactionAmount > 100000000) {
       setError('Vui lòng chọn dưới 100,000,000')
     } else if (intTransactionAmount < 150000) {
-      setError('Vui lòng chọn trên 150000')
+      setError('Vui lòng chọn trên 150,000')
     } else if (!bankId) {
       setError('Vui lòng thêm ngân hàng')
     } else if (bankId && intTransactionAmount) {

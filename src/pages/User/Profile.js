@@ -35,16 +35,17 @@ const Profile = () => {
         <div className={styles.profileSection}>
           <img src={profilePage} className={styles.profileImage} />
           <div className={styles.userInfoSection}>
-            {user && <CopyItemComponent item={{ label: "Số điện thoại đăng nhập", value: user.phone }} />}
-            {user && <CopyItemComponent item={{ label: "Mật khẩu mặc định", value: user.user_id }} />}
+            {user && <CopyItemComponent item={{ label: "SĐT đăng nhập hệ thống", value: user.phone }} />}
+            {user && <CopyItemComponent item={{ label: "Tài khoản SV388", value: user.user_id }} />}
             <div style={{ color: "white", fontSize: "12px", maxWidth: "80%", margin: "auto", paddingTop: '5px', textAlign: 'center' }}>
               <i>* Nếu bạn quên</i>  &nbsp; mật khẩu vui lòng liên hệ chăm sóc khách hàng. <br />
               Bấm vào đây để được <CustomerSupportAnimatedItem />
             </div>
           </div>
           <Link to={'/transections'} style={{ marginTop: '20px' }}>
-            <button className={styles.button}>giao dịch</button>
+            <button className={styles.button}>Giao Dịch</button>
           </Link>
+          <h3 style={{color:"white"}}>Thông tin cá nhân </h3>
           <div className={styles.bankListOverlay}>
             {banks && banks.length ? banks.map((bank) => {
               return (
@@ -78,7 +79,7 @@ const CopyItemComponent = ({ item }) => {
         <span className={styles.grayLabel}>{item.label}</span><br />
         <span className={styles.grayValue}>{item.value}</span>
       </div>
-      {item.label !== 'Số điện thoại đăng nhập' &&
+      {item.label !== 'SĐT đăng nhập hệ thống' &&
         <span className={styles.copyButton} onClick={onCopyClicked}>
           Copy <MdOutlineContentCopy style={{ marginLeft: "7px" }} />
         </span>}

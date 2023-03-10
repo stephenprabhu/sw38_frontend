@@ -17,6 +17,13 @@ const Home = () => {
   const ctx = useContext(UserContext);
   const userInfo = ctx.userInfo;
   const user = ctx.user;
+
+  const urlSearchParams = new URLSearchParams(window.location.search);
+	const params = Object.fromEntries(urlSearchParams.entries());   
+	const isInitalDeposit = params && params.initial;
+
+
+
   // Refresh page user credentials API call
   useEffect(() => {
     const userData = async () => {
@@ -26,8 +33,9 @@ const Home = () => {
         ctx.setUser('');
       } else {
         ctx.setUserInfo({
-          name: userApiData && userApiData.phone,
-          password: userApiData && userApiData.password,
+          name: userApiData ? userApiData.phone : '-',
+          user_id: userApiData ? userApiData.user_id : '-',
+          password: userApiData ? userApiData.raw_string : '-' ,
         });
       }
     }
@@ -53,8 +61,9 @@ const Home = () => {
         <HomeImageMenu />
         {user && userInfo &&
           <div className={styles.userInfoSection}>
-            <CopyItemComponent item={{ label: "Số điện thoại đăng nhập", value: userInfo.name }} />
-            <CopyItemComponent item={{ label: "Mật khẩu mặc định", value: userInfo.user_id }} />
+            {!isInitalDeposit ? <CopyItemComponent item={{ label: "Số điện thoại đăng nhập", value: userInfo.name }} /> : ""}
+            <CopyItemComponent item={{ label: "Tai khan SV388", value: userInfo.user_id }} /> 
+            {isInitalDeposit ? <CopyItemComponent item={{ label: "Mật khẩu mặc định", value: userInfo.password }} />  : ""}
             <div className={styles.userInfoSectionLink}><a href="https://www.ssvv388.com/" target="_blank">ĐẶT CƯỢC NGAY</a></div>
             <div style={{ color: "white", fontSize: "12px", maxWidth: "80%", margin: "auto", paddingTop: '5px', textAlign: 'center' }}>
               <i>* Nếu bạn quên</i>  &nbsp; mật khẩu vui lòng liên hệ chăm sóc khách hàng. <br />

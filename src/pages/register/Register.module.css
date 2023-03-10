@@ -17,7 +17,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  padding: 15px 0px;
+  padding: 30px 0px;
 }
 
 .titleWrapper h3 {
@@ -31,6 +31,7 @@
   padding: 10px 35px;
   flex-basis: 0;
   overflow: auto;
+  justify-content: center;
 }
 
 .registerForm {

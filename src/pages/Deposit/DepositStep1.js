@@ -1,36 +1,16 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState} from 'react'
 import styles from './Deposit.module.css'
 import InnerHeader from '../../components/InnerHeader'
-import { APIGetCompanyBanks } from '../../helpers/APIs/BankAPIs';
-import UserContext from '../../helpers/Context/user-context';
 import { IconButton } from '@mui/material';
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { addCommasToInput, addCommasToNumber } from '../../helpers/NumberHelper';
 
-const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setSelectedBank }) => {
+const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setSelectedBank, companyBanks, errorMessage }) => {
 
-  const [companyBanks, setCompanyBanks] = useState([]);
-  const [errorMessage, setErrorMessage] = useState(null);
-  const ctx = useContext(UserContext);
   const [stringAmount, setStringAmount] = useState('');
-  useEffect(() => {
-    getCompanyBanks();
-  }, []);
+;
 
-  //  get company all bank list 
-  const getCompanyBanks = async () => {
-    if (ctx.user) {
-      const x = await APIGetCompanyBanks(ctx.user);
-      if (!x) {
-        setErrorMessage("Số điện thoại hoặc mật khẩu không trùng khớp. Vui lòng kiểm tra lại.");
-      } else {
-        if (x && x.length) {
-          setCompanyBanks(x);
-          setSelectedBank(x[0]);
-        }
-      }
-    }
-  }
+
 
   const onDepositAmountChange = val => {
     setAmount(val.replace(/,/g, ''));
@@ -64,7 +44,7 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
             )) : ""}
           </div>
           <div>
-            <span className={styles.label}>* Số tiền cần nạp ? (Tỷ lệ đổi: <span style={{ color: 'red', fontSize: '18px' }}>30,000 VNĐ = 1 điểm</span>)</span>
+            <span className={styles.label}>* Số tiền cần nạp ? (Tỷ lệ đổi: <span style={{ color: 'red', fontSize: '17px' }}>30,000 VNĐ = 1 điểm</span>)</span>
             <div className={styles.inputItem}>
               <i className={styles.adjornment}>₫</i>
               <input value={stringAmount} onChange={e => { onDepositAmountChange(e.currentTarget.value) }} type="text" className={styles.whiteInput} style={{ border: "none" }} />

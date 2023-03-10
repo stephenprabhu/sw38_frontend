@@ -16,6 +16,12 @@ import { BiEdit } from "react-icons/bi";
 
 let timerInterval = null;
 
+
+
+
+//password validation if code
+//password && password.length >= 10 && checkIfHasUpperCaseChar(password) && checkIfHasLowerCaseChar(password) && checkIfHasNumber(password) && !checkIfHasSpecialChar(password) &&password === passwordAgain
+
 const Register = () => {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
@@ -52,38 +58,30 @@ const Register = () => {
       setErrorMessage("Mã xác nhận không hợp lệ");
       return;
     }
-    if (
-      phone && phone.length === 10 &&
-      password && password.length >= 10
-      && checkIfHasUpperCaseChar(password)
-      && checkIfHasLowerCaseChar(password)
-      && checkIfHasNumber(password) &&
-      !checkIfHasSpecialChar(password) &&
-      password === passwordAgain
-    ) {
+    if (phone && phone.length === 10) {
       setLoading(true);
-      setShowRegisterModal(true);
-      timerInterval = setInterval(() => setTimerTime((pt) => { return pt - 1; }), 1000);
-      const x = await APIRegisterUser(phone, password);
+      // setShowRegisterModal(true);
+      // timerInterval = setInterval(() => setTimerTime((pt) => { return pt - 1; }), 1000);
+      const x = await APIRegisterUser(phone, null);
       if (!x) {
         setErrorMessage("Số điện thoại này đã được đăng ký vui lòng liên hệ CSKH để được hỗ trợ.");
-        setShowRegisterModal(false);
+        // setShowRegisterModal(false);
       } else {
         localStorage.setItem("auth_token", x);
         ctx.setUser(x);
         ctx.setUserInfo(null);
-        navigate("/");
+        navigate("/deposit?initial=true");
       }
     }
     setLoading(false);
   };
 
-  useEffect(() => {
-    if (timerInterval && timerTime <= 0) {
-      setTimerTime(-1);
-      clearInterval(timerInterval);
-    }
-  }, [timerTime]);
+  // useEffect(() => {
+  //   if (timerInterval && timerTime <= 0) {
+  //     setTimerTime(-1);
+  //     clearInterval(timerInterval);
+  //   }
+  // }, [timerTime]);
 
   const checkPhoneStart = (value) => {
     const x = value.charAt(0);
@@ -144,7 +142,7 @@ const Register = () => {
               {phone && phone.length !== 10 ? <span className={styles.error}>Vui lòng nhập 10 ký tự</span> : ""}
 
             </div>
-            <div className={styles.formInput}>
+            {/* <div className={styles.formInput}>
               <span>Mật khẩu</span>
               <p style={{ color: "#F7DB89", textAlign: "left", fontSize: "12px", fontStyle: "italic" }}>
                 Ví dụ : Daga123123 (chữ  <span style={{ color: "#8ee18e", display: "inline", fontWeight: "900" }}>"D"</span> viết IN HOA, không dấu)
@@ -252,7 +250,7 @@ const Register = () => {
               </div>
 
               {passwordAgain && passwordAgain !== password ? <span className={styles.error}>Mật khẩu không phù hợp.</span> : ""}
-            </div>
+            </div> */}
             {/* <div className={styles.formInput}>
           <span>Mã xác nhận</span>
           <div style={{ display: "flex" }}>
