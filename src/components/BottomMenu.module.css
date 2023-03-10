@@ -2,6 +2,9 @@
     background: #F7DB89 0% 0% no-repeat padding-box;
     padding-top: 3px;
     border-radius: 20px;
+    /* position: fixed;
+    bottom: 0;
+    width: 25%; */
 }
 
 .bottomMenuLayout {
