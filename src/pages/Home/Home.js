@@ -62,16 +62,16 @@ const Home = () => {
         {user && userInfo &&
           <div className={styles.userInfoSection}>
             {!isInitalDeposit ? <CopyItemComponent item={{ label: "Số điện thoại đăng nhập", value: userInfo.name }} /> : ""}
-            <CopyItemComponent item={{ label: "Tai khan SV388", value: userInfo.user_id }} /> 
+            <CopyItemComponent item={{ label: "Tài khoản SV388", value: userInfo.user_id }} /> 
             {isInitalDeposit ? <CopyItemComponent item={{ label: "Mật khẩu mặc định", value: userInfo.password }} />  : ""}
             <div className={styles.userInfoSectionLink}><a href="https://www.ssvv388.com/" target="_blank">ĐẶT CƯỢC NGAY</a></div>
             <div style={{ color: "white", fontSize: "12px", maxWidth: "80%", margin: "auto", paddingTop: '5px', textAlign: 'center' }}>
               <i>* Nếu bạn quên</i>  &nbsp; mật khẩu vui lòng liên hệ chăm sóc khách hàng. <br />
-              Bấm vào đây để được <CustomerSupportAnimatedItem />
+              Bấm vào đây để liên hệ <CustomerSupportAnimatedItem />
             </div>
           </div>}
         <div className={styles.cockfightSectionOverlay}>
-          <span>Daga</span>
+          <span>Đá gà</span>
           <div className={styles.cockfightSection}>
             <div><a href='https://www.ssvv388.com/' target="_blank"><img src={CockFightBanner} width={"75%"} /></a></div>
             <div style={{ padding: '0px 10px' }}>
