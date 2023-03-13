@@ -64,7 +64,7 @@ const Home = () => {
             <div className={styles.userInfoSectionLink}><a href="https://www.ssvv388.com/" target="_blank">ĐẶT CƯỢC NGAY</a></div>
             <div style={{ color: "white", fontSize: "12px", maxWidth: "80%", margin: "auto", paddingTop: '5px', textAlign: 'center' }}>
               <i>* Nếu bạn quên</i>  &nbsp; mật khẩu vui lòng liên hệ chăm sóc khách hàng. <br />
-              Bấm vào đây để được <CustomerSupportAnimatedItem />
+              Bấm vào đây để liên hệ <CustomerSupportAnimatedItem />
             </div>
           </div>}
         <div className={styles.cockfightSectionOverlay}>
