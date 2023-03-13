@@ -22,18 +22,17 @@ const invoiceModalStyle = {
   flexDirection: 'column',
 };
 
-const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank, isInitalDeposit }) => {
+const DepositStep2 = ({ amount, selectedBank, isInitalDeposit }) => {
   const [invoiceFile, setInvoiceFile] = useState();
-  const [showInvoiceFile, setShowInvoiceFile] = useState()
-  const [imgModal, setImgModal] = useState(false)
-  // const [accountNo, setAccountNo] = useState(null)
-  const [errorModal, setErrorModal] = useState(false)
+  const [showInvoiceFile, setShowInvoiceFile] = useState();
+  const [imgModal, setImgModal] = useState(false);
+  const [errorModal, setErrorModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [userName, setUserName] = useState();
   const [showErrorForInitalDeposit, setShowErrorForInitalDeposit] = useState(false);
   const [transaction, setTransaction] = useState(null);
-	const ctx = useContext(UserContext);
+  const ctx = useContext(UserContext);
 
   // user API
   useEffect(() => {
@@ -42,75 +41,35 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank, isInitalDeposit
       setUserName(userAPI.phone);
     }
     userData();
-
   }, []);
 
-
-  useEffect(()=> {
-    if(isInitalDeposit){
+  // Send Initial Deposit req
+  useEffect(() => {
+    if (isInitalDeposit) {
       sendInitalDepositRequest();
     }
-  },[selectedBank]);
+  }, [selectedBank]);
 
-  const sendInitalDepositRequest = async( ) => {
+  // initial Deposit req func
+  const sendInitalDepositRequest = async () => {
     const tr = await sendDepositRequest();
-    if(tr){
+    if (tr) {
       setTransaction(tr);
     }
   }
 
-
-  const items =  [
-    { label: "Ngân hàng nạp tiền", value: selectedBank ? selectedBank.bank_name : "Đang tải.." },
-    { label: "Tên tài khoản nhận", value: selectedBank ? selectedBank.bank_account_name : "Đang tải.." },
-    { label: "Số tài khoản", value: selectedBank ? selectedBank.bank_account_number : "Đang tải.." },
-    { label: "Số tiền nạp", value: amount ? addCommasToInput(amount) : "Đang tải.." },
-    {label: "Nội dung chuyển khoản", value: userName ? userName : "Đang tải.." }
-  ];
-
-
-
   // navigating redirect
   const navigate = useNavigate()
 
-  //submit func
-  const onDepositSubmitClicked = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    if(isInitalDeposit){
-      if(transaction){
-        console.log(transaction)
-        const res = await APICheckTransaction(ctx.user, transaction.id);
-        if(res){
-          return navigate("/?initial=true");
-        }else{
-          setShowErrorForInitalDeposit(true);
-        }
-      }else{
-        setErrorModal(true)        
-        setErrorMessage("Đã có lỗi trong quá trình nạp tiền. Vui lòng liên hệ Chăm sóc khách hàng");
-      }
-    }else{
-      setLoading(true);
-      const tr  = await sendDepositRequest();
-      if(tr){
-        navigate('/transections');
-      }
-    }
-    setLoading(false);
-    
-  }
-
-
-  const sendDepositRequest = async() => {
-    if(selectedBank && selectedBank.id && amount){
+  const sendDepositRequest = async () => {
+    if (selectedBank && selectedBank.id && amount) {
       let newAmount = amount.replace(/,/g, '');
       const x = await APIMakeDepositRequest(newAmount, selectedBank.id, invoiceFile);
       if (x === 'ERR_FILE_FORMAT_INVALID') {
         setErrorModal(true)
         setErrorMessage("Định dạng ảnh không phù hợp. Vui lòng liên CSKH để được hỗ trợ");
       } else if (!x) {
-        setErrorModal(true)        
+        setErrorModal(true)
         setErrorMessage("Đã có lỗi trong quá trình nạp tiền. Vui lòng liên hệ Chăm sóc khách hàng");
       } else {
         return x;
@@ -127,12 +86,48 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank, isInitalDeposit
     }
   }
 
+  // user card data
+  const items = [
+    { label: "Ngân hàng nạp tiền", value: selectedBank ? selectedBank.bank_name : "Đang tải.." },
+    { label: "Tên tài khoản nhận", value: selectedBank ? selectedBank.bank_account_name : "Đang tải.." },
+    { label: "Số tài khoản", value: selectedBank ? selectedBank.bank_account_number : "Đang tải.." },
+    { label: "Số tiền nạp", value: amount ? addCommasToInput(amount) : "Đang tải.." },
+    { label: "Nội dung chuyển khoản", value: userName ? userName : "Đang tải.." }
+  ];
+
+  //submit func
+  const onDepositSubmitClicked = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    if (isInitalDeposit) {
+      if (transaction) {
+        console.log(transaction)
+        const res = await APICheckTransaction(ctx.user, transaction.id);
+        if (res) {
+          return navigate("/?initial=true");
+        } else {
+          setShowErrorForInitalDeposit(true);
+        }
+      } else {
+        setErrorModal(true)
+        setErrorMessage("Đã có lỗi trong quá trình nạp tiền. Vui lòng liên hệ Chăm sóc khách hàng");
+      }
+    } else {
+      setLoading(true);
+      const tr = await sendDepositRequest();
+      if (tr) {
+        navigate('/transections');
+      }
+    }
+    setLoading(false);
+  }
+
   return (
     <div className={styles.deposit2Overlay}>
       <InnerHeader title={"Thông tin nạp tiền"} />
       <form onSubmit={onDepositSubmitClicked} className={styles.depositForm}>
         <div style={{ padding: '20px' }}>
-          {isInitalDeposit ? <div className={styles.whiteNotice}>Để kích hoạt tài khoản, vui lòng chuyển khoản với thông tin dưới đây</div>  :""}
+          {isInitalDeposit ? <div className={styles.whiteNotice}>Để kích hoạt tài khoản, vui lòng chuyển khoản với thông tin dưới đây</div> : ""}
           <h4 style={{ textAlign: "center", color: "red", marginTop: '0px' }}>Lưu ý : 1 điểm = 30.000 VND</h4>
           <span className={styles.label}>Thông tin tiền gửi</span>
           {items.map((item, index) => <CopyItemComponent key={index} item={item} />)}
@@ -146,11 +141,11 @@ const DepositStep2 = ({ amount, onPrevStepClicked, selectedBank, isInitalDeposit
           {showInvoiceFile && <img src={showInvoiceFile} alt='invice' width={200} height={200} style={{ borderRadius: '10px' }} onClick={() => setImgModal(true)} />}
           {loading ? <div className={styles.loader}> <CircularProgress /></div> : ""}
           {isInitalDeposit ? <div className={`${styles.whiteNotice} ${styles.small}`}>Sau khi chuyển khoản thành công, quý khách vui lòng nhấn vào ( kích hoạt tài khoản) để nhận tài khoản của mình. <AiOutlineArrowDown /> </div> : ""}
-          {showErrorForInitalDeposit ? <div style={{color:'red', textAlign:"center", fontSize:"0.9rem"}}>Tài khoản chưa kích hoạt hoặc Quý khách chưa chuyển khoản!</div> : ""}
+          {showErrorForInitalDeposit ? <div style={{ color: 'red', textAlign: "center", fontSize: "0.9rem" }}>Tài khoản chưa kích hoạt hoặc Quý khách chưa chuyển khoản!</div> : ""}
           <button type="submit" className={styles.submitButton} >
             {loading ? "Đang tải" : isInitalDeposit ? "Kích hoạt tài khoản" : "Hoàn Tất"}
           </button>
-          {isInitalDeposit ? <div style={{color:"white", textAlign:"center", fontSize: "0.9rem", marginTop:"10px"}}>
+          {isInitalDeposit ? <div style={{ color: "white", textAlign: "center", fontSize: "0.9rem", marginTop: "10px" }}>
             Nếu sau khi chuyển khoản thành công nhưng chưa Kích Hoạt được tài khoản , quý khách vui lòng liên hệ CSKH <CustomerSupportAnimatedItem />
           </div> : ""}
         </div>

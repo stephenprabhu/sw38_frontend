@@ -1,11 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
-// import styles from "../register/Register.module.css";
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 import Header from "../../components/Header";
 import { APICheckIfPhoneExists, APIRegisterAgent } from "../../helpers/APIs/UserAPIs";
 import UserContext from "../../helpers/Context/user-context";
 import { useNavigate } from "react-router-dom";
-import BottomMenu from "../../components/BottomMenu";
 import { FcOk, FcCancel } from "react-icons/fc";
 import { FiEyeOff, FiEye } from "react-icons/fi";
 import PopupErrorModal from "../../components/PopupErrorModal";
@@ -16,10 +13,7 @@ import styles from './AgencyRegister.module.css';
 import { CiCreditCard1 } from "react-icons/ci";
 import CaptchaInput from "../../components/CaptchaInput";
 import { IoArrowBack } from "react-icons/io5";
-
-
 let timerInterval = null;
-
 
 const AgencyRegister = () => {
   const [phone, setPhone] = useState("");
@@ -40,8 +34,6 @@ const AgencyRegister = () => {
   const [accNumber, setAccNumber] = useState('');
   const [userName, setUserName] = useState('');
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-
-
 
   const registerUser = async (e) => {
     e.preventDefault();
@@ -105,7 +97,6 @@ const AgencyRegister = () => {
     return /\d/.test(value);
   };
 
-
   const checkPhone = async () => {
     const res = await APICheckIfPhoneExists(phone);
     if (res) {
@@ -117,15 +108,15 @@ const AgencyRegister = () => {
   }
 
   return (
-    <div className={styles.registerOverlay}>
+    <div className={styles.agencyRegisterOverlay}>
       <Header />
-      <div className={styles.registerWrapper}>
+      <div className={styles.agencyRegisterWrapper}>
         <div className={styles.titleWrapper}>
           <IoArrowBack onClick={() => navigate("/promotions")} style={{ cursor: 'pointer' }} size={26} />
           <h3>Đăng ký Đại lý</h3>
         </div>
-        <div className={styles.formOverlay}>
-          <form className={styles.registerForm} onSubmit={registerUser}>
+        <div className={styles.agencyRegisterFormOverlay}>
+          <form className={styles.agencyRegisterForm} onSubmit={registerUser}>
             {errorMessage ? <span className={styles.error}>{errorMessage}</span> : ""}
             <div className={`${styles.formInput}`}>
               <span>Số điện thoại</span>
@@ -276,7 +267,7 @@ const AgencyRegister = () => {
               <input className={styles.whiteInput} style={{ border: "none" }} placeholder="＊ Vui lòng nhập số tài khoản" required value={accNumber} onChange={(e) => setAccNumber(e.target.value)} />
             </div>
             <CaptchaInput captcha={randomCaptcha} setCaptcha={setRandomCaptcha} setUserCaptchaInput={setCaptcha} userCaptchaInput={captcha} />
-            <button className={`${styles.registerButton} ${loading ? styles.loading : ""}`} type="submit">
+            <button className={`${styles.agencyRegisterButton} ${loading ? styles.loading : ""}`} type="submit">
               {loading ? "Đang tải" : "Đăng ký"}
             </button>
           </form>

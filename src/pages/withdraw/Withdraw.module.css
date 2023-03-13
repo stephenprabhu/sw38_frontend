@@ -1,130 +1,130 @@
 .layout {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .withdrawWrapper {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    margin: 0 auto;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .section {
-    flex-grow: 1;
-    flex-basis: 0;
-    overflow: auto;
-    padding-top: 15px;
+  flex-grow: 1;
+  flex-basis: 0;
+  overflow: auto;
+  padding-top: 15px;
 }
 
 .banksSection {
-    margin-bottom: 20px;
-    max-height: 300px;
-    overflow: auto;
+  margin-bottom: 20px;
+  max-height: 300px;
+  overflow: auto;
 }
 
 .bankCard {
-    padding: 10px;
-    width: 90%;
-    margin: auto;
-    text-align: left;
-    cursor: pointer;
-    background: transparent linear-gradient(90deg, #576B9A 0%, #3A528B 100%) 0% 0% no-repeat padding-box;
-    border: 2px solid #F7DB89;
-    border-radius: 10px;
+  padding: 10px;
+  width: 90%;
+  margin: auto;
+  text-align: left;
+  cursor: pointer;
+  background: transparent linear-gradient(90deg, #576B9A 0%, #3A528B 100%) 0% 0% no-repeat padding-box;
+  border: 2px solid #F7DB89;
+  border-radius: 10px;
 }
 
 .bankCard span {
-    color: #F7DB89;
-    font-size: 12px;
+  color: #F7DB89;
+  font-size: 12px;
 }
 
 input[type='radio'] {
-    accent-color: #F7DB89;
+  accent-color: #F7DB89;
 }
 
 .inputItem {
-    border: 0.02rem solid #F7DB89;
-    border-radius: 3px;
-    display: flex;
-    align-items: center;
-    padding-left: 3px;
-    margin-top: 15px;
+  border: 0.02rem solid #F7DB89;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  padding-left: 3px;
+  margin-top: 15px;
 
 }
 
 .inputItem pre {
-    padding: 0 5px;
-    font-size: 0.8rem;
-    color: #F7DB89
+  padding: 0 5px;
+  font-size: 0.8rem;
+  color: #F7DB89
 }
 
 .inputItem .whiteInput {
-    color: #F7DB89;
-    width: 100%;
-    height: 100%;
-    font-size: 1em;
-    font-family: 'Be Vietnam Pro', sans-serif;
-    background-color: transparent;
-    text-align: center;
+  color: #F7DB89;
+  width: 100%;
+  height: 100%;
+  font-size: 1em;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  background-color: transparent;
+  text-align: center;
 }
 
 .whiteInput::placeholder {
-    color: #F7DB89;
-    opacity: 0.3;
-    text-align: center;
+  color: #F7DB89;
+  opacity: 0.3;
+  text-align: center;
 }
 
 .inputItem .whiteInput:focus,
 .inputItem .whiteInput:hover,
 .inputItem .whiteInput:active,
 .inputItem .whiteInput:focus-visible {
-    outline: none;
-    border: none;
+  outline: none;
+  border: none;
 }
 
 .submit {
-    padding: 7px 0px;
-    margin: 10px 0px;
-    font-family: 'Be Vietnam Pro', sans-serif;
-    font-size: 1.2em;
-    cursor: pointer;
-    background: transparent linear-gradient(180deg, #F6D984 0%, #DFB847 100%) 0% 0% no-repeat padding-box;
-    border: 2px solid #19253F;
-    border-radius: 35px;
+  padding: 7px 0px;
+  margin: 10px 0px;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-size: 1.2em;
+  cursor: pointer;
+  background: transparent linear-gradient(180deg, #F6D984 0%, #DFB847 100%) 0% 0% no-repeat padding-box;
+  border: 2px solid #19253F;
+  border-radius: 35px;
 }
 
 
 .divider {
-    height: 0.32rem;
-    border-bottom: 1px solid #F7DB89;
-    line-height: 0;
-    font-size: 0;
-    position: relative;
+  height: 0.32rem;
+  border-bottom: 1px solid #F7DB89;
+  line-height: 0;
+  font-size: 0;
+  position: relative;
 
 }
 
 .addButton {
-    padding: 0.4rem;
-    background-color: #F7DB89;
-    border-radius: 50%;
-    position: absolute;
-    right: 0.45rem;
-    bottom: -1.2rem;
-    color: #19253F;
-    font-weight: 600;
-    cursor: pointer;
+  padding: 0.4rem;
+  background-color: #F7DB89;
+  border-radius: 50%;
+  position: absolute;
+  right: 0.45rem;
+  bottom: -1.2rem;
+  color: #19253F;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 
 
 .formSecton {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .balanceSection {
-    font-size: 0.8rem;
-    color: rgb(118, 117, 117);
+  font-size: 0.8rem;
+  color: rgb(118, 117, 117);
 }

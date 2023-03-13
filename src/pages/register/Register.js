@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "../register/Register.module.css";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header";
@@ -10,8 +10,6 @@ import PopupErrorModal from "../../components/PopupErrorModal";
 import CaptchaInput from "../../components/CaptchaInput";
 import axios from "axios";
 import { BsCheckLg, BsX } from "react-icons/bs";
-import { FcOk, FcCancel } from "react-icons/fc";
-import { FiEyeOff, FiEye } from "react-icons/fi";
 import { BiEdit } from "react-icons/bi";
 
 let timerInterval = null;
@@ -41,7 +39,6 @@ const Register = () => {
   const checkPhone = async () => {
     if (phone.length !== 10) {
       setPhoneValid(false);
-
     }
     const res = await axios.get('https://bo.ssv388.info/api/check_phone/' + phone)
     if (res.data.status) {
@@ -90,22 +87,22 @@ const Register = () => {
     }
   };
 
-  const checkIfHasUpperCaseChar = (value) => {
-    return /[A-Z]/.test(value);
-  };
+  // const checkIfHasUpperCaseChar = (value) => {
+  //   return /[A-Z]/.test(value);
+  // };
 
-  const checkIfHasLowerCaseChar = (value) => {
-    return /[a-z]/.test(value);
-  };
+  // const checkIfHasLowerCaseChar = (value) => {
+  //   return /[a-z]/.test(value);
+  // };
 
-  const checkIfHasSpecialChar = (value) => {
-    const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,. <>\/?~]/;
-    return specialChars.test(value);
-  };
+  // const checkIfHasSpecialChar = (value) => {
+  //   const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,. <>\/?~]/;
+  //   return specialChars.test(value);
+  // };
 
-  const checkIfHasNumber = (value) => {
-    return /\d/.test(value);
-  };
+  // const checkIfHasNumber = (value) => {
+  //   return /\d/.test(value);
+  // };
 
   return (
     <div className={styles.registerOverlay}>

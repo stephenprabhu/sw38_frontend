@@ -4,10 +4,6 @@ import styles from './HomeImageMenu.module.css';
 import { IoGameControllerOutline } from "react-icons/io5";
 import { GoGift } from "react-icons/go";
 import { useNavigate } from 'react-router-dom';
-import SportsImage from '../assets/menu-sports.png';
-import LiveCasinoImage from '../assets/menu-live.png';
-import EsportsImage from '../assets/menu-esports.png';
-import LotteryImage from '../assets/menu-lottery.png';
 import { MdOutlineSportsVolleyball, MdOutlineSportsEsports, MdSportsGolf } from "react-icons/md";
 import { BiVideoRecording } from "react-icons/bi";
 

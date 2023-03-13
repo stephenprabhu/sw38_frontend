@@ -1,16 +1,14 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import BannerImage from "../../assets/Banner IMG.png"
 import HomeImageMenu from '../../components/HomeImageMenu';
 import Header from "../../components/Header";
-import BottomMenu from "../../components/BottomMenu";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import UserContext from "../../helpers/Context/user-context";
 import CockFightBanner from "../../assets/sub-animal-sv.png";
 import styles from './Home.module.css';
 import CoolAnimatedButton from "../../components/CoolAnimatedButton";
 import { MdOutlineContentCopy } from "react-icons/md";
 import CustomerSupportAnimatedItem from "../../components/CustomerSupportAnimatedItem";
-import { FiEye, FiEyeOff } from "react-icons/fi";
 import { APIUser } from "../../helpers/APIs/UserAPIs";
 
 const Home = () => {
@@ -18,11 +16,10 @@ const Home = () => {
   const userInfo = ctx.userInfo;
   const user = ctx.user;
 
+  // getting url param value
   const urlSearchParams = new URLSearchParams(window.location.search);
-	const params = Object.fromEntries(urlSearchParams.entries());   
-	const isInitalDeposit = params && params.initial;
-
-
+  const params = Object.fromEntries(urlSearchParams.entries());
+  const isInitalDeposit = params && params.initial;
 
   // Refresh page user credentials API call
   useEffect(() => {
@@ -35,7 +32,7 @@ const Home = () => {
         ctx.setUserInfo({
           name: userApiData ? userApiData.phone : '-',
           user_id: userApiData ? userApiData.user_id : '-',
-          password: userApiData ? userApiData.raw_string : '-' ,
+          password: userApiData ? userApiData.raw_string : '-',
         });
       }
     }
@@ -62,8 +59,8 @@ const Home = () => {
         {user && userInfo &&
           <div className={styles.userInfoSection}>
             {!isInitalDeposit ? <CopyItemComponent item={{ label: "Số điện thoại đăng nhập", value: userInfo.name }} /> : ""}
-            <CopyItemComponent item={{ label: "Tai khan SV388", value: userInfo.user_id }} /> 
-            {isInitalDeposit ? <CopyItemComponent item={{ label: "Mật khẩu mặc định", value: userInfo.password }} />  : ""}
+            <CopyItemComponent item={{ label: "Tai khan SV388", value: userInfo.user_id }} />
+            {isInitalDeposit ? <CopyItemComponent item={{ label: "Mật khẩu mặc định", value: userInfo.password }} /> : ""}
             <div className={styles.userInfoSectionLink}><a href="https://www.ssvv388.com/" target="_blank">ĐẶT CƯỢC NGAY</a></div>
             <div style={{ color: "white", fontSize: "12px", maxWidth: "80%", margin: "auto", paddingTop: '5px', textAlign: 'center' }}>
               <i>* Nếu bạn quên</i>  &nbsp; mật khẩu vui lòng liên hệ chăm sóc khách hàng. <br />
@@ -71,7 +68,7 @@ const Home = () => {
             </div>
           </div>}
         <div className={styles.cockfightSectionOverlay}>
-          <span>Daga</span>
+          <span>Đá gà</span>
           <div className={styles.cockfightSection}>
             <div><a href='https://www.ssvv388.com/' target="_blank"><img src={CockFightBanner} width={"75%"} /></a></div>
             <div style={{ padding: '0px 10px' }}>

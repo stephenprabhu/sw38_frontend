@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import { useState } from 'react'
 import styles from './Deposit.module.css'
 import InnerHeader from '../../components/InnerHeader'
 import { IconButton } from '@mui/material';
@@ -8,15 +8,11 @@ import { addCommasToInput, addCommasToNumber } from '../../helpers/NumberHelper'
 const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setSelectedBank, companyBanks, errorMessage }) => {
 
   const [stringAmount, setStringAmount] = useState('');
-;
-
-
 
   const onDepositAmountChange = val => {
     setAmount(val.replace(/,/g, ''));
     setStringAmount(addCommasToInput(val));
   }
-
 
   const onContinueClicked = () => {
     if (!amount || amount < 150000 || amount > 90000000 || !selectedBank) {
