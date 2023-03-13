@@ -22,7 +22,7 @@
 .buttonsOverlay {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 5px;
 }
 
 .buttonsOverlay a {
@@ -38,6 +38,7 @@
   background: transparent linear-gradient(180deg, #F6D984 0%, #DFB847 100%) 0% 0% no-repeat padding-box;
   box-shadow: inset 0px 4px 12px #ffffff;
   border: 1px solid #19253F;
+  animation: zoom-in-zoom-out 1s ease infinite;
 }
 
 @keyframes zoom-in-zoom-out {
