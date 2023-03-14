@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom';
 import { RxExit } from "react-icons/rx";
 import UserContext from '../helpers/Context/user-context';
 
-
 const Header = () => {
   const [drawerOpened, setDrawerOpened] = useState(false);
   const ctx = useContext(UserContext);
@@ -27,17 +26,25 @@ const Header = () => {
     <header >
       <div className={styles.headerOverlay}>
         <div className={styles.mainSiteHeader}>
-          <div className="side-menu" style={{ cursor: "pointer" }} onClick={() => setDrawerOpened(true)}>
-            <HiMenuAlt2 style={{ color: "#F7DB89" }} size={40} />
-          </div>
           <div>
+            <HiMenuAlt2 style={{ color: "#F7DB89", cursor: "pointer" }} size={40} onClick={() => setDrawerOpened(true)} />
             <Link to="/">
               <img width={120} src={SVLogo} alt="site-logo" />
             </Link>
           </div>
           <div>
-            {ctx.user ? <RxExit onClick={onLogOutClicked} className={styles.logOutButton} width={35} /> : ""}
+            {ctx.user ?
+              <div className={styles.loginButtonsOverlay}>
+                <span>{ctx.userInfo && ctx.userInfo.name}</span>
+                <RxExit onClick={onLogOutClicked} className={styles.logOutButton} size={22} />
+              </div>
+              :
+              <div className={styles.loginButtonsOverlay}>
+                <Link to='/login' className={styles.loginButtons}>Đăng Nhập</Link>
+                <Link to='/register' className={styles.loginButtons}>Đăng ký</Link>
+              </div>}
           </div>
+
         </div>
       </div>
       <Drawer

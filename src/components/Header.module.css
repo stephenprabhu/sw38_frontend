@@ -20,3 +20,25 @@
     padding-right: 10px;
     cursor: pointer;
 }
+
+.loginButtonsOverlay {
+    color: rgb(247, 219, 137);
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginButtons {
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    background: transparent linear-gradient(180deg, #F6D984 0%, #DFB847 100%) 0% 0% no-repeat padding-box;
+    box-shadow: inset 0px 4px 12px #ffffff;
+    border: 1px solid #19253F;
+}

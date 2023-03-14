@@ -54,7 +54,7 @@ function App() {
           <Route path="/login" element={<GuestRoute><Login /></GuestRoute>} />
           <Route path="/deposit" element={<AuthRoute><Deposit /></AuthRoute>} />
           <Route path="/withdraw" element={<AuthRoute ><Withdraw /></AuthRoute>} />
-          <Route path="/member" element={<AuthRoute><Profile /></AuthRoute>} />
+          <Route path="/profile" element={<AuthRoute><Profile /></AuthRoute>} />
           <Route path="/add-account" element={<AuthRoute ><AddAccount /></AuthRoute>} />
           <Route path="/add-account/:id" element={<AuthRoute ><AddAccount /></AuthRoute>} />
           <Route path="/transections" element={<AuthRoute ><Transection /></AuthRoute>} />

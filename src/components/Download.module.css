@@ -9,14 +9,15 @@
 
 .closeIcon {
   padding: 5px;
-  color: #F7DB89;
   cursor: pointer;
   border-radius: 20px;
+  color: black;
+  background-color: #F7DB89;
 }
 
 .closeIcon:hover {
-  color: black;
-  background-color: #F7DB89;
+  color: #F7DB89;
+  background-color: transparent;
 }
 
 .buttonsOverlay {

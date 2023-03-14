@@ -1,10 +1,10 @@
-.headerOverlay {
+.inerHeaderOverlay {
   background: #F7DB89 0% 0% no-repeat padding-box;
   border-radius: 13px;
   padding-bottom: 3px;
 }
 
-.header {
+.innerHeader {
   background-color: #19253f;
   color: #F7DB89;
   padding: 10px;
@@ -15,8 +15,21 @@
   border-bottom-right-radius: 10px;
 }
 
+.innerHeader div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .headerTitle {
   font-weight: 700;
   font-size: 1.2rem !important;
   text-transform: uppercase;
+}
+
+.profileIcon {
+  display: flex;
+  align-items: center;
+  color: #F7DB89;
+  cursor: pointer;
 }

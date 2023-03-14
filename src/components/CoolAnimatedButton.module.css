@@ -17,6 +17,7 @@
   margin: 0 auto;
   padding-top: 4px;
   gap: 5px;
+  cursor: pointer;
 }
 
 .ButtonWrapper p:nth-child(1) {

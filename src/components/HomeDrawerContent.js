@@ -7,7 +7,7 @@ import styles from './HomeDrawerContent.module.css'
 const HomeDrawerContent = ({ onClose }) => {
   return (
     <div>
-      <div onClick={onClose} style={{ padding: "20px", color: '#b69653' }}> <AiOutlineClose size={30} /></div>
+      <div onClick={onClose}> <AiOutlineClose size={30} color='#b69653' style={{ padding: "10px", cursor: 'pointer' }} /></div>
       <div style={{ textAlign: "center" }}>
         <img src={SVLogo} width={150} />
       </div>

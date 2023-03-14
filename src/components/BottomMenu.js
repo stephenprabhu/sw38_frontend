@@ -35,7 +35,7 @@ const BottomMenu = () => {
             <span>Hỗ Trợ 24/7</span>
           </div>
         </a>
-        <Link to="/member" style={{ textDecoration: "none" }}>
+        <Link to="/profile" style={{ textDecoration: "none" }}>
           <div className={styles.menuItem}>
             <CgProfile size={30} />
             <span>Tài Khoản</span>

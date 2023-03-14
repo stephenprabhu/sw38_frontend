@@ -25,9 +25,9 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
     <div className={styles.deposit1Wrapper}>
       <InnerHeader title={"Nạp Tiền"} />
       <div className={styles.section}>
-        <div style={{ padding: '20px' }}>
+        <div style={{ padding: '20px', textAlign: 'center' }}>
           <span className={styles.label}>Các kênh thanh toán</span>
-          {errorMessage ? <span style={{ color: 'red', marginLeft: '10px' }}>Error Fetching Company Banks</span> : ""}
+          {errorMessage ? <span style={{ color: 'red', padding: '0px 10px' }}>Đã xảy ra lỗi, vui lòng liên hệ Chăm sóc khách hàng </span> : ""}
           <div className={styles.companyBankSection}>
             {companyBanks && companyBanks.length ? companyBanks.map(bank => (
               <div
