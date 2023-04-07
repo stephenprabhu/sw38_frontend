@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import styles from "../register/Register.module.css";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header";
-import { APIRegisterUser } from "../../helpers/APIs/UserAPIs";
+import { APICheckIfPhoneExists, APIRegisterUser } from "../../helpers/APIs/UserAPIs";
 import UserContext from "../../helpers/Context/user-context";
 import { useNavigate } from "react-router-dom";
 import RegisterPopupModal from "./RegisterPopupModal";
@@ -27,6 +27,8 @@ const Register = () => {
   const [captcha, setCaptcha] = useState("");
   const [randomCaptcha, setRandomCaptcha] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
+  const [registerModal, setRegisterModal] = useState('');
+  const [registerResponse, setRegisterResponse] = useState('');
   const ctx = useContext(UserContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -35,13 +37,13 @@ const Register = () => {
   const [timerTime, setTimerTime] = useState(60);
   const [phoneValid, setPhoneValid] = useState(0);
 
-  // check phone is exist or not 
+ // check phone is exist or not 
   const checkPhone = async () => {
     if (phone.length !== 10) {
       setPhoneValid(false);
     }
-    const res = await axios.get('https://bo.ssv388.info/api/check_phone/' + phone)
-    if (res.data.status) {
+    const res = await APICheckIfPhoneExists(phone);
+    if (res) {
       setPhoneValid(2)
       setErrorMessage('Số điện thoại này đã được đăng ký vui lòng liên hệ CSKH để được hỗ trợ.')
     } else {
@@ -57,17 +59,16 @@ const Register = () => {
     }
     if (phone && phone.length === 10) {
       setLoading(true);
-      // setShowRegisterModal(true);
-      // timerInterval = setInterval(() => setTimerTime((pt) => { return pt - 1; }), 1000);
       const x = await APIRegisterUser(phone, null);
       if (!x) {
-        setErrorMessage("Số điện thoại này đã được đăng ký vui lòng liên hệ CSKH để được hỗ trợ.");
-        // setShowRegisterModal(false);
+        setRegisterModal("Số điện thoại này đã được đăng ký vui lòng liên hệ CSKH để được hỗ trợ.");
       } else {
+        setRegisterResponse(x)
         localStorage.setItem("auth_token", x);
+        setRegisterModal("Tài khoản của bạn đã được tạo thành công. Để kích hoạt tài khoản vui lòng nạp tiền");
         ctx.setUser(x);
-        ctx.setUserInfo(null);
-        navigate("/deposit?initial=true");
+        // ctx.setUserInfo(null);
+        // navigate("/deposit?initial=true");
       }
     }
     setLoading(false);
@@ -127,13 +128,13 @@ const Register = () => {
                   disabled={loading}
                   type="number"
                   value={phone}
-                  onChange={(e) => setPhone(e.currentTarget.value)}
+                  onChange={(e) => {setPhone(e.currentTarget.value); setErrorMessage('') }}
                   placeholder="Số điện thoại"
                   name="username"
                   required
                   className={`${styles.inputPhone}`}
                 />
-                {phoneValid === 1 && phone.length === 10 ? <BsCheckLg color="green" size={20} /> : phone.length == 0 ? '' : phoneValid === 2 || phone.length < 10 ? <BsX size={30} onClick={() => setPhone('')} /> : ''}
+                {phoneValid === 1 && phone.length === 10 ? <BsCheckLg color="green" size={20} /> : phone.length == 0 ? '' : phoneValid === 2 || phone.length < 10 ? <BsX size={30} style={{cursor:'pointer'}} onClick={() => setPhone('')} /> : ''}
               </div>
               {phone && !checkPhoneStart(phone) ? <span className={styles.error}>Sai quy cách SĐT</span> : ""}
               {phone && phone.length !== 10 ? <span className={styles.error}>Vui lòng nhập 10 ký tự</span> : ""}
@@ -265,24 +266,19 @@ const Register = () => {
           </div>
         </div> */}
             <CaptchaInput captcha={randomCaptcha} setCaptcha={setRandomCaptcha} setUserCaptchaInput={setCaptcha} userCaptchaInput={captcha} />
-            <button
-              className={`${styles.registerButton} ${loading ? styles.loading : ""
-                }`}
-              type="submit"
-            >
+            <button className={`${styles.registerButton} ${loading ? styles.loading : "" }`} type="submit">
               {loading ? "Đang tải" : "Đăng ký"}
             </button>
+            <div className={styles.loginSection}>
+              Bạn đã có tài khoản ?
+              <Link to="/login" className={styles.loginLink}>
+                Đăng Nhập
+              </Link>
+            </div>
           </form>
-          <div className={styles.loginSection}>
-            Bạn đã có tài khoản ?
-            <Link to="/login" className={styles.loginLink}>
-              Đăng Nhập
-            </Link>
-          </div>
         </div >
       </div>
-      <RegisterPopupModal show={showRegisterModal} hideModal={() => setShowRegisterModal(false)} timerTime={timerTime} />
-      <PopupErrorModal message={errorMessage} show={errorMessage} hideModal={() => setErrorMessage('')} />
+      <RegisterPopupModal message={registerModal} show={registerModal ? true : false} hideModal={() => setRegisterModal('')} x={registerResponse} />
     </div >
   );
 };

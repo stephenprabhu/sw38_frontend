@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;900&display=swap');
 
-
-
-html, body, #root, .App {
+html,
+body,
+#root,
+.App {
   height: 100%;
 }
 
-html{
+html {
   width: 50%;
   margin: auto;
   overflow: hidden;
@@ -16,13 +17,15 @@ body {
   font-family: 'Be Vietnam Pro', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-    width:50%;
-    margin: auto;
+  width: 50%;
+  margin: auto;
 }
 
 @media only screen and (max-width: 900px) {
-  html, body {
-    width:100%;
+
+  html,
+  body {
+    width: 100%;
   }
 }
 

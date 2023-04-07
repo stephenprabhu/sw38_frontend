@@ -1,3 +1,17 @@
+.closeBtn {
+  padding: 0px;
+  cursor: pointer;
+  color: #b69653;
+  background-color: white;
+  margin: 8px;
+  border-radius: 0.3rem;
+}
+
+.closeBtn:hover {
+  color: white;
+  background: linear-gradient(180deg, #fce08d, #b69653);
+}
+
 .button {
   display: inline-block;
   margin-left: 0.3rem;

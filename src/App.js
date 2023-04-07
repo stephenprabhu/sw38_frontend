@@ -16,6 +16,13 @@ import NotFound from './pages/notFound/NotFound';
 import AgencyRegister from './pages/agencyRegister/AgencyRegister';
 import Download from './components/Download';
 import BottomMenu from './components/BottomMenu';
+import Instruction from './pages/Android/Android';
+import IOS from './pages/IOS/IOS';
+import GameLinks from './pages/GameLinks/LinksPage';
+import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
+import SingleTransaction from './pages/Transection/SingleTransaction';
+
+let timeOut = null
 
 function App() {
   const ctx = useContext(UserContext);
@@ -25,8 +32,19 @@ function App() {
     if (localStorage.getItem('auth_token')) {
       ctx.setUser(localStorage.getItem('auth_token'));
     }
-    localStorage.setItem('downlod', true)
   }, []);
+
+  useEffect(() => {
+    if (ctx.user) {
+      setTimeout(() => {
+        localStorage.removeItem('auth_token')
+        localStorage.removeItem('loginRequest')
+        ctx.setUser(null);
+      }, 600000);
+    } else {
+      clearTimeout(timeOut)
+    }
+  }, [ctx.user])
 
   const AuthRoute = ({ children }) => {
     if (!localStorage.getItem('auth_token')) {
@@ -37,7 +55,7 @@ function App() {
 
   const GuestRoute = ({ children }) => {
     if (localStorage.getItem('auth_token')) {
-      return <Navigate to="/member" replace />;
+      return <Navigate to="/profile" replace />;
     }
     return children;
   }
@@ -50,16 +68,21 @@ function App() {
       <div style={{ flexGrow: 1, flexBasis: 0, overflow: 'hidden' }}>
         <Routes>
           <Route path="/register" element={<GuestRoute><Register /></GuestRoute>} />
-          <Route path="/agent/register" element={<AgencyRegister />} />
+          <Route path="/forgot-password" element={<GuestRoute><ForgotPassword /></GuestRoute>} />
           <Route path="/login" element={<GuestRoute><Login /></GuestRoute>} />
+          <Route path="/agent/register" element={<AgencyRegister />} />
           <Route path="/deposit" element={<AuthRoute><Deposit /></AuthRoute>} />
           <Route path="/withdraw" element={<AuthRoute ><Withdraw /></AuthRoute>} />
           <Route path="/profile" element={<AuthRoute><Profile /></AuthRoute>} />
           <Route path="/add-account" element={<AuthRoute ><AddAccount /></AuthRoute>} />
           <Route path="/add-account/:id" element={<AuthRoute ><AddAccount /></AuthRoute>} />
           <Route path="/transections" element={<AuthRoute ><Transection /></AuthRoute>} />
+          <Route path="/transections/:id" element={<AuthRoute ><SingleTransaction /></AuthRoute>} />
           <Route path="/promotions" element={<Promotions />} />
           <Route path="/" element={<Home />} />
+          <Route path="/game-links" element={<GameLinks />} />
+          <Route path="/android" element={<Instruction />} />
+          <Route path="/ios-download" element={<IOS />} />
           <Route path="*" element={<NotFound />} />
         </Routes >
       </div>

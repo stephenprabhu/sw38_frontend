@@ -1,4 +1,4 @@
-import axios from 'axios';
+import BaseUrl from './BaseUrl';
 
 export const APIMakeDepositRequest = async (amount, selected_bank_id, file) => {
   var formData = new FormData();
@@ -8,7 +8,7 @@ export const APIMakeDepositRequest = async (amount, selected_bank_id, file) => {
 
   const token = localStorage.getItem('auth_token')
   try {
-    const res = await axios.post("https://bo.ssv388.info/api/account/deposit", formData, {
+    const res = await BaseUrl.post("/account/deposit", formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
         Authorization: `Bearer ${token}`
@@ -20,15 +20,16 @@ export const APIMakeDepositRequest = async (amount, selected_bank_id, file) => {
   } catch (e) {
     if (e.message === 'Request failed with status code 422') {
       return "ERR_FILE_FORMAT_INVALID"
+    } if (e.status === 403) {
+      return "WAIT_PLEASE"
     }
   }
   return null;
 }
 
-
 export const APICheckTransaction = async (token, transactionId) => {
   try {
-    const res = await axios.get("https://bo.ssv388.info/api/account/transaction_status/"+transactionId, {
+    const res = await BaseUrl.get("/account/transaction_status/"+transactionId, {
       headers: { Authorization: `Bearer ${token}` }
     });
     if (res.data && res.data) {
@@ -43,11 +44,9 @@ export const APICheckTransaction = async (token, transactionId) => {
   return false;
 }
 
-
-
 export const APIGetAllTransactions = async (token) => {
   try {
-    const res = await axios.get("https://bo.ssv388.info/api/account/user_transaction", {
+    const res = await BaseUrl.get("/account/user_transaction", {
       headers: { Authorization: `Bearer ${token}` }
     });
     if (res && res.data && res.data.response && res.data.response.length) {
@@ -57,4 +56,32 @@ export const APIGetAllTransactions = async (token) => {
     console.log(e);
   }
   return null;
+}
+
+export const APILatestTransaction = async (token) => {
+  try {
+    const res = await BaseUrl.get("/account/latest_transaction", {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    if (res && res.data) {
+      return res.data;
+    }
+  } catch (e) {
+    console.log(e);
+  }
+  return null;
+}
+
+export const APIGetSingleTransaction = async (token, transactionId) => {
+  try {
+    const res = await BaseUrl.get("/account/transaction/" + transactionId, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    if (res && res.data) {
+      return res.data
+    }
+  } catch (e) {
+    console.log(e);
+  }
+  return false;
 }

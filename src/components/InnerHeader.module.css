@@ -7,7 +7,7 @@
 .innerHeader {
   background-color: #19253f;
   color: #F7DB89;
-  padding: 10px;
+  padding: 10px 8px 10px 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;

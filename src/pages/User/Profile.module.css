@@ -1,123 +1,204 @@
-.profileOverlay {
+.layout {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-.profileWrapper {
-  width: 90%;
-  margin: auto;
+.profileOverlay {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  width: 90%;
+  margin: 0 auto;
   overflow: auto;
 }
 
-.profileSection {
+.profileContentOverlay {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+}
+
+.profileCardWrapper {
+  padding: 20px 10px;
+  background: #263351;
+  border-radius: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border: 1px solid #F7DB89;
+}
+
+.profileCard {
+  display: flex;
   align-items: center;
-  padding: 20px 0px;
+  justify-content: space-between;
 }
 
-.profileImage {
-  width: 100px;
-  border-radius: 50%;
+.depositButtons {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #0D2259;
+  margin-left: 15px;
 }
 
-.profileText {
-  margin-left: 20px;
+.depositButton {
+  text-decoration: none;
+  padding: 10px 0px;
+  font-size: 1.2em;
+  color: #0D2259;
+  font-weight: 600;
+  background: transparent linear-gradient(180deg, #F7DB89 0%, #8b6b08 100%);
+  border: 1px solid #003766;
+  box-shadow: 0px 0px 8px #12327E;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+  width: 45%;
+  margin: auto;
+  text-align: center;
+  animation: shake 1.5s ease infinite;
 }
 
-.userInfoSection {
-  color: white;
-  padding: 5px;
-  border-radius: 20px;
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+.linkBtn {
+  color: #0D2259;
+  font-weight: 900;
+  padding: 10px 30px;
+  width: fit-content;
+  background: transparent linear-gradient(180deg, #F7DB89 0%, #8b6b08 100%);
+  box-shadow: 0px 0px 28px #cea00b83;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.depositButtonsGroup {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin: 10px 0px;
+}
+
+.button {
+  text-decoration: none;
+  color: #0D2259;
+  font-weight: 600;
+  padding: 10px 15px;
+  background: transparent linear-gradient(180deg, #F7DB89 0%, #8b6b08 100%);
+  box-shadow: 0px 0px 28px #cea00b83;
+  border: none;
+  border-radius: 7px;
 }
 
 .bankDetailItem {
-  padding: 5px;
   display: flex;
+  gap: 20px;
   align-items: center;
   justify-content: space-between;
 }
 
 .grayLabel {
-  font-weight: 500;
-  color: #DEB849;
+  font-weight: 600;
+  color: #F7DB89;
   font-size: 0.7rem;
 }
 
+.userNameLabel {
+  font-size: 9px;
+}
+
 .grayValue {
-  font-weight: 500;
+  font-weight: 700;
   color: #F7DB89;
   font-size: 1rem;
 }
 
+.userName {
+  font-size: 12px;
+}
+
 .copyButton {
-  color: #F7DB89;
-  border-radius: 0.3rem;
-  padding: 5px 10px;
   border: none;
   display: flex;
   align-items: center;
+  gap: 5px;
   cursor: pointer;
+  padding: 7px;
+  font-weight: 600;
+  color: #0D2259;
+  background: transparent linear-gradient(180deg, #F7DB89 0%, #8b6b08 100%);
+  border-radius: 5px;
 }
 
 .copyButton:active {
-  padding: 8px 16px;
+  padding: 7px 10px;
 }
 
-.button {
-  padding: 10px 15px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #010e33;
-  background: transparent linear-gradient(180deg, #F6D984 0%, #DFB847 100%) 0% 0% no-repeat padding-box;
-  box-shadow: 0px 0px 15px #f7db894d;
-  border: 3px solid #19253F;
-  border-radius: 35px;
-  cursor: pointer;
+.depositButton:hover,
+.button:hover,
+.linkBtn:hover,
+.copyButton:hover {
+  background: transparent linear-gradient(180deg, #8b6b08 0%, #F7DB89 100%);
 }
 
-.accountInfoWrapper {
-  color: #F7DB89;
-  display: flex;
-  justify-content: space-around;
-}
+@media only screen and (max-width: 375px) {
+  .profileContentOverlay {
+    gap: 10px;
+  }
 
-.bankListOverlay {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin: 30px 0px;
-  width: 100%;
-}
-
-.bankCard {
-  padding: 10px;
-  width: 90%;
-  margin: auto;
-  text-align: left;
-  cursor: pointer;
-  background: transparent linear-gradient(90deg, #576B9A 0%, #3A528B 100%) 0% 0% no-repeat padding-box;
-  border: 2px solid #F7DB89;
-  border-radius: 10px;
-}
-
-.bankCard span {
-  color: #F7DB89;
-  font-size: 14px;
-}
-
-.bankWrapper {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 5px
-}
-
-.bankWrapper span {
-  font-size: 12px;
+  .profileCard {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }

@@ -1,0 +1,59 @@
+.modalOverlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.successContainer {
+  width: 350px;
+  text-align: center;
+  color: #E2F8FF;
+  font-weight: 600;
+  background: linear-gradient(#76D012, #1FA40F);
+  border: 1px solid #138807;
+  border-radius: 13px;
+}
+
+.errorContainer {
+  width: 350px;
+  text-align: center;
+  color: #E2F8FF;
+  font-weight: 600;
+  background: linear-gradient(#FF4A4A, #D40505);
+  border: 1px solid #a50e0e;
+  border-radius: 13px;
+}
+
+.imageWrapper {
+  background-color: #F7F8FC;
+  border-radius: 13px;
+  border-bottom-right-radius: 100px;
+  border-bottom-left-radius: 100px;
+}
+
+.image {
+  padding: 30px 0px;
+  width: 100px;
+  margin-bottom: 15px;
+}
+
+.modalContentWrapper {
+  padding: 25px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.depositButton {
+  padding: 10px 0px;
+  font-size: 1.2em;
+  color: #0D2259;
+  background: transparent linear-gradient(180deg, #E2F8FF 0%, #ACEBFF 100%) 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 8px #12327E;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+}

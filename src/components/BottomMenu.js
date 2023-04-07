@@ -5,6 +5,7 @@ import { CgProfile } from "react-icons/cg";
 import { Link } from 'react-router-dom';
 import { AiFillDollarCircle } from "react-icons/ai";
 import { TfiHeadphoneAlt } from "react-icons/tfi";
+import { ImHome } from "react-icons/im";
 
 const BottomMenu = () => {
   return (
@@ -12,32 +13,32 @@ const BottomMenu = () => {
       <div className={styles.bottomMenuLayout}>
         <Link to="/deposit" style={{ textDecoration: "none" }}>
           <div className={styles.menuItem}>
-            <FaDollarSign size={30} />
+            <FaDollarSign size={26} />
             <span>Nạp Tiền</span>
           </div>
         </Link>
         <Link to="/withdraw" style={{ textDecoration: "none" }}>
           <div className={styles.menuItem}>
-            <AiFillDollarCircle size={30} />
+            <AiFillDollarCircle size={26} />
             <span>Rút Tiền</span>
           </div>
         </Link>
 
-        {/* <Link to="/">
+        <Link to="/">
         <div className={styles.menuItem}>
-            <AiOutlineHome size={30} />
+            <ImHome size={34} />
             <span>Trang Chủ</span>
         </div>
-        </Link> */}
+        </Link> 
         <a href="https://direct.lc.chat/14707113/" target="_blank" rel="noreffer" style={{ textDecoration: "none" }}>
           <div className={styles.menuItem}>
-            <TfiHeadphoneAlt size={30} />
+            <TfiHeadphoneAlt size={26} />
             <span>Hỗ Trợ 24/7</span>
           </div>
         </a>
         <Link to="/profile" style={{ textDecoration: "none" }}>
           <div className={styles.menuItem}>
-            <CgProfile size={30} />
+            <CgProfile size={26} />
             <span>Tài Khoản</span>
           </div>
         </Link>

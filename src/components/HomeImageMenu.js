@@ -11,6 +11,8 @@ const HomeImageMenu = () => {
   const [showRoundMenu, setShowRoundMenu] = useState(false);
   const navigate = useNavigate()
 
+  // onClick={() => window.open("https://www.ssvv388.com/")}
+
   return (
     <div className={styles.homeImageMenuIcon}>
       <div onClick={() => setShowRoundMenu(p => !p)}>
@@ -18,7 +20,7 @@ const HomeImageMenu = () => {
         <span>TRÒ CHƠI +</span>
       </div>
 
-      <div onClick={() => window.open("https://www.ssvv388.com/")}>
+      <div onClick={() => navigate('/game-links')}>
         <img src={DagaGif} />
       </div>
 
@@ -28,24 +30,26 @@ const HomeImageMenu = () => {
       </div>
 
 
-      {showRoundMenu ? <>
-        <div className={`${styles.goldBubble} ${styles.sports}`} onClick={() => window.open("https://www.vn138e.com/sports")}>
-          <MdOutlineSportsVolleyball size={24} />
-          Thể Thao
-        </div>
-        <div className={`${styles.goldBubble} ${styles.casino}`} onClick={() => window.open("https://www.vn138e.com/live")}>
-          <BiVideoRecording size={24} />
-          Live<br />Casino
-        </div>
-        <div className={`${styles.goldBubble} ${styles.esports}`} onClick={() => window.open("https://www.vn138e.com/esports")}>
-          <MdOutlineSportsEsports size={26} />
-          E Sports
-        </div>
-        <div className={`${styles.goldBubble} ${styles.lottery}`} onClick={() => window.open("https://www.vn138e.com/elott")}>
-          <MdSportsGolf size={26} />
-          Xổ số
-        </div>
-      </> : ""}
+      {showRoundMenu && 
+        <>
+          <div className={`${styles.goldBubble} ${styles.sports}`} onClick={() => window.open("https://www.vn138e.com/sports")}>
+            <MdOutlineSportsVolleyball size={24} />
+            Thể Thao
+          </div>
+          <div className={`${styles.goldBubble} ${styles.casino}`} onClick={() => window.open("https://www.vn138e.com/live")}>
+            <BiVideoRecording size={24} />
+            Live<br />Casino
+          </div>
+          <div className={`${styles.goldBubble} ${styles.esports}`} onClick={() => window.open("https://www.vn138e.com/esports")}>
+            <MdOutlineSportsEsports size={26} />
+            E Sports
+          </div>
+          <div className={`${styles.goldBubble} ${styles.lottery}`} onClick={() => window.open("https://www.vn138e.com/elott")}>
+            <MdSportsGolf size={26} />
+            Xổ số
+          </div>
+      </>
+    }
     </div>
   )
 }

@@ -1,0 +1,90 @@
+.singleTranWrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.titleWrapper {
+  color: rgb(247, 219, 137);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 0px;
+}
+
+.titleWrapper h3 {
+  margin: 0;
+}
+
+.singleTranContentOverlay {
+  width: 90%;
+  margin: 5px auto;
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.singleTranContentWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  background: #263351;
+  border-radius: 13px;
+  padding: 10px 20px;
+}
+
+.bankDetailItem {
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(247, 219, 137);
+  ;
+}
+
+.copyLabel {
+  color: rgb(247, 219, 137);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.copyValue {
+  font-weight: bold;
+}
+
+.copyBtnValue {
+  font-size: 22px;
+  color: rgb(5, 151, 5);
+}
+
+.smallValue {
+  font-size: 12px;
+}
+
+.redText {
+  color: #F93B3B;
+}
+
+.copyButton {
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 7px;
+  color: #0D2259;
+  background: transparent linear-gradient(180deg, #F7DB89 0%, #8b6b08 100%);
+  border-radius: 5px;
+  height: fit-content;
+}
+
+.copyButton:active {
+  padding: 7px 10px;
+}
+
+.copyButton:hover {
+  background: transparent linear-gradient(180deg, #8b6b08 0%, #F7DB89 100%);
+}

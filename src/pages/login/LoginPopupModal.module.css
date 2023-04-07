@@ -1,0 +1,25 @@
+.modalOverlay {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.errorContainer {
+    width: 350px;
+    text-align: center;
+    color: #E2F8FF;
+    font-weight: 600;
+    background: linear-gradient(#FF4A4A, #D40505);
+    border: 1px solid #a50e0e;
+    border-radius: 13px;
+}
+
+.modalContentWrapper {
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}

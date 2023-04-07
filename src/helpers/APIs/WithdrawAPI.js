@@ -1,4 +1,4 @@
-import axios from "axios";
+import BaseUrl from "./BaseUrl";
 
 export const WithdrawAPI = async (bank_id, transaction_amount, bank_account_number) => {
 
@@ -9,7 +9,7 @@ export const WithdrawAPI = async (bank_id, transaction_amount, bank_account_numb
 
   const token = localStorage.getItem('auth_token')
   try {
-    const res = await axios.post("https://bo.ssv388.info/api/account/withdraw", formData, {
+    const res = await BaseUrl.post("/account/withdraw", formData, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -26,14 +26,20 @@ export const WithdrawAPI = async (bank_id, transaction_amount, bank_account_numb
 
 export const bankListAPI = async () => {
   try {
-    const res = await axios.get("https://bo.ssv388.info/api/bank/user_all", {
+    const res = await BaseUrl.get("/bank/user_all", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('auth_token')}`
       }
     });
     return res.data
   } catch (e) {
-    console.log(e);
+    if (e.status === 403) {
+      return "WAIT_PLEASE"
+    } else if (e.status === 401) {
+      return "MAKE_DEPOSIT_REQUEST_FIRST"
+    }else{
+      console.log(e);
+    }
   }
   return null;
 }

@@ -1,12 +1,14 @@
 import styles from './InnerHeader.module.css'
 import { BsChevronLeft } from "react-icons/bs";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { RxExit } from "react-icons/rx";
 import { BsFillPersonFill } from "react-icons/bs";
 import { useContext } from 'react';
 import UserContext from '../helpers/Context/user-context';
 
 const InnerHeader = ({ title }) => {
+
+  const navigate = useNavigate()
 
   const ctx = useContext(UserContext);
   const onLogOutClicked = () => {
@@ -16,7 +18,9 @@ const InnerHeader = ({ title }) => {
       password: '',
     });
     localStorage.removeItem("auth_token");
+    navigate('/login')
   }
+  
   return (
     <div className={styles.inerHeaderOverlay}>
       <div className={styles.innerHeader}>

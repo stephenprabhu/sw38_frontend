@@ -1,0 +1,96 @@
+.linkstOverlay {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.linksContentWrapper {
+  flex-grow: 1;
+  flex-basis: 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0;
+}
+
+.logoWrapper {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 5px;
+}
+
+.linksWrapper {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sectionContentWrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+}
+
+.section {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-radius: 15px;
+  background-color: #263351;
+  border: 1px solid #F7DB89;
+  padding: 30px 15px;
+}
+
+.linkContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  border-radius: 50px;
+  color: #0D2259;
+  background-color: #F7DB89;
+  font-weight: 600;
+  border: 1px solid #263351;
+  cursor: pointer;
+}
+
+.linkContent:hover {
+  color: #0D2259;
+  background-color: #f3af30;
+}
+
+.linkNameGrp {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.linkNameGrp span {
+  border: 2px solid #0D2259;
+  padding: 10px 17px;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.noAccountWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  color: #F7DB89;
+  padding-top: 15px;
+}
+
+.noAccountWrapper div:nth-child(2) {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.customerMessageWrapper p {
+  color: #F7DB89;
+}

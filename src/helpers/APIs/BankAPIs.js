@@ -1,8 +1,9 @@
-import axios from 'axios';
+import BaseUrl from "./BaseUrl";
+
 
 export const APIGetCompanyBanks = async (token) => {
   try {
-    const res = await axios.get("https://bo.ssv388.info/api/bank/all", {
+    const res = await BaseUrl.get("/bank/all", {
       headers: { Authorization: `Bearer ${token}` }
     });
     if (res.data && res.data.length) {

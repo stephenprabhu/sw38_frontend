@@ -1,18 +1,42 @@
-.deposit1Wrapper {
+.deposit {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.depositWrapper {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
+.deposit1Wrapper {
+  flex-grow: 1;
+  flex-basis: 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
 .section {
+  flex-grow: 1;
+  width: 90%;
+  margin: auto;
   text-align: left;
   display: flex;
   flex-direction: column;
-  background: #263351 0% 0% no-repeat padding-box;
+  justify-content: center;
+}
+
+.depositCard {
+  padding: 25px 10px;
+  border-radius: 10px;
+  margin: 20px 0px;
+  background: #263351;
   border-radius: 13px;
-  width: 90%;
-  margin: auto;
-  overflow: auto;
+  text-align: center;
 }
 
 .whiteNotice {
@@ -29,14 +53,19 @@
 .label {
   color: #F7DB89;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.85rem;
+  padding-left: 10px;
   padding-bottom: 10px;
-  display: block
+  display: block;
+  text-align: center;
 }
 
 .companyBankSection {
   display: flex;
+  justify-content: space-evenly;
   margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 4px;
 }
 
 .singleBankItem {
@@ -82,6 +111,14 @@
   border: none;
 }
 
+.errorMsg {
+  color: #F93B3B;
+  text-align: '';
+  font-size: 0.85rem;
+  margin: 10px;
+  font-weight: 500;
+}
+
 .adjornment {
   font-style: normal;
   display: inline-block;
@@ -124,8 +161,7 @@
 
 .circleTextOverlay {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -157,6 +193,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+  color: #19253F;
   cursor: pointer;
   margin-top: 20px;
   border-radius: 35px;
@@ -191,29 +228,35 @@
   text-align: left;
 }
 
-.copyButton {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-}
-
-.copyButton:active {
-  padding: 0px 10px;
-}
-
 .bankDetailItem {
-  padding: 10px;
-  padding-left: 0px;
+  padding: 5px 10px;
   display: flex;
-  gap: 20px;
   justify-content: space-between;
+  color: #F7DB89;
 }
 
-.bankDetailItem button {
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
+.copyLabel {
+  font-size: 12px;
+  font-weight: 600;
   color: #F7DB89;
+}
+
+.copyValue {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.copyBtnValue {
+  font-size: 22px;
+  color: rgb(5, 151, 5);
+}
+
+.smallValue {
+  font-size: 12px;
+}
+
+.redText {
+  color: #F93B3B;
 }
 
 .grayLabel {
@@ -222,34 +265,57 @@
   font-size: 0.7rem;
 }
 
-
 .grayValue {
   font-weight: 500;
   color: #F7DB89;
   font-size: 0.9rem;
 }
 
-.invoiceImg {
-  margin-top: 8px;
+.copyButton {
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 7px;
+  color: #0D2259;
+  background: transparent linear-gradient(180deg, #F7DB89 0%, #8b6b08 100%);
+  border-radius: 5px;
+  height: fit-content;
+}
+
+.copyButton:active {
+  padding: 7px 10px;
+}
+
+.copyButton:hover {
+  background: transparent linear-gradient(180deg, #8b6b08 0%, #F7DB89 100%);
+}
+
+.invoiceFileInputWrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.invoiceFileInput {
   color: #F7DB89;
-  font-size: 0.7rem;
+  font-size: 10px;
+  width: 68px;
+  padding: 5px;
+  border: 2px solid #F7DB89;
+  cursor: pointer;
   border-radius: 5px;
 }
 
-/* .depositButton.cancel {
-  border: 1px solid white;
-  color: white;
-  background-color: #428dfc;
-  font-size: '0.2rem';
-  padding: 10px 10px;
-  border-radius: 5px;
+.invoiceImgWrapper {
+  display: flex;
+  justify-content: center
 }
 
-.depositButton.final {
-  border: 1px solid white;
-  color: white;
-  background-color: gray;
-  font-size: 1rem;
-  padding: 15px;
+.invoiceImgWrapper img {
+  max-width: 210px;
+  max-height: 290px;
   border-radius: 5px;
-} */
+}

@@ -1,0 +1,251 @@
+.androidOverlay {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.androidWrapper {
+  height: 100%;
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 15px 0px;
+  gap: 15px;
+}
+
+.downloadWrapper {
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.downloadButton ::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.7;
+  filter: blur(1em);
+  transform: translateY(120%) rotateX(95deg) scale(1, 0.35);
+  background: #F7DB89;
+  pointer-events: none;
+}
+
+.downloadButton {
+  padding: 5px 15px;
+  background: linear-gradient(180deg, #F6D984 0%, #DFB847 100%);
+  position: relative;
+  cursor: pointer;
+  border: 0.15em solid #F7DB89;
+  border-radius: 0.45em;
+  perspective: 2em;
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #0D2259;
+  -webkit-box-shadow: inset 0px 0px 0.5em 0px #F7DB89,
+    0px 0px 0.5em 0px #F7DB89;
+  -moz-box-shadow: inset 0px 0px 0.5em 0px #F7DB89,
+    0px 0px 0.5em 0px #F7DB89;
+  box-shadow: inset 0px 0px 0.5em 0px #F7DB89,
+    0px 0px 0.5em 0px #F7DB89;
+  animation: border-flicker 2s linear infinite;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+}
+
+.downloadButton a {
+  text-decoration: none;
+  color: #0D2259;
+}
+
+.downloadButton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  z-index: -1;
+  background-color: #DFB847;
+  box-shadow: 0 0 2em 0.2em #DFB847;
+  transition: opacity 100ms linear;
+}
+
+.glowingTxt {
+  -webkit-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
+    0 0 0.45em #DFB847;
+  -moz-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
+    0 0 0.45em #DFB847;
+  text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em #DFB847;
+  animation: text-flicker 3s linear infinite;
+}
+
+.faultyLetter {
+  opacity: 0.5;
+  animation: faulty-flicker 2s linear infinite;
+}
+
+.downloadButton:hover {
+  text-shadow: none;
+  animation: none;
+}
+
+.downloadButton:hover .glowingTxt {
+  animation: none;
+}
+
+.downloadButton:hover .faultyLetter {
+  animation: none;
+  text-shadow: none;
+  opacity: 1;
+}
+
+.downloadButton:hover:before {
+  filter: blur(1.5em);
+  opacity: 1;
+}
+
+.downloadButton:hover:after {
+  opacity: 1;
+}
+
+@keyframes faulty-flicker {
+  0% {
+    opacity: 0.1;
+  }
+
+  2% {
+    opacity: 0.1;
+  }
+
+  4% {
+    opacity: 0.5;
+  }
+
+  19% {
+    opacity: 0.5;
+  }
+
+  21% {
+    opacity: 0.1;
+  }
+
+  23% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 0.5;
+  }
+
+  83% {
+    opacity: 0.4;
+  }
+
+  87% {
+    opacity: 1;
+  }
+}
+
+@keyframes text-flicker {
+  0% {
+    opacity: 0.1;
+  }
+
+  2% {
+    opacity: 1;
+  }
+
+  8% {
+    opacity: 0.1;
+  }
+
+  9% {
+    opacity: 1;
+  }
+
+  12% {
+    opacity: 0.1;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  25% {
+    opacity: 0.3;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 0.7;
+  }
+
+  72% {
+    opacity: 0.2;
+  }
+
+  77% {
+    opacity: 0.9;
+  }
+
+  100% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes border-flicker {
+  0% {
+    opacity: 0.1;
+  }
+
+  2% {
+    opacity: 1;
+  }
+
+  4% {
+    opacity: 0.1;
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.ImageCard {
+  border: 1px solid #F7DB89;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0px 15px 15px 15px;
+}
+
+.ImageCard p {
+  margin: 10px 0;
+  color: #F7DB89;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.ImageCard img {
+  border: 1px solid #F7DB89;
+  border-radius: 3px;
+  height: 330px;
+  width: 180px;
+}

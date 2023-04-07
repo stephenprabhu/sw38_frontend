@@ -8,6 +8,7 @@ import UserContext from '../../helpers/Context/user-context'
 import styles from './Withdraw.module.css'
 import CircularProgress from '@mui/material/CircularProgress';
 import { addCommasToInput } from '../../helpers/NumberHelper'
+import PopupErrorModal from '../../components/PopupErrorModal'
 
 const Withdraw = () => {
   const [banks, setBanks] = useState()
@@ -16,6 +17,8 @@ const Withdraw = () => {
   const [bankAccountNumber, setBankAccountNumber] = useState(null)
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [errorModal, setErrorModal] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const ctx = useContext(UserContext);
 
@@ -45,10 +48,20 @@ const Withdraw = () => {
       setError('Vui lòng thêm ngân hàng')
     } else if (bankId && intTransactionAmount) {
       const x = await WithdrawAPI(bankId, intTransactionAmount, bankAccountNumber);
-      if (x.status) {
-        navigate('/transections?tab=withdraw')
-      } else if (x.message === 'not enough money') {
-        setError('Số dư không đủ')
+      if (x === "Account Not Activated") {
+        setError('Tài khoản của bạn chưa được kích hoạt')
+      } else if( x === "WAIT_PLEASE"){
+        setErrorModal(true)
+        setErrorMessage("Bạn có yêu cầu đang chờ xử lý. Bạn không thể tạo yêu cầu mới khi đang có yêu cầu chờ xử lý. Vui lòng yêu cầu lại sau.");
+      } else if ( x === "MAKE_DEPOSIT_REQUEST_FIRST") {
+        setErrorModal(true)
+        setErrorMessage("Make Deposit Request First");
+      } else {
+        if (x.status) {
+          navigate('/transections?tab=withdraw')
+        } else if (x.message === 'not enough money') {
+          setError('Số dư không đủ')
+        }
       }
     }
     setLoading(false);
@@ -107,10 +120,11 @@ const Withdraw = () => {
                 required />
             </div>
             {error && <Typography mt={2} color='red'>{error}</Typography>}
-            {loading ? <CircularProgress style={{ marginTop: "20px" }} /> : ""}
+            {loading ? <div style={{display:'flex', justifyContent:'center'}}><CircularProgress style={{ marginTop: "20px", color:"#DEB849" }} /></div> : ""}
           </div>
         </div>
         <button className={styles.submit} disabled={loading} type='submit'>{loading ? "Đang tải..." : "Xác nhận"}</button>
+        <PopupErrorModal message={errorMessage} show={errorModal} hideModal={() => setErrorModal(false)}/>
       </div >
     </form >
   )

@@ -57,7 +57,7 @@
 }
 
 .formInput input {
-    width: 95%;
+    width: 98%;
     padding-left: 0px;
 }
 
@@ -81,12 +81,50 @@
     overflow: hidden;
 }
 
+.inputPasswordWrapper {
+    display: flex;
+    position: relative;
+}
+
+.inputPasswordWrapper input {
+    padding-right: 30px;
+}
+
 .passwordEye {
     position: absolute;
-    right: 0;
+    right: 1px;
     bottom: 8px;
     color: #F7DB89;
 }
+
+.forgotPassword {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.forgotPassword div {
+    font-weight: bold;
+    text-decoration: underline;
+    color: #F7DB89;
+    cursor: pointer;
+    padding: 10px 0;
+}
+
+.apiResponseLoader {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    padding: 5px 0;
+    color: #F7DB89;
+}
+
+.apiResponseLoader div:nth-child(2) {
+    padding: 0 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
 
 .inputPhone::placeholder {
     color: #F7DB89;

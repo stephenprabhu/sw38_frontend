@@ -62,9 +62,7 @@ export default Promotions
 const LoginMsg = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-      <span>
-        Vui lòng liên hệ CSKH để được
-      </span>
+      <span>Vui lòng liên hệ CSKH để được</span>
       <CustomerSupportAnimatedItem />
     </div>
   )

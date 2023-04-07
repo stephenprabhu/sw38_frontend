@@ -8,21 +8,21 @@ import Tabs from '@mui/material/Tabs';
 import { APIGetAllTransactions } from '../../helpers/APIs/TransactionAPI';
 import CircularProgress from '@mui/material/CircularProgress';
 import { addCommasToNumber } from '../../helpers/NumberHelper';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './Transection.module.css';
 
 const Transection = () => {
   const { search } = useLocation();
-
   const [transections, setTransections] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedTransactions, setSelectedTransactions] = useState(false);
   const [activeTab, setActiveTab] = useState(search ? "2" : "1");
 
-
   useEffect(() => {
     transactionsAPI();
   }, []);
+
+  const navigate = useNavigate()
 
   const transactionsAPI = async () => {
     setLoading(true);
@@ -55,7 +55,7 @@ const Transection = () => {
           <Tab label="Nạp Tiền" value="1" />
           <Tab label="Rút Tiền" value="2" />
         </Tabs>
-        {loading ? <div style={{ textAlign: "center", marginTop: "15px" }}><CircularProgress style={{ color: "white" }} /></div> :
+        {loading ? <div style={{ textAlign: "center", marginTop: "15px" }}><CircularProgress style={{color:"#DEB849"}} /></div> :
           selectedTransactions ?
             <div className={styles.transactionTable}>
               <table border={0} width="100%" style={{ color: 'white' }}>
@@ -69,7 +69,7 @@ const Transection = () => {
                 {selectedTransactions && selectedTransactions.map((transection) => {
                   return (
                     <tbody key={transection.id}>
-                      <tr style={{ fontSize: '12px', textAlign: 'center' }}>
+                      <tr style={{ cursor: 'pointer',textAlign:'center', fontSize:'12px' }} onClick={() => navigate('/transections/' + transection.id)}>
                         <td>{transection.transaction_purpose == 'deposit' ? '+' : '-'}{addCommasToNumber(transection.transaction_amount)}</td>
                         <td >{new Date(transection.created_at).toLocaleString("vi-VN")}</td>
                         <td><Chip label={transection.is_approved === 0 ? 'Đang xử lý' : transection.is_approved === 1 ? 'Đã phê duyệt' : 'Từ chối'}

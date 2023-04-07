@@ -1,8 +1,8 @@
-import axios from 'axios';
+import BaseUrl from "./BaseUrl";
 
 export const APIRegisterUser = async (phone, password) => {
   try {
-    const res = await axios.post("https://bo.ssv388.info/api/register_user", {
+    const res = await BaseUrl.post("/register_user", {
       phone, password
     });
     if (res.data && res.data.status && res.data.token) {
@@ -13,11 +13,10 @@ export const APIRegisterUser = async (phone, password) => {
   }
   return null;
 }
-
 
 export const APILoginUser = async (phone, password) => {
   try {
-    const res = await axios.post("https://bo.ssv388.info/api/login_user", {
+    const res = await BaseUrl.post("/login_user", {
       phone, password
     });
     if (res.data && res.data.status && res.data.token) {
@@ -29,10 +28,9 @@ export const APILoginUser = async (phone, password) => {
   return null;
 }
 
-
 export const APICheckIfPhoneExists = async (phone) => {
   try {
-    const res = await axios.post('https://bo.ssv388.info/api/check_phone/' + phone);
+    const res = await BaseUrl.get('/check_phone/' + phone);
     if (res.data && res.data.status) {
       return true;
     }
@@ -42,10 +40,9 @@ export const APICheckIfPhoneExists = async (phone) => {
   return null;
 }
 
-
 export const APIRegisterAgent = async (phone, password, bank_name, account_name, account_number) => {
   try {
-    const res = await axios.post("https://bo.ssv388.info/api/register_agent", {
+    const res = await BaseUrl.post("/register_agent", {
       phone, password, bank_name, account_name, account_number
     });
     if (res.data && res.data.status) {
@@ -60,7 +57,7 @@ export const APIRegisterAgent = async (phone, password, bank_name, account_name,
 
 export const APIUser = async () => {
   try {
-    const res = await axios.get("https://bo.ssv388.info/api/user", {
+    const res = await BaseUrl.get("/user", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('auth_token')}`
       }

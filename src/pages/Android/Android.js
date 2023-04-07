@@ -1,0 +1,42 @@
+import InnerHeader from '../../components/InnerHeader';
+import styles from './Android.module.css';
+import step1 from '../../assets/Step1.png';
+import step2 from '../../assets/Step2.jpg';
+import step3 from '../../assets/Step3.png';
+import step4 from '../../assets/Step4.png';
+import step5 from '../../assets/Step5.png';
+import step6 from '../../assets/Step6.png';
+import { useState } from 'react';
+import StepModal from './StepModal';
+import { BsArrowDownCircle } from "react-icons/bs";
+
+const androidSteps = [{ label: 'Bước 1', image: step1 }, { label: 'Bước 2', image: step2 }, { label: 'Bước 3', image: step3 }, { label: 'Bước 4', image: step4 }
+  , { label: 'Bước 5', image: step5 }, { label: 'Bước 6', image: step6 }]
+
+  // href='gasv388.apk' download='gasv388.apk'
+
+const Android = () => {
+  const [stepModal, setStepModal] = useState('')
+  return (
+    <div className={styles.androidOverlay}>
+      <InnerHeader title={"Android"} />
+      <div className={styles.androidWrapper}>
+        <div className={styles.downloadWrapper}>
+          <div className={styles.downloadButton}>
+            <a>T<span className={styles.glowingTxt}>ả</span>i x<span className={styles.faultyLetter}>uốn</span>g</a>
+            <BsArrowDownCircle color='#0D2259' />
+          </div>
+        </div>
+        {androidSteps.map((step) => (
+          <div className={styles.ImageCard} key={step.label} onClick={() => setStepModal(step.label)}>
+            <p>{step.label}</p>
+            <img src={step.image} />
+          </div>
+        ))}
+        <StepModal openStep={stepModal ? true : false} hideModal={() => setStepModal()} stepList={androidSteps} stepModal={stepModal} />
+      </div>
+    </div >
+  )
+}
+
+export default Android

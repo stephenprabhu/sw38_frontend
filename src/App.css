@@ -7,8 +7,12 @@
 }
 
 .MuiPaper-root.MuiPaper-elevation.MuiDrawer-paper {
-  width: 100%;
+  width: 50%;
   background: linear-gradient(180deg, #202c46, #304063);
+}
+
+.css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
+  overflow-y: initial !important;
 }
 
 .MuiButtonBase-root.MuiTab-root {
@@ -36,5 +40,11 @@
 
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: 915px) {
+  .MuiPaper-root.MuiPaper-elevation.MuiDrawer-paper {
+    width: 60%;
   }
 }

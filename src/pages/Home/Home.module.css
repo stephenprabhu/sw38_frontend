@@ -10,107 +10,6 @@
   flex-basis: 0;
 }
 
-.cockfightSectionOverlay {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #F7DB89;
-  border-radius: 10px;
-  max-width: 90%;
-  margin: auto;
-  margin-top: 10px;
-  text-align: center;
-}
-
-.cockfightSectionOverlay span {
-  background: transparent linear-gradient(180deg, #F6DA87 0%, #E1BB4E 100%) 0% 0% no-repeat padding-box;
-  border-radius: 7px 7px 0px 0px;
-  color: #000000;
-  font-size: 20px;
-  padding: 6px 0px;
-  font-family: 'Great Vibes';
-  font-weight: 600;
-  letter-spacing: 2px;
-}
-
-.cockfightSection {
-  display: flex;
-  justify-content: space-between;
-  color: white;
-  margin-top: 10px;
-  border-radius: 10px;
-  min-height: 180px;
-  align-items: center;
-}
-
-.cockfightSection .myLink {
-  background: linear-gradient(55deg, #E94C00 15%, #FFC9A0 37%, #E94C00 40%) center right / 300% 100% no-repeat;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-size: 0.7em;
-}
-
-.userInfoSection {
-  color: white;
-  padding: 5px;
-  border-radius: 20px;
-  width: 70%;
-  margin: auto;
-}
-
-.userInfoSectionLink {
-  text-align: center;
-  color: white;
-  padding: 10px 0px;
-}
-
-.userInfoSectionLink a {
-  color: #19253F;
-  font-weight: 600;
-  font-size: 12px;
-  text-decoration: none;
-  padding: 3px 10px;
-
-  background: transparent linear-gradient(180deg, #F6D984 0%, #DFB847 100%) 0% 0% no-repeat padding-box;
-  box-shadow: 0px 0px 15px #f7db894d;
-  border: 3px solid #19253F;
-  border-radius: 35px;
-}
-
-.bankDetailItem {
-  padding: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.grayLabel {
-  font-weight: 500;
-  color: #DEB849;
-  font-size: 0.7rem;
-}
-
-.grayValue {
-  font-weight: 500;
-  color: #F7DB89;
-  font-size: 1rem;
-}
-
-.copyButton {
-  color: #F7DB89;
-  border-radius: 0.3rem;
-  padding: 5px 10px;
-  border: none;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.copyButton:active {
-  padding: 8px 16px;
-}
-
 .registerLoginSection {
   width: 100%;
   display: flex;
@@ -135,4 +34,181 @@
   background: linear-gradient(180deg, #fce08d, #b69653);
   color: #010e33;
   text-align: center;
+}
+
+.homeMsg {
+  margin: 0 15px;
+  padding: 10px;
+  font-size: 0.8rem;
+  background: #263351;
+  border-radius: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border: 1px solid #F7DB89;
+}
+
+.depositButton {
+  text-decoration: none;
+  padding: 10px 0px;
+  font-size: 1.4em;
+  color: #0D2259;
+  font-weight: 600;
+  background: transparent linear-gradient(180deg, #F7DB89 0%, #8b6b08 100%);
+  border: 1px solid #003766;
+  box-shadow: 0px 0px 8px #12327E;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+  width: 30%;
+  margin: auto;
+  text-align: center;
+  animation: shake 1.5s ease infinite;
+}
+
+.customerSupportWrapper {
+  color: #F7DB89;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.customerSupportWrapper div:nth-child(2) {
+  width: 50%;
+}
+
+.cockfightSectionOverlay {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #F7DB89;
+  border-radius: 10px;
+  margin: 0 15px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.cockfightSectionOverlay span {
+  background: transparent linear-gradient(180deg, #F6DA87 0%, #E1BB4E 100%) 0% 0% no-repeat padding-box;
+  border-radius: 7px 7px 0px 0px;
+  color: #000000;
+  font-size: 20px;
+  padding: 6px 0px;
+  font-family: 'Great Vibes';
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.cockfightSection {
+  display: flex;
+  justify-content: space-between;
+  color: #F7DB89;
+  margin-top: 10px;
+  border-radius: 10px;
+  min-height: 180px;
+  align-items: center;
+}
+
+.cockfightSection .myLink {
+  background: linear-gradient(55deg, #E94C00 15%, #FFC9A0 37%, #E94C00 40%) center right / 300% 100% no-repeat;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 0.7em;
+}
+
+.bankDetailItem {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.grayLabel {
+  font-weight: 500;
+  color: #DEB849;
+  font-size: 0.7rem;
+}
+
+.userNameLabel {
+  font-size: 9px;
+}
+
+.grayValue {
+  font-weight: 500;
+  color: #F7DB89;
+  font-size: 1rem;
+}
+
+.userName {
+  font-size: 12px;
+}
+
+.copyButton {
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 7px;
+  font-weight: 600;
+  color: #0D2259;
+  background: transparent linear-gradient(180deg, #F7DB89 0%, #8b6b08 100%);
+  border-radius: 5px;
+}
+
+.copyButton:active {
+  padding: 7px 10px;
+}
+
+.depositButton:hover,
+.copyButton:hover {
+  background: transparent linear-gradient(180deg, #8b6b08 0%, #F7DB89 100%);
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
 }

@@ -1,4 +1,4 @@
-import axios from "axios";
+import BaseUrl from "./BaseUrl";
 
 export const AddAccountAPI = async (bank_name, account_number, User_name) => {
 
@@ -9,7 +9,7 @@ export const AddAccountAPI = async (bank_name, account_number, User_name) => {
 
   const token = localStorage.getItem('auth_token')
   try {
-    const res = await axios.post("https://bo.ssv388.info/api/bank/add_user_bank", formData, {
+    const res = await BaseUrl.post("/bank/add_user_bank", formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
         Authorization: `Bearer ${token}`

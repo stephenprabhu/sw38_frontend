@@ -1,0 +1,57 @@
+.modalOverlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalWrapper {
+  width: 310Px;
+  max-height: 600px;
+  background: #19253fcb;
+  border: 1px solid #F7DB89;
+  border-radius: 5px;
+  padding-bottom: 15px;
+}
+
+.ImageCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ImageCardHeader {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon {
+  cursor: pointer;
+  color: #19253fcb;
+  font-size: 22px;
+  border-radius: 50%;
+  padding: 2px;
+  background-color: #F7DB89;
+}
+
+.icon:hover {
+  background-color: aliceblue;
+}
+
+.ImageCard p {
+  margin: 10px 0;
+  color: #F7DB89;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.ImageCard img {
+  border-radius: 3px;
+  height: 550px;
+  width: 270px;
+  border: 1px solid #F7DB89;
+}

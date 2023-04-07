@@ -1,8 +1,8 @@
-import axios from "axios"
+import BaseUrl from "./BaseUrl";
 
 export const promotionsAPI = async () => {
   try {
-    const res = await axios.get('https://bo.ssv388.info/api/get_all_promotions', {
+    const res = await BaseUrl.get('/get_all_promotions', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('auth_token')}`
       }

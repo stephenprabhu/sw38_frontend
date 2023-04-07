@@ -1,4 +1,4 @@
-import axios from "axios";
+import BaseUrl from "./BaseUrl";
 
 export const EditAccount = async (bank_name, account_number, User_name, id) => {
 
@@ -9,7 +9,7 @@ export const EditAccount = async (bank_name, account_number, User_name, id) => {
 
   const token = localStorage.getItem('auth_token')
   try {
-    const res = await axios.post("https://bo.ssv388.info/api/bank/edit_user_bank/" + id, formData, {
+    const res = await BaseUrl.post("/bank/edit_user_bank/" + id, formData, {
       headers: {
         Authorization: `Bearer ${token}`
       }
