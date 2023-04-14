@@ -14,7 +14,7 @@ const PopupErrorModal = ({ message, show, hideModal, error = true }) => {
     >
       <div className={styles.modalOverlay} onClick={hideModal}>
         <div className={styles.loadingSection} onClick={(e) => e.stopPropagation()}>
-          {error ? <img src={errorIcon} className={styles.errorImg} /> : <img src={successIcon} className={styles.errorImg} />}
+          {error ? <img src={errorIcon} className={styles.errorImg} alt='errorImg'/> : <img src={successIcon} className={styles.errorImg} alt='successImg'/>}
           <div style={{ color: "white" }}>{message}</div>
         </div>
       </div>

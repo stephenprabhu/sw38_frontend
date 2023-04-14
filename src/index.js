@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import UserContext from './helpers/Context/user-context';
 import UserProvider from './helpers/Context/UserProvider';
 import { BrowserRouter as Router } from "react-router-dom";
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -25,3 +26,7 @@ root.render(
 );
 
 reportWebVitals();
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://cra.link/PWA
+serviceWorkerRegistration.register();

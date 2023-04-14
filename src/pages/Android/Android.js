@@ -30,7 +30,7 @@ const Android = () => {
         {androidSteps.map((step) => (
           <div className={styles.ImageCard} key={step.label} onClick={() => setStepModal(step.label)}>
             <p>{step.label}</p>
-            <img src={step.image} />
+            <img src={step.image} alt='stepLogo'/>
           </div>
         ))}
         <StepModal openStep={stepModal ? true : false} hideModal={() => setStepModal()} stepList={androidSteps} stepModal={stepModal} />

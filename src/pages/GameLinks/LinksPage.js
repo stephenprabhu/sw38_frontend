@@ -16,10 +16,9 @@ const LinksPage = () => {
       <InnerHeader />
       <div className={styles.linksContentWrapper}>
         <div className={styles.logoWrapper}>
-          <img src={HeaderLogo} width={130} />
+          <img src={HeaderLogo} width={130} alt='headerLogo'/>
         </div>
         <div className={styles.linksWrapper}>
-
           <div className={styles.sectionContentWrapper}>
             <div className={styles.section}>
               <div className={styles.linkContent} onClick={() => window.open("https://www.sfv388.com/")}>
@@ -52,12 +51,9 @@ const LinksPage = () => {
             </div>
             <div className={styles.customerMessageWrapper}>
               <p>Bấm vào đây để được</p>
-              <dv>
               <CustomerSupportAnimatedItem />
-              </dv>
             </div>
           </div>
-
         </div>
       </div>
     </div>

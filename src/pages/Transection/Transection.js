@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../../components/Header'
-import BottomMenu from "../../components/BottomMenu";
-import axios from 'axios';
 import { Chip } from '@mui/material';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
@@ -10,6 +8,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { addCommasToNumber } from '../../helpers/NumberHelper';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './Transection.module.css';
+// import BottomMenu from "../../components/BottomMenu";
+// import axios from 'axios';
 
 const Transection = () => {
   const { search } = useLocation();

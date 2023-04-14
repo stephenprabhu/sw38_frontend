@@ -21,7 +21,7 @@ const HomeImageMenu = () => {
       </div>
 
       <div onClick={() => navigate('/game-links')}>
-        <img src={DagaGif} />
+        <img src={DagaGif} alt='dagaImg'/>
       </div>
 
       <div onClick={() => navigate('/promotions')}>

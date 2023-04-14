@@ -30,7 +30,7 @@ const BottomMenu = () => {
             <span>Trang Chủ</span>
         </div>
         </Link> 
-        <a href="https://direct.lc.chat/14707113/" target="_blank" rel="noreffer" style={{ textDecoration: "none" }}>
+        <a href="https://tawk.to/chat/6401c68c31ebfa0fe7f07069/1gqjev5o0" target="_blank" rel="noreffer" style={{ textDecoration: "none" }}>
           <div className={styles.menuItem}>
             <TfiHeadphoneAlt size={26} />
             <span>Hỗ Trợ 24/7</span>

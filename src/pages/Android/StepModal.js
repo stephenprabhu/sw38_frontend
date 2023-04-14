@@ -15,7 +15,7 @@ const StepModal = ({ openStep, hideModal, stepList, stepModal }) => {
                 <p>{step[0] && step[0].label}</p>
                 <AiOutlineClose className={styles.icon} onClick={hideModal} />
               </div>
-              <img src={step[0] && step[0].image} />
+              <img src={step[0] && step[0].image} alt='stepImg'/>
             </div>
           }
         </div>

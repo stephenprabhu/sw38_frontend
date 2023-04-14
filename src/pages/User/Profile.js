@@ -95,7 +95,6 @@ const Profile = () => {
                   {!user.user_id && !getDepositTime && <span style={{ color: 'red', fontWeight: 'bold', fontSize: '15px', textAlign:'center' }}>Để lấy tên tài khoản và mật khẩu. Vui lòng<br />Nạp Tiền kích hoạt tài khoản !</span>}
                   {!user.user_id && !getDepositTime && !rejectRequest && <Link to='/deposit' className={styles.depositButton} onClick={''}>Nạp Tiền</Link>}
                   {/*!userInfo.user_id && isInitalDeposit && <span className={styles.depositWaitMsg}>Vui lòng chờ cấp tài khoản trong giây lát...</span>*/}
-
                   {rejectRequest && <span style={{ color: 'red', fontWeight: 'bold', fontSize: '15px', paddingBottom: '7px' }}>{rejectRequest}</span>}
                   {!user.user_id && getDepositTime && depositTime > 600000 && <span style={{ color: 'red', fontWeight: 'bold', fontSize: '15px', textAlign:'center' }}>Tài khoản chưa kích hoạt hoặc Quý khách chưa chuyển khoản!</span>}
                   {!user.user_id && getDepositTime && depositTime < 600000 && <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:'10px', color:'#F7DB89' }}><div><CircularProgress size={50} style={{color:"#DEB849"}}/></div><div style={{textAlign:'center'}}>Vui lòng chờ cấp tài khoản trong giây lát…</div></div>}

@@ -24,11 +24,11 @@ const RegisterPopupModal = ({ show, hideModal, message, x }) => {
         <div className={isErrorMessage ? styles.errorContainer : styles.successContainer} onClick={(e) => e.stopPropagation()}>
           {isErrorMessage ?
             <div className={styles.imageWrapper}>
-              <img src={registerError} className={styles.image} />
+              <img src={registerError} className={styles.image} alt='errorImg'/>
             </div>
             :
             <div className={styles.imageWrapper}>
-              <img src={Success} className={styles.image} />
+              <img src={Success} className={styles.image} alt='successImg'/>
             </div>}
           <div className={styles.modalContentWrapper}>
             <div style={{ fontSize: '20px' }}>{message}</div>

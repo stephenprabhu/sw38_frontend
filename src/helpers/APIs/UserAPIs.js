@@ -1,9 +1,9 @@
 import BaseUrl from "./BaseUrl";
 
-export const APIRegisterUser = async (phone, password) => {
+export const APIRegisterUser = async (phone, password, agentId) => {
   try {
     const res = await BaseUrl.post("/register_user", {
-      phone, password
+      phone, password, agent_id : agentId
     });
     if (res.data && res.data.status && res.data.token) {
       return res.data.token;
@@ -40,10 +40,10 @@ export const APICheckIfPhoneExists = async (phone) => {
   return null;
 }
 
-export const APIRegisterAgent = async (phone, password, bank_name, account_name, account_number) => {
+export const APIRegisterAgent = async (name,phone, password) => {
   try {
     const res = await BaseUrl.post("/register_agent", {
-      phone, password, bank_name, account_name, account_number
+      name, phone, password
     });
     if (res.data && res.data.status) {
       return res.data.status;

@@ -1,16 +1,16 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import { APICheckIfPhoneExists, APIRegisterAgent } from "../../helpers/APIs/UserAPIs";
-import UserContext from "../../helpers/Context/user-context";
 import { useNavigate } from "react-router-dom";
 import { FcOk, FcCancel } from "react-icons/fc";
 import { FiEyeOff, FiEye } from "react-icons/fi";
 import PopupErrorModal from "../../components/PopupErrorModal";
 import { BsCheckLg } from "react-icons/bs";
 import { BsX } from 'react-icons/bs';
-import vietnamBankArray from '../../data/vn-banks'
 import styles from './AgencyRegister.module.css';
-import { CiCreditCard1 } from "react-icons/ci";
+// import vietnamBankArray from '../../data/vn-banks'
+// import UserContext from "../../helpers/Context/user-context";
+// import { CiCreditCard1 } from "react-icons/ci";
 import CaptchaInput from "../../components/CaptchaInput";
 import { IoArrowBack } from "react-icons/io5";
 let timerInterval = null;
@@ -23,16 +23,17 @@ const AgencyRegister = () => {
   const [randomCaptcha, setRandomCaptcha] = useState(null);
 
   const [errorMessage, setErrorMessage] = useState(null);
-  const ctx = useContext(UserContext);
+  // const ctx = useContext(UserContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [passwordHidden, setPasswordHidden] = useState(false);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
   const [timerTime, setTimerTime] = useState(60);
   const [phoneValid, setPhoneValid] = useState(0);
-  const [bankName, setBankName] = useState(vietnamBankArray[0]);
-  const [accNumber, setAccNumber] = useState('');
-  const [userName, setUserName] = useState('');
+  // const [bankName, setBankName] = useState(vietnamBankArray[0]);
+  // const [accNumber, setAccNumber] = useState('');
+  // const [userName, setUserName] = useState('');
+  const [name, setName] = useState('');
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const registerUser = async (e) => {
@@ -43,18 +44,18 @@ const AgencyRegister = () => {
     }
 
     if (
-      password && password.length >= 10
-      && checkIfHasUpperCaseChar(password)
-      && checkIfHasLowerCaseChar(password)
-      && checkIfHasNumber(password)
-      && !checkIfHasSpecialChar(password)
-      && password === passwordAgain
-      && bankName && accNumber && userName
+      password && password.length >= 8
+      // && checkIfHasUpperCaseChar(password)
+      // && checkIfHasLowerCaseChar(password)
+      // && checkIfHasNumber(password)
+      // && !checkIfHasSpecialChar(password)
+      && password === passwordAgain && name
+      // && bankName && accNumber && userName
     ) {
       setLoading(true);
       setShowRegisterModal(true);
       timerInterval = setInterval(() => setTimerTime((pt) => { return pt - 1; }), 1000);
-      const x = await APIRegisterAgent(phone, password, bankName, accNumber, userName);
+      const x = await APIRegisterAgent(name,phone, password);
       if (!x) {
         setErrorMessage("Số điện thoại này đã được đăng ký vui lòng liên hệ CSKH để được hỗ trợ.");
         setShowRegisterModal(false);
@@ -80,22 +81,22 @@ const AgencyRegister = () => {
     }
   };
 
-  const checkIfHasUpperCaseChar = (value) => {
-    return /[A-Z]/.test(value);
-  };
+  // const checkIfHasUpperCaseChar = (value) => {
+  //   return /[A-Z]/.test(value);
+  // };
 
-  const checkIfHasLowerCaseChar = (value) => {
-    return /[a-z]/.test(value);
-  };
+  // const checkIfHasLowerCaseChar = (value) => {
+  //   return /[a-z]/.test(value);
+  // };
 
-  const checkIfHasSpecialChar = (value) => {
-    const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,. <>\/?~]/;
-    return specialChars.test(value);
-  };
+  // const checkIfHasSpecialChar = (value) => {
+  //   const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,. <>\/?~]/;
+  //   return specialChars.test(value);
+  // };
 
-  const checkIfHasNumber = (value) => {
-    return /\d/.test(value);
-  };
+  // const checkIfHasNumber = (value) => {
+  //   return /\d/.test(value);
+  // };
 
   const checkPhone = async () => {
     const res = await APICheckIfPhoneExists(phone);
@@ -119,8 +120,22 @@ const AgencyRegister = () => {
           <form className={styles.agencyRegisterForm} onSubmit={registerUser}>
             {errorMessage ? <span className={styles.error}>{errorMessage}</span> : ""}
             <div className={`${styles.formInput}`}>
+              <span>TÊN</span>
+              <div className={styles.inputPasswordArea}>
+                <input
+                  disabled={loading}
+                  value={name}
+                  onChange={(e) => setName(e.currentTarget.value)}
+                  placeholder="TÊN"
+                  name="name"
+                  required
+                  className={`${styles.inputPhone}`}
+                />
+              </div>
+            </div>
+            <div className={`${styles.formInput}`}>
               <span>Số điện thoại</span>
-              <div className={`${styles.inputPasswordArea} ${phoneValid === 1 && phone.length === 10 ? styles.successPhoneNumber : phone.length == 0 ? '' : phoneValid === 2 || phone.length < 10 || phone.length > 10 ? styles.errorPhoneNumber : ''}`}>
+              <div className={`${styles.inputPasswordArea} ${phoneValid === 1 && phone.length === 10 ? styles.successPhoneNumber : phone.length === 0 ? '' : phoneValid === 2 || phone.length < 10 || phone.length > 10 ? styles.errorPhoneNumber : ''}`}>
                 <input
                   onBlur={checkPhone}
                   disabled={loading}
@@ -132,7 +147,7 @@ const AgencyRegister = () => {
                   required
                   className={`${styles.inputPhone}`}
                 />
-                {phoneValid === 1 && phone.length === 10 ? <BsCheckLg color="green" size={20} /> : phone.length == 0 ? '' : phoneValid === 2 || phone.length < 10 ? <BsX size={30} onClick={() => setPhone('')} /> : ''}
+                {phoneValid === 1 && phone.length === 10 ? <BsCheckLg color="green" size={20} /> : phone.length === 0 ? '' : phoneValid === 2 || phone.length < 10 ? <BsX size={30} onClick={() => setPhone('')} /> : ''}
               </div>
               {phone && !checkPhoneStart(phone) ? <span className={styles.error}>Sai quy cách SĐT</span> : ""}
             </div>
@@ -156,7 +171,7 @@ const AgencyRegister = () => {
               </div>
               {password ? (
                 <div style={{ marginTop: "7px" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                  {/*<div style={{ display: "flex", alignItems: "center", gap: 5 }}>
                     <span style={{ marginBottom: "0px" }}>
                       {checkIfHasUpperCaseChar(password) ? <FcOk /> : <FcCancel />}
                     </span>
@@ -194,20 +209,20 @@ const AgencyRegister = () => {
                     >
                       Mật khẩu phải có số (0~ 9)
                     </span>
-                  </div>
+                  </div>*/}
                   <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
                     <span style={{ marginBottom: "0px" }}>
-                      {password.length >= 10 ? <FcOk /> : <FcCancel />}
+                      {password.length >= 8 ? <FcOk /> : <FcCancel />}
                     </span>
                     <span
                       className={
-                        password.length >= 10 ? styles.success : styles.error
+                        password.length >= 8 ? styles.success : styles.error
                       }
                     >
-                      Có độ dài từ 10 ký tự trở lên
+                      Có độ dài từ 8 ký tự trở lên
                     </span>
                   </div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                  {/*<div style={{ display: "flex", alignItems: "center", gap: 5 }}>
                     <span style={{ marginBottom: "0px" }}>
                       {!checkIfHasSpecialChar(password) ? <FcOk /> : <FcCancel />}
                     </span>
@@ -220,7 +235,7 @@ const AgencyRegister = () => {
                     >
                       Không chứa ký tự đặc biệt, dấu cách
                     </span>
-                  </div>
+                  </div>*/}
                 </div>
               ) : (
                 ""
@@ -248,7 +263,7 @@ const AgencyRegister = () => {
                 ""
               )}
             </div>
-            <div className={styles.formInput}>
+            {/*<div className={styles.formInput}>
               <span className={styles.label}>Ngân hàng</span>
               <select className={styles.select} required value={bankName} onChange={(e) => setBankName(e.target.value)}>
                 {vietnamBankArray.map((val, index) => <option key={index}>{val}</option>)}
@@ -265,7 +280,7 @@ const AgencyRegister = () => {
             <div className={styles.inputItem}>
               <CiCreditCard1 size={25} style={{ color: "#F7DB89" }} />
               <input className={styles.whiteInput} style={{ border: "none" }} placeholder="＊ Vui lòng nhập số tài khoản" required value={accNumber} onChange={(e) => setAccNumber(e.target.value)} />
-            </div>
+              </div>*/}
             <CaptchaInput captcha={randomCaptcha} setCaptcha={setRandomCaptcha} setUserCaptchaInput={setCaptcha} userCaptchaInput={captcha} />
             <button className={`${styles.agencyRegisterButton} ${loading ? styles.loading : ""}`} type="submit">
               {loading ? "Đang tải" : "Đăng ký"}

@@ -1,18 +1,18 @@
 import InnerHeader from "../../components/InnerHeader"
 import styles from './Deposit.module.css'
-import { useEffect, useState, useContext } from "react";
-import { APICheckTransaction, APIMakeDepositRequest } from "../../helpers/APIs/TransactionAPI";
+import { useState } from "react";
+import { APIMakeDepositRequest } from "../../helpers/APIs/TransactionAPI";
 import { useNavigate } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
-import { Box, Modal } from "@mui/material";
-import { AiOutlineArrowDown, AiOutlineClose } from "react-icons/ai";
 import PopupErrorModal from "../../components/PopupErrorModal";
-import { APIUser } from "../../helpers/APIs/UserAPIs";
 import { MdContentCopy } from "react-icons/md";
 import { addCommasToInput } from "../../helpers/NumberHelper";
 import CustomerSupportAnimatedItem from "../../components/CustomerSupportAnimatedItem";
-import UserContext from "../../helpers/Context/user-context";
 import { VscArrowSmallDown } from "react-icons/vsc";
+// import { Box, Modal } from "@mui/material";
+// import { AiOutlineArrowDown, AiOutlineClose } from "react-icons/ai";
+// import { APIUser } from "../../helpers/APIs/UserAPIs";
+// import UserContext from "../../helpers/Context/user-context";
 
 const DepositStep2 = ({ amount, selectedBank, userCredential, isInitalDeposit }) => {
   const [invoiceFile, setInvoiceFile] = useState();

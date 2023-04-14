@@ -54,7 +54,7 @@ const Home = () => {
     <div className={styles.homeOverlay}>
       <Header />
       <div className={styles.homeWrapper}>
-        <a href='https://www.ssvv388.com/' target="_blank">
+        <a href='https://www.ssvv388.com/' target="_blank" rel='noreferrer'>
           <img src={BannerImage} width="100%" />
         </a>
         <marquee direction="left" style={{ color: '#fce08d', fontSize: '12px', padding: '5px 0px', margin: '0px 7px', fontStyle: 'italic' }}>
@@ -86,7 +86,7 @@ const Home = () => {
         }
 
         <div className={styles.customerSupportWrapper}>
-          <div>Bấm vào đây để được</div>
+          <div>Bấm vào đây để liên hệ</div>
           <div><CustomerSupportAnimatedItem /></div>
         </div>
         

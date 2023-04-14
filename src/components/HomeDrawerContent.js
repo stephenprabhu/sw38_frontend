@@ -9,7 +9,7 @@ const HomeDrawerContent = ({ onClose }) => {
     <div>
       <div onClick={onClose}> <AiOutlineClose size={28} className={styles.closeBtn} /></div>
       <div style={{ textAlign: "center" }}>
-        <img src={SVLogo} width={150} />
+        <img src={SVLogo} width={150} alt='svlogo'/>
       </div>
       <div style={{ textAlign: "center", marginTop: "20px" }}>
         <Link to="/deposit" className={styles.button}>Nạp Tiền</Link>
@@ -17,12 +17,12 @@ const HomeDrawerContent = ({ onClose }) => {
       </div>
       <div className={styles.menuSection}>
         <div className={styles.gpsButtonWrapper}>
-          <a className={styles.gpsButton} target="_blank" href='https://www.vn138e.com/sports'>Đá gà</a>
+          <a className={styles.gpsButton} target="_blank" rel='noreferrer' href='https://www.vn138e.com/sports'>Đá gà</a>
         </div>
-        <span><a href="https://www.vn138e.com/live" target="_blank">Sòng bài</a></span>
-        <span><a href='https://www.vn138e.com/sports' target="_blank">Thể Thao</a></span>
-        <span><a href='https://www.vn138e.com/esports' target="_blank">Chơi Game</a></span>
-        <span><a href='https://www.vn138e.com/esports' target="_blank">Xổ Số</a></span>
+        <span><a href="https://www.vn138e.com/live" target="_blank" rel='noreferrer'>Sòng bài</a></span>
+        <span><a href='https://www.vn138e.com/sports' target="_blank" rel='noreferrer'>Thể Thao</a></span>
+        <span><a href='https://www.vn138e.com/esports' target="_blank" rel='noreferrer'>Chơi Game</a></span>
+        <span><a href='https://www.vn138e.com/esports' target="_blank" rel='noreferrer'>Xổ Số</a></span>
         <span><Link to="/member">Tài Khoản</Link></span>
       </div>
     </div>

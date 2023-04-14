@@ -1,8 +1,8 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import DepositStep1 from './DepositStep1';
 import DepositStep2 from './DepositStep2';
 import { APIGetCompanyBanks } from '../../helpers/APIs/BankAPIs';
-import UserContext from '../../helpers/Context/user-context';
+// import UserContext from '../../helpers/Context/user-context';
 import { APIUser } from '../../helpers/APIs/UserAPIs';
 import styles from './Deposit.module.css';
 
@@ -16,7 +16,7 @@ const Deposit = () => {
   const [companyBanks, setCompanyBanks] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
   const [userCredential, setUserCredential] = useState([])
-  const ctx = useContext(UserContext);
+  // const ctx = useContext(UserContext);
   
   const userAuth = localStorage.getItem('auth_token')
  

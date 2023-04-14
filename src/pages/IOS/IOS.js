@@ -17,7 +17,7 @@ const IOS = () => {
         {iosSteps.map((step) => (
           <div className={styles.ImageCard} key={step.label} onClick={() => setStepModal(step.label)}>
             <p>{step.label}</p>
-            <img src={step.image} />
+            <img src={step.image} alt='stepImg'/>
           </div>
         ))}
         <StepModal openStep={stepModal ? true : false} hideModal={() => setStepModal()} stepList={iosSteps} stepModal={stepModal} />

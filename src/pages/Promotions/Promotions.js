@@ -41,7 +41,7 @@ const Promotions = () => {
           <h3>KHUYẾN MÃI</h3>
           {promotionsList && promotionsList.map((promo) =>
           (<div className={styles.card} key={promo.id} onClick={() => window.open(promo.link)}>
-            <img height="100px" width='100%' src={promo.image} alt={''} />
+            <img height="100px" width='100%' src={promo.image} alt='promoImg'/>
             <div className={styles.cardContent}>
               <span className={styles.cardTitle}>{promo.title}</span>
               <div className={styles.dates}>

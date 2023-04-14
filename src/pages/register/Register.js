@@ -1,41 +1,52 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "../register/Register.module.css";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header";
 import { APICheckIfPhoneExists, APIRegisterUser } from "../../helpers/APIs/UserAPIs";
 import UserContext from "../../helpers/Context/user-context";
-import { useNavigate } from "react-router-dom";
 import RegisterPopupModal from "./RegisterPopupModal";
-import PopupErrorModal from "../../components/PopupErrorModal";
 import CaptchaInput from "../../components/CaptchaInput";
-import axios from "axios";
 import { BsCheckLg, BsX } from "react-icons/bs";
 import { BiEdit } from "react-icons/bi";
+// import { useNavigate } from "react-router-dom";
+// import PopupErrorModal from "../../components/PopupErrorModal";
+// import axios from "axios";
 
-let timerInterval = null;
-
-
-
+// let timerInterval = null;
 
 //password validation if code
 //password && password.length >= 10 && checkIfHasUpperCaseChar(password) && checkIfHasLowerCaseChar(password) && checkIfHasNumber(password) && !checkIfHasSpecialChar(password) &&password === passwordAgain
 
 const Register = () => {
   const [phone, setPhone] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordAgain, setPasswordAgain] = useState("");
   const [captcha, setCaptcha] = useState("");
   const [randomCaptcha, setRandomCaptcha] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
   const [registerModal, setRegisterModal] = useState('');
   const [registerResponse, setRegisterResponse] = useState('');
-  const ctx = useContext(UserContext);
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [passwordHidden, setPasswordHidden] = useState(false);
-  const [showRegisterModal, setShowRegisterModal] = useState(false);
-  const [timerTime, setTimerTime] = useState(60);
   const [phoneValid, setPhoneValid] = useState(0);
+  const [agentId, setAgentId] = useState('')
+  const ctx = useContext(UserContext);
+  // const [password, setPassword] = useState("");
+  // const [passwordAgain, setPasswordAgain] = useState("");
+  // const navigate = useNavigate();
+  // const [passwordHidden, setPasswordHidden] = useState(false);
+  // const [showRegisterModal, setShowRegisterModal] = useState(false);
+  // const [timerTime, setTimerTime] = useState(60);
+
+  // getting url param value
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const params = Object.fromEntries(urlSearchParams.entries());
+  
+  useEffect(() => {
+    if(params && params.ag_id) {
+      setAgentId(params.ag_id)
+      localStorage.setItem('agID', params.ag_id)
+    } else if ( localStorage.getItem('agID') ){
+      setAgentId(localStorage.getItem('agID'))
+    }
+  },[])
 
  // check phone is exist or not 
   const checkPhone = async () => {
@@ -59,12 +70,13 @@ const Register = () => {
     }
     if (phone && phone.length === 10) {
       setLoading(true);
-      const x = await APIRegisterUser(phone, null);
+      const x = await APIRegisterUser(phone, null, agentId);
       if (!x) {
         setRegisterModal("Số điện thoại này đã được đăng ký vui lòng liên hệ CSKH để được hỗ trợ.");
       } else {
         setRegisterResponse(x)
         localStorage.setItem("auth_token", x);
+        localStorage.removeItem('agID')
         setRegisterModal("Tài khoản của bạn đã được tạo thành công. Để kích hoạt tài khoản vui lòng nạp tiền");
         ctx.setUser(x);
         // ctx.setUserInfo(null);
@@ -104,6 +116,14 @@ const Register = () => {
   // const checkIfHasNumber = (value) => {
   //   return /\d/.test(value);
   // };
+  // <div className={styles.inputPasswordArea }>
+  //   <input
+  //     value={agentId}
+  //     readOnly
+  //     className={`${styles.inputPhone}`}
+  //   />
+  //   {phoneValid === 1 && phone.length === 10 ? <BsCheckLg color="green" size={20} /> : phone.length == 0 ? '' : phoneValid === 2 || phone.length < 10 ? <BsX size={30} style={{cursor:'pointer'}} onClick={() => setPhone('')} /> : ''}
+  // </div>
 
   return (
     <div className={styles.registerOverlay}>
@@ -115,6 +135,12 @@ const Register = () => {
         </div>
         <div className={styles.formOverlay}>
           <form className={styles.registerForm} onSubmit={registerUser}>
+          {agentId && 
+            <div className={styles.agentIdWrapper}>
+              <span>Mã giới thiệu</span>
+              <span>{agentId}</span>
+            </div>
+          }
             {errorMessage ? (
               <span className={styles.error}>{errorMessage}</span>
             ) : (
@@ -122,7 +148,7 @@ const Register = () => {
             )}
             <div className={`${styles.formInput}`}>
               <span>Số điện thoại</span>
-              <div className={`${styles.inputPasswordArea} ${phoneValid === 1 && phone.length === 10 ? styles.successPhoneNumber : phone.length == 0 ? '' : phoneValid === 2 || phone.length < 10 || phone.length > 10 ? styles.errorPhoneNumber : ''}`}>
+              <div className={`${styles.inputPasswordArea} ${phoneValid === 1 && phone.length === 10 ? styles.successPhoneNumber : phone.length === 0 ? '' : phoneValid === 2 || phone.length < 10 || phone.length > 10 ? styles.errorPhoneNumber : ''}`}>
                 <input
                   onBlur={checkPhone}
                   disabled={loading}
@@ -134,7 +160,7 @@ const Register = () => {
                   required
                   className={`${styles.inputPhone}`}
                 />
-                {phoneValid === 1 && phone.length === 10 ? <BsCheckLg color="green" size={20} /> : phone.length == 0 ? '' : phoneValid === 2 || phone.length < 10 ? <BsX size={30} style={{cursor:'pointer'}} onClick={() => setPhone('')} /> : ''}
+                {phoneValid === 1 && phone.length === 10 ? <BsCheckLg color="green" size={20} /> : phone.length === 0 ? '' : phoneValid === 2 || phone.length < 10 ? <BsX size={30} style={{cursor:'pointer'}} onClick={() => setPhone('')} /> : ''}
               </div>
               {phone && !checkPhoneStart(phone) ? <span className={styles.error}>Sai quy cách SĐT</span> : ""}
               {phone && phone.length !== 10 ? <span className={styles.error}>Vui lòng nhập 10 ký tự</span> : ""}

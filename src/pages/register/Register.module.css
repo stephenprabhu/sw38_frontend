@@ -43,6 +43,23 @@
   padding: 25px 20px;
 }
 
+.agentIdWrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 10px 0 20px 0;
+}
+
+.agentIdWrapper span:nth-child(1) {
+  font-size: 12px;
+  color: white;
+}
+
+.agentIdWrapper span:nth-child(2) {
+  font-weight: bold;
+  color: #F7DB89;
+}
+
 .error {
   color: rgb(236, 72, 72);
   font-size: 0.8rem;

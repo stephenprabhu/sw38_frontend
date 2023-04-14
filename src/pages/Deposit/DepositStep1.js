@@ -1,4 +1,4 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 import styles from './Deposit.module.css'
 import InnerHeader from '../../components/InnerHeader'
 import { IconButton } from '@mui/material';
@@ -7,7 +7,7 @@ import { addCommasToInput, addCommasToNumber } from '../../helpers/NumberHelper'
 
 const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setSelectedBank, companyBanks, errorMessage }) => {
 
-  const [stringAmount, setStringAmount] = useState('');
+  // const [stringAmount, setStringAmount] = useState('');
 
   const onDepositAmountChange = val => {
     // console.log(e);
@@ -66,7 +66,7 @@ const DepositStep1 = ({ amount, setAmount, onNextStepClicked, selectedBank, setS
                   key={bank.id}
                   onClick={() => setSelectedBank(bank)}
                 >
-                  <img src={bank.bank_image} />
+                  <img src={bank.bank_image} alt='bankImg'/>
                 </div>
               )) : ""}
             </div>

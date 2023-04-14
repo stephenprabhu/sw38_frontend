@@ -4,10 +4,10 @@ import vietnamBankArray from '../../data/vn-banks'
 import styles from "./AddAccount.module.css"
 import { CiCreditCard1 } from "react-icons/ci";
 import { AddAccountAPI } from '../../helpers/APIs/AddAccountAPI';
-// import { EditAccount } from '../../helpers/APIs/EditAccount';
-import { useNavigate, useParams } from 'react-router-dom';
-// import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { bankListAPI } from '../../helpers/APIs/WithdrawAPI';
+// import { EditAccount } from '../../helpers/APIs/EditAccount';
+// import axios from 'axios';
 
 const AddAccount = () => {
   const [bankName, setBankName] = useState(vietnamBankArray[0]);
@@ -17,7 +17,7 @@ const AddAccount = () => {
   // const [editBank, setEditBank] = useState()
 
   const navigate = useNavigate()
-  const param = useParams();
+  // const param = useParams();
 
   useEffect(() => {
     // if (param.id) {

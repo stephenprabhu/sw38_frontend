@@ -22,7 +22,7 @@ const CaptchaInput = ({ captcha, setCaptcha, userCaptchaInput, setUserCaptchaInp
           required
           onChange={(e) => setUserCaptchaInput(e.currentTarget.value)}
         />
-        <img src={captcha ? captcha.image : ""} width="100px" style={{ borderRadius: '5px 5px 0px 0px' }} />
+        <img src={captcha ? captcha.image : ""} width="100px" style={{ borderRadius: '5px 5px 0px 0px' }} alt='captcha'/>
       </div>
     </div>
   )
