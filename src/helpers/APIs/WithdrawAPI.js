@@ -18,7 +18,13 @@ export const WithdrawAPI = async (bank_id, transaction_amount, bank_account_numb
       return res.data;
     }
   } catch (e) {
-    console.log(e);
+    if (e.response.status === 403) {
+      return "WAIT_PLEASE"
+    } else if (e.response.status === 401) {
+      return "MAKE_DEPOSIT_REQUEST_FIRST"
+    }else{
+      console.log(e);
+    }
   }
   return null;
 
@@ -33,13 +39,7 @@ export const bankListAPI = async () => {
     });
     return res.data
   } catch (e) {
-    if (e.status === 403) {
-      return "WAIT_PLEASE"
-    } else if (e.status === 401) {
-      return "MAKE_DEPOSIT_REQUEST_FIRST"
-    }else{
-      console.log(e);
-    }
+    console.log(e);
   }
   return null;
 }

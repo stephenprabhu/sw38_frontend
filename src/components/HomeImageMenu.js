@@ -32,19 +32,19 @@ const HomeImageMenu = () => {
 
       {showRoundMenu && 
         <>
-          <div className={`${styles.goldBubble} ${styles.sports}`} onClick={() => window.open("https://www.vn138e.com/sports")}>
+          <div className={`${styles.goldBubble} ${styles.sports}`} onClick={() => window.open("https://vnn138.com/platform/sport/")}>
             <MdOutlineSportsVolleyball size={24} />
             Thể Thao
           </div>
-          <div className={`${styles.goldBubble} ${styles.casino}`} onClick={() => window.open("https://www.vn138e.com/live")}>
+          <div className={`${styles.goldBubble} ${styles.casino}`} onClick={() => window.open("https://vnn138.com/platform/real/")}>
             <BiVideoRecording size={24} />
             Live<br />Casino
           </div>
-          <div className={`${styles.goldBubble} ${styles.esports}`} onClick={() => window.open("https://www.vn138e.com/esports")}>
+          <div className={`${styles.goldBubble} ${styles.esports}`} onClick={() => window.open("https://vnn138.com/platform/esports/")}>
             <MdOutlineSportsEsports size={26} />
             E Sports
           </div>
-          <div className={`${styles.goldBubble} ${styles.lottery}`} onClick={() => window.open("https://www.vn138e.com/elott")}>
+          <div className={`${styles.goldBubble} ${styles.lottery}`} onClick={() => window.open("https://vnn138.com/platform/lottery/")}>
             <MdSportsGolf size={26} />
             Xổ số
           </div>

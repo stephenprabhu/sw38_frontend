@@ -17,12 +17,12 @@ const HomeDrawerContent = ({ onClose }) => {
       </div>
       <div className={styles.menuSection}>
         <div className={styles.gpsButtonWrapper}>
-          <a className={styles.gpsButton} target="_blank" rel='noreferrer' href='https://www.vn138e.com/sports'>Đá gà</a>
+          <a className={styles.gpsButton} href='/game-links'>Đá gà</a>
         </div>
-        <span><a href="https://www.vn138e.com/live" target="_blank" rel='noreferrer'>Sòng bài</a></span>
-        <span><a href='https://www.vn138e.com/sports' target="_blank" rel='noreferrer'>Thể Thao</a></span>
-        <span><a href='https://www.vn138e.com/esports' target="_blank" rel='noreferrer'>Chơi Game</a></span>
-        <span><a href='https://www.vn138e.com/esports' target="_blank" rel='noreferrer'>Xổ Số</a></span>
+        <span><a href="https://vnn138.com/platform/real" target="_blank" rel='noreferrer'>Sòng bài</a></span>
+        <span><a href='https://vnn138.com/platform/sport' target="_blank" rel='noreferrer'>Thể Thao</a></span>
+        <span><a href='https://vnn138.com/platform/esports' target="_blank" rel='noreferrer'>Chơi Game</a></span>
+        <span><a href='https://vnn138.com/platform/lottery/' target="_blank" rel='noreferrer'>Xổ Số</a></span>
         <span><Link to="/member">Tài Khoản</Link></span>
       </div>
     </div>

@@ -39,15 +39,15 @@ const Withdraw = () => {
   const submitwithdraw = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const intTransactionAmount = transactionAmount.replace(/,/g, '');
-    if (intTransactionAmount > 100000000) {
+    // const intTransactionAmount = transactionAmount.replace(/,/g, '');
+    if (transactionAmount > 100000000) {
       setError('Vui lòng chọn dưới 100,000,000')
-    } else if (intTransactionAmount < 150000) {
+    } else if (transactionAmount < 150000) {
       setError('Vui lòng chọn trên 150,000')
     } else if (!bankId) {
       setError('Vui lòng thêm ngân hàng')
-    } else if (bankId && intTransactionAmount) {
-      const x = await WithdrawAPI(bankId, intTransactionAmount, bankAccountNumber);
+    } else if (bankId && transactionAmount) {
+      const x = await WithdrawAPI(bankId, transactionAmount, bankAccountNumber);
       if (x === "Account Not Activated") {
         setError('Tài khoản của bạn chưa được kích hoạt')
       } else if( x === "WAIT_PLEASE"){
@@ -67,9 +67,9 @@ const Withdraw = () => {
     setLoading(false);
   }
 
-  const onWithdrawAmountChange = val => {
-    setTransactionAmount(addCommasToInput(val));
-  }
+  // const onWithdrawAmountChange = val => {
+  //   setTransactionAmount(addCommasToInput(val));
+  // }
 
   return (
     <form className={styles.layout} onSubmit={submitwithdraw}>
@@ -116,7 +116,7 @@ const Withdraw = () => {
                 style={{ border: "none" }}
                 placeholder="100K - 100M"
                 value={transactionAmount}
-                onChange={(e) => { onWithdrawAmountChange(e.target.value); setError('') }}
+                onChange={(e) => { setTransactionAmount(e.target.value); setError('') }}
                 required />
             </div>
             {error && <Typography mt={2} color='red'>{error}</Typography>}

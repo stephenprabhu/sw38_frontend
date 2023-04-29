@@ -5,8 +5,9 @@ import StepModal from '../Android/StepModal';
 import step1 from '../../assets/IOS1.jpg';
 import step2 from '../../assets/IOS2.jpg';
 import step3 from '../../assets/IOS3.jpg';
+import step4 from '../../assets/IOS4.jpg';
 
-const iosSteps = [{ label: 'Bước 1', image: step1 }, { label: 'Bước 2', image: step2 }, { label: 'Bước 3', image: step3 }]
+const iosSteps = [{ label: 'Bước 1', image: step1 }, { label: 'Bước 2', image: step2 }, { label: 'Bước 3', image: step3 }, { label: 'Bước 4', image: step4 }]
 
 const IOS = () => {
   const [stepModal, setStepModal] = useState('')
@@ -21,7 +22,7 @@ const IOS = () => {
           </div>
         ))}
         <StepModal openStep={stepModal ? true : false} hideModal={() => setStepModal()} stepList={iosSteps} stepModal={stepModal} />
-      </div>
+        </div>
     </div>
   )
 }

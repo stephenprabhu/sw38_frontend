@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import styles from './Home.module.css';
-import BannerImage from "../../assets/Banner IMG.png"
+import BannerImage from "../../assets/Banner IMG.jfif";
+import MainBannerImage from "../../assets/MainBannerImage.png"
 import HomeImageMenu from '../../components/HomeImageMenu';
 import Header from "../../components/Header";
 import UserContext from "../../helpers/Context/user-context";
@@ -55,7 +56,10 @@ const Home = () => {
       <Header />
       <div className={styles.homeWrapper}>
         <a href='https://www.ssvv388.com/' target="_blank" rel='noreferrer'>
-          <img src={BannerImage} width="100%" />
+          <img src={MainBannerImage} width="100%" alt="banner"/>
+        </a>
+        <a href='https://www.ssvv388.com/' target="_blank" rel='noreferrer'>
+          <img src={BannerImage} width="100%" alt="banner"/>
         </a>
         <marquee direction="left" style={{ color: '#fce08d', fontSize: '12px', padding: '5px 0px', margin: '0px 7px', fontStyle: 'italic' }}>
           ĐÁ GÀ SV388 NƠI CÁC CHIẾN KÊ HUYỀN THOẠI THỂ HIỆN CHỈ CÓ TẠI SVW38.COM

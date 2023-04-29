@@ -18,9 +18,9 @@ export const APIMakeDepositRequest = async (amount, selected_bank_id, file) => {
       return res.data;
     }
   } catch (e) {
-    if (e.message === 'Request failed with status code 422') {
+    if (e.response.message === 'Request failed with status code 422') {
       return "ERR_FILE_FORMAT_INVALID"
-    } if (e.status === 403) {
+    } if (e.response.status === 403) {
       return "WAIT_PLEASE"
     }
   }
