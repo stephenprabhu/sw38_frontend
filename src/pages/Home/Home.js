@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import styles from './Home.module.css';
 import BannerImage from "../../assets/Banner IMG.jfif";
-import MainBannerImage from "../../assets/MainBannerImage.png"
+import MainBannerImage from "../../assets/MainBannerImage.gif"
 import HomeImageMenu from '../../components/HomeImageMenu';
 import Header from "../../components/Header";
 import UserContext from "../../helpers/Context/user-context";
@@ -13,6 +13,7 @@ import { MdOutlineContentCopy } from "react-icons/md";
 import { APIUser } from "../../helpers/APIs/UserAPIs";
 import { CircularProgress } from "@mui/material";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import CockVideo from '../../assets/cockVideo.mp4'
 
 const Home = () => {
   const ctx = useContext(UserContext);
@@ -58,9 +59,11 @@ const Home = () => {
         <a href='https://www.ssvv388.com/' target="_blank" rel='noreferrer'>
           <img src={MainBannerImage} width="100%" alt="banner"/>
         </a>
-        <a href='https://www.ssvv388.com/' target="_blank" rel='noreferrer'>
-          <img src={BannerImage} width="100%" alt="banner"/>
-        </a>
+        <div style={{width:'100%'}}>
+          <video autoPlay loop muted width='100%'>
+            <source src={CockVideo} type="video/mp4" />
+          </video>
+        </div>
         <marquee direction="left" style={{ color: '#fce08d', fontSize: '12px', padding: '5px 0px', margin: '0px 7px', fontStyle: 'italic' }}>
           ĐÁ GÀ SV388 NƠI CÁC CHIẾN KÊ HUYỀN THOẠI THỂ HIỆN CHỈ CÓ TẠI SVW38.COM
         </marquee>

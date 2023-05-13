@@ -17,8 +17,7 @@ const vietnamBankArray = [
     "HDBANK",
     "NAMABANK",
     "PVCOMBANK",
-    "SAIGONBANK",
-    "VIETIN BANK",
+    "SAIGONBANK"
 ];
 
 export default vietnamBankArray;
