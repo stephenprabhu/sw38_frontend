@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import styles from './Home.module.css';
-import BannerImage from "../../assets/Banner IMG.jfif";
-import MainBannerImage from "../../assets/MainBannerImage.gif"
+import MainBannerImage from "../../assets/MainBannerImage.png"
 import HomeImageMenu from '../../components/HomeImageMenu';
 import Header from "../../components/Header";
 import UserContext from "../../helpers/Context/user-context";
@@ -71,7 +70,15 @@ const Home = () => {
           <Link className={styles.loginButton} to='/login'>Đăng Nhập</Link>
           <Link className={styles.registerButton} to='/register'>Đăng ký</Link>
         </div> : ""}
+        
         <HomeImageMenu />
+
+        {/*<div className={styles.titleDiscOverlay}>
+          <h4>Hệ thống trang GA SVW38 sẽ bảo trì nâng cấp vào 0h00 đến 04h00 Ngày 17/05/2023 </h4>
+          <p>Quý khách hàng thân mến ,GA SVW38 Trân trọng xin thông báo: Hệ thống trang sẽ bảo trì vào 0h00 đến 04h00 Ngày 17/05/2023 để cập nhật nâng cấp lên phiên bản mới , nhằm đem
+          lại trải nghiệm tốt nhất cho Quý khách hàng. Xin lỗi Quý khách vì sự bất tiện này.</p>
+        </div>*/}
+
         {user && userInfo &&
           <div className={styles.homeMsg}>
             <CopyItemComponent item={{ label: "Số điện thoại đăng nhập", value: userInfo.name }} />

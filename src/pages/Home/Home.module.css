@@ -36,6 +36,32 @@
   text-align: center;
 }
 
+.titleDiscOverlay {
+  border: 1px solid #F7DB89;
+  border-radius: 10px;
+  margin: 0 15px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.titleDiscOverlay h4,
+.titleDiscOverlay p {
+  margin: 0;
+  padding: 5px 10px;
+}
+
+.titleDiscOverlay h4 {
+  background: transparent linear-gradient(180deg, #F6DA87 0%, #E1BB4E 100%) 0% 0% no-repeat padding-box;
+  border-radius: 5px;
+}
+
+.titleDiscOverlay p {
+  color: #F7DB89;
+  font-size: 14px;
+}
+
 .homeMsg {
   margin: 0 15px;
   padding: 10px;
