@@ -1,0 +1,28 @@
+.userInfoSection,
+.balanceSection {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: white;
+}
+
+.balanceSection {
+  cursor: pointer;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.balanceSection div {
+  color: rgb(234, 219, 144);
+  font-size: 13px;
+}
+
+.balanceSection span {
+  font-size: 11px;
+}
+
+.userIcons {
+  font-size: 20px;
+  color: #FCE8AE;
+  cursor: pointer;
+}

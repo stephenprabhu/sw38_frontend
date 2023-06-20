@@ -1,0 +1,18 @@
+.bottomMenuLayout {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #10192D;
+  padding: 3px 0px;
+}
+
+.menuItem {
+  color: #847459;
+  text-align: center;
+  cursor: pointer;
+}
+
+.menuItem span {
+  display: block;
+  font-size: 0.7rem;
+}

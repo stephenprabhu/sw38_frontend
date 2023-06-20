@@ -4,7 +4,7 @@ import DepositStep2 from './DepositStep2';
 import { APIGetCompanyBanks } from '../../helpers/APIs/BankAPIs';
 // import UserContext from '../../helpers/Context/user-context';
 import { APIUser } from '../../helpers/APIs/UserAPIs';
-import styles from './Deposit.module.css';
+import Layout from '../../Layout/Layout';
 
 const Deposit = () => {
   const urlSearchParams = new URLSearchParams(window.location.search);
@@ -48,7 +48,7 @@ const Deposit = () => {
   }
 
   return (
-    <div className={styles.deposit}>
+    <Layout title={step2 ? "Thông tin nạp tiền" : "Nạp Tiền"}>
       {step2 ?
         <DepositStep2
           amount={amount}
@@ -67,7 +67,7 @@ const Deposit = () => {
           errorMessage={errorMessage}
         />
       }
-    </div>
+    </Layout>
   )
 }
 

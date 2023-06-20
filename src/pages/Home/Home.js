@@ -13,6 +13,7 @@ import { APIUser } from "../../helpers/APIs/UserAPIs";
 import { CircularProgress } from "@mui/material";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import CockVideo from '../../assets/cockVideo.mp4'
+import Layout from "../../Layout/Layout";
 
 const Home = () => {
   const ctx = useContext(UserContext);
@@ -52,8 +53,7 @@ const Home = () => {
   const depositTime = new Date() - new Date(getDepositTime)
   
   return (
-    <div className={styles.homeOverlay}>
-      <Header />
+    <Layout>
       <div className={styles.homeWrapper}>
         <a href='https://www.ssvv388.com/' target="_blank" rel='noreferrer'>
           <img src={MainBannerImage} width="100%" alt="banner"/>
@@ -66,6 +66,12 @@ const Home = () => {
         <marquee direction="left" style={{ color: '#fce08d', fontSize: '12px', padding: '5px 0px', margin: '0px 7px', fontStyle: 'italic' }}>
           ĐÁ GÀ SV388 NƠI CÁC CHIẾN KÊ HUYỀN THOẠI THỂ HIỆN CHỈ CÓ TẠI SVW38.COM
         </marquee>
+
+        <marquee direction="left" style={{ color: '#fce08d', fontSize: '12px', padding: '5px 0px', margin: '0px 7px', fontStyle: 'italic' }}>
+        Thời gian rút tiền tại SVW38 mỗi ngày 1 lần và Quý khách vui lòng thực hiện lệnh rút tiền trong khung giờ từ 12 giờ đến 15 giờ hàng ngày để lệnh rút tiền được phê duyệt. Lưu ý sau khi làm 
+          lệnh rút tiền vui lòng không tiếp tục tham gia đặt cược. SVW38 rất hân hạnh được phục vụ quý khách hàng !!!
+        </marquee>
+
         {!ctx.user ? <div className={styles.registerLoginSection}>
           <Link className={styles.loginButton} to='/login'>Đăng Nhập</Link>
           <Link className={styles.registerButton} to='/register'>Đăng ký</Link>
@@ -117,7 +123,7 @@ const Home = () => {
         </div>
         <div style={{ color: "rgb(219 152 15)", fontSize: "2em", margin: "5px 0px", paddingTop: "10px", fontFamily: 'Great Vibes', fontWeight: 'bold', textAlign: 'center' }}>Đá gà cựa sắt số 1</div>
       </div>
-    </div>
+    </Layout>
   )
 }
 

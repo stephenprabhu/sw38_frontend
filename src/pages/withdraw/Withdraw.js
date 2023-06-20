@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Typography } from '@mui/material'
-import { BsPlus } from 'react-icons/bs'
-import { Link, useNavigate, } from 'react-router-dom'
-import InnerHeader from '../../components/InnerHeader'
-import { bankListAPI, WithdrawAPI } from '../../helpers/APIs/WithdrawAPI'
-import UserContext from '../../helpers/Context/user-context'
-import styles from './Withdraw.module.css'
+import React, { useContext, useEffect, useState } from 'react';
+import { Typography } from '@mui/material';
+import { BsPlus } from 'react-icons/bs';
+import { Link, useNavigate, } from 'react-router-dom';
+import { bankListAPI, WithdrawAPI } from '../../helpers/APIs/WithdrawAPI';
+import UserContext from '../../helpers/Context/user-context';
+import styles from './Withdraw.module.css';
 import CircularProgress from '@mui/material/CircularProgress';
-import { addCommasToInput } from '../../helpers/NumberHelper'
-import PopupErrorModal from '../../components/PopupErrorModal'
+import Layout from '../../Layout/Layout'
+// import { addCommasToInput } from '../../helpers/NumberHelper';
+import PopupErrorModal from '../../components/PopupErrorModal';
 
 const Withdraw = () => {
   const [banks, setBanks] = useState()
@@ -21,7 +21,8 @@ const Withdraw = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const ctx = useContext(UserContext);
-
+  const navigate = useNavigate()
+  
   // user bank list
   useEffect(() => {
     // bank list API
@@ -34,7 +35,6 @@ const Withdraw = () => {
     bankList()
   }, [])
 
-  const navigate = useNavigate()
   // submitwithdraw
   const submitwithdraw = async (e) => {
     e.preventDefault();
@@ -67,15 +67,28 @@ const Withdraw = () => {
     setLoading(false);
   }
 
+  // withdraw input onchange
+  const onWithdrawAmountChange = val => {
+    if (!isNaN(val)) {
+      if (val.length <= 9) {
+        setTransactionAmount(val);
+        setError('')
+      } else {
+        let value = val.substring(0, 9)
+        setTransactionAmount(value)
+      }
+    }
+  }
+
   // const onWithdrawAmountChange = val => {
   //   setTransactionAmount(addCommasToInput(val));
   // }
 
   return (
+    <Layout title="Rút Tiền" >
     <form className={styles.layout} onSubmit={submitwithdraw}>
-      <InnerHeader title="Rút Tiền" />
       {ctx.user ? ctx.user.name : ""}
-      <h4 style={{ color: '#F7DB89', textAlign: 'center' }} >Thẻ ngân hàng của tôi</h4>
+      <h4 style={{ color: 'white', textAlign: 'center' }} >Thẻ ngân hàng của tôi</h4>
       <div className={styles.withdrawWrapper}>
         <div className={styles.section}>
           {banks && banks.length ? (
@@ -105,28 +118,31 @@ const Withdraw = () => {
             </Link>
           </div>
 
-          <div className={styles.formSecton}>
+          <div className={styles.formSection}>
             {/* <div className={styles.balanceSection}>
             <p> Ví chính: ₫ {userBalance}</p>
           </div> */}
             <div className={styles.inputItem}>
               <pre>Số tiền</pre>
               <input
+                type='number'
                 className={styles.whiteInput}
                 style={{ border: "none" }}
-                placeholder="100K - 100M"
+                placeholder="150K - 100M"
                 value={transactionAmount}
-                onChange={(e) => { setTransactionAmount(e.target.value); setError('') }}
-                required />
+                onChange={(e) => onWithdrawAmountChange(e.target.value)}
+                required 
+              />
             </div>
             {error && <Typography mt={2} color='red'>{error}</Typography>}
-            {loading ? <div style={{display:'flex', justifyContent:'center'}}><CircularProgress style={{ marginTop: "20px", color:"#DEB849" }} /></div> : ""}
+            {loading ? <div style={{display:'flex', justifyContent:'center'}}><CircularProgress style={{ marginTop: "20px", color:"white" }} /></div> : ""}
           </div>
         </div>
-        <button className={styles.submit} disabled={loading} type='submit'>{loading ? "Đang tải..." : "Xác nhận"}</button>
+        <button className={styles.submitButton} disabled={loading} type='submit'>{loading ? "Đang tải..." : "Xác nhận"}</button>
         <PopupErrorModal message={errorMessage} show={errorModal} hideModal={() => setErrorModal(false)}/>
-      </div >
-    </form >
+      </div>
+    </form>
+    </Layout>
   )
 }
 

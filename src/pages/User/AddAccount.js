@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import InnerHeader from '../../components/InnerHeader'
+import Layout from '../../Layout/Layout'
 import vietnamBankArray from '../../data/vn-banks'
 import styles from "./AddAccount.module.css"
-import { CiCreditCard1 } from "react-icons/ci";
 import { AddAccountAPI } from '../../helpers/APIs/AddAccountAPI';
 import { useNavigate } from 'react-router-dom';
+import { CiCreditCard1 } from "react-icons/ci";
+import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { bankListAPI } from '../../helpers/APIs/WithdrawAPI';
 // import { EditAccount } from '../../helpers/APIs/EditAccount';
 // import axios from 'axios';
@@ -72,36 +73,58 @@ const AddAccount = () => {
   }
 
   return (
-    <form onSubmit={addAccount} className={styles.formOverlay}>
-      <InnerHeader title="Thêm tài khoản ngân hàng" />
-      <div className={styles.formWrapper}>
-        <div className={styles.layout}>
-          <span className={`${styles.helptext} ${checkIfOnlyCapital(userName) ? "" : styles.danger}`}>Tên tài khoản viết IN HOA, không dấu, không có số.</span>
-          <div className={styles.inputItem} style={{ marginTop: "5px" }}>
-            <input
-              className={styles.whiteInput}
-              style={{ border: "none" }}
-              readOnly={bankExist}
-              placeholder="＊ Tên tài khoản"
-              required
-              value={userName}
-              onChange={(e) => setUserName(e.currentTarget.value)}
-            />
+    <Layout title="Thêm tài khoản ngân hàng">
+      <form onSubmit={addAccount} className={styles.pageOverlay}>
+        <div className={styles.innerContentWrapper}>
+          <div className={`${styles.helptext} ${checkIfOnlyCapital(userName) ? "" : styles.danger}`}>Tên tài khoản viết IN HOA,<br/> không dấu, không có số.</div>
+          
+          <div className={styles.formOverlay}>
+            <div className={styles.addAccountFormWrapper}>
+              
+              <div>
+                <div className={styles.requiredLabel}><span>*</span>Số điện thoại</div>
+                <div className={styles.inputItem} style={{ marginTop: "5px" }}>
+                  <input
+                    className={styles.whiteInput}
+                    style={{ border: "none" }}
+                    readOnly={bankExist}
+                    placeholder="＊ Tên tài khoản"
+                    required
+                    value={userName}
+                    onChange={(e) => setUserName(e.currentTarget.value)}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <div className={styles.requiredLabel}><span>*</span>Ngân Hàng</div>
+                <div className={styles.addBankSelectWrapper}>
+                  <select required value={bankName} onChange={(e) => setBankName(e.target.value)}>
+                    {vietnamBankArray.map((val, index) => <option key={index}>{val}</option>)}
+                  </select>
+                  <span><MdOutlineKeyboardArrowDown/></span>
+                </div>
+              </div>
+
+              <div>
+                <div className={styles.requiredLabel}><span>*</span>Số Tài Khoản</div>
+                <div className={styles.inputItem}>
+                  <CiCreditCard1 size={25} style={{ color: "white", paddingLeft: '8px' }} />
+                  <input className={styles.whiteInput} style={{ border: "none" }} placeholder="＊ Vui lòng nhập số tài khoản" required value={accNumber} onChange={(e) => setAccNumber(e.target.value)} />
+                </div>
+              </div>
+
+              <div className={styles.accActionButtons}>
+                <button className={styles.submitButton} type='submit'>Xác nhận</button>
+                <button className={styles.cancelButton} onClick={() => navigate('/withdraw')}>Hủy</button>
+              </div>
+
+              </div>
           </div>
-          <select className={styles.select} required value={bankName} onChange={(e) => setBankName(e.target.value)}>
-            {vietnamBankArray.map((val, index) => <option key={index}>{val}</option>)}
-          </select>
-          <div className={styles.inputItem}>
-            <CiCreditCard1 size={25} style={{ color: "#F7DB89", paddingLeft: '5px' }} />
-            <input className={styles.whiteInput} style={{ border: "none" }} placeholder="＊ Vui lòng nhập số tài khoản" required value={accNumber} onChange={(e) => setAccNumber(e.target.value)} />
-          </div>
+        
         </div>
-        <div className={styles.buttonsWrapper}>
-          <button className={styles.submit} type='submit'>Xác nhận</button>
-          <button className={styles.cancel} onClick={() => navigate('/withdraw')}>Hủy</button >
-        </div>
-      </div>
-    </form>
+      </form>
+    </Layout>
   )
 }
 

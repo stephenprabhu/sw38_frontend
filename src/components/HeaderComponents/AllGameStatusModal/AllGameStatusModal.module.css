@@ -1,0 +1,86 @@
+.allGamesOverlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.allGamesWrapper {
+  background: #10192D;
+  border: 0.3px solid #DFD07A;
+  border-radius: 5px;
+  width: 420px;
+  max-height: 450px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.allGameHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px dashed #DFD07A;
+  padding: 10px 5px 10px 10px;
+  color: white;
+  background: transparent linear-gradient(180deg, #141C26 0%, #272F37 100%);
+}
+
+.balanceWrapper {
+  display: flex;
+  gap: 5px;
+}
+
+.balanceWrapper span:nth-child(1) {
+  font-size: 14px;
+}
+
+.allGameHeader span {
+  display: flex;
+  color: var(--textColor);
+}
+
+.allGameBody {
+  display: flex;
+  flex-wrap: wrap;
+  color: white;
+  overflow: auto;
+}
+
+.loaderOverlay {
+  width: 100%;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.loaderOverlay span {
+  color: white;
+}
+
+.allGameFooter {
+  color: #151515;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 12px 0;
+  cursor: pointer;
+  text-align: center;
+  color: var(--textColor);
+  border-radius: 13px 13px 0 0;
+  border-top: 1px dashed white;
+  background: transparent linear-gradient(180deg, #272F37 0%, #141C26 100%);
+}
+
+.error {
+  color: #d32f2f;
+  padding: 10px 0;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.allGameFooter:hover {
+  background: transparent linear-gradient(180deg, #141C26 0%, #272F37 100%);
+}

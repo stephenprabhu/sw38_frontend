@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import Header from '../../components/Header'
+import React, { useEffect, useState } from 'react';
 import { Chip } from '@mui/material';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
@@ -8,6 +7,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { addCommasToNumber } from '../../helpers/NumberHelper';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './Transection.module.css';
+import Layout from '../../Layout/Layout';
 // import BottomMenu from "../../components/BottomMenu";
 // import axios from 'axios';
 
@@ -47,8 +47,7 @@ const Transection = () => {
   }
 
   return (
-    <div className={styles.transactionOverlay}>
-      <Header />
+    <Layout>
       <div className={styles.transactionWrapper}>
         <h3 style={{ margin: '0px', color: '#F7DB89', textAlign: 'center' }}>Giao Dịch</h3>
         <Tabs variant='fullWidth' value={activeTab} onChange={handleChange} sx={{ "& button.Mui-selected": { color: '#F7DB89' } }} TabIndicatorProps={{ style: { backgroundColor: "#F7DB89" } }}>
@@ -83,7 +82,7 @@ const Transection = () => {
             :
             <h3 style={{ margin: '0px', color: 'white' }}>Không có giao dịch</h3>}
       </div>
-    </div>
+    </Layout>
   )
 }
 

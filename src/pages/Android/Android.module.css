@@ -1,12 +1,4 @@
-.androidOverlay {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
 .androidWrapper {
-  /* height: 100%; */
-  overflow: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

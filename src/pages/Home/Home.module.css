@@ -1,14 +1,4 @@
-.homeOverlay {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.homeWrapper {
-  flex-grow: 1;
-  overflow: auto;
-  flex-basis: 0;
-}
+.homeWrapper {}
 
 .registerLoginSection {
   width: 100%;

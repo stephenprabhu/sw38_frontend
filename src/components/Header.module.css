@@ -1,44 +1,74 @@
 .headerOverlay {
-    background: #F7DB89 0% 0% no-repeat padding-box;
-    border-radius: 13px;
-    padding-bottom: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 5px;
+  background-color: #10192D;
 }
 
-.mainSiteHeader {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    padding: 5px;
-    background-color: #19253f;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    align-items: center;
+.headerTitle {
+  color: #FCE8AE;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 7px 0;
+  text-transform: uppercase;
 }
 
-.logOutButton {
-    color: #F7DB89;
-    padding-right: 10px;
-    cursor: pointer;
-}
+
 
 .loginButtonsOverlay {
-    color: rgb(247, 219, 137);
-    display: flex;
-    gap: 5px;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.loginButtonsOverlay div {
+  display: flex;
+  align-items: center;
 }
 
 .loginButtons {
-    color: black;
-    font-weight: 600;
-    cursor: pointer;
-    padding: 5px 10px;
-    font-size: 12px;
-    border-radius: 5px;
-    text-decoration: none;
-    background: transparent linear-gradient(180deg, #F6D984 0%, #DFB847 100%) 0% 0% no-repeat padding-box;
-    box-shadow: inset 0px 4px 12px #ffffff;
-    border: 1px solid #19253F;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.loginButtons img {
+  max-width: 28px;
+}
+
+.logOutButton {
+  color: #F7DB89;
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+
+@media only screen and (max-width: 360px) {
+
+  .headerOverlay {
+    padding: 5px 2px;
+  }
+
+  .logoWrapper span {
+    font-size: 24px;
+  }
+
+  .logoWrapper img {
+    width: 80px;
+  }
+
+  .loginButtonsOverlay {
+    gap: 3px;
+  }
+
+  .loginButtons img {
+    max-width: 18px;
+  }
 }

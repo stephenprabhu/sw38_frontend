@@ -1,4 +1,3 @@
-import InnerHeader from '../../components/InnerHeader';
 import styles from './Android.module.css';
 import step1 from '../../assets/Step1.png';
 import step2 from '../../assets/Step2.jpg';
@@ -10,6 +9,7 @@ import step7 from '../../assets/Step7.png';
 import { useState } from 'react';
 import StepModal from './StepModal';
 import { BsArrowDownCircle } from "react-icons/bs";
+import Layout from '../../Layout/Layout';
 
 const androidSteps = [{ label: 'Bước 1', image: step1 }, { label: 'Bước 2', image: step2 }, { label: 'Bước 3', image: step3 }, { label: 'Bước 4', image: step4 }
   , { label: 'Bước 5', image: step5 }, { label: 'Bước 6', image: step6 }, , { label: 'Bước 7', image: step7 }]
@@ -19,8 +19,7 @@ const androidSteps = [{ label: 'Bước 1', image: step1 }, { label: 'Bước 2'
 const Android = () => {
   const [stepModal, setStepModal] = useState('')
   return (
-    <div className={styles.androidOverlay}>
-      <InnerHeader title={"Android"} />
+    <Layout title="Android">
       <div className={styles.androidWrapper}>
         <div className={styles.downloadWrapper}>
           <div className={styles.downloadButton}>
@@ -36,7 +35,7 @@ const Android = () => {
         ))}
         <StepModal openStep={stepModal ? true : false} hideModal={() => setStepModal()} stepList={androidSteps} stepModal={stepModal} />
       </div>
-    </div >
+    </Layout>
   )
 }
 

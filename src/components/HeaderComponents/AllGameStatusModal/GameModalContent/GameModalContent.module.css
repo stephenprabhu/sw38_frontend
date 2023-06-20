@@ -1,0 +1,86 @@
+.innerOverlay {
+  width: calc(99%/2);
+}
+
+.innerOverlay:nth-child(2n-1) {
+  border-right: 1px dashed white;
+}
+
+.innerContent {
+  padding: 5px 12px;
+}
+
+.innerContent h4 {
+  font-weight: 500;
+  margin: 5px 0 10px 0;
+  text-align: center;
+}
+
+.noGames {
+  font-size: 13px;
+  text-align: center;
+  padding: 10px 0;
+  color: #C79353;
+}
+
+.rowData {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 5px 0;
+}
+
+.rowData h5 {
+  font-size: 12px;
+  margin: 5px 0;
+}
+
+.rowData span {
+  color: var(--textColor);
+}
+
+.transferGrp {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 3px;
+}
+
+.balance {
+  font-size: 14px;
+}
+
+.orangeTxt {
+  color: #C79353 !important;
+  font-size: 12px;
+}
+
+.transferGrp button {
+  background: var(--bkgColor);
+  border: 1px solid white;
+  color: white;
+  font-size: 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.transferGrp button:hover {
+  background: transparent;
+}
+
+@media only screen and (max-width: 414px) {
+  .innerContent {
+    padding: 5px 5px;
+  }
+
+  .balance {
+    font-size: 12px;
+  }
+
+  .transferGrp button {
+    font-size: 10px;
+  }
+}

@@ -1,18 +1,10 @@
-.inerHeaderOverlay {
-  background: #F7DB89 0% 0% no-repeat padding-box;
-  border-radius: 13px;
-  padding-bottom: 3px;
-}
-
 .innerHeader {
-  background-color: #19253f;
-  color: #F7DB89;
-  padding: 10px 8px 10px 5px;
+  background-color: #10192D;
+  color: #FCE8AE;
+  padding: 12px 8px 12px 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
 }
 
 .innerHeader div {
@@ -30,6 +22,13 @@
 .profileIcon {
   display: flex;
   align-items: center;
-  color: #F7DB89;
+  color: #FCE8AE;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 414px) {
+  .headerTitle {
+    font-size: 0.8rem !important;
+    text-align: center;
+  }
 }

@@ -1,52 +1,71 @@
-.formOverlay {
+.pageOverlay {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-.formWrapper {
+.innerContentWrapper {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  width: 90%;
-  margin: 0 auto;
-}
-
-.layout {
-  flex-grow: 1;
-  flex-basis: 0;
+  gap: 10px;
+  height: 100%;
   overflow: auto;
+  padding: 10px 0;
 }
 
 .helptext {
-  font-size: 0.8rem;
-  color: #F7DB89;
-  text-align: left;
-  display: block;
-  margin: 18px 0px;
+  font-size: 1.2rem;
+  color: white;
+  text-align: center;
 }
 
 .helptext.danger {
   color: red;
 }
 
+.formOverlay {
+  width: 90%;
+  margin: auto;
+  background-color: #333D54;
+  border-radius: 15px;
+  border: 0.3px solid #ffffff81;
+}
+
+.addAccountFormWrapper {
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.requiredLabel {
+  display: flex;
+  gap: 5px;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.requiredLabel span {
+  color: #C79353;
+  font-size: 20px;
+}
 
 .inputItem {
-  border: 0.02rem solid #F7DB89;
-  border-radius: 3px;
   display: flex;
   align-items: center;
-  padding-left: 3px;
-  margin-top: 15px;
+  padding: 2px 0 2px 5px;
+  border-radius: 28px;
+  background: #6E747A;
 }
 
 .whiteInput::placeholder {
-  color: #F7DB89;
-  opacity: 0.3;
+  color: #ffffff67;
 }
 
 .inputItem .whiteInput {
-  color: #F7DB89;
+  color: white;
   padding: 10px;
   font-size: 1em;
   font-family: 'Be Vietnam Pro', sans-serif;
@@ -62,55 +81,84 @@
   border: none;
 }
 
-.select {
+.addBankSelectWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.addBankSelectWrapper select {
   padding: 10px;
   border: none;
   border-radius: 5px;
   font-family: 'Be Vietnam Pro', sans-serif;
-  margin-top: 15px;
   width: 100%;
-  color: #F7DB89;
-  border: 0.02rem solid #F7DB89;
-  background-color: transparent;
+  color: white;
+  font-size: 1em;
+  padding: 10px 0 10px 12px;
+  border-radius: 28px;
+  background-color: #6E747A;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
-select:focus {
-  outline: none !important;
+.addBankSelectWrapper span {
+  position: absolute;
+  right: 8px;
+  top: 10px;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
 }
 
-.select option {
-  background-color: #0E182D;
+.addBankSelectWrapper select:focus {
+  outline: none;
+}
+
+.addBankSelectWrapper select option {
+  background-color: #6E747A;
 }
 
 .buttonsWrapper {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin: 10px 0px;
 }
 
-.submit {
-  font-family: 'Be Vietnam Pro', sans-serif;
-  font-size: 1.2em;
+.accActionButtons {
+  margin-top: 10px;
+  display: flex;
+  gap: 15px;
+}
+
+.accActionButtons button {
+  border: none;
+  width: 100%;
+  padding: 12px;
+  font-size: 0.9em;
   cursor: pointer;
-  padding: 7px 0px;
-  background: transparent linear-gradient(180deg, #F6D984 0%, #DFB847 100%) 0% 0% no-repeat padding-box;
-  border: 2px solid #19253F;
   border-radius: 35px;
+  color: white;
+  box-shadow: 0px 1px 10px #141C26;
 }
 
-.cancel {
-  color: #ECD079;
-  font-family: 'Be Vietnam Pro', sans-serif;
-  font-size: 1.2em;
-  cursor: pointer;
-  padding: 5px 0px;
-  background: transparent linear-gradient(180deg, #19253F 0%, #0E182D 100%) 0% 0% no-repeat padding-box;
-  border: 2px solid #EBCE7C;
-  border-radius: 35px;
+.accActionButtons button:nth-child(1) {
+  background: transparent linear-gradient(180deg, #19253F 0%, #0E172A 100%);
 }
 
-.adjornment {
+.accActionButtons button:nth-child(1):hover {
+  background: transparent linear-gradient(180deg, #0E172A 0%, #19253F 100%);
+}
+
+.accActionButtons button:nth-child(2) {
+  border: 2px solid #141C25;
+  background: transparent linear-gradient(180deg, #48536D 0%, #333D54 100%);
+}
+
+.accActionButtons button:nth-child(2):hover {
+  background: transparent linear-gradient(180deg, #333D54 0%, #48536D 100%);
+}
+
+/* .adjornment {
   font-style: normal;
   display: inline-block;
   text-align: center;
@@ -118,4 +166,4 @@ select:focus {
   width: auto;
   flex: 0 0 0.5rem;
   padding: 0 0.2rem;
-}
+} */

@@ -1,5 +1,4 @@
-import InnerHeader from "../../components/InnerHeader"
-import styles from './Deposit.module.css'
+import styles from './Deposit.module.css';
 import { useState } from "react";
 import { APIMakeDepositRequest } from "../../helpers/APIs/TransactionAPI";
 import { useNavigate } from "react-router-dom";
@@ -129,54 +128,51 @@ const DepositStep2 = ({ amount, selectedBank, userCredential, isInitalDeposit })
   }
 
   return (
-    <div className={styles.depositWrapper}>
-      <InnerHeader title={"Thông tin nạp tiền"} />
-      <div className={styles.deposit1Wrapper}>
-        <form onSubmit={onDepositSubmitClicked} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-          <div className={styles.section}>
-            <div className={styles.depositCard}>
-              <div style={{ fontWeight: 'bold', color: '#F7DB89', textAlign:'center' }}>Để » NẠP TIỀN « Chuyển khoản cho chúng tôi theo thông tin bên dưới đây</div>
-              <h3 style={{ textAlign: "center", color: "rgb(5, 151, 5)" }}>Lưu ý : 1 điểm = 30.000 VND</h3>
-                <div>
-                  <span className={styles.label} style={{ textAlign: 'left' }}>Thông tin tiền gửi</span>
-                  {items.map((item, index) => <CopyItemComponent key={index} item={item} />)}
-                  <div style={{ textAlign: 'center', padding: '0px 5px', fontSize: '14px', color: '#F7DB89' }}>
-                    <p>Lưu ý: Điền chính xác mã <strong style={{ color: '#F93B3B', fontSize: '20px' }}>"{userCredential.phone && userCredential.phone}"</strong> vào mục "Nội dung/Lời nhắn"</p>
-                    <p>Thiếu NỘI DUNG CHUYỂN KHOẢN, SVW38 sẽ không thể nhận ra khoản chuyển từ Quý khách</p>
-                  </div>
-                  <div style={{ paddingLeft: "5px" }}>
-                    <span className={styles.copyLabel} style={{ fontSize: '18px' }}>Hình ảnh hóa đơn</span><br />
-                    <div><VscArrowSmallDown size={30} color='#F7DB89' /></div>
-                    <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', paddingright: '5px', marginBottom: '10px' }}>
-                      <div className={styles.invoiceFileInputWrapper}>
-                        <input type="file" accept="image/*" onChange={onImageChange} className={styles.invoiceFileInput} />
-                        <div style={{ fontSize: '12px', color: '#F7DB89', fontWeight: 'bold' }}>Không bắt buộc</div>
-                      </div>
-                      {invoiceFile && <span style={{ color: '#F93B3B', cursor: 'pointer', textDecoration: 'underline', fontSize: '11px' }} onClick={() => { setInvoiceFile(''); setShowInvoiceFile('') }}>Remove</span>}
-                    </div>
-                  </div>
-
-                  {showInvoiceFile && 
-                    <div className={styles.invoiceImgWrapper}>
-                      <img src={showInvoiceFile} alt='invice'/>
-                    </div>
-                  }
-                  {loading ? <div className={styles.loader}> <CircularProgress style={{'color': '#F7DB89'}}/></div> : ""}
-                  {/*{isInitalDeposit ? <div className={`${styles.whiteNotice} ${styles.small}`}>Sau khi chuyển khoản thành công, quý khách vui lòng nhấn vào ( kích hoạt tài khoản) để nhận tài khoản của mình. <AiOutlineArrowDown /> </div> : ""}
-                  {showErrorForInitalDeposit ? <div style={{ color: 'red', textAlign: "center", fontSize: "0.9rem" }}>Tài khoản chưa kích hoạt hoặc Quý khách chưa chuyển khoản!</div> : ""}*/}
+    <div className={styles.deposit1Wrapper}>
+      <form onSubmit={onDepositSubmitClicked} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+        <div className={styles.section}>
+          <div className={styles.depositCard}>
+            <div style={{ fontWeight: 'bold', color: '#FCE8AE', textAlign:'center' }}>Để » NẠP TIỀN « Chuyển khoản cho chúng tôi theo thông tin bên dưới đây</div>
+            <h3 style={{ textAlign: "center", color: "#F93B3B" }}>Lưu ý : 1 điểm = 30.000 VND</h3>
+              <div>
+                <span className={styles.label} style={{ textAlign: 'left' }}>Thông tin tiền gửi</span>
+                {items.map((item, index) => <CopyItemComponent key={index} item={item} />)}
+                <div style={{ textAlign: 'center', padding: '0px 5px', fontSize: '14px', color: 'white' }}>
+                  <p>Lưu ý: Điền chính xác mã <strong style={{ color: '#F93B3B', fontSize: '20px' }}>"{userCredential.phone && userCredential.phone}"</strong> vào mục "Nội dung/Lời nhắn"</p>
+                  <p>Thiếu NỘI DUNG CHUYỂN KHOẢN, SVW38 sẽ không thể nhận ra khoản chuyển từ Quý khách</p>
                 </div>
-              <button type="submit" className={styles.submitButton} >
-                {loading ? "Đang tải" : isInitalDeposit ? "Kích hoạt tài khoản" : "Hoàn Tất"}
-              </button>
-              {isInitalDeposit ? <div style={{ color: "white", textAlign: "center", fontSize: "0.9rem", marginTop: "10px" }}>
-                Nếu sau khi chuyển khoản thành công nhưng chưa Kích Hoạt được tài khoản , quý khách vui lòng liên hệ CSKH <CustomerSupportAnimatedItem />
-              </div> : ""}
-            </div>
+                <div style={{ paddingLeft: "5px" }}>
+                  <span className={styles.copyLabel} style={{ fontSize: '18px' }}>Hình ảnh hóa đơn</span><br />
+                  <div><VscArrowSmallDown size={30} color='#FCE8AE' /></div>
+                  <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', paddingright: '5px', marginBottom: '10px' }}>
+                    <div className={styles.invoiceFileInputWrapper}>
+                      <input type="file" accept="image/*" onChange={onImageChange} className={styles.invoiceFileInput} />
+                      <div style={{ fontSize: '12px', color: '#FCE8AE', fontWeight: 'bold' }}>Không bắt buộc</div>
+                    </div>
+                    {invoiceFile && <span style={{ color: '#F93B3B', cursor: 'pointer', textDecoration: 'underline', fontSize: '11px' }} onClick={() => { setInvoiceFile(''); setShowInvoiceFile('') }}>Remove</span>}
+                  </div>
+                </div>
+
+                {showInvoiceFile && 
+                  <div className={styles.invoiceImgWrapper}>
+                    <img src={showInvoiceFile} alt='invice'/>
+                  </div>
+                }
+                {loading ? <div className={styles.loader}> <CircularProgress style={{'color': '#F7DB89'}}/></div> : ""}
+                {/*{isInitalDeposit ? <div className={`${styles.whiteNotice} ${styles.small}`}>Sau khi chuyển khoản thành công, quý khách vui lòng nhấn vào ( kích hoạt tài khoản) để nhận tài khoản của mình. <AiOutlineArrowDown /> </div> : ""}
+                {showErrorForInitalDeposit ? <div style={{ color: 'red', textAlign: "center", fontSize: "0.9rem" }}>Tài khoản chưa kích hoạt hoặc Quý khách chưa chuyển khoản!</div> : ""}*/}
+              </div>
+            <button type="submit" className={styles.submitButton} >
+              {loading ? "Đang tải" : isInitalDeposit ? "Kích hoạt tài khoản" : "Hoàn Tất"}
+            </button>
+            {isInitalDeposit ? <div style={{ color: "white", textAlign: "center", fontSize: "0.9rem", marginTop: "10px" }}>
+              Nếu sau khi chuyển khoản thành công nhưng chưa Kích Hoạt được tài khoản , quý khách vui lòng liên hệ CSKH <CustomerSupportAnimatedItem />
+            </div> : ""}
           </div>
-        </form >
-      </div>
+        </div>
+      </form>
       <PopupErrorModal message={errorMessage} show={errorModal} hideModal={() => setErrorModal(false)} />
-    </div >
+    </div>
   )
 }
 
@@ -192,8 +188,8 @@ const CopyItemComponent = ({ item }) => {
         <span className={`${styles.copyValue} ${item.copy && styles.copyBtnValue} ${item.fontSmall && styles.smallValue} ${item.redText && styles.redText}`}>{item.value}</span>
       </div>
       {item.copy && <span className={styles.copyButton} onClick={onCopyClicked}>
+        <MdContentCopy size={20} />
         <span>Copy</span>
-        <MdContentCopy size={18} />
       </span>}
     </div>
   )

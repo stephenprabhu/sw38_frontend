@@ -9,6 +9,7 @@ import { APILatestTransaction } from '../../helpers/APIs/TransactionAPI';
 import { BsFillPersonFill } from "react-icons/bs";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { CircularProgress } from '@mui/material';
+import Layout from '../../Layout/Layout';
 
 let interval = null;
 const Profile = () => {
@@ -16,21 +17,8 @@ const Profile = () => {
   const navigate = useNavigate()
   const [rejectRequest, setRejectRequest] = useState('')
 
-  // useEffect(() => {
-  //   const userData = async () => {
-  //     const userAPI = await APIUser()
-  //     setUser(userAPI)
-  //   }
-  //   userData()
-  //   const bankList = async () => {
-  //     const allBanks = await bankListAPI()
-  //     setBanks(allBanks.reverse().slice(0, 2))
-  //   }
-  //   bankList()
-  // }, [])
-
   useEffect(() => {
-    userData()
+    // userData()
   }, [])
 
   // User Data
@@ -44,13 +32,14 @@ const Profile = () => {
     }
   }
 
+  // Check initial deposit
   useEffect(() => {
-    if (localStorage.getItem('initialDeposit')) {
-      interval = setInterval(() => {
-        userTransaction()
-      }, 20000);
-      return () => clearInterval(interval);
-    }
+    // if (localStorage.getItem('initialDeposit')) {
+    //   interval = setInterval(() => {
+    //     userTransaction()
+    //   }, 20000);
+    //   return () => clearInterval(interval);
+    // }
   }, []);
 
   // again call for transaction status
@@ -78,15 +67,14 @@ const Profile = () => {
   const depositTime = new Date() - new Date(getDepositTime)
 
   return (
-    <div className={styles.layout}>
-      <InnerHeader title="Thông tin" />
+    <Layout title="Thông tin">
       <div className={styles.profileOverlay}>
         <div className={styles.profileContentOverlay}>
           <div className={styles.profileCardWrapper}>
             <div className={styles.profileCard}>  
-              <div>
-                <BsFillPersonFill size={80} color='#F7DB89' />
-              </div>
+              
+                <BsFillPersonFill size={80} color='white' />
+              
               {user && 
                 <div className={styles.depositButtons}>
                   <CopyItemComponent item={{ label: "Số điện thoại đăng nhập", value: user.phone }} />
@@ -113,7 +101,8 @@ const Profile = () => {
           <Link to={'/transections'} className={styles.button}>Giao Dịch</Link>
         </div>
       </div>
-    </div>
+    
+    </Layout>
   )
 }
 
@@ -133,8 +122,8 @@ const CopyItemComponent = ({ item, showHideOption = false }) => {
         {showHideOption ? <span>{showPassword ? <AiFillEye onClick={() => setShowPassword(false)} size={18} style={{ paddingLeft: "7px", position: 'relative', bottom: '-3px' }} /> : <AiFillEyeInvisible onClick={() => setShowPassword(true)} size={18} style={{ paddingLeft: "7px" }} />}</span> : ""}
       </div>
       {item.label === 'Số điện thoại đăng nhập' ? '' : <span className={styles.copyButton} onClick={onCopyClicked}>
-        <span>Copy</span>
         <MdOutlineContentCopy size={18} />
+        <span>Copy</span>
       </span>}
     </div>
   )

@@ -1,9 +1,3 @@
-.iosOverlay {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
 .iosWrapper {
     overflow: auto;
 }

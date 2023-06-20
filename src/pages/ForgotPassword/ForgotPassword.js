@@ -4,6 +4,7 @@ import { IoArrowBack } from "react-icons/io5";
 import Header from '../../components/Header';
 import image from '../../assets/forgotPassword.png';
 import customerSupport from '../../assets/24hours.png';
+import Layout from '../../Layout/Layout';
 // import zalo from '../../assets/zalo.png';
 // import telegram from '../../assets/telegram.png';
 
@@ -15,8 +16,7 @@ const text = [{ image: customerSupport, name: 'Hỗ trợ', supported: 'Liên h�
 const ForgotPassword = () => {
   const navigate = useNavigate()
   return (
-    <div className={styles.forgotOverlay}>
-      <Header />
+    <Layout>
       <div className={styles.forgotContentWrapper}>
         <div className={styles.imageSection}>
           <img src={image} width='100%' alt='forgotImg'/>
@@ -40,7 +40,7 @@ const ForgotPassword = () => {
           ))}
         </div>
       </div>
-    </div>
+    </Layout>
   )
 }
 

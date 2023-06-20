@@ -1,0 +1,10 @@
+.layoutOverlay {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.layoutChildOverlay {
+  flex-grow: 1;
+  overflow: auto;
+}

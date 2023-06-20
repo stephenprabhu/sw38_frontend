@@ -5,6 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
 import { MdContentCopy } from "react-icons/md";
 import { addCommasToInput } from "../../helpers/NumberHelper";
+import Layout from "../../Layout/Layout";
 
 const SingleTransaction = () => {
   const [tranData, setTranData] = useState()
@@ -38,17 +39,19 @@ const SingleTransaction = () => {
   }
 
   return (
-    <div className={styles.singleTranWrapper}>
-      <div className={styles.titleWrapper}>
-        <IoArrowBack onClick={() => navigate("/transections")} style={{ cursor: 'pointer' }} size={26} />
-        <h3>Giao dịch</h3>
-      </div>
-      <div className={styles.singleTranContentOverlay} >
-        <div className={styles.singleTranContentWrapper}>
-          {items.map((item, index) => <CopyItemComponent key={index} item={item} />)}
+    <Layout title='Giao dịch'>
+      <div className={styles.singleTranWrapper}>
+        <div className={styles.titleWrapper}>
+          <IoArrowBack onClick={() => navigate("/transections")} style={{ cursor: 'pointer' }} size={26} />
+          <h3>Giao dịch</h3>
+        </div>
+        <div className={styles.singleTranContentOverlay} >
+          <div className={styles.singleTranContentWrapper}>
+            {items.map((item, index) => <CopyItemComponent key={index} item={item} />)}
+          </div>
         </div>
       </div>
-    </div>
+    </Layout>
   )
 }
 

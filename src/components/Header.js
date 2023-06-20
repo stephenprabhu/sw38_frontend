@@ -1,60 +1,58 @@
 import React, { useContext } from 'react'
 import styles from './Header.module.css';
-import SVLogo from '../assets/sv388-min.png';
-import { HiMenuAlt2 } from "react-icons/hi";
+
+import loginImage from '../assets/loginImage.png';
+import registerImage from '../assets/registerImage.png'
+
+import { BsChevronLeft } from "react-icons/bs";
 import { useState } from 'react';
 import Drawer from '@mui/material/Drawer';
 import HomeDrawerContent from './HomeDrawerContent';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { RxExit } from "react-icons/rx";
 import UserContext from '../helpers/Context/user-context';
+import MenuLogo from './HeaderComponents/MenuLogo';
+import BalanceSection from './HeaderComponents/BalanceSection/BalanceSection'
 
-const Header = () => {
+const Header = ({title}) => {
   const [drawerOpened, setDrawerOpened] = useState(false);
   const ctx = useContext(UserContext);
+  const navigate = useNavigate()
 
-  const onLogOutClicked = () => {
-    ctx.setUser(null);
-    ctx.setUserInfo({
-      name: '',
-      password: '',
-    });
-    localStorage.removeItem("auth_token");
-  }
+  
 
   return (
-    <header >
-      <div className={styles.headerOverlay}>
-        <div className={styles.mainSiteHeader}>
-          <div>
-            <HiMenuAlt2 style={{ color: "#F7DB89", cursor: "pointer" }} size={40} onClick={() => setDrawerOpened(true)} />
-            <Link to="/">
-              <img width={120} src={SVLogo} alt="site-logo" />
-            </Link>
-          </div>
-          <div>
-            {ctx.user ?
-              <div className={styles.loginButtonsOverlay}>
-                <span>{ctx.userInfo && ctx.userInfo.name}</span>
-                <RxExit onClick={onLogOutClicked} className={styles.logOutButton} size={22} />
-              </div>
-              :
-              <div className={styles.loginButtonsOverlay}>
-                <Link to='/login' className={styles.loginButtons}>Đăng Nhập</Link>
-                <Link to='/register' className={styles.loginButtons}>Đăng ký</Link>
-              </div>}
-          </div>
+    <header className={styles.headerOverlay}>
+      {title ?
+        <BsChevronLeft size={25} style={{color:'#FCE8AE', cursor:'pointer'}} onClick={() => navigate('/')} />   
+        :
+        <MenuLogo/>
+      }
 
+      {title && <div className={styles.headerTitle}>{title}</div>}
+      
+      {ctx.user ?
+        <BalanceSection/>
+        :
+        <div className={styles.loginButtonsOverlay}>
+          <div className={styles.loginButtons} onClick={() => navigate('/register')}>
+            <img src={registerImage} alt='Đăng ký'/>
+            <div>Đăng ký</div>
+          </div>
+          <div className={styles.loginButtons} onClick={() => navigate('/login')}>
+            <img src={loginImage} alt='Đăng Nhập'/>
+            <div>Đăng Nhập</div>
+          </div>
         </div>
-      </div>
-      <Drawer
-        open={drawerOpened}
-        onClose={() => setDrawerOpened(false)}
-      >
-        <HomeDrawerContent onClose={() => setDrawerOpened(false)} />
-      </Drawer>
+      }
+
     </header>
   )
 }
 
 export default Header
+
+// <div className={styles.loginButtonsOverlay}>
+//           <span>{ctx.userInfo && ctx.userInfo.name}</span>
+//           <RxExit onClick={onLogOutClicked} className={styles.logOutButton} size={22} />
+//         </div>

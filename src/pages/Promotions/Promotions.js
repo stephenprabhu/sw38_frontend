@@ -1,6 +1,4 @@
 import styles from './Promotions.module.css';
-import BottomMenu from '../../components/BottomMenu';
-import Header from '../../components/Header';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PopupErrorModal from '../../components/PopupErrorModal';
@@ -8,6 +6,7 @@ import CustomerSupportAnimatedItem from '../../components/CustomerSupportAnimate
 import { promotionsAPI } from '../../helpers/APIs/PromotionsAPI';
 import { FiLogOut } from "react-icons/fi";
 import { BiEdit } from "react-icons/bi";
+import Layout from '../../Layout/Layout';
 
 const Promotions = () => {
   const [promotionsList, setPromotionsList] = useState()
@@ -24,8 +23,7 @@ const Promotions = () => {
   }, [])
 
   return (
-    <div className={styles.promotionWrapper}>
-      <Header />
+    <Layout>
       {/*headerSection*/}
       <div className={styles.promotionContent}>
         {/*Header Section*/}
@@ -54,7 +52,7 @@ const Promotions = () => {
         </div>
       </div>
       <PopupErrorModal show={loginModal} hideModal={() => setLoginModal(false)} message={<LoginMsg />} error={false} />
-    </div>
+    </Layout>
   )
 }
 export default Promotions

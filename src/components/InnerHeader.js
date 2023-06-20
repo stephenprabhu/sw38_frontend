@@ -9,8 +9,8 @@ import UserContext from '../helpers/Context/user-context';
 const InnerHeader = ({ title }) => {
 
   const navigate = useNavigate()
-
   const ctx = useContext(UserContext);
+  
   const onLogOutClicked = () => {
     ctx.setUser(null);
     ctx.setUserInfo({
@@ -22,18 +22,16 @@ const InnerHeader = ({ title }) => {
   }
   
   return (
-    <div className={styles.inerHeaderOverlay}>
-      <div className={styles.innerHeader}>
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <BsChevronLeft size={25} color='#F7DB89' />
-        </Link>
-        <div>
-          <span className={styles.headerTitle}>{title}</span>
-        </div>
-        <div>
-          <Link to='/profile'><BsFillPersonFill size={26} className={styles.profileIcon} /></Link>
-          <RxExit onClick={onLogOutClicked} className={styles.profileIcon} size={22} />
-        </div>
+    <div className={styles.innerHeader}>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <BsChevronLeft size={25} color='#FCE8AE' />
+      </Link>
+      <div>
+        <span className={styles.headerTitle}>{title}</span>
+      </div>
+      <div>
+        <Link to='/profile'><BsFillPersonFill size={26} className={styles.profileIcon} /></Link>
+        <RxExit onClick={onLogOutClicked} className={styles.profileIcon} size={22} />
       </div>
     </div>
   )

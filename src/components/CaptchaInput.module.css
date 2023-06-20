@@ -1,29 +1,43 @@
-.formInput {
-  text-align: left;
-  color: white;
-  padding: 10px 0;
-  max-width: 100%;
+.requiredLabel {
+  display: flex;
+  gap: 5px;
+  color: var(--textColor);
+  font-weight: 600;
+  font-size: 14px;
 }
 
-.formInput input {
+.requiredLabel span {
+  color: #C79353;
+  font-size: 20px;
+}
+
+.captchaInput {
+  display: flex;
+  align-items: center;
+  background-color: #6E747A;
+  border-radius: 28px;
+  padding-left: 15px;
+}
+
+.captchaInput input {
   width: 100%;
+  font-size: 16px;
   border: none;
-  border-bottom: 1px solid #F7DB89;
+  padding: 15px 0;
+  color: white;
+  background-color: transparent;
 }
 
-.formInput input:focus {
+.captchaInput input:focus {
   outline: none;
 }
 
-.formInput span {
-  display: block;
-  margin-bottom: 10px;
+.captchaInput input::placeholder {
+  color: #ffffff67;
 }
 
-.inputPhone {
-  font-size: 1rem;
-  color: #F7DB89;
-  background-color: transparent;
-  overflow: hidden;
-  max-width: 95%;
+.captchaInput img {
+  width: 70px;
+  margin-right: 15px;
+  border-radius: 2px;
 }

@@ -1,0 +1,11 @@
+.logoWrapper {
+  display: flex;
+}
+
+.logoWrapper span {
+  font-size: 34px;
+}
+
+.logoWrapper img {
+  width: 100px;
+}
