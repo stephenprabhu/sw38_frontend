@@ -67,13 +67,13 @@ const Profile = () => {
   const depositTime = new Date() - new Date(getDepositTime)
 
   return (
-    <Layout title="Thông tin">
+    <Layout title="Thông tin" active='Tài Khoản'>
       <div className={styles.profileOverlay}>
         <div className={styles.profileContentOverlay}>
           <div className={styles.profileCardWrapper}>
             <div className={styles.profileCard}>  
               
-                <BsFillPersonFill size={80} color='white' />
+              <BsFillPersonFill size={80} color='white' />
               
               {user && 
                 <div className={styles.depositButtons}>

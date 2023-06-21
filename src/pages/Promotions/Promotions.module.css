@@ -19,7 +19,7 @@
   margin: 10px;
   padding: 20px 0px;
   color: #F7DB89;
-  background: #263351 0% 0% no-repeat padding-box;
+  background: #333D54;
   box-shadow: 0px 0px 10px #19253F;
   border-radius: 13px;
 }
@@ -55,10 +55,6 @@
   flex-grow: 1;
   flex-basis: 0px;
   overflow: auto;
-}
-
-.cardSectionWrapper h3 {
-  text-align: center;
 }
 
 .card {

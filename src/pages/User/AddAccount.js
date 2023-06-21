@@ -73,7 +73,7 @@ const AddAccount = () => {
   }
 
   return (
-    <Layout title="Thêm tài khoản ngân hàng">
+    <Layout title="Thêm tài khoản ngân hàng" active='Rút Tiền'>
       <form onSubmit={addAccount} className={styles.pageOverlay}>
         <div className={styles.innerContentWrapper}>
           <div className={`${styles.helptext} ${checkIfOnlyCapital(userName) ? "" : styles.danger}`}>Tên tài khoản viết IN HOA,<br/> không dấu, không có số.</div>

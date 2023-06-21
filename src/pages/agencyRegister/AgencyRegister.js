@@ -37,7 +37,7 @@ const AgencyRegister = () => {
   const [name, setName] = useState('');
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-  const registerUser = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!captcha || captcha.trim().toLowerCase() !== randomCaptcha.value) {
       setErrorMessage("Mã xác nhận không hợp lệ");
@@ -56,7 +56,7 @@ const AgencyRegister = () => {
       setLoading(true);
       setShowRegisterModal(true);
       timerInterval = setInterval(() => setTimerTime((pt) => { return pt - 1; }), 1000);
-      const x = await APIRegisterAgent(name,phone, password);
+      const x = await APIRegisterAgent(name, phone, password);
       if (!x) {
         setErrorMessage("Số điện thoại này đã được đăng ký vui lòng liên hệ CSKH để được hỗ trợ.");
         setShowRegisterModal(false);
@@ -111,18 +111,19 @@ const AgencyRegister = () => {
 
   return (
     <Layout>
-      <div className={styles.agencyRegisterOverlay}>
-        <div className={styles.agencyRegisterWrapper}>
-          <div className={styles.titleWrapper}>
-            <IoArrowBack onClick={() => navigate("/promotions")} style={{ cursor: 'pointer' }} size={26} />
-            <h3>Đăng ký Đại lý</h3>
-          </div>
-          <div className={styles.agencyRegisterFormOverlay}>
-            <form className={styles.agencyRegisterForm} onSubmit={registerUser}>
+      <div className={styles.agencyRegisterWrapper}> 
+        <div className={styles.agencyRegisterFormOverlay}>
+          <form className={styles.agencyRegisterForm} onSubmit={handleSubmit}>
+            <div className={styles.agencyRegisterFormHeader}>
+              <IoArrowBack onClick={() => navigate("/promotions")} style={{ cursor: 'pointer' }} size={26} />
+              <h3>Đăng ký Đại lý</h3>
+            </div>
+            <div className={styles.agencyRegisterFormBody}>
               {errorMessage ? <span className={styles.error}>{errorMessage}</span> : ""}
-              <div className={`${styles.formInput}`}>
-                <span>TÊN</span>
-                <div className={styles.inputPasswordArea}>
+              
+              <div>
+                <div className={styles.requiredLabel}><span>*</span>TÊN</div>
+                <div className={`${styles.formInput}`}>                  
                   <input
                     disabled={loading}
                     value={name}
@@ -134,9 +135,10 @@ const AgencyRegister = () => {
                   />
                 </div>
               </div>
-              <div className={`${styles.formInput}`}>
-                <span>Số điện thoại</span>
-                <div className={`${styles.inputPasswordArea} ${phoneValid === 1 && phone.length === 10 ? styles.successPhoneNumber : phone.length === 0 ? '' : phoneValid === 2 || phone.length < 10 || phone.length > 10 ? styles.errorPhoneNumber : ''}`}>
+
+              <div>
+                <div className={styles.requiredLabel}><span>*</span>Số điện thoại</div>
+                <div className={`${styles.formInput} ${phoneValid === 1 && phone.length === 10 ? styles.successPhoneNumber : phone.length === 0 ? '' : phoneValid === 2 || phone.length < 10 || phone.length > 10 ? styles.errorPhoneNumber : ''}`}>
                   <input
                     onBlur={checkPhone}
                     disabled={loading}
@@ -148,16 +150,17 @@ const AgencyRegister = () => {
                     required
                     className={`${styles.inputPhone}`}
                   />
-                  {phoneValid === 1 && phone.length === 10 ? <BsCheckLg color="green" size={20} /> : phone.length === 0 ? '' : phoneValid === 2 || phone.length < 10 ? <BsX size={30} onClick={() => setPhone('')} /> : ''}
+                  {phoneValid === 1 && phone.length === 10 ? <BsCheckLg style={{fontSize:'18px', marginRight:'8px', color:'white'}} /> : phone.length === 0 ? '' : phoneValid === 2 || phone.length < 10 ? <BsX style={{fontSize:'30px', marginRight:'5px'}} onClick={() => setPhone('')} /> : ''}
                 </div>
                 {phone && !checkPhoneStart(phone) ? <span className={styles.error}>Sai quy cách SĐT</span> : ""}
               </div>
-              <div className={styles.formInput}>
-                <span>Mật khẩu</span>
-                <p style={{ color: "#F7DB89", textAlign: "left", fontSize: "12px", fontStyle: "italic" }}>
+
+              <div>
+                <div className={styles.requiredLabel}><span>*</span>Mật khẩu</div>              
+                <p style={{ color: "#F7DB89",fontSize: "12px", fontStyle: "italic", marginTop:'0px' }}>
                   Ví dụ : Daga123123 (chữ  <span style={{ color: "#8ee18e", display: "inline", fontWeight: "900" }}>"D"</span> viết IN HOA, không dấu)
                 </p>
-                <div className={styles.inputPasswordArea}>
+                <div className={styles.formInput}>
                   <input
                     disabled={loading}
                     type={passwordHidden ? "password" : "text"}
@@ -168,83 +171,84 @@ const AgencyRegister = () => {
                     required
                     className={styles.inputPassword}
                   />
-                  {passwordHidden ? <FiEye onClick={() => setPasswordHidden(false)} size={25} className={styles.passwordEye} /> : <FiEyeOff onClick={() => setPasswordHidden(true)} size={25} className={styles.passwordEye} />}
+                  {passwordHidden ? <FiEye onClick={() => setPasswordHidden(false)} className={styles.passwordEye} /> : <FiEyeOff onClick={() => setPasswordHidden(true)} className={styles.passwordEye} />}
                 </div>
-                {password ? (
-                  <div style={{ marginTop: "7px" }}>
-                    {/*<div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                      <span style={{ marginBottom: "0px" }}>
-                        {checkIfHasUpperCaseChar(password) ? <FcOk /> : <FcCancel />}
-                      </span>
-                      <span className={checkIfHasUpperCaseChar(password) ? styles.success : styles.error}
-                      >
-                        Mật khẩu phải có chữ IN HOA
-                      </span>
+                  {password ? (
+                    <div style={{ marginTop: "7px" }}>
+                      {/*<div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                        <span style={{ marginBottom: "0px" }}>
+                          {checkIfHasUpperCaseChar(password) ? <FcOk /> : <FcCancel />}
+                        </span>
+                        <span className={checkIfHasUpperCaseChar(password) ? styles.success : styles.error}
+                        >
+                          Mật khẩu phải có chữ IN HOA
+                        </span>
+                      </div>
+                      <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                        <span style={{ marginBottom: "0px" }}>
+                          {checkIfHasLowerCaseChar(password) ? (
+                            <FcOk />
+                          ) : (
+                            <FcCancel />
+                          )}
+                        </span>
+                        <span
+                          className={
+                            checkIfHasLowerCaseChar(password)
+                              ? styles.success
+                              : styles.error
+                          }
+                        >
+                          Mật khẩu phải có chữ thường
+                        </span>
+                      </div>
+                      <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                        <span style={{ marginBottom: "0px" }}>
+                          {checkIfHasNumber(password) ? <FcOk /> : <FcCancel />}
+                        </span>
+                        <span
+                          className={
+                            checkIfHasNumber(password) ? styles.success : styles.error
+                          }
+                        >
+                          Mật khẩu phải có số (0~ 9)
+                        </span>
+                      </div>*/}
+                      <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                        <span style={{ marginBottom: "0px" }}>
+                          {password.length >= 8 ? <FcOk /> : <FcCancel />}
+                        </span>
+                        <span
+                          className={
+                            password.length >= 8 ? styles.success : styles.error
+                          }
+                        >
+                          Có độ dài từ 8 ký tự trở lên
+                        </span>
+                      </div>
+                      {/*<div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                        <span style={{ marginBottom: "0px" }}>
+                          {!checkIfHasSpecialChar(password) ? <FcOk /> : <FcCancel />}
+                        </span>
+                        <span
+                          className={
+                            !checkIfHasSpecialChar(password)
+                              ? styles.success
+                              : styles.error
+                          }
+                        >
+                          Không chứa ký tự đặc biệt, dấu cách
+                        </span>
+                      </div>*/}
                     </div>
-                    <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                      <span style={{ marginBottom: "0px" }}>
-                        {checkIfHasLowerCaseChar(password) ? (
-                          <FcOk />
-                        ) : (
-                          <FcCancel />
-                        )}
-                      </span>
-                      <span
-                        className={
-                          checkIfHasLowerCaseChar(password)
-                            ? styles.success
-                            : styles.error
-                        }
-                      >
-                        Mật khẩu phải có chữ thường
-                      </span>
-                    </div>
-                    <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                      <span style={{ marginBottom: "0px" }}>
-                        {checkIfHasNumber(password) ? <FcOk /> : <FcCancel />}
-                      </span>
-                      <span
-                        className={
-                          checkIfHasNumber(password) ? styles.success : styles.error
-                        }
-                      >
-                        Mật khẩu phải có số (0~ 9)
-                      </span>
-                    </div>*/}
-                    <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                      <span style={{ marginBottom: "0px" }}>
-                        {password.length >= 8 ? <FcOk /> : <FcCancel />}
-                      </span>
-                      <span
-                        className={
-                          password.length >= 8 ? styles.success : styles.error
-                        }
-                      >
-                        Có độ dài từ 8 ký tự trở lên
-                      </span>
-                    </div>
-                    {/*<div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                      <span style={{ marginBottom: "0px" }}>
-                        {!checkIfHasSpecialChar(password) ? <FcOk /> : <FcCancel />}
-                      </span>
-                      <span
-                        className={
-                          !checkIfHasSpecialChar(password)
-                            ? styles.success
-                            : styles.error
-                        }
-                      >
-                        Không chứa ký tự đặc biệt, dấu cách
-                      </span>
-                    </div>*/}
-                  </div>
-                ) : (
-                  ""
-                )}
+                  ) : (
+                    ""
+                  )}
               </div>
-              <div className={styles.formInput}>
-                <span>Mật khẩu (Lặp lại)</span>
-                <div className={styles.inputPasswordArea}>
+      
+              <div>
+                <div className={styles.requiredLabel}><span>*</span>Mật khẩu</div>           
+                <div className={styles.formInput}>
                   <input
                     disabled={loading}
                     type={passwordHidden ? "password" : "text"}
@@ -255,15 +259,11 @@ const AgencyRegister = () => {
                     required
                     className={styles.inputPassword}
                   />
-                  {passwordHidden ? <FiEye size={25} onClick={() => setPasswordHidden(false)} className={styles.passwordEye} /> : <FiEyeOff onClick={() => setPasswordHidden(true)} size={25} className={styles.passwordEye} />}
+                  {passwordHidden ? <FiEye onClick={() => setPasswordHidden(false)} className={styles.passwordEye} /> : <FiEyeOff onClick={() => setPasswordHidden(true)} className={styles.passwordEye} />}
                 </div>
-
-                {passwordAgain && passwordAgain !== password ? (
-                  <span className={styles.error}>Mật khẩu không phù hợp.</span>
-                ) : (
-                  ""
-                )}
+                {passwordAgain && passwordAgain !== password && <span className={styles.error}>Mật khẩu không phù hợp.</span>}
               </div>
+
               {/*<div className={styles.formInput}>
                 <span className={styles.label}>Ngân hàng</span>
                 <select className={styles.select} required value={bankName} onChange={(e) => setBankName(e.target.value)}>
@@ -282,12 +282,13 @@ const AgencyRegister = () => {
                 <CiCreditCard1 size={25} style={{ color: "#F7DB89" }} />
                 <input className={styles.whiteInput} style={{ border: "none" }} placeholder="＊ Vui lòng nhập số tài khoản" required value={accNumber} onChange={(e) => setAccNumber(e.target.value)} />
                 </div>*/}
+
               <CaptchaInput captcha={randomCaptcha} setCaptcha={setRandomCaptcha} setUserCaptchaInput={setCaptcha} userCaptchaInput={captcha} />
-              <button className={`${styles.agencyRegisterButton} ${loading ? styles.loading : ""}`} type="submit">
+              <button className={`${styles.agencyRegisterSubmitButton} ${loading ? styles.loading : ""}`} type="submit">
                 {loading ? "Đang tải" : "Đăng ký"}
               </button>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
         <PopupErrorModal message={"We have recieved your information. We will contact you within 48 hours."} show={showSuccessModal} hideModal={() => setShowSuccessModal(false)} error={false} />
       </div>

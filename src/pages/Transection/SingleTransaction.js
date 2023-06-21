@@ -68,8 +68,8 @@ const CopyItemComponent = ({ item }) => {
         <span className={`${styles.copyValue} ${item.copy && styles.copyBtnValue} ${item.fontSmall && styles.smallValue} ${item.redText && styles.redText}`}>{item.value}</span>
       </div>
       {item.copy && <span className={styles.copyButton} onClick={onCopyClicked}>
-        <span>Copy</span>
         <MdContentCopy size={18} />
+        <span>Copy</span>
       </span>}
     </div>
   )

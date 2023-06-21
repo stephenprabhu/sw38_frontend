@@ -6,12 +6,7 @@ import successIcon from '../assets/Success.png';
 
 const PopupErrorModal = ({ message, show, hideModal, error = true }) => {
   return (
-    <Modal
-      open={show}
-      onClose={hideModal}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
-    >
+    <Modal open={show} onClose={hideModal}>
       <div className={styles.modalOverlay} onClick={hideModal}>
         <div className={styles.loadingSection} onClick={(e) => e.stopPropagation()}>
           {error ? <img src={errorIcon} className={styles.errorImg} alt='errorImg'/> : <img src={successIcon} className={styles.errorImg} alt='successImg'/>}

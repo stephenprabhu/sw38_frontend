@@ -72,22 +72,19 @@ function App() {
           <Route path="/withdraw" element={<AuthRoute ><Withdraw /></AuthRoute>} />
           <Route path="/profile" element={<AuthRoute><Profile /></AuthRoute>} />
           <Route path="/add-account" element={<AuthRoute ><AddAccount /></AuthRoute>} />
-          <Route path="/add-account/:id" element={<AuthRoute ><AddAccount /></AuthRoute>} />
           <Route path="/transections" element={<AuthRoute ><Transection /></AuthRoute>} />
-          <Route path="/transections/:id" element={<AuthRoute ><SingleTransaction /></AuthRoute>} />*/}
-
+  <Route path="/transections/:id" element={<AuthRoute ><SingleTransaction /></AuthRoute>} />*/}
+        
+        
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/agent/register" element={<AgencyRegister />} />
-          
           <Route path="/deposit" element={<Deposit />} />
           <Route path="/withdraw" element={<Withdraw />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/add-account" element={<AddAccount />} />
-          {/*<Route path="/add-account/:id" element={<AddAccount />} />*/}
-
+          <Route path="/add-account/:id" element={<AddAccount />} />
           <Route path="/transections" element={<Transection />} />
           <Route path="/transections/:id" element={<SingleTransaction />} />
 

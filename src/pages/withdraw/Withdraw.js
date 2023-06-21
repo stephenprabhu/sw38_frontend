@@ -85,63 +85,63 @@ const Withdraw = () => {
   // }
 
   return (
-    <Layout title="Rút Tiền" >
-    <form className={styles.layout} onSubmit={submitwithdraw}>
-      {ctx.user ? ctx.user.name : ""}
-      <h4 style={{ color: 'white', textAlign: 'center' }} >Thẻ ngân hàng của tôi</h4>
-      <div className={styles.withdrawWrapper}>
-        <div className={styles.section}>
-          {banks && banks.length ? (
-            <div className={styles.banksSection}>
-              {banks && banks.map((bank) => {
-                return (
-                  <div style={{ display: 'flex', gap: 10 }} key={bank.id} onClick={() => setBankId(bank.id)}>
-                    <div style={{ display: 'flex', gap: '10px', marginBottom: '5px', flexGrow: 1 }}>
-                      <input type="radio" value={bank.id} checked={bankId === bank.id} name={bankId} onChange={() => setBankId(bank.id)} />
-                      <div className={styles.bankCard} >
-                        <span>{bank.User_name}</span>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '5px' }}>
-                          <span>{bank.bank_name}</span>
-                          <span style={{ paddingLeft: '10px' }}>{bank.account_number}</span>
+    <Layout title="Rút Tiền" active='Rút Tiền'>
+      <form className={styles.layout} onSubmit={submitwithdraw}>
+        {ctx.user ? ctx.user.name : ""}
+        <h4 style={{ color: 'white', textAlign: 'center' }} >Thẻ ngân hàng của tôi</h4>
+        <div className={styles.withdrawWrapper}>
+          <div className={styles.section}>
+            {banks && banks.length ? (
+              <div className={styles.banksSection}>
+                {banks && banks.map((bank) => {
+                  return (
+                    <div style={{ display: 'flex', gap: 10 }} key={bank.id} onClick={() => setBankId(bank.id)}>
+                      <div style={{ display: 'flex', gap: '10px', marginBottom: '5px', flexGrow: 1 }}>
+                        <input type="radio" value={bank.id} checked={bankId === bank.id} name={bankId} onChange={() => setBankId(bank.id)} />
+                        <div className={styles.bankCard} >
+                          <span>{bank.User_name}</span>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '5px' }}>
+                            <span>{bank.bank_name}</span>
+                            <span style={{ paddingLeft: '10px' }}>{bank.account_number}</span>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                )
-              })}
-            </div>) : ''
-          }
+                  )
+                })}
+              </div>) : ''
+            }
 
-          <div className={styles.divider}>
-            <Link to='/add-account'>
-              <BsPlus size={25} className={styles.addButton} />
-            </Link>
-          </div>
-
-          <div className={styles.formSection}>
-            {/* <div className={styles.balanceSection}>
-            <p> Ví chính: ₫ {userBalance}</p>
-          </div> */}
-            <div className={styles.inputItem}>
-              <pre>Số tiền</pre>
-              <input
-                type='number'
-                className={styles.whiteInput}
-                style={{ border: "none" }}
-                placeholder="150K - 100M"
-                value={transactionAmount}
-                onChange={(e) => onWithdrawAmountChange(e.target.value)}
-                required 
-              />
+            <div className={styles.divider}>
+              <Link to='/add-account'>
+                <BsPlus size={25} className={styles.addButton} />
+              </Link>
             </div>
-            {error && <Typography mt={2} color='red'>{error}</Typography>}
-            {loading ? <div style={{display:'flex', justifyContent:'center'}}><CircularProgress style={{ marginTop: "20px", color:"white" }} /></div> : ""}
+
+            <div className={styles.formSection}>
+              {/* <div className={styles.balanceSection}>
+              <p> Ví chính: ₫ {userBalance}</p>
+            </div> */}
+              <div className={styles.inputItem}>
+                <pre>Số tiền</pre>
+                <input
+                  type='number'
+                  className={styles.whiteInput}
+                  style={{ border: "none" }}
+                  placeholder="150K - 100M"
+                  value={transactionAmount}
+                  onChange={(e) => onWithdrawAmountChange(e.target.value)}
+                  required 
+                />
+              </div>
+              {error && <Typography mt={2} color='red'>{error}</Typography>}
+              {loading ? <div style={{display:'flex', justifyContent:'center'}}><CircularProgress style={{ marginTop: "20px", color:"white" }} /></div> : ""}
+            </div>
           </div>
+          <button className={styles.submitButton} disabled={loading} type='submit'>{loading ? "Đang tải..." : "Xác nhận"}</button>
+          <PopupErrorModal message={errorMessage} show={errorModal} hideModal={() => setErrorModal(false)}/>
         </div>
-        <button className={styles.submitButton} disabled={loading} type='submit'>{loading ? "Đang tải..." : "Xác nhận"}</button>
-        <PopupErrorModal message={errorMessage} show={errorModal} hideModal={() => setErrorModal(false)}/>
-      </div>
-    </form>
+      </form>
     </Layout>
   )
 }

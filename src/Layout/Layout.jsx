@@ -4,7 +4,7 @@ import Footer from '../components/Footer/Footer';
 import { useState } from 'react';
 import Download from '../components/Download';
 
-const Layout = ({children, title}) => {
+const Layout = ({children, title, active}) => {
   // const [downloadButtons, setDownloadButtons] = useState(true)
   return (
     <div className={styles.layoutOverlay}>
@@ -12,7 +12,7 @@ const Layout = ({children, title}) => {
       <div className={styles.layoutChildOverlay}>
         {children}
       </div>
-      <Footer/>
+      <Footer active={active}/>
     </div>
   )
 }

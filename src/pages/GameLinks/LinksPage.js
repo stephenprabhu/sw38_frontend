@@ -7,6 +7,8 @@ import { useContext } from 'react';
 import UserContext from '../../helpers/Context/user-context';
 import Layout from '../../Layout/Layout';
 
+const gameLinks = ['https://www.sfv388.com/', 'https://www.svw388.com/', 'https://www.swv388.com/']
+
 const LinksPage = () => {
   const ctx = useContext(UserContext);
   const user = ctx.user;
@@ -21,27 +23,15 @@ const LinksPage = () => {
           <div className={styles.linksWrapper}>
             <div className={styles.sectionContentWrapper}>
               <div className={styles.section}>
-                <div className={styles.linkContent} onClick={() => window.open("https://www.sfv388.com/")}>
-                  <div className={styles.linkNameGrp}>
-                    <span>1</span>
-                    <strong>Link</strong>
+                {gameLinks.map((item, index) => (
+                  <div className={styles.linkContent} onClick={() => window.open(item)} key={index}>
+                    <div className={styles.linkNameGrp}>
+                      <span>{index+1}</span>
+                      <strong>Link</strong>
+                    </div>
+                    <BiRightArrowCircle size={40} className={styles.linkIcon} />
                   </div>
-                  <BiRightArrowCircle size={40} color='#0D2259' />
-                </div>
-                <div className={styles.linkContent} onClick={() => window.open('https://www.svw388.com/')}>
-                  <div className={styles.linkNameGrp}>
-                    <span>2</span>
-                    <strong>Link</strong>
-                  </div>
-                  <BiRightArrowCircle size={40} color='#0D2259' />
-                </div>
-                <div className={styles.linkContent} onClick={() => window.open('https://www.swv388.com/')}>
-                  <div className={styles.linkNameGrp}>
-                    <span>3</span>
-                    <strong>Link</strong>
-                  </div>
-                  <BiRightArrowCircle size={40} color='#0D2259' />
-                </div>
+                ))}
                 {user && 
                   <div className={styles.noAccountWrapper}>
                     <div>Bạn chưa có tài khoản?</div>

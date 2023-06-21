@@ -48,7 +48,7 @@ const Deposit = () => {
   }
 
   return (
-    <Layout title={step2 ? "Thông tin nạp tiền" : "Nạp Tiền"}>
+    <Layout title={step2 ? "Thông tin nạp tiền" : "Nạp Tiền"} active='Nạp Tiền'>
       {step2 ?
         <DepositStep2
           amount={amount}

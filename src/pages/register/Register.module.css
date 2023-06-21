@@ -15,7 +15,6 @@
   justify-content: center;
   width: 90%;
   margin: 10px auto;
-
 }
 
 .registerForm {
@@ -99,19 +98,6 @@
   color: #ffffff67;
 }
 
-/* .formInput span {
-  display: block;
-  margin-bottom: 10px;
-} */
-
-.inputPasswordArea {
-  /* display: flex;
-  border-bottom: 1px solid #F7DB89;
-  background-color: transparent;
-  align-items: center;
-  padding-right: 10px; */
-}
-
 .successPhoneNumber {
   background-color: rgb(25, 155, 86);
 }
@@ -120,34 +106,6 @@
   display: flex;
   background-color: red;
 }
-
-/* .inputPassword {
-  font-size: 1rem;
-  color: #F7DB89;
-  border-radius: 0.03rem;
-  padding: 10px;
-  border: none;
-  background-color: transparent;
-  overflow: hidden;
-  max-width: 95%;
-} */
-
-/* .inputPassword:active,
-.inputPassword:focus-visible {
-  border: none;
-  outline: none;
-} */
-
-/* .passwordEye {
-  cursor: pointer;
-  color: #F7DB89;
-} */
-
-/* .success {
-  color: #8ee18e;
-  font-size: 0.8rem;
-  margin-top: 5px;
-} */
 
 .registerButton {
   margin-top: 1.2rem;
@@ -188,17 +146,46 @@
   text-align: center;
 }
 
+/* .inputPasswordArea {
+  display: flex;
+  border-bottom: 1px solid #F7DB89;
+  background-color: transparent;
+  align-items: center;
+  padding-right: 10px;
+} */
 
+/* .formInput span {
+  display: block;
+  margin-bottom: 10px;
+} */
 
+/* .inputPassword {
+  font-size: 1rem;
+  color: #F7DB89;
+  border-radius: 0.03rem;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  overflow: hidden;
+  max-width: 95%;
+} */
 
+/* .inputPassword:active,
+.inputPassword:focus-visible {
+  border: none;
+  outline: none;
+} */
 
+/* .passwordEye {
+  cursor: pointer;
+  color: #F7DB89;
+} */
 
-
-
-
-
-
-
+/* .success {
+  color: #8ee18e;
+  font-size: 0.8rem;
+  margin-top: 5px;
+} */
 
 /* .iconsStyle {
     display: 'flex';

@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-around;
   background: #10192D;
-  padding: 3px 0px;
+  padding: 5px 0px;
 }
 
 .menuItem {
@@ -12,7 +12,17 @@
   cursor: pointer;
 }
 
+.menuItem img {
+  width: 40px;
+}
+
 .menuItem span {
   display: block;
   font-size: 0.7rem;
+}
+
+@media only screen and (max-width: 390px) {
+  .menuItem img {
+    width: 32px;
+  }
 }

@@ -83,15 +83,28 @@
 }
 
 .customerSupportWrapper {
-  color: #F7DB89;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  padding: 10px 0;
+  gap: 2px;
 }
 
-.customerSupportWrapper div:nth-child(2) {
-  width: 50%;
+.customerSupportWrapper div {
+  color: #FBDF71;
+  letter-spacing: 0.8px;
+  font-family: Great Vibes;
+  font-size: 22px;
+}
+
+.customerSupportWrapper button {
+  font-weight: 900;
+  margin-left: 10px;
+  cursor: pointer;
+  padding: 3px 10px;
+  border-radius: 22px;
+  border: 1px solid #DFD07A;
+  background: transparent linear-gradient(180deg, #FCF9CC 0%, #D8C053 100%)
 }
 
 .cockfightSectionOverlay {
@@ -226,5 +239,33 @@
 
   100% {
     transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+.homeContentOverlay {
+  width: 98%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dagaGifWrapper {
+  display: flex;
+  justify-content: center;
+  padding: 5px 0;
+}
+
+.dagaGifWrapper img {
+  width: 70%;
+}
+
+@media only screen and (max-width: 414px) {
+  .customerSupportWrapper div {
+    font-size: 16px;
+  }
+
+  .dagaGifWrapper img {
+    width: 60%;
   }
 }

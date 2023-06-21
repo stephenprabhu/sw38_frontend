@@ -23,7 +23,7 @@ const Promotions = () => {
   }, [])
 
   return (
-    <Layout>
+    <Layout title='Khuyến mãi' active='Khuyến mãi'>
       {/*headerSection*/}
       <div className={styles.promotionContent}>
         {/*Header Section*/}
@@ -37,17 +37,17 @@ const Promotions = () => {
         {/*cardSection*/}
         <div className={styles.cardSectionWrapper}>
           <h3>KHUYẾN MÃI</h3>
-          {promotionsList && promotionsList.map((promo) =>
-          (<div className={styles.card} key={promo.id} onClick={() => window.open(promo.link)}>
-            <img height="100px" width='100%' src={promo.image} alt='promoImg'/>
-            <div className={styles.cardContent}>
-              <span className={styles.cardTitle}>{promo.title}</span>
-              <div className={styles.dates}>
-                <span>{promo.created_at && new Date(promo.created_at).toLocaleDateString("vi-VN")}&nbsp;-&nbsp;</span>
-                <span> {promo.end_date ? new Date(promo.end_date).toLocaleDateString("vi-VN") : ' Dài hạn'}</span>
+          {promotionsList && promotionsList.map((promo) =>(
+            <div className={styles.card} key={promo.id} onClick={() => window.open(promo.link)}>
+              <img height="100px" width='100%' src={promo.image} alt='promoImg'/>
+              <div className={styles.cardContent}>
+                <span className={styles.cardTitle}>{promo.title}</span>
+                <div className={styles.dates}>
+                  <span>{promo.created_at && new Date(promo.created_at).toLocaleDateString("vi-VN")}&nbsp;-&nbsp;</span>
+                  <span> {promo.end_date ? new Date(promo.end_date).toLocaleDateString("vi-VN") : ' Dài hạn'}</span>
+                </div>
               </div>
             </div>
-          </div>
           ))}
         </div>
       </div>

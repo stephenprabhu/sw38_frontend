@@ -1,0 +1,94 @@
+.singleGamePageBody {
+  flex-grow: 1;
+  display: flex;
+  overflow: auto;
+  /* gap: 5px; */
+}
+
+.categoryListWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 18%;
+}
+
+.catLitButns {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 5px;
+}
+
+.homeMenuButnsContent {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  color: white;
+  min-width: calc(100%/7);
+}
+
+.menuImgWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  width: 70px;
+  background-color: #10192D;
+  border: 1px solid #DFD07A;
+  border-radius: 20px;
+  color: #C3A56A;
+}
+
+.menuImgWrapper img {
+  border-radius: 5px;
+  max-width: 40px;
+  max-height: 35px;
+}
+
+.menuImgWrapper div {
+  font-size: 0.6rem;
+  text-align: center;
+  padding-top: 3px;
+}
+
+.activeCategory {
+  background: transparent linear-gradient(#FFFFD8, #D4B63F);
+  color: white;
+  border-color: white;
+}
+
+.activeCategory img {
+  max-width: 55px;
+  max-height: 55px;
+}
+
+.activeCategory div {
+  padding-top: 0px;
+}
+
+@media only screen and (max-width: 390px) {
+  .categoryListWrapper {
+    width: 22%;
+  }
+
+  .menuImgWrapper {
+    height: 55px;
+    width: 55px;
+  }
+
+  .menuImgWrapper img {
+    max-width: 40px;
+    max-height: 30px;
+  }
+
+  .menuImgWrapper div {
+    font-size: 0.45rem;
+  }
+
+  .activeCategory img {
+    max-width: 45px;
+    max-height: 42px;
+  }
+}

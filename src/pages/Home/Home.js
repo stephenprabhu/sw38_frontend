@@ -1,25 +1,29 @@
 import { useContext, useEffect, useState } from "react";
 import styles from './Home.module.css';
-import MainBannerImage from "../../assets/MainBannerImage.png"
-import HomeImageMenu from '../../components/HomeImageMenu';
-import Header from "../../components/Header";
+import TopBannerImage from "../../assets/MainBannerImage.png"
+// import HomeImageMenu from '../../components/HomeImageMenu';
+// import Header from "../../components/Header";
 import UserContext from "../../helpers/Context/user-context";
-import CockFightBanner from "../../assets/sub-animal-sv.png";
-import CoolAnimatedButton from "../../components/CoolAnimatedButton";
-import CustomerSupportAnimatedItem from "../../components/CustomerSupportAnimatedItem";
-import { Link } from "react-router-dom";
+import DagaGif from "../../assets/DagaGif.png";
+import CockBanner from "../../assets/cockBanner.jpg";
+// import CoolAnimatedButton from "../../components/CoolAnimatedButton";
+// import CustomerSupportAnimatedItem from "../../components/CustomerSupportAnimatedItem";
+import { Link, useNavigate } from "react-router-dom";
 import { MdOutlineContentCopy } from "react-icons/md";
 import { APIUser } from "../../helpers/APIs/UserAPIs";
 import { CircularProgress } from "@mui/material";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import CockVideo from '../../assets/cockVideo.mp4'
 import Layout from "../../Layout/Layout";
+import DownloadSection from "../../components/Homecomponents/DownloadSection/DownloadSection";
+import CategorySection from "../../components/Homecomponents/GameCategoryList/CategorySection";
 
 const Home = () => {
   const ctx = useContext(UserContext);
   const userInfo = ctx.userInfo;
   const user = ctx.user;
   const [rejectRequest, setRejectRequest] = useState('')
+  const navigate = useNavigate()
 
   // getting url param value
   // const urlSearchParams = new URLSearchParams(window.location.search);
@@ -53,32 +57,27 @@ const Home = () => {
   const depositTime = new Date() - new Date(getDepositTime)
   
   return (
-    <Layout>
-      <div className={styles.homeWrapper}>
-        <a href='https://www.ssvv388.com/' target="_blank" rel='noreferrer'>
-          <img src={MainBannerImage} width="100%" alt="banner"/>
-        </a>
-        <div style={{width:'100%'}}>
-          <video autoPlay loop muted width='100%'>
-            <source src={CockVideo} type="video/mp4" />
-          </video>
-        </div>
-        <marquee direction="left" style={{ color: '#fce08d', fontSize: '12px', padding: '5px 0px', margin: '0px 7px', fontStyle: 'italic' }}>
-          ĐÁ GÀ SV388 NƠI CÁC CHIẾN KÊ HUYỀN THOẠI THỂ HIỆN CHỈ CÓ TẠI SVW38.COM
-        </marquee>
-
-        <marquee direction="left" style={{ color: '#fce08d', fontSize: '12px', padding: '5px 0px', margin: '0px 7px', fontStyle: 'italic' }}>
+    <Layout active='Trang Chủ'>
+      <img src={TopBannerImage} width='100%' style={{display:'flex'}} alt="banner" onClick={() => window.open('https://www.ssvv388.com/')}/>
+      <img src={CockBanner} width='100%' alt="bigBAnner" style={{display:'flex'}}/>
+      {/*<div style={{width:'100%', display:'flex'}}>
+        <video autoPlay loop muted width='100%'>
+          <source src={CockVideo} type="video/mp4" />
+        </video>
+      </div>*/}
+      <marquee direction="left" style={{ color: '#fce08d', fontSize: '12px', padding: '5px 0px', margin: '0px 7px', fontStyle: 'italic' }}>
+        ĐÁ GÀ SV388 NƠI CÁC CHIẾN KÊ HUYỀN THOẠI THỂ HIỆN CHỈ CÓ TẠI SVW38.COM
+      </marquee>
+      <marquee direction="left" style={{ color: '#fce08d', fontSize: '12px', padding: '5px 0px', margin: '0px 7px', fontStyle: 'italic' }}>
         Thời gian rút tiền tại SVW38 mỗi ngày 1 lần và Quý khách vui lòng thực hiện lệnh rút tiền trong khung giờ từ 12 giờ đến 15 giờ hàng ngày để lệnh rút tiền được phê duyệt. Lưu ý sau khi làm 
-          lệnh rút tiền vui lòng không tiếp tục tham gia đặt cược. SVW38 rất hân hạnh được phục vụ quý khách hàng !!!
-        </marquee>
+        lệnh rút tiền vui lòng không tiếp tục tham gia đặt cược. SVW38 rất hân hạnh được phục vụ quý khách hàng !!!
+      </marquee>
 
-        {!ctx.user ? <div className={styles.registerLoginSection}>
+        {/*!ctx.user ? <div className={styles.registerLoginSection}>
           <Link className={styles.loginButton} to='/login'>Đăng Nhập</Link>
           <Link className={styles.registerButton} to='/register'>Đăng ký</Link>
-        </div> : ""}
+        </div> : ""*/}
         
-        <HomeImageMenu />
-
         {/*<div className={styles.titleDiscOverlay}>
           <h4>Hệ thống trang GA SVW38 sẽ bảo trì nâng cấp vào 0h00 đến 04h00 Ngày 17/05/2023 </h4>
           <p>Quý khách hàng thân mến ,GA SVW38 Trân trọng xin thông báo: Hệ thống trang sẽ bảo trì vào 0h00 đến 04h00 Ngày 17/05/2023 để cập nhật nâng cấp lên phiên bản mới , nhằm đem
@@ -105,12 +104,7 @@ const Home = () => {
           </div>
         }
 
-        <div className={styles.customerSupportWrapper}>
-          <div>Bấm vào đây để liên hệ</div>
-          <div><CustomerSupportAnimatedItem /></div>
-        </div>
-        
-        <div className={styles.cockfightSectionOverlay}>
+        {/*<div className={styles.cockfightSectionOverlay}>
           <span>Đá gà</span>
           <div className={styles.cockfightSection}>
             <div><a href='https://www.ssvv388.com/' target="_blank"><img src={CockFightBanner} width={"75%"} /></a></div>
@@ -120,8 +114,23 @@ const Home = () => {
               <CoolAnimatedButton text="ĐẶT CƯỢC NGAY" link="https://www.ssvv388.com/" />
             </div>
           </div>
+        </div>*/}
+
+        {/*<div style={{ color: "rgb(219 152 15)", fontSize: "2em", margin: "5px 0px", paddingTop: "10px", fontFamily: 'Great Vibes', fontWeight: 'bold', textAlign: 'center' }}>Đá gà cựa sắt số 1</div>*/}
+        
+      <div className={styles.homeContentOverlay}>
+        {/*<HomeImageMenu />*/}
+        <div onClick={() => navigate('/game-links')} className={styles.dagaGifWrapper}>
+          <img src={DagaGif} alt='dagaImg'/>
         </div>
-        <div style={{ color: "rgb(219 152 15)", fontSize: "2em", margin: "5px 0px", paddingTop: "10px", fontFamily: 'Great Vibes', fontWeight: 'bold', textAlign: 'center' }}>Đá gà cựa sắt số 1</div>
+
+        <div className={styles.customerSupportWrapper}>
+          <div>Bấm Vào Đây Để Liên Hệ</div>
+          <button onClick={() => window.open('https://tawk.to/chat/6401c68c31ebfa0fe7f07069/1gqjev5o0')}>CSKH</button>
+        </div>
+
+        <DownloadSection/>
+        <CategorySection/>
       </div>
     </Layout>
   )
