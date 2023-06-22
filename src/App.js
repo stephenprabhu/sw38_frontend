@@ -21,6 +21,8 @@ import IOS from './pages/IOS/IOS';
 import GameLinks from './pages/GameLinks/LinksPage';
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 import SingleTransaction from './pages/Transection/SingleTransaction';
+import PromotionGift from './pages/PromotionGift/PromotionGift';
+import PromotionDetail from './pages/PromotionDetail/PromotionDetail';
 
 let timeOut = null
 
@@ -89,6 +91,8 @@ function App() {
           <Route path="/transections/:id" element={<SingleTransaction />} />
 
           <Route path="/promotions" element={<Promotions />} />
+          <Route path="/promotion-gift" element={<PromotionGift />} />
+          <Route path="/promotion-details" element={<PromotionDetail />} />
           <Route path="/" element={<Home />} />
           <Route path="/game-links" element={<GameLinks />} />
           <Route path="/android" element={<Android />} />

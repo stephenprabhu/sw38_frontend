@@ -56,9 +56,11 @@ const Home = () => {
   const getDepositTime = localStorage.getItem('initialDeposit')
   const depositTime = new Date() - new Date(getDepositTime)
   
+  // onClick={() => window.open('https://www.ssvv388.com/')}
+
   return (
     <Layout active='Trang Chủ'>
-      <img src={TopBannerImage} width='100%' style={{display:'flex'}} alt="banner" onClick={() => window.open('https://www.ssvv388.com/')}/>
+      <img src={TopBannerImage} width='100%' style={{display:'flex'}} alt="banner"/>
       <img src={CockBanner} width='100%' alt="bigBAnner" style={{display:'flex'}}/>
       {/*<div style={{width:'100%', display:'flex'}}>
         <video autoPlay loop muted width='100%'>
@@ -68,10 +70,10 @@ const Home = () => {
       <marquee direction="left" style={{ color: '#fce08d', fontSize: '12px', padding: '5px 0px', margin: '0px 7px', fontStyle: 'italic' }}>
         ĐÁ GÀ SV388 NƠI CÁC CHIẾN KÊ HUYỀN THOẠI THỂ HIỆN CHỈ CÓ TẠI SVW38.COM
       </marquee>
-      <marquee direction="left" style={{ color: '#fce08d', fontSize: '12px', padding: '5px 0px', margin: '0px 7px', fontStyle: 'italic' }}>
+      {/*<marquee direction="left" style={{ color: '#fce08d', fontSize: '12px', padding: '5px 0px', margin: '0px 7px', fontStyle: 'italic' }}>
         Thời gian rút tiền tại SVW38 mỗi ngày 1 lần và Quý khách vui lòng thực hiện lệnh rút tiền trong khung giờ từ 12 giờ đến 15 giờ hàng ngày để lệnh rút tiền được phê duyệt. Lưu ý sau khi làm 
         lệnh rút tiền vui lòng không tiếp tục tham gia đặt cược. SVW38 rất hân hạnh được phục vụ quý khách hàng !!!
-      </marquee>
+      </marquee>*/}
 
         {/*!ctx.user ? <div className={styles.registerLoginSection}>
           <Link className={styles.loginButton} to='/login'>Đăng Nhập</Link>

@@ -13,7 +13,7 @@ const DownloadSection = () => {
     <div className={styles.singleGamePageHeader}>
       <div className={styles.agentImgSection}>
         <img src={AgentImg} alt='agentImage'/>
-        <p>ĐẠI LÝ</p>
+        <p onClick={() => navigate('/agent/register')}>ĐẠI LÝ</p>
       </div>
       <div className={styles.imageTextWrapper}>
         {headerBtns.map(btn => (

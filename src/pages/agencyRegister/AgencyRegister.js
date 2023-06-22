@@ -110,7 +110,7 @@ const AgencyRegister = () => {
   }
 
   return (
-    <Layout>
+    <Layout title='ĐẠI LÝ'>
       <div className={styles.agencyRegisterWrapper}> 
         <div className={styles.agencyRegisterFormOverlay}>
           <form className={styles.agencyRegisterForm} onSubmit={handleSubmit}>

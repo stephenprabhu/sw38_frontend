@@ -15,6 +15,7 @@
   margin: 0;
   font-size: 12px;
   color: white;
+  cursor: pointer;
 }
 
 .agentImgSection img {

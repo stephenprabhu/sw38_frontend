@@ -43,7 +43,7 @@ const GameModalContent = ({category, loader, setLoader, changeGameBalance, setAl
   return (
     <div className={styles.innerOverlay}>
       <div className={styles.innerContent}>
-        <h4>{JsonFormate(category.name)}</h4>
+        <h4>Cat Name</h4>
         <Divider color='white' style={{marginBottom:'5px'}}/>
         {category && category.game_items.length ?
           category.game_items.map((game, index) => (
@@ -66,4 +66,30 @@ const GameModalContent = ({category, loader, setLoader, changeGameBalance, setAl
 }
 
 export default GameModalContent
+
+// <div className={styles.innerOverlay}>
+//       <div className={styles.innerContent}>
+//         <h4>{JsonFormate(category.name)}</h4>
+//         <Divider color='white' style={{marginBottom:'5px'}}/>
+//         {category && category.game_items.length ?
+//           category.game_items.map((game, index) => (
+//             <div className={styles.rowData} key={index}>
+//               <h5>{JsonFormate(game.name)}</h5>
+//               <div className={styles.transferGrp}>
+//                 {apiError == game.id && <span className={styles.orangeTxt}>{game.balance === 'NETWORK_ERROR' ? "error" : typeof game.balance === 'number' ?  CommaSeperator(game.balance) : 0}</span>}
+//                 {!apiError && loader == game.id && <CircularProgress size={12}/>}
+//                 {apiError != game.id && <span className={`${styles.balance} ${game.balance == 'NETWORK_ERROR' ? styles.orangeTxt : ''}`}>{game.balance === 'NETWORK_ERROR' ?  "error" : typeof game.balance === 'number'  ?  CommaSeperator(game.balance) : 0}</span>}
+//                 {(+game.balance) > 0 &&  !loader && apiError != game.id ? <button onClick={() => singleWithdrawHandler(game)}>Transfer</button> : ''}
+//               </div>
+//             </div>
+//           )) 
+//         :
+//         <div className={styles.noGames}>No Games</div>
+//       }
+//       </div>
+//     </div>
+
+
+
+
 // {(game.balance != 'NETWORK_ERROR' || game.balance > '0.0000') && !loader ? <button onClick={() => singleWithdrawHandler({id :game.id, balance: game.balance})}>Transfer</button> : ''}

@@ -17,7 +17,7 @@ const AllGameStatusModal = ({showBalance, onClose, loader, setLoader}) => {
   const [gamesWithdrawError, setGamesWithdrawError] = useState(false)
 
   const ctx = useContext(UserContext);
-  
+
   useEffect(() => {
     if(showBalance) {
       // allCategoryGamesApi()
@@ -58,6 +58,7 @@ const AllGameStatusModal = ({showBalance, onClose, loader, setLoader}) => {
   return (
     <Modal open={showBalance}>
       <div className={styles.allGamesOverlay} onClick={onClose}>
+        
         <div className={styles.allGamesWrapper}>
           <div className={styles.allGameHeader}>
             <div className={styles.balanceWrapper}>
@@ -68,24 +69,41 @@ const AllGameStatusModal = ({showBalance, onClose, loader, setLoader}) => {
             {!loader && <span onClick={()=>{onClose(); setGamesWithdrawError()}}><AiOutlineClose size={24} style={{cursor:'pointer'}}/></span>}
           </div>
           <div className={styles.allGameBody}>
-            {allCategoryGames ? allCategoryGames.map((category,index) => (
-              <GameModalContent category={category} key={index} loader={loader} setLoader={setLoader} setAllCategoryGames={setAllCategoryGames}/>
-            ))
-            :
-            <div className={styles.loaderOverlay}>
-              <CircularProgress size={26}/>
-            </div>
-          }
+            
+            <GameModalContent loader={loader} setLoader={setLoader} setAllCategoryGames={setAllCategoryGames}/>
           </div>
           {allTransferLoader && <MyLoader/>}
           {gamesWithdrawError && <div className={styles.error}>{gamesWithdrawError}</div>}
-          {allCategoryGames && <div className={styles.allGameFooter} onClick={onTransferEverythingClicked}>
-            All transfer
-          </div>}
+          {allCategoryGames && <div className={styles.allGameFooter} onClick={onTransferEverythingClicked}> All transfer </div>}
         </div>
+
       </div>
     </Modal>
     )
   }
   
   export default AllGameStatusModal
+
+  // <div className={styles.allGamesWrapper}>
+  //         <div className={styles.allGameHeader}>
+  //           <div className={styles.balanceWrapper}>
+  //             <span>Balance</span>
+  //             <span>{ctx.userBalance && CommaSeperator(ctx.userBalance)}</span>
+  //           </div>  
+            
+  //           {!loader && <span onClick={()=>{onClose(); setGamesWithdrawError()}}><AiOutlineClose size={24} style={{cursor:'pointer'}}/></span>}
+  //         </div>
+  //         <div className={styles.allGameBody}>
+  //           {allCategoryGames ? allCategoryGames.map((category,index) => (
+  //               <GameModalContent category={category} key={index} loader={loader} setLoader={setLoader} setAllCategoryGames={setAllCategoryGames}/>
+  //             ))
+  //           :
+  //             <div className={styles.loaderOverlay}>
+  //               <CircularProgress size={26}/>
+  //             </div>
+  //           }
+  //         </div>
+  //         {allTransferLoader && <MyLoader/>}
+  //         {gamesWithdrawError && <div className={styles.error}>{gamesWithdrawError}</div>}
+  //         {allCategoryGames && <div className={styles.allGameFooter} onClick={onTransferEverythingClicked}> All transfer </div>}
+  //       </div>

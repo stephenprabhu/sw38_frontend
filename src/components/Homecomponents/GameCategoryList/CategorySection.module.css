@@ -33,6 +33,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 5px;
   height: 70px;
   width: 70px;
   background-color: #10192D;
@@ -43,20 +44,20 @@
 
 .menuImgWrapper img {
   border-radius: 5px;
-  max-width: 40px;
-  max-height: 35px;
+  max-width: 60px;
+  max-height: 50px;
 }
 
 .menuImgWrapper div {
   font-size: 0.6rem;
   text-align: center;
-  padding-top: 3px;
 }
 
 .activeCategory {
   background: transparent linear-gradient(#FFFFD8, #D4B63F);
   color: white;
-  border-color: white;
+  border-color: #FFFFC0;
+  gap: 2px;
 }
 
 .activeCategory img {
@@ -84,7 +85,7 @@
   }
 
   .menuImgWrapper div {
-    font-size: 0.45rem;
+    font-size: 0.5rem;
   }
 
   .activeCategory img {

@@ -80,7 +80,8 @@ const Transection = () => {
               </table>
             </div>
             :
-            <h3 style={{ margin: '0px', color: 'white' }}>Không có giao dịch</h3>}
+            <h3 style={{ margin: '0px', color: 'white' }}>Không có giao dịch</h3>
+          }
       </div>
     </Layout>
   )

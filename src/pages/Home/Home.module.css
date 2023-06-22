@@ -98,7 +98,7 @@
 }
 
 .customerSupportWrapper button {
-  font-weight: 900;
+  font-weight: 700;
   margin-left: 10px;
   cursor: pointer;
   padding: 3px 10px;
@@ -253,7 +253,6 @@
 .dagaGifWrapper {
   display: flex;
   justify-content: center;
-  padding: 5px 0;
 }
 
 .dagaGifWrapper img {
