@@ -2,6 +2,102 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  padding: 15px;
+}
+
+.profileHeader {
+  display: flex;
+  gap: 10px;
+  color: white;
+}
+
+.profileHeader img {
+  width: 25px;
+}
+
+.profileHeader span {
+  font-size: 14px;
+}
+
+.profileBody {
+  padding-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.rewardCardWrapper {
+  display: flex;
+  gap: 10px;
+  padding: 12px 10px;
+  background: #333D54 0% 0% no-repeat padding-box;
+  box-shadow: 0px 1px 5px #00000091;
+  border-radius: 7px;
+}
+
+.mediaImgWrapper img {
+  width: 35px;
+}
+
+.rewardCardInner {
+  flex-grow: 1;
+  display: flex;
+  gap: 7px;
+  flex-direction: column;
+  color: white;
+}
+
+.rewardCardInner p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.rewardBar {
+  color: #19253F;
+  text-align: center;
+  background-color: white;
+  border-radius: 9px;
+  font-weight: 600;
+}
+
+.rewardCoinsWrapper {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.rewardCoin {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.rewardCoin img {
+  width: 25px;
+}
+
+.rewardCoinsWrapper div:nth-child(1) {
+  color: #FBDF71;
+}
+
+.rewardCoinsWrapper div:nth-child(2) {
+  color: #88FF88;
+}
+
+.rewardCardWrapper button {
+  height: fit-content;
+  cursor: pointer;
+  padding: 5px 10px;
+  color: white;
+  background: transparent linear-gradient(180deg, #5BEE5D 0%, #289405 100%);
+  border: 2px solid #C1FFC9;
+  border-radius: 21px;
+}
+
+/* .profileOverlay {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
   width: 90%;
   margin: 0 auto;
   overflow: auto;
@@ -197,4 +293,4 @@
     flex-wrap: wrap;
     justify-content: center;
   }
-}
+} */

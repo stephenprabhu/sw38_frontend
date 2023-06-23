@@ -5,12 +5,12 @@ import { useNavigate } from 'react-router-dom';
 // import PlayGameModal from '../../../components/PlayGameModal/PlayGameModal';
 import NoRecordFound from '../../../NoRecordFound/NoRecordFound';
 import MyLoader from '../../../MyLoader';
-import game1 from '../../../../assets/testCategory/1.png';
-import game2 from '../../../../assets/testCategory/2.png';
-import game3 from '../../../../assets/testCategory/3.png';
-import game4 from '../../../../assets/testCategory/4.png';
-import game5 from '../../../../assets/testCategory/5.png';
-import game6 from '../../../../assets/testCategory/6.png';
+import game1 from '../../../../assets/SingleCategory/1.png';
+import game2 from '../../../../assets/SingleCategory/2.png';
+import game3 from '../../../../assets/SingleCategory/3.png';
+import game4 from '../../../../assets/SingleCategory/4.png';
+import game5 from '../../../../assets/SingleCategory/5.png';
+import game6 from '../../../../assets/SingleCategory/6.png';
 
 const games = [game1, game2, game3, game4 ,game5, game6]
 

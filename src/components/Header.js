@@ -30,7 +30,7 @@ const Header = ({title}) => {
 
       {title && <div className={styles.headerTitle}>{title}</div>}
       
-      {ctx.user ?
+      {!ctx.user ?
         <BalanceSection/>
         :
         <div className={styles.loginButtonsOverlay}>

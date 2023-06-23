@@ -5,19 +5,20 @@ body,
 #root,
 .App {
   height: 100%;
+  margin: 0;
 }
 
 html {
-  width: 50%;
-  margin: auto;
-  overflow: hidden;
+  /* width: 50%; */
+  /* margin: auto; */
+  /* overflow: hidden; */
 }
 
 body {
-  font-family: 'Be Vietnam Pro', sans-serif;
+  /* font-family: 'Be Vietnam Pro', sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  width: 50%;
+  -moz-osx-font-smoothing: grayscale; */
+  width: 25%;
   margin: auto;
 }
 

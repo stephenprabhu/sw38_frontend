@@ -1,0 +1,19 @@
+.allGamesOverlay {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.allGamesWrapper {
+    background: #10192D;
+    border: 0.3px solid #DFD07A;
+    border-radius: 5px;
+    width: 420px;
+    max-height: 450px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
