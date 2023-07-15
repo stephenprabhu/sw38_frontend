@@ -1,28 +1,89 @@
-.bottomMenuLayout {
+.footerLayout {
   display: flex;
-  align-items: center;
-  justify-content: space-around;
   background: #10192D;
   padding: 5px 0px;
+  position: relative;
 }
 
-.menuItem {
-  color: #847459;
+.footerItem {
   text-align: center;
   cursor: pointer;
+  width: 20%;
 }
 
-.menuItem img {
-  width: 40px;
+.footerItem img {
+  width: 35px;
 }
 
-.menuItem span {
+.moneyButton span,
+.footerItem span {
   display: block;
   font-size: 0.7rem;
 }
 
+.moneyImageWrapper {
+  position: absolute;
+  background-color: aquamarine;
+}
+
+.moneyButton {
+  position: absolute;
+  bottom: 0px;
+  left: 45%;
+  color: #847459;
+  text-align: center;
+  padding-bottom: 5px;
+  display: block;
+  cursor: pointer;
+}
+
+.modalOverlay {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.loadingSection {
+  position: absolute;
+  bottom: 8%;
+  display: flex;
+  gap: 15px;
+}
+
+.moneyBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.7rem;
+  background: #0F192C;
+  color: #EBDE92;
+  border: 1px solid #DFD07A;
+  border-radius: 17px;
+  padding: 12px 8px 12px 6px;
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 390px) {
-  .menuItem img {
+  .footerItem img {
     width: 32px;
+  }
+
+  .moneyButton {
+    left: 44%;
+  }
+
+  .loadingSection {
+    bottom: 9%;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .moneyButton {
+    left: 42%;
+  }
+
+  .loadingSection {
+    bottom: 10%;
   }
 }
