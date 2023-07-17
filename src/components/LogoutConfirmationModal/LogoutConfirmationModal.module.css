@@ -1,0 +1,69 @@
+.modalOverlay {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoutOverlay {
+  width: 280px;
+  padding: 25px 0;
+  background: #333D54 0% 0% no-repeat padding-box;
+  box-shadow: 0px 7px 24px #0000001A;
+  border: 0.699999988079071px solid #FFFFFF;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.logoutImgwrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logoutImgwrapper p {
+  margin: 5px 0;
+  color: #FFEC80;
+  font-size: 20px;
+}
+
+.logoutMsg {
+  margin-top: 5px;
+  color: white;
+  text-align: center;
+  font-size: 15px;
+}
+
+.logoutButtons {
+  display: flex;
+  gap: 15px;
+}
+
+.logoutButtons button {
+  border-radius: 19px;
+  padding: 5px 22px;
+  color: white;
+  cursor: pointer;
+}
+
+.logoutButtons button:nth-child(1) {
+  border: 1px solid #0E172A;
+  background: transparent linear-gradient(180deg, #19253F 0%, #0E172A 100%);
+}
+
+.logoutButtons button:nth-child(2) {
+  border: 1px solid white;
+  background-color: transparent;
+}
+
+.logoutButtons button:nth-child(1):hover {
+  background: transparent;
+}
+
+.logoutButtons button:nth-child(2):hover {
+  border-color: #0E172A;
+}

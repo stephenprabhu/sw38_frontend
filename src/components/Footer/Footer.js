@@ -66,7 +66,6 @@ const BottomMenu = ({active}) => {
           </div>
         </div>
       </Modal>
-
     </div>
   )
 }

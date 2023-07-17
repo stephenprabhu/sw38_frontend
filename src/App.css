@@ -18,9 +18,7 @@
 /* Mui unselected tabs color */
 .MuiButtonBase-root.MuiTab-root {
   color: #6D6D6D;
-  padding: 0px;
-  min-width: 100px;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .App-link {

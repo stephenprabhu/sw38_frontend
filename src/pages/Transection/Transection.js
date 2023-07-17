@@ -49,8 +49,8 @@ const Transection = () => {
   return (
     <Layout title={'Giao Dịch'}>
       <div className={styles.transactionWrapper}>
-        <h3 style={{ margin: '0px', color: '#F7DB89', textAlign: 'center' }}>Giao Dịch</h3>
-        <Tabs variant='fullWidth' value={activeTab} onChange={handleChange} sx={{ "& button.Mui-selected": { color: '#F7DB89' } }} TabIndicatorProps={{ style: { backgroundColor: "#F7DB89" } }}>
+        <h3 style={{ margin: '0px', color: 'white', textAlign: 'center' }}>Giao Dịch</h3>
+        <Tabs variant='fullWidth' value={activeTab} onChange={handleChange} sx={{ "& button.Mui-selected": { color: 'white' } }} TabIndicatorProps={{ style: { backgroundColor: "white" } }}>
           <Tab label="Nạp Tiền" value="1" />
           <Tab label="Rút Tiền" value="2" />
         </Tabs>

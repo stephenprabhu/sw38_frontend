@@ -12,7 +12,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { RxExit } from "react-icons/rx";
 import UserContext from '../helpers/Context/user-context';
 import MenuLogo from './HeaderComponents/MenuLogo/MenuLogo';
-import BalanceSection from './HeaderComponents/BalanceSection/BalanceSection'
+import BalanceSection from './HeaderComponents/BalanceSection/BalanceSection';
 
 const Header = ({title}) => {
   const [drawerOpened, setDrawerOpened] = useState(false);
@@ -44,7 +44,6 @@ const Header = ({title}) => {
           </div>
         </div>
       }
-
     </header>
   )
 }
